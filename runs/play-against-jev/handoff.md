@@ -79,8 +79,11 @@ Automated review is advisory; it is not independent human release approval.
   reports pending usage. DNS resolution is provided by the operating system;
   the socket deadline interrupts connected I/O, not an unresponsive OS resolver.
 - The final real-terminal and fresh-orientation marks are recorded. The candidate
-  is committed, the checklist is 5/5, and factory verification is current. Next is
-  PR delivery, CI, and Jon's review and competitive playtest.
+  is committed, the checklist is 5/5, and factory verification is current.
+  [PR #1](https://github.com/jon-devlapaz/tink-arcade/pull/1) is open for Jon's review
+  and competitive playtest. GitHub tests and solo terminal smoke passed on Python
+  3.11 and 3.14 at `0c74fff16277721421f8fcac675b24343663cf5d`; consult the PR
+  for check results on any later evidence-only commit.
 - Merge is not authorized. CI and the human PR review remain separate from local checks.
 
 ## Workflow learning
