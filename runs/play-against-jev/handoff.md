@@ -64,8 +64,9 @@ socket deadline; a local slow-server regression verifies termination. The review
 also identified stale prose in the approved brief. This handoff supplies current
 state without editing the approved definition merely to report progress.
 
-The first review covered a changing working tree, not the final commit. A follow-up
-review must check the timeout fix and final candidate before closing review findings.
+The first review covered a changing working tree. The follow-up reviewed commit
+`a0b26dcb242a76cc999438ffdf445fdd0569aae2`, confirmed the timeout fix, reran 110 tests
+with 2 skips, and found no new concrete defects. See `05-deploy/output/REVIEW-findings.md`.
 Automated review is advisory; it is not independent human release approval.
 
 ## Limits and next work
@@ -77,9 +78,9 @@ Automated review is advisory; it is not independent human release approval.
 - A request already sent may still be charged after quitting. The final cost line
   reports pending usage. DNS resolution is provided by the operating system;
   the socket deadline interrupts connected I/O, not an unresponsive OS resolver.
-- The checklist's real-terminal mark should cite the final rerun. Fresh orientation
-  is demonstrated above. Commit the candidate, mark real observations, run factory
-  verification, and inspect current status before opening the PR.
+- The final real-terminal and fresh-orientation marks are recorded. The candidate
+  is committed, the checklist is 5/5, and factory verification is current. Next is
+  PR delivery, CI, and Jon's review and competitive playtest.
 - Merge is not authorized. CI and the human PR review remain separate from local checks.
 
 ## Workflow learning

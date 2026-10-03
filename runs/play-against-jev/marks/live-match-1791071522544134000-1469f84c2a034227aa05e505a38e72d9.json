@@ -1,0 +1,7 @@
+{
+  "item": "live-match",
+  "result": "passed",
+  "evidence": "2026-10-03: python3 -B scripts/check_terminal.py --live passed actual curses and real Jev, including movement/pause/resize/resume/restart/forced human topout (Jev wins)/quit; final estimate $0.00176278. 110 tests with 2 skips include controlled timeout/retry/stale replies. Competitive enjoyment and balance remain unverified. See handoff.md.",
+  "candidate": "2bec12c02fa71cdd4dcf05afd730b378895b1de0a059e7c0617354ad8b03249f",
+  "time_ns": 1791071522544134000
+}
