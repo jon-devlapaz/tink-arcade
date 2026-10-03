@@ -1,3 +1,9 @@
 __pycache__/
 *.py[cod]
 .ruff_cache/
+
+# Local workflow locks and credentials
+runs/.*.lock
+.env
+.env.*
+!.env.example

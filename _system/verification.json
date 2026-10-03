@@ -1,0 +1,14 @@
+{
+  "require_tink": false,
+  "checks": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-c",
+        "import unittest; s=unittest.defaultTestLoader.discover('tests', pattern='test*.py'); assert s.countTestCases() > 0, 'No tests discovered'; r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(not r.wasSuccessful())"
+      ],
+      "timeout_seconds": 120
+    }
+  ]
+}

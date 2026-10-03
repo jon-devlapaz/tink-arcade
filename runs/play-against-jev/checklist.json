@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "race",
+      "description": "Match rules, pause, errors, timeouts, and stale replies",
+      "verify": "Run nonempty deterministic tests; inspect coverage against brief.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import unittest; s=unittest.defaultTestLoader.discover('tests', pattern='test_race*.py'); assert s.countTestCases() > 0, 'No tests discovered'; r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(not r.wasSuccessful())"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "cost",
+      "description": "Cost totals, missing usage, unknown prices, retries and rematches",
+      "verify": "Run nonempty deterministic tests; inspect coverage against brief.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import unittest; s=unittest.defaultTestLoader.discover('tests', pattern='test_jev_cost*.py'); assert s.countTestCases() > 0, 'No tests discovered'; r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(not r.wasSuccessful())"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "terminal",
+      "description": "Two-board rendering, responsive input, resize and exit",
+      "verify": "Run nonempty deterministic tests; inspect coverage against brief.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import unittest; s=unittest.defaultTestLoader.discover('tests', pattern='test_race_ui*.py'); assert s.countTestCases() > 0, 'No tests discovered'; r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(not r.wasSuccessful())"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "live-match",
+      "description": "Actual Jev terminal match and failure recovery",
+      "verify": "Record command, resolved model and price source, observed controls/resize/retry behavior, cost display and remaining play-quality uncertainty; do not claim user enjoyment."
+    },
+    {
+      "id": "handoff",
+      "description": "A fresh reviewer can continue from saved work",
+      "verify": "Record independent orientation evidence and whether Jon repeated context. Structural lint alone is insufficient."
+    }
+  ]
+}
