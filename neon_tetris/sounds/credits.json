@@ -1,0 +1,55 @@
+{
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "format": "44100 Hz mono 16-bit PCM WAV",
+  "processing": "Decoded public HQ MP3 previews; trimmed below 1% of peak with 2ms head/6ms tail padding; 1ms attack/3ms tail fades; attenuated only. No pitch changes.",
+  "samples": [
+    {
+      "file": "tactile.wav",
+      "frames": 8402,
+      "sha256": "a9c86ff9882d7fced907338619e8996b9ea2ece97fa8507eec51db4209cca8fa",
+      "title": "Keyboard_Tactile_9",
+      "creator": "StavSounds",
+      "source": "https://freesound.org/people/StavSounds/sounds/766640/",
+      "preview": "https://cdn.freesound.org/previews/766/766640_7862587-hq.mp3",
+      "preview_sha256": "813ef394935bd69d91693a7384361b9b8c2fbc4a56b9a205a22cdf63accb9c64",
+      "trimmed_head_frames": 132,
+      "gain": 1.0
+    },
+    {
+      "file": "enter.wav",
+      "frames": 7910,
+      "sha256": "e86516c68a63103460bdb043359d4dcba31cb6deb33de4aec4802c233889dad7",
+      "title": "Enter Key Press Mechanical Keyboard",
+      "creator": "alpinemesh",
+      "source": "https://freesound.org/people/alpinemesh/sounds/627647/",
+      "preview": "https://cdn.freesound.org/previews/627/627647_13684433-hq.mp3",
+      "preview_sha256": "bc86b5849da5b66aae8a4be128c39de4d74370fde9b233e210132dd2c4a9169d",
+      "trimmed_head_frames": 136,
+      "gain": 1.0
+    },
+    {
+      "file": "mx-blue.wav",
+      "frames": 6406,
+      "sha256": "7fee7380ec9d298ce8479bdef0f685d16676faf802505c5334a7effc4beb69b5",
+      "title": "Single Mechanical Keyboard Tap.wav",
+      "creator": "Professor-Syntax",
+      "source": "https://freesound.org/people/Professor-Syntax/sounds/523768/",
+      "preview": "https://cdn.freesound.org/previews/523/523768_11581194-hq.mp3",
+      "preview_sha256": "5e09531316ccb4b979707e32d9e77f2e9c7b5ce68b75019872265e23bfd93fdb",
+      "trimmed_head_frames": 3409,
+      "gain": 0.43298955449282656
+    },
+    {
+      "file": "clear.wav",
+      "frames": 10776,
+      "sha256": "0649425265225702a5e4cd2388306fdc34b61ac7927345cb2df50bc6e7514b2e",
+      "derived_from": [
+        "mx-blue.wav",
+        "enter.wav"
+      ],
+      "second_click_offset_frames": 2866,
+      "mix_gain": 0.75
+    }
+  ]
+}
