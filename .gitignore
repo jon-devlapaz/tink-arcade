@@ -7,3 +7,4 @@ runs/.*.lock
 .env
 .env.*
 !.env.example
+runs/*/.writer-lock

@@ -131,6 +131,7 @@ class Game:
         return True
 
     def _spawn(self, kind):
+        self.generation = getattr(self, "generation", 0) + 1
         self.gravity_time = self.lock_time = 0.0
         self.lock_resets = 0
         self.active = Piece(kind, (WIDTH - len(BASES[kind])) // 2, 0)
