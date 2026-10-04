@@ -149,13 +149,18 @@ def main():
                 served = t.send(b' ', lambda s: s['state'] == 'playing', 'Serve')
                 assert served['x'] == 30 and served['y'] == 10
                 t.wait(lambda s:s['x'] > 30, 'Ball moves', len(t.states()))
-                # Send one no-op Space batch on each observed frame. A rally must
-                # continue advancing rather than losing the elapsed time each frame.
+                # Space must not freeze a rally. Accept either direction after a
+                # bounce, a scored point, or a new serve if the point ended play.
                 for frame in range(20):
                     before = t.states()[-1]
-                    after = t.send(b' ', lambda s: s['state'] == 'playing', f'Rally Space {frame + 1}')
-                    assert after['x'] > before['x'], f'No-op Space froze rally: {before} -> {after}'
-                    assert after['y'] > before['y'] and not after['paused']
+                    after = t.send(b' ', lambda s: True, f'Rally Space {frame + 1}')
+                    motion = ('x', 'y', 'state', 'player_score', 'computer_score')
+                    assert any(after[k] != before[k] for k in motion), f'No-op Space froze rally: {before} -> {after}'
+                    assert not after['paused']
+                # Later control checks need an active rally even if this sample
+                # included a point. Start a fresh match rather than assume its state.
+                t.send(b'R', lambda s: s['state'] == 'waiting' and s['serves'] == 0, 'Reset after Space samples')
+                t.send(b' ', lambda s: s['state'] == 'playing', 'Serve for pause checks')
                 paused = t.send(b'P', lambda s: s['paused'], 'Pause')
                 t.frozen(paused, 'Pause freezes both paddles and ball')
                 t.send(b'wS ', lambda s:s['paused'], 'Paused movement and serve ignored')

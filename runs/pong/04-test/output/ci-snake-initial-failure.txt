@@ -1,0 +1,22 @@
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	﻿2026-10-04T22:53:01.8390260Z ##[group]Run python3 -B scripts/check_snake_terminal.py
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8390590Z ^[[36;1mpython3 -B scripts/check_snake_terminal.py^[[0m
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8420590Z shell: /bin/bash -e {0}
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8420740Z env:
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8420960Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8421310Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8421710Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8422020Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8422320Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:01.8422590Z ##[endgroup]
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4932050Z Traceback (most recent call last):
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4941850Z   File "/Users/runner/work/tink-arcade/tink-arcade/scripts/check_snake_terminal.py", line 200, in <module>
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4942920Z     main()
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4943520Z   File "/Users/runner/work/tink-arcade/tink-arcade/scripts/check_snake_terminal.py", line 146, in main
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4944160Z     t.send(b'\x1bOA\x1bOD', lambda s: s['turns'] == [[0,-1],[-1,0]], 'Queue up then left arrows')
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4944790Z   File "/Users/runner/work/tink-arcade/tink-arcade/scripts/check_snake_terminal.py", line 82, in send
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4945290Z     return self.wait(predicate, label, start)
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4945550Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4946030Z   File "/Users/runner/work/tink-arcade/tink-arcade/scripts/check_snake_terminal.py", line 77, in wait
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4946670Z     raise AssertionError(f'Timed out: {label}; last states={self.states()[-2:]}')
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.4948570Z AssertionError: Timed out: Queue up then left arrows; last states=[{'snake': [[0, 9], [1, 9], [2, 9]], 'direction': [-1, 0], 'turns': [], 'food': [8, 3], 'score': 0, 'best': 0, 'paused': False, 'over': True, 'complete': False, 'elapsed': 0.08284862499996515, 'small': False, 'sound': 'key sound on [M]', 'cue': None}, {'snake': [[0, 9], [1, 9], [2, 9]], 'direction': [-1, 0], 'turns': [], 'food': [8, 3], 'score': 0, 'best': 0, 'paused': False, 'over': True, 'complete': False, 'elapsed': 0.08284862499996515, 'small': False, 'sound': 'key sound on [M]', 'cue': None}]
+test (macos-latest)	Run python3 -B scripts/check_snake_terminal.py	2026-10-04T22:53:06.5004280Z ##[error]Process completed with exit code 1.

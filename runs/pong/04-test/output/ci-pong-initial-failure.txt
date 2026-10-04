@@ -1,0 +1,18 @@
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	﻿2026-10-04T22:53:14.4924080Z ##[group]Run python3 -B scripts/check_pong_terminal.py
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4924560Z ^[[36;1mpython3 -B scripts/check_pong_terminal.py^[[0m
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4957330Z shell: /bin/bash -e {0}
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4957670Z env:
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4958010Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4958710Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.11.9/arm64/lib/pkgconfig
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4959300Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4959810Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4960380Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.11.9/arm64
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:14.4960920Z ##[endgroup]
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7838410Z Traceback (most recent call last):
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7848480Z   File "/Users/runner/work/tink-arcade/tink-arcade/scripts/check_pong_terminal.py", line 211, in <module>
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7849730Z     main()
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7850600Z   File "/Users/runner/work/tink-arcade/tink-arcade/scripts/check_pong_terminal.py", line 157, in main
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7851710Z     assert after['x'] > before['x'], f'No-op Space froze rally: {before} -> {after}'
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7852370Z            ^^^^^^^^^^^^^^^^^^^^^^^^
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7858070Z AssertionError: No-op Space froze rally: {'state': 'playing', 'paused': False, 'player_score': 0, 'computer_score': 0, 'serves': 1, 'player': 10.0, 'computer': 17.5, 'x': 58.68882589231052, 'y': 19.37100143529519, 'vx': -18.682602527212538, 'vy': 15.06520370954843, 'accumulator': 0.00808612466666554, 'small': False, 'sound': 'key sound on [M]', 'cues': ['move']} -> {'state': 'playing', 'paused': False, 'player_score': 0, 'computer_score': 0, 'serves': 1, 'player': 10.0, 'computer': 17.5, 'x': 58.2217608291302, 'y': 19.747631528033903, 'vx': -18.682602527212538, 'vy': 15.06520370954843, 'accumulator': 0.002929374666659417, 'small': False, 'sound': 'key sound on [M]', 'cues': []}
+test (macos-latest)	Run python3 -B scripts/check_pong_terminal.py	2026-10-04T22:53:16.7941390Z ##[error]Process completed with exit code 1.

@@ -195,3 +195,34 @@ limits. This final change saves review evidence only.
 Delivery PR: https://github.com/jon-devlapaz/tink-arcade/pull/5. GitHub checks must
 be read at the latest head; local review is not human merge approval. The
 coordinator will save a separate local archive and retrospective after CI passes.
+
+## CI terminal-check repair
+
+Pong CI run 37241686148 failed on macOS because the new Space check incorrectly
+required x and y to increase on every observed frame. Its saved failure shows
+valid leftward motion after a computer-paddle return, from x=58.6888 to x=58.2218.
+The game was playing normally. This was a test assertion defect, not evidence
+that the earlier Space freeze remained. The full log is retained in
+`04-test/output/ci-pong-initial-failure.txt`.
+
+The check now requires changed ball position, game state or score, with no pause.
+This accepts bounces, point completion and a subsequent serve. It no longer waits
+only for the transient playing state, and later pause/resize checks start a fresh
+match so they do not assume the Space sample ended mid-rally. No direction or
+wall-clock distance is assumed. The deterministic 60-frame loop regression still
+checks exact elapsed-time progress.
+
+The revised PTY check passed locally. To test its ability to reject the original
+bug, the builder made a temporary isolated copy of Pong/audio and the revised
+terminal script, restored only the old transition guard in that copy, and ran it.
+It failed on unchanged x/y and state at the new assertion. Output is retained in
+`04-test/output/noop-space-old-guard-pty.txt`. The temporary copy was removed;
+production code was not weakened.
+
+Existing Snake CI run 37241686099 also failed on macOS while waiting for an exact
+two-turn queue state. The log shows the snake subsequently traveled left and hit
+a wall, while the queue was empty. That transient-observation failure is retained
+in `04-test/output/ci-snake-initial-failure.txt`. Snake is outside this repair and
+was not modified. Local Pong verification does not claim that either failed CI
+run has become green. The coordinator must inspect fresh CI and handle the
+separate Snake failure before making release claims.
