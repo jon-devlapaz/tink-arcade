@@ -130,3 +130,13 @@ runtime; `principle-build-the-lever` led to committed, rerunnable suite and term
 checks; `control-cli` led to observed-state waits, transcript retention and cleanup;
 `principle-prove-it-works` required the actual curses process and physics snapshots;
 `unslop` kept docs and this handoff direct. No additional agents were dispatched.
+
+### Final build observation — 2026-10-04
+
+`python3 _system/scripts/sdlc.py verify breakout` passed on code commit `69b81dc`.
+A subsequent structured status read reported `verification_status: current`,
+`verification.passed: true`, four passed checklist items, and no errors. The
+attested items predate a one-line transcript-ending cleanup and therefore show
+`needs_recheck: true`; that change does not affect pending human feedback or the
+recorded fresh continuation. Those statements were reviewed and remain accurate.
+The output-only evidence commit that follows does not change the game candidate.
