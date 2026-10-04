@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "rules-ui-replay",
+      "description": "Build the proposed three-wave game, terminal controls, audio mapping and complete legal win replay while preserving existing games.",
+      "verify": "Run all existing tests and require executed, nonempty Invaders engine/UI groups and a legal full-run replay. Fail missing, skipped required cases, discovery errors or failed tests; report all skips. Cover the brief boundary cases and helper output/failure contracts.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_invaders_tests.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "real-terminal",
+      "description": "Verify the actual terminal game, freeze/recovery behavior and clean exit, preserving separate evidence.",
+      "verify": "Real PTY checks input, fire, pause, restart, mute, supported and undersized dimensions, color/monochrome, Q/SIGINT, state/timer freezes, recovery and cleanup. Retain partial transcripts on failure at the explicit output.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_invaders_terminal.py",
+          "--output",
+          "runs/invaders/04-test/output/terminal-transcript.txt"
+        ],
+        "timeout_seconds": 90
+      }
+    },
+    {
+      "id": "cli",
+      "description": "Provide a documented Invaders entry point and options.",
+      "verify": "Help works without a terminal; full suite tests flags and useful nonterminal error.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "tink_invaders",
+          "--help"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "native-playback",
+      "description": "Verify the reused samples render on repeated macOS playback and mute/resume.",
+      "verify": "Require macOS, at least two actual native playback tests and no skips; playback advancement and metered signal are not listening evidence.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import os,sys,unittest; sys.platform == 'darwin' or sys.exit('Native playback requires macOS'); os.environ['NEON_TETRIS_AUDIO_TESTS']='1'; suite=unittest.defaultTestLoader.discover('tests', pattern='test_native_audio.py'); suite.countTestCases() >= 2 or sys.exit('Missing native tests'); result=unittest.TextTestRunner(verbosity=2).run(suite); sys.exit(0 if result.wasSuccessful() and result.testsRun >= 2 and not result.skipped else 1)"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "observations",
+      "description": "Inspect the real presentation and record honest play and sound observations.",
+      "verify": "Retain and actually view color/monochrome captures at 80x30 and 100x35 across ready/play/pause/win/loss; document method, readability and style findings. Record actual listening and Jon play feedback, or explicitly pending. Pending feedback does not establish fair difficulty or enjoyable play."
+    },
+    {
+      "id": "handoff-retrospective",
+      "description": "Document use and carry actual Substrate observations into the final retrospective.",
+      "verify": "README/design notes match the game. Fresh build/review sessions identify scope, actual authority, evidence and next steps from saved files. Handoff records mistakes, manual interventions, repeated context, limitations and remaining work; final retrospective distinguishes observed process results from proposals. No claim of completed delivery before current verification/review and a reviewable PR."
+    }
+  ]
+}
