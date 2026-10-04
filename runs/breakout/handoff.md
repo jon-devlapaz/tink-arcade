@@ -140,3 +140,17 @@ attested items predate a one-line transcript-ending cleanup and therefore show
 `needs_recheck: true`; that change does not affect pending human feedback or the
 recorded fresh continuation. Those statements were reviewed and remain accurate.
 The output-only evidence commit that follows does not change the game candidate.
+
+
+### Delivery observation — 2026-10-04
+
+Parent opened PR 3: https://github.com/jon-devlapaz/tink-arcade/pull/3.
+Independent review of c778a75 found no actionable Important defects; see
+[review findings](05-deploy/output/REVIEW-findings.md). The reviewer reran the
+93-test suite and PTY harness and cleared every board through the real input
+controller at both 30 and 60 FPS. Two existing native-audio tests skipped.
+
+GitHub checks on c778a75 passed on macOS and Ubuntu. This is dated evidence;
+consult PR 3 for checks on the latest delivered revision. Evidence-only changes
+below do not alter reviewed game code. Jon owns the next decision: play the game
+and review the PR. No merge approval is recorded. Human game feel remains pending.
