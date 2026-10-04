@@ -3,8 +3,8 @@
 ## Current status
 
 Jon accepted the brief and checklist. The coordinator recorded stage 3 approval
-and opened build. Build and direct checks are complete; final verification is
-next. No release approval or human play/listening feedback has been claimed.
+and opened build. Build and formal verification are complete. Status reports stage 3 approved,
+6/6 checklist items passed, and current verification. No release approval or human play/listening feedback has been claimed.
 
 ## Planning history
 
@@ -138,3 +138,20 @@ This is agent visual inspection. Human taste, live difficulty and enjoyment rema
 unverified, as does listener-perceived sound. Native playback proves rendering
 and metering only. Independent review and release remain the coordinator's next
 steps after current formal verification.
+
+
+## Final verification
+
+Candidate code was committed as `f8f3cae` before the final SDLC run. Both attested
+items were marked before verification. `python3 _system/scripts/sdlc.py verify pong`
+passed, and a fresh status reported current verification and 6/6 checklist items.
+The generated `04-test/output/test-log.md` records 128 suite tests, the two default
+native skips, real PTY success, Pong help, and the separate 2/2 native playback
+check without skips. `verification.json` binds that result to the candidate.
+Only run evidence was committed afterward. No push, PR, stage launch or approval
+was performed by the builder. Independent review remains next.
+
+Git whitespace checking found only raw terminal output whitespace in retained
+ANSI/transcript evidence. Those bytes were preserved; source files passed the
+whitespace check. The final verification refreshed the transcript with its own
+observed states.
