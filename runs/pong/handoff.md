@@ -226,3 +226,8 @@ in `04-test/output/ci-snake-initial-failure.txt`. Snake is outside this repair a
 was not modified. Local Pong verification does not claim that either failed CI
 run has become green. The coordinator must inspect fresh CI and handle the
 separate Snake failure before making release claims.
+
+The terminal-check repair was committed as `d53acce` before formal verification.
+SDLC verification passed again with 129 suite tests, the repaired PTY check, help,
+and separate native audio tests. The evidence-only commit afterward preserves
+that result. Fresh CI and independent rereview are still required.

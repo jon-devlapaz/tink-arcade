@@ -17,7 +17,7 @@ Pong engine: 8 tests
 Pong ui: 9 tests
 ..........................................................................ss.....................................................
 ----------------------------------------------------------------------
-Ran 129 tests in 0.604s
+Ran 129 tests in 0.605s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -50,6 +50,6 @@ test_each_sample_renders_on_repeated_spaced_plays (test_native_audio.NativeAudio
 test_replay_after_mute_and_resume (test_native_audio.NativeAudioIntegrationTests.test_replay_after_mute_and_resume) ... ok
 
 ----------------------------------------------------------------------
-Ran 2 tests in 6.338s
+Ran 2 tests in 6.327s
 
 OK
