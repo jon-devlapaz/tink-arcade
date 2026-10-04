@@ -1,7 +1,7 @@
 # Galaga trial handoff
-2026-10-04. Implementation complete locally; final committed verification and independent review remain.
+2026-10-04. Delivery context and observed evidence. Use the runtime command below for current verification; use the PR for current CI and review state.
 
-Jon selected solo play and said the purpose is finding the best path for tink-substrate and documenting issues. He approved the combined brief and checklist. The installed runtime reports stage 3 approved. The code branch is feat/galaga from main, separate from Tetris PR 1. No Galaga PR exists yet.
+Jon selected solo play and said the purpose is finding the best path for tink-substrate and documenting issues. He approved the combined brief and checklist. The installed runtime reports stage 3 approved. The code branch is feat/galaga from main, separate from Tetris PR 1. Galaga PR: https://github.com/jon-devlapaz/tink-arcade/pull/2.
 
 ## Built
 `tink_galaga` contains a deterministic engine, curses display, and CLI. It provides formations, aimed dives that return to formation, enemy fire, player fire, score, three lives, respawn protection, escalating waves, pause, restart, and quit. Small terminals freeze the game. Fixed ticks retain ordinary frame fractions and discard stalls longer than 100 ms. The game runs offline using Python's standard library. Tetris source is unchanged.
@@ -9,11 +9,11 @@ Jon selected solo play and said the purpose is finding the best path for tink-su
 The README explains both games, controls, limitations, and original-art provenance. GitHub Actions tests the PR head on Python 3.11 and 3.14.
 
 ## Observed checks
-- `python3 -B -m unittest discover -s tests`: 95 tests passed, with 2 existing native-audio tests skipped.
+- `python3 -B -m unittest discover -s tests`: 95 tests ran; all executed tests passed, with 2 existing native-audio tests skipped.
 - `python3 -B scripts/check_galaga_terminal.py`: passed using the actual curses program in a pseudo-terminal with xterm-256color. Input, pause, undersize, restored size, resume, restart, Q, Ctrl-C, and terminal-screen restoration were exercised.
 - Unit tests check shot collision, score, lives, protection, dive return, enemy attacks, harder waves, game over, repeatable seeds, frame partitioning, stalls, and input rules.
 
-The PTY check observes terminal output and stability; unit tests inspect game state. No human has played this version. Enjoyment, difficulty, and visual taste remain unverified. No final workflow verification receipt has been created for the uncommitted implementation.
+The PTY check observes terminal output and stability; unit tests inspect game state. No human has played this version. Enjoyment, difficulty, and visual taste remain unverified. Workflow verification passed on application commit 9774841. A fresh read-only reviewer repeated the tests and terminal check and found no actionable game-code defect. It did find stale progress in this handoff, now corrected. See 05-deploy/output/REVIEW-findings.md.
 
 ## Workflow observations
 The saved files were sufficient for a fresh build session to identify the purpose, approved scope, and next action. The seed and handoff still said approval was pending even though the runtime reported approval. Their prose is now updated; runtime receipts remain the approval evidence. `run.json` does not bind this seed as an approved input; the approved brief and checklist were not edited.
@@ -26,4 +26,4 @@ Earlier setup observations remain: the installed ai-native-sdlc skill carried ve
 `principle-build-the-lever` led to the committed, rerunnable real-terminal check instead of relying only on a one-time play observation. `unslop` guided the README and handoff wording. No routed specialty skill was selected.
 
 ## Next
-The parent agent reviews and commits the code, compares the dashboard and agent snapshot with actual sources, records the shared-work observation, and runs final workflow verification. Independent review and a PR follow. Only Jon decides whether to merge.
+Jon can play the game and review PR 2. Enjoyment and difficulty remain human judgments. Only Jon decides whether to merge. Before continuing work, run `python3 _system/scripts/sdlc.py status galaga` and inspect the live PR; do not interpret this dated handoff as current status.

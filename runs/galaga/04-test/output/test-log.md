@@ -97,7 +97,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 95 tests in 0.210s
+Ran 95 tests in 0.199s
 
 OK (skipped=2)
 
@@ -200,7 +200,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 95 tests in 0.209s
+Ran 95 tests in 0.200s
 
 OK (skipped=2)
 

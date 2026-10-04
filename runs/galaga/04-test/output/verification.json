@@ -1,7 +1,7 @@
 {
   "result": "passed",
   "candidate": {
-    "head": "97748417d702714566caef43a056bbfc95a04d75",
+    "head": "f4c52039ada6d2d18429ee9490fe3c44a1161b5a",
     "tree": "89752312672db0907e00a2b5e2d53d5aa698c8e78e79ca2dbf140ff95854b524"
   },
   "inputs": "b03d024116c8adeea608efab56792d60da030e180bdfd8a92d29ace8173ef084",
@@ -9,12 +9,12 @@
   "test_lock": null,
   "checklist": "0e9a98791968b99c6ed2a76fc557f35a726e4ab59ddceccb4bcef1614c56126c",
   "manual_marks": {
-    "shared-work": "fc96dfe067715df7918bc507fca46616494937a83db5205700296efcae5dbc40"
+    "shared-work": "98e2219fb89058889ed33a865b43c2ccf50df8a3937b1b69d058b4616b9972df"
   },
   "checklist_items": {
     "gameplay": "proven",
     "terminal": "proven",
     "shared-work": "attested"
   },
-  "log": "82b39c7b4661a14de11eaf90ba4f8a609c0c161b2462adad0ca88ff9a1b1043a"
+  "log": "307c93347d048f0489bd1a89987601f87fd64ef050b30b83c1a662043b000a01"
 }
