@@ -198,3 +198,22 @@ Before accepting an interface or feedback change:
 From this directory, run the normal suite with `python3 -m unittest discover -s tests`. For audio changes on macOS, also run `NEON_TETRIS_AUDIO_TESTS=1 python3 -m unittest discover -s tests`; this opt-in suite plays and meters real samples.
 
 There is currently no persistent leaderboard, mouse interface, multiplayer mode, music, or theme selector. Do not introduce these as incidental parts of a visual cleanup. Keep the defining contrast: **calm paper, crisp keys, uninterrupted play.**
+
+## Snake
+
+Snake keeps Tetris's centered 80 by 30 canvas and paper palette. Its 20 by 20
+board uses two columns per cell. The board border starts at column 3, row 4;
+the SESSION panel starts at column 49, row 4. Statistics show score, steps per
+second, length and session best. Rows 27 and 28 retain controls on every overlay.
+
+Directional heads use `>>`, `<<`, `^^`, or `vv` in bold jade reverse video.
+Body cells use `[]` in ink reverse video; food uses `()` in bold jade. Empty
+cells use ` .` in graphite. Shapes and attributes preserve distinctions in
+monochrome. Pause, game over and board complete overlay the board.
+
+The pure engine owns the two-turn queue, seeded food, scoring, and remaining
+movement time. The terminal loop freezes time during pause and undersize,
+clears turns on entry to either, and discards elapsed resize time. Delayed frames
+advance at most one cell. Snake imports `KeyboardAudio` directly; samples,
+credits and the existing backend are unchanged. Eating or collision replaces
+the lower-priority turn cue for the same movement step.

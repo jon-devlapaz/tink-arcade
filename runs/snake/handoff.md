@@ -24,3 +24,52 @@ Current project verification only checks Breakout help. The proposed checked ite
 Avoidable stops found so far: mount syntax drift; an unapproved optional routed skill; a missing compiled skill pointer. Installed runtime guidance and the approved required-skill payload allowed planning to continue. Keep later evidence and delivery observations with this run; do not mark delivery complete from this plan.
 
 Planning checks: `sdlc.py walk --json` passed all seven structural checks; status parsed the checklist with the definition gate still pending. After coordinator review, removed the redundant Breakout PTY command because it writes to the previous run's transcript. Existing regression unit tests remain in the full suite. Final checklist: six items, four automatic checks and two attestations. AGENTS.md already contained the launcher's planning-skillset change when this session began; it was not edited here.
+
+## Fresh build continuation, 2026-10-04
+
+A new build session read the root instructions, installed SDLC guide, stages 03/04,
+run metadata, confirmed seed, approved brief/checklist and this handoff from files.
+It verified the recorded stage-3 approval before implementation. The launcher had
+already opened the stage in this isolated Snake checkout. The proposal wording
+above describes historical planning, not the current gate.
+
+Implemented `tink_snake` with deterministic rules, two-turn input queue, seeded
+food, timing, paper renderer, CLI and direct `KeyboardAudio` reuse. Existing game
+source, sample recordings, credits, factory files and Breakout evidence remain
+unchanged. Added Snake tests, PTY script, README/design notes, CI and the local
+`.pi/skills/verify-snake` recipe. No PR, release approval or merge was performed.
+
+Skills read through the serialized installed wrapper:
+
+- `principle-build-the-lever` led to the repeatable test and real terminal scripts.
+- `principle-prove-it-works` required a live PTY run and actual native playback checks.
+- `unslop` guided the README and continuation text.
+- The stage-open `create-verification-skill` pick was available. It led to the small
+  local verification recipe and three feature pages, with actual doctor/drive/cleanup
+  execution. No library approval was created or inferred.
+
+Evidence so far:
+
+- Full suite passes 112 tests. It explicitly skips the two opt-in native tests.
+- Separate guarded macOS native suite passes both tests without skips. It plays and
+  meters real samples across spaced repeats and mute/resume; it does not prove anyone
+  heard them or liked their sound.
+- Real Snake PTY passes arrows, WASD, queued turns, pause/timer freeze, initial and
+  mid-game undersize, recovery while paused/playing, restart, mute, wall collision,
+  Q and SIGINT. Original terminal modes restore; child process groups are gone.
+  SIGINT simulates Ctrl-C's signal. Transcript is in `04-test/output/`.
+- CLI help passes without a terminal; unit tests check the terminal-required error.
+- Structural walk passes all seven checks.
+- Coordinator viewed all 24 Tetris/Snake comparison frames. Actual ANSI PTY output
+  was reconstructed with pyte in HTML. See `04-test/output/visual/observations.md`
+  for concrete findings and rendering limits. Captures disabled sound.
+
+Remaining gate: `visual-listening` is pending because no actual listening observer
+or output-device observation exists. Do not mark it passed from native metering,
+mock calls or visual captures. The coordinator has requested listening evidence.
+After actual observations, mark that item honestly and rerun installed SDLC verify.
+Independent review and Jon's merge decision remain separate.
+
+Avoidable stops: no new skill approval or mount problem occurred in build. The
+native Terminal UI was unavailable to the coordinator, so the saved comparison
+explicitly records its ANSI reconstruction method. No factory change was needed.
