@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "rules-and-regressions",
+      "description": "Implement deterministic Breakout rules, three layouts, controls, and meaningful tests while preserving existing tests.",
+      "verify": "Run the complete suite with required nonempty Breakout engine/layout/UI groups. Check collision, one-time scoring, lives, legal full-clear replays, earned transitions, timing, restart, and existing behavior; report skips.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_breakout_tests.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "real-terminal",
+      "description": "Prove the actual terminal game supports input, pause, resize recovery, restart, and clean exit.",
+      "verify": "Run the real PTY harness at supported and undersized dimensions, including resize while paused. Assert unchanged simulation during freezes, no catch-up penalty, and restored terminal state; retain transcript.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_breakout_terminal.py"
+        ],
+        "timeout_seconds": 45
+      }
+    },
+    {
+      "id": "play-feedback",
+      "description": "Record Jon's play feedback and any remaining game-feel uncertainty.",
+      "verify": "Launch python3 -m tink_breakout; record Jon's actual feedback and resulting changes, or explicitly record that human playtesting is pending. Pending is not acceptance of difficulty, fairness, or layout quality."
+    },
+    {
+      "id": "fresh-continuation",
+      "description": "Record the fresh-agent continuation result and leave an accurate linked handoff.",
+      "verify": "A fresh build agent starts with handoff.md and saved links, identifies scope, actual permission, current evidence and next work, and records omissions/repeated work/user context needed. Refresh evidence before delivery; preserve dated observations and a live status command."
+    }
+  ]
+}

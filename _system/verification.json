@@ -1,0 +1,6 @@
+{
+  "require_tink": false,
+  "checks": [
+    {"argv": ["python3", "-B", "-m", "tink_breakout", "--help"], "timeout_seconds": 10}
+  ]
+}

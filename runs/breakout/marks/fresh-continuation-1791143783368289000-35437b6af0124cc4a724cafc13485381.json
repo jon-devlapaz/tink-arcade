@@ -1,0 +1,7 @@
+{
+  "item": "fresh-continuation",
+  "result": "passed",
+  "evidence": "Fresh builder followed handoff and linked seed, brief, checklist, contracts, current status and actual receipt. Implemented without user clarification. Dated continuation records omissions, necessary rereading, skill command mismatch, PTY failures and remaining evidence. See runs/breakout/handoff.md.",
+  "candidate": "d247504b1d38eeb27d43342c2fe234fb30adbd7df1b8285b58dc8907f405c784",
+  "time_ns": 1791143783368289000
+}
