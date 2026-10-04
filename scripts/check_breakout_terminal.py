@@ -186,7 +186,7 @@ def main():
             finally:
                 transcripts.append(terminal.transcript()); terminal.close()
     finally:
-        OUTPUT.write_text('\n\n'.join(transcripts), encoding='utf-8')
+        OUTPUT.write_text('\n\n'.join(transcripts).rstrip() + '\n', encoding='utf-8')
     print('PASS: real PTY input, launch, pause, resize, restart, quit and Ctrl-C; terminal restored; no child group remains.')
     print(f'Transcript: {OUTPUT.relative_to(ROOT)}')
 
