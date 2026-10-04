@@ -109,3 +109,21 @@ Run `python3 -B scripts/check_snake_tests.py` for all game tests and
 plays sounds when audio is available and writes only Snake's transcript under
 `runs/snake/04-test/output/`. Native sample metering requires macOS and
 `NEON_TETRIS_AUDIO_TESTS=1`. Metering does not replace listening.
+
+### Save terminal checks separately
+
+Both terminal checkers accept `--output PATH`. Relative paths use your current
+working directory. Missing parent directories are created. Without this option,
+Snake keeps its transcript under `runs/snake/04-test/output/` and Breakout under
+`runs/breakout/04-test/output/`, both named `terminal-transcript.txt`.
+
+For an independent review, choose files outside the checkout to preserve the
+original run evidence:
+
+```sh
+python3 -B scripts/check_snake_terminal.py --output '/tmp/arcade review/snake.txt'
+python3 -B scripts/check_breakout_terminal.py --output '/tmp/arcade review/breakout.txt'
+```
+
+On a failed terminal assertion, the selected file still contains the transcript
+collected before cleanup, and the command exits with a nonzero status.

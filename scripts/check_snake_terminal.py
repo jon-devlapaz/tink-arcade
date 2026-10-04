@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Drive the actual curses process through a POSIX PTY; keep readable evidence."""
+import argparse
 import fcntl
 import json
 import os
@@ -133,8 +134,12 @@ class Terminal:
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, default=OUTPUT,
+                        help='transcript path (relative to the current directory; default: %(default)s)')
+    output = parser.parse_args().output.resolve()
     transcripts = []
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    output.parent.mkdir(parents=True, exist_ok=True)
     try:
         with tempfile.TemporaryDirectory(prefix='snake-pty-') as directory:
             terminal = Terminal(directory)
@@ -142,10 +147,20 @@ def main():
                 t = terminal
                 initial = t.wait(lambda s: not s['small'], '80x30 playing')
                 t.expect(b'paper snake')
-                # Queue two turns through real arrow sequences before the first step.
-                t.send(b'\x1bOA\x1bOD', lambda s: s['turns'] == [[0,-1],[-1,0]], 'Queue up then left arrows')
-                t.wait(lambda s: s['direction'] == [0,-1], 'First queued turn')
-                t.wait(lambda s: s['direction'] == [-1,0], 'Second queued turn')
+                # Read movement history because a turn may be consumed before tracing.
+                start = len(t.states())
+
+                def up_then_left(state):
+                    history = t.states()[start - 1:]
+                    moves = []
+                    for before, after in zip(history, history[1:]):
+                        x, y = before['snake'][0]
+                        nx, ny = after['snake'][0]
+                        if (nx, ny) != (x, y):
+                            moves.append(([nx - x, ny - y], after['direction']))
+                    return moves[:2] == [([0, -1], [0, -1]), ([-1, 0], [-1, 0])]
+
+                t.send(b'\x1bOA\x1bOD', up_then_left, 'Queue up then left arrows')
                 t.send(b'S', lambda s: s['direction'] == [0,1], 'Uppercase WASD turn')
                 paused = t.send(b'P', lambda s: s['paused'], 'Pause')
                 t.frozen(paused, 'Pause freezes snake and timer')
@@ -191,9 +206,9 @@ def main():
             finally:
                 transcripts.append(terminal.transcript()); terminal.close()
     finally:
-        OUTPUT.write_text('\n\n'.join(transcripts).rstrip()+'\n',encoding='utf-8')
+        output.write_text('\n\n'.join(transcripts).rstrip()+'\n',encoding='utf-8')
     print('PASS: Snake real PTY arrows/WASD, queue, pause, restart, resize, mute, wall collision, Q and SIGINT; modes restored; child groups gone.')
-    print(f'Transcript: {OUTPUT.relative_to(ROOT)}')
+    print(f'Transcript: {output}')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,54 @@
+test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) ... 
+  test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=[], game='snake') ... FAIL
+  test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=['--output', 'relative output/transcript.txt'], game='snake') ... FAIL
+  test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=[], game='breakout') ... FAIL
+  test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=['--output', 'relative output/transcript.txt'], game='breakout') ... FAIL
+test_failure_writes_selected_transcript_and_exits_nonzero (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_failure_writes_selected_transcript_and_exits_nonzero) ... ok
+test_help_and_argument_errors (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_help_and_argument_errors) ... ok
+test_both_turns_in_wrong_order_are_rejected (test_terminal_checker_compatibility.OrderedMovementTests.test_both_turns_in_wrong_order_are_rejected) ... ok
+test_directions_without_movement_are_rejected (test_terminal_checker_compatibility.OrderedMovementTests.test_directions_without_movement_are_rejected) ... ok
+test_consumed_first_turn_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_consumed_first_turn_is_accepted) ... ok
+test_early_input_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_early_input_is_accepted) ... ok
+test_missing_or_wrong_order_turns_are_rejected (test_terminal_checkers.SnakeQueueCheckerTests.test_missing_or_wrong_order_turns_are_rejected) ... ok
+test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) ... ok
+
+======================================================================
+FAIL: test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=[], game='snake')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checker_compatibility.py", line 59, in test_default_and_relative_destinations
+    self.assertIn(f'Transcript: {destination}', result.stdout)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Transcript: /var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpaeuga76t/checkout/runs/snake/04-test/output/terminal-transcript.txt' not found in 'PASS: Snake real PTY arrows/WASD, queue, pause, restart, resize, mute, wall collision, Q and SIGINT; modes restored; child groups gone.\nTranscript: /private/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpaeuga76t/checkout/runs/snake/04-test/output/terminal-transcript.txt\n'
+
+======================================================================
+FAIL: test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=['--output', 'relative output/transcript.txt'], game='snake')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checker_compatibility.py", line 59, in test_default_and_relative_destinations
+    self.assertIn(f'Transcript: {destination}', result.stdout)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Transcript: /var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpaeuga76t/relative output/transcript.txt' not found in 'PASS: Snake real PTY arrows/WASD, queue, pause, restart, resize, mute, wall collision, Q and SIGINT; modes restored; child groups gone.\nTranscript: /private/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpaeuga76t/relative output/transcript.txt\n'
+
+======================================================================
+FAIL: test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=[], game='breakout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checker_compatibility.py", line 59, in test_default_and_relative_destinations
+    self.assertIn(f'Transcript: {destination}', result.stdout)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Transcript: /var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpgqm4awjr/checkout/runs/breakout/04-test/output/terminal-transcript.txt' not found in 'PASS: real PTY input, launch, pause, resize, restart, quit and Ctrl-C; terminal restored; no child group remains.\nTranscript: /private/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpgqm4awjr/checkout/runs/breakout/04-test/output/terminal-transcript.txt\n'
+
+======================================================================
+FAIL: test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) (args=['--output', 'relative output/transcript.txt'], game='breakout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checker_compatibility.py", line 59, in test_default_and_relative_destinations
+    self.assertIn(f'Transcript: {destination}', result.stdout)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Transcript: /var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpgqm4awjr/relative output/transcript.txt' not found in 'PASS: real PTY input, launch, pause, resize, restart, quit and Ctrl-C; terminal restored; no child group remains.\nTranscript: /private/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/tmpgqm4awjr/relative output/transcript.txt\n'
+
+----------------------------------------------------------------------
+Ran 9 tests in 25.862s
+
+FAILED (failures=4)

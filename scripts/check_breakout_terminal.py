@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Drive the actual curses process through a POSIX PTY; keep readable evidence."""
+import argparse
 import fcntl
 import json
 import os
@@ -133,8 +134,12 @@ class Terminal:
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, default=OUTPUT,
+                        help='transcript path (relative to the current directory; default: %(default)s)')
+    output = parser.parse_args().output.resolve()
     transcripts = []
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    output.parent.mkdir(parents=True, exist_ok=True)
     try:
         with tempfile.TemporaryDirectory(prefix='breakout-pty-') as directory:
             terminal = Terminal(directory)
@@ -186,9 +191,9 @@ def main():
             finally:
                 transcripts.append(terminal.transcript()); terminal.close()
     finally:
-        OUTPUT.write_text('\n\n'.join(transcripts).rstrip() + '\n', encoding='utf-8')
+        output.write_text('\n\n'.join(transcripts).rstrip() + '\n', encoding='utf-8')
     print('PASS: real PTY input, launch, pause, resize, restart, quit and Ctrl-C; terminal restored; no child group remains.')
-    print(f'Transcript: {OUTPUT.relative_to(ROOT)}')
+    print(f'Transcript: {output}')
 
 
 if __name__ == '__main__':
