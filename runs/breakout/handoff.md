@@ -47,3 +47,86 @@ This planner began with the saved checkout and run files, not discovery-session 
 ## Continuing the experiment
 
 The fresh builder should add a dated entry here after reading the saved files: state scope, actual live permission, evidence limits and next action; list any missing information or unnecessary rereading. Link concrete test/verification and review outputs as they are produced, and retain the live status command above. Do not replace current status with a durable sentence claiming the run is approved or verified. Do not add a new process to substrate for this trial.
+
+## Dated build continuation — 2026-10-04
+
+A fresh build agent began with this handoff, followed its saved links, and inspected
+`AGENTS.md`, both stage 3 and stage 4 contracts, the selected seed, brief,
+checklist, live structured status, and the actual decision receipt. The receipt
+[3-1791143101704704000-de21f1236ee044f29744f892fedda722](decisions/3-1791143101704704000-de21f1236ee044f29744f892fedda722.json)
+records Jon's acceptance of the reviewed brief and checklist. Live status reported
+stage 3 approved. The permitted work was implementation, verification, and PR
+preparation in this isolated checkout. The parent handles stage launch, independent
+review, and PR creation. No merge is authorized by local verification.
+
+### What was built and checked
+
+- Added the separate [Breakout package](../../tink_breakout/engine.py), approved
+  layouts, curses controls, documentation, and [CI checks](../../.github/workflows/breakout.yml).
+  Tetris source and tests are unchanged. The live remote main remained `c83dd82`
+  when checked with `git ls-remote origin refs/heads/main`. Other worktrees were
+  inventoried but not changed.
+- The [complete test runner](../../scripts/check_breakout_tests.py) passed 93 tests,
+  with two existing opt-in native-audio tests skipped. Breakout has nine engine,
+  two layout, and four UI test methods. The tests cover each brick face, tied
+  contacts, corners, fast crossings, repeated scoring, paddle edges, lives,
+  earned transitions, win/loss, restart, control variants, timing and clipping.
+- [Legal replay](../../tests/test_breakout_layouts.py) uses seed 20261004, only
+  paddle moves bounded to two cells per command, launches, and 1/120-second
+  simulation steps. It never deletes bricks or changes a flying ball. It clears
+  Gate at step index 16548, Chevron at 19078, and Islands at 31474. Final score is
+  760 with three lives. A second run gives identical results. The limit is
+  180,000 steps. This demonstrates clearability, not human difficulty.
+- The [real terminal check](../../scripts/check_breakout_terminal.py) passed with
+  80x30, 100x35, and 40x12 windows. It compares actual game snapshots during pause,
+  undersizing, resize while paused, and the first recovery frame. It also checks
+  input, launch, restart, quit, SIGINT, restored persistent terminal modes, and
+  process cleanup. Its optional trace only observes the live game loop.
+  See the [terminal transcript](04-test/output/terminal-transcript.txt).
+- The configured verification command checks the actual module's help output.
+  The approved checklist commands run the full suite and PTY check. Final SDLC
+  results belong in the generated [test log](04-test/output/test-log.md) and
+  [verification receipt](04-test/output/verification.json). Refresh live status
+  before relying on these files. The structural walk passed all seven checks.
+
+### Missing evidence and next work
+
+Jon has not played this implementation or supplied game-feel feedback. Difficulty,
+fairness, and layout interest remain unverified. The play-feedback checklist item
+records that pending state as expressly allowed by its approved definition; it is
+not human acceptance. Native audio was not played, Windows is unsupported, and
+Linux/hosted CI has not been run by this build agent. The next step after current
+verification is independent stage-5 review in the parent's selected review checkout.
+
+### What the continuation taught us
+
+1. The handoff supplied enough context to build without asking Jon to repeat
+   decisions. Its root-seed warning prevented mixing this run with Jev/Tetris.
+   The dated statement that approval was pending was superseded by the linked
+   decision and current status, without editing the old observation.
+2. The fresh agent still had to reread the brief, checklist, stage contracts, and
+   receipt to establish scope and authority. That was necessary checking, not
+   repeated discovery. The existing engine and terminal code needed inspection;
+   the handoff explicitly said that inspection was incomplete.
+3. Required `unslop` and the routed `ai-native-sdlc` payload were initially absent
+   from `.tink/.active`; the serialized mount command supplied them. The routed
+   skill names older `status.sh`/`verify.sh` entry points. The installed guide and
+   active contracts resolve that mismatch to `python3 _system/scripts/sdlc.py`.
+   No factory file was changed to hide the discrepancy.
+4. The PTY driver initially checked state before all screen bytes were drained,
+   causing a false screen-readiness failure. Its failure cleanup then hung while
+   the terminal stayed open. Bounded cleanup now closes descriptors before
+   waiting, and text checks wait for actual output. macOS also sets transient
+   `PENDIN` on restore, so only that input-retype flag is excluded from mode
+   comparison. Persistent flags, speeds, and control characters are all checked.
+   Ctrl-C coverage sends its actual SIGINT signal because this PTY deliberately
+   has no controlling session, allowing post-exit mode inspection on macOS.
+5. No shared Seed Me view or new workflow was built. This trial demonstrates one
+   successful saved-file build continuation. It does not establish broader
+   usability or measure Jon's friction switching between applications.
+
+Skills that changed the work: `ai-native-sdlc` kept evidence tied to the installed
+runtime; `principle-build-the-lever` led to committed, rerunnable suite and terminal
+checks; `control-cli` led to observed-state waits, transcript retention and cleanup;
+`principle-prove-it-works` required the actual curses process and physics snapshots;
+`unslop` kept docs and this handoff direct. No additional agents were dispatched.
