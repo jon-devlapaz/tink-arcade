@@ -72,6 +72,26 @@ class PongUITests(unittest.TestCase):
                 _run_loop(s,Mock(),g,Mock())
             self.assertEqual((g.x,g.y,g.computer),(30,10,10))
 
+    def test_repeated_noop_input_does_not_discard_rally_time(self):
+        expected = Game()
+        expected.launch()
+        for _ in range(60):
+            expected.advance(1 / 60)
+        for key in (' ', 'x', 'm'):
+            with self.subTest(key=key):
+                game = Game()
+                game.launch()
+                screen = Mock()
+                screen.getmaxyx.return_value = (30, 80)
+                screen.getch.side_effect = [value for _ in range(60) for value in (ord(key), -1)] + [ord('q')]
+                times = [0] + [value for frame in range(1, 61) for value in (frame / 60, frame / 60)] + [61 / 60]
+                with patch('tink_pong.ui.time.monotonic', side_effect=times), patch('tink_pong.ui.time.sleep'):
+                    _run_loop(screen, Mock(), game, Mock())
+                for field in ('x', 'y', 'player', 'computer', 'accumulator'):
+                    self.assertAlmostEqual(getattr(game, field), getattr(expected, field), msg=field)
+                self.assertEqual(game.state, 'playing')
+                self.assertFalse(game.paused)
+
     def test_loop_routes_contact_point_loss_and_silent_wall(self):
         for scenario,expected in (('paddle','move'),('point','clear'),('loss','over'),('wall',None)):
             g=Game();g.launch();g.x=.1;g.y=1;g.vx=-24;g.vy=0

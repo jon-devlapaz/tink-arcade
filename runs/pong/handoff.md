@@ -155,3 +155,24 @@ Git whitespace checking found only raw terminal output whitespace in retained
 ANSI/transcript evidence. Those bytes were preserved; source files passed the
 whitespace check. The final verification refreshed the transcript with its own
 observed states.
+
+## Independent review repair
+
+The independent reviewer found that pressing Space during an active rally skipped
+elapsed time even though serve was ignored. A regression through the real loop
+reproduced it: after 60 frames the ball remained at x=30 rather than x=52.89454.
+The failing output is retained in `04-test/output/noop-space-before-fix.txt`.
+The initial review is preserved in `05-deploy/output/REVIEW-initial.md`.
+
+The loop now compares game state and pause state before and after each key. It
+skips old elapsed time only for an actual transition. Repeated Space, an unknown
+key, and mute are each checked across 60 frames against ordinary elapsed-time
+advancement. Existing pause, restart, serve and resize transition checks still
+pass. The real PTY check now sends Space on 20 successive observed rally frames
+and requires ball movement on each one. Its transcript retains those snapshots.
+
+The repaired suite passes 129 tests, including 9 Pong UI cases. The same two
+opt-in native audio tests skip in the default suite. Renderer and rules are
+unchanged, so the inspected visual captures still describe this candidate's
+layout. README still matches behavior; this repair makes ignored Space behave
+as documented. No new human play or listening claim is made.

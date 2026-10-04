@@ -170,9 +170,11 @@ def _run_loop(screen, renderer, game, audio, trace=None):
             if key in (ord('q'), ord('Q'), 3):
                 return
             if key in (ord('m'), ord('M')) or (not too_small and key != curses.KEY_RESIZE):
-                if key in map(ord, 'pPrR '):
-                    transition = True
+                before = game.state, game.paused
                 handle_key(game, key, audio)
+                # Ignored inputs, including Space during a rally, do not reset time.
+                if (game.state, game.paused) != before:
+                    transition = True
         cues = []
         if not too_small and not was_small and not transition:
             cues = game.advance(dt)
