@@ -81,3 +81,14 @@ visual-listening`. This is the expected honest result until actual listening is
 recorded. `docs-continuation` is attested with its evidence receipt. The generated
 verification record and log retain the attempt; do not report overall verification
 as passed. Commit-only changes to run evidence do not change application contents.
+
+## Human playtest acceptance — 2026-10-04
+
+After receiving the playable command and the request for listening feedback, Jon
+reported “it works. call this done.” The coordinator treats this as acceptance of
+the delivered playtest and an instruction to finish, rather than requesting more
+audio details. Output device and individual sound-event observations were not
+supplied; they remain unknown. This does not claim a detailed listening protocol
+was performed. Together with saved visual inspection and real native playback
+checks, this resolves the human observation at Jon's direction. Independent
+review and PR delivery remain; no merge is authorized by this note.
