@@ -1,0 +1,10 @@
+{
+  "profile": "light",
+  "kind": "feature",
+  "schema": 1,
+  "seed_contract": {
+    "path": "runs/snake/seed-contract.md",
+    "sha256": "535a33cf2cec06e209b52982a966c547b44726e61fd82649eb826f06abf59289",
+    "source": "/Users/jondev/.local/share/seed-me/sessions/a1676165-97a0-4834-bcc4-32980da6e630/seed-contract.md"
+  }
+}
