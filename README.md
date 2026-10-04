@@ -81,3 +81,31 @@ python3 -m neon_tetris
 ```
 
 Its controls and sounds are unchanged. See `python3 -m neon_tetris --help`.
+
+## Paper Snake
+
+Run `python3 -B -m tink_snake` in a terminal at least 80 columns by 30 rows.
+Use `--seed 42` for repeatable food placement, `--no-color` for monochrome, or
+`--no-sound` to disable audio for the whole session.
+
+Arrows or WASD steer. P pauses, R restarts, M mutes, and Q or Ctrl-C exits.
+Letter controls accept either case. Two turns can wait in the queue; each move
+uses one turn. Reverse turns, repeated directions, and extra queued turns are ignored.
+
+Eat food to grow and earn 10 points. Walls and your body end the game. Moving
+into the departing tail cell is allowed. Filling the 20 by 20 board completes it.
+Movement starts every 180 ms and speeds up by 15 ms per five foods, down to 75 ms.
+Session best lasts until exit. Restart resets the game and repeats a supplied seed,
+while preserving session best and mute. Shrinking below the minimum freezes play;
+only mute and quit work until the terminal is large enough again.
+
+Snake uses Tetris's paper, ink and jade palette and its existing keyboard recordings.
+Automatic movement is silent. Turns click, food uses the clear cue, collision uses
+enter, and pause/restart/unmute use the switch cue. Credits remain in
+`neon_tetris/sounds/credits.json`. Unavailable audio leaves the game playable.
+
+Run `python3 -B scripts/check_snake_tests.py` for all game tests and
+`python3 -B scripts/check_snake_terminal.py` for real terminal checks. The latter
+plays sounds when audio is available and writes only Snake's transcript under
+`runs/snake/04-test/output/`. Native sample metering requires macOS and
+`NEON_TETRIS_AUDIO_TESTS=1`. Metering does not replace listening.

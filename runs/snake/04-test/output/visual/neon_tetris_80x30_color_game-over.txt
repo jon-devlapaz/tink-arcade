@@ -1,0 +1,30 @@
+                                                                                
+                          . socratink  /  paper tetris                          
+                          make room for the next idea.                          
+                                                                                
+   +- HOLD / MARGIN ----+   +- PLAY / PAPER -----+   +- NEXT / 7-BAG ------+    
+   |                    |   | . . . .[][] . . . .|   |                     |    
+   |     -- empty --    |   | . . .[][] . . . . .|   |  01   [][]          |    
+   |                    |   | . . .[][][][] . . .|   |       [][]          |    
+   |                    |   | . . . . .[] . . . .|   |                     |    
+   |  C  swap / store   |   | . . .[][][] . . . .|   |                     |    
+   +--------------------+   | . . .[] . . . . . .|   |                     |    
+                            |+------------------+|   |  02   [][]          |    
+   +- SESSION ----------+   ||  GAME OVER       ||   |         [][]        |    
+   |                    |   ||Turn a fresh page.||   |                     |    
+   |  SCORE             |   || R  restart       ||   |                     |    
+   |  190               |   ||                  ||   |                     |    
+   |                    |   || Q  quit          ||   |  03   []            |    
+   |  LEVEL             |   |+------------------+|   |       [][][]        |    
+   |  1                 |   | . . .[][][] . . . .|   |                     |    
+   |                    |   | . . . .[] . . . . .|   |                     |    
+   |  LINES             |   | . . .[][][] . . . .|   +---------------------+    
+   |  0                 |   | . . .[][] . . . . .|                              
+   |                    |   | . . . .[][] . . . .|                              
+   |  SESSION BEST      |   | . . . .[][] . . . .|     key sound off            
+   |  190               |   | . . . .[][] . . . .|     () pencil / ghost        
+   +--------------------+   +--------------------+                              
+                                                                                
+   <- -> / A D move   Down/S soft drop   Up/X rotate   Z reverse                
+   Space DROP  C hold  P pause  R restart  M mute  Q quit  Ctrl-C exit          
+                                                                                
