@@ -1,4 +1,24 @@
 {
-  "result": "failed",
-  "error": "Checklist incomplete: visual-listening (mark them with: sdlc.py mark snake <id> passed --evidence \"...\")"
+  "result": "passed",
+  "candidate": {
+    "head": "c9461677ae4c02f81106c729b00899f4e217d0b3",
+    "tree": "25eee7563fcae40a7b14090a207144b354cb358f287e84ad4e9e6e1a3b4df48c"
+  },
+  "inputs": "59f62508e637e3e5e259505483549e11efcd5acd9adfbd698f2ec06e065a8d98",
+  "policy": "638fde22eeed6f8a3be7876f376f53f30b5a26cada20e932e4e162a66f964fee",
+  "test_lock": null,
+  "checklist": "bb1f308887b65d23b8ec3b183325b4a5a8dc7e3f9741ab0c32fa545e82320edd",
+  "manual_marks": {
+    "visual-listening": "9fe7c89dcc4fe8858939858702b47359c80add76543e748a88fba8cb7d1510ce",
+    "docs-continuation": "38fd5596c5a24f6c32f2ad24a3b68670c7d5307bc336cd0f4c66d57a2c3eae2e"
+  },
+  "checklist_items": {
+    "rules-ui-regressions": "proven",
+    "snake-terminal": "proven",
+    "snake-cli": "proven",
+    "native-playback": "proven",
+    "visual-listening": "attested",
+    "docs-continuation": "attested"
+  },
+  "log": "16c15fdaba5ca217f4d1f48632bba7e45923b35406f0b39c2ada26259f844426"
 }
