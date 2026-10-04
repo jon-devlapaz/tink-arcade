@@ -14,14 +14,14 @@ restarts; Q or Ctrl-C quits.
 # checklist item pong-rules-regressions
 $ ["python3", "-B", "scripts/check_pong_tests.py"]
 Pong engine: 8 tests
-Pong ui: 8 tests
-..........................................................................ss....................................................
+Pong ui: 9 tests
+..........................................................................ss.....................................................
 ----------------------------------------------------------------------
-Ran 128 tests in 0.602s
+Ran 129 tests in 0.604s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
-Total: 128; skips: 2
+Total: 129; skips: 2
 SKIP test_native_audio.NativeAudioIntegrationTests.test_each_sample_renders_on_repeated_spaced_plays: set NEON_TETRIS_AUDIO_TESTS=1 on macOS to play and meter real samples
 SKIP test_native_audio.NativeAudioIntegrationTests.test_replay_after_mute_and_resume: set NEON_TETRIS_AUDIO_TESTS=1 on macOS to play and meter real samples
 
@@ -50,6 +50,6 @@ test_each_sample_renders_on_repeated_spaced_plays (test_native_audio.NativeAudio
 test_replay_after_mute_and_resume (test_native_audio.NativeAudioIntegrationTests.test_replay_after_mute_and_resume) ... ok
 
 ----------------------------------------------------------------------
-Ran 2 tests in 6.367s
+Ran 2 tests in 6.338s
 
 OK

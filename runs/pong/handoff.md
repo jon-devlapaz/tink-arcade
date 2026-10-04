@@ -176,3 +176,9 @@ opt-in native audio tests skip in the default suite. Renderer and rules are
 unchanged, so the inspected visual captures still describe this candidate's
 layout. README still matches behavior; this repair makes ignored Space behave
 as documented. No new human play or listening claim is made.
+
+Repair code was committed as `7226093` before rerunning formal SDLC verification.
+That verification passed all configured checks, including 129 suite tests, the
+extended real PTY check, help, and separate native audio with no skips. The two
+default suite skips remain explicitly reported. Final status is checked again
+after this evidence-only commit. Independent rereview remains next.

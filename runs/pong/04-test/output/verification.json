@@ -1,8 +1,8 @@
 {
   "result": "passed",
   "candidate": {
-    "head": "f8f3caebc094f4658345a083457c2468c4bb5cfa",
-    "tree": "60201fa6c90272bfe1276b8d65210dcf79351862df8305a67ea3ac8ca78fa69f"
+    "head": "7226093c55f52d9877ed6c1a3e85b13ecce1b015",
+    "tree": "1a75a8333c39faeae333e66a7ff4e6141e0f9dc5f796826ff9f15cb72949f46e"
   },
   "inputs": "6cb7d867c6f4d7e371a65f66f7f3317faad3fc243091f0c5444437d3ee8ed069",
   "policy": "638fde22eeed6f8a3be7876f376f53f30b5a26cada20e932e4e162a66f964fee",
@@ -10,7 +10,7 @@
   "checklist": "d1e14e652eedcb95801f66cc2c133508000ee22cfeef439d24ce8d1a440b3bd0",
   "manual_marks": {
     "visual-review": "9bbc66b01cd0370d932c30ef3e43bdba0e32640ba1ae2f45b0077f494844865a",
-    "docs-handoff": "33bb349e78215197f409183ffe87c54a9f38404630a9836c695e97b3f782a206"
+    "docs-handoff": "9ddfca416229f8ec0389592de3242d129ea17f3d9bdbb2384dc95292446e58fe"
   },
   "checklist_items": {
     "pong-rules-regressions": "proven",
@@ -20,5 +20,5 @@
     "visual-review": "attested",
     "docs-handoff": "attested"
   },
-  "log": "a85e67dddd49e0f93913d23abee484911790da6934d2d9ba7ef4e77b7e30c314"
+  "log": "eee30d7dc216a2f6b1dc836b0c4c41b4a863aa41b7894c51eb4d20307e6ebe58"
 }
