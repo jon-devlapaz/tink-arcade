@@ -73,3 +73,11 @@ Independent review and Jon's merge decision remain separate.
 Avoidable stops: no new skill approval or mount problem occurred in build. The
 native Terminal UI was unavailable to the coordinator, so the saved comparison
 explicitly records its ANSI reconstruction method. No factory change was needed.
+
+Final build result: candidate committed as `b804f58`. The installed SDLC verify
+command ran all configured checks, the full suite, Snake PTY, CLI help and guarded
+native playback successfully, then exited 1 with `Checklist incomplete:
+visual-listening`. This is the expected honest result until actual listening is
+recorded. `docs-continuation` is attested with its evidence receipt. The generated
+verification record and log retain the attempt; do not report overall verification
+as passed. Commit-only changes to run evidence do not change application contents.

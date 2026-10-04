@@ -1,0 +1,4 @@
+{
+  "result": "failed",
+  "error": "Checklist incomplete: visual-listening (mark them with: sdlc.py mark snake <id> passed --evidence \"...\")"
+}
