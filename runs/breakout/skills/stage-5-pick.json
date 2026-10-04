@@ -1,0 +1,9 @@
+{
+  "stage": 5,
+  "document": "runs/breakout/brief.md",
+  "sha256": "74a83ff04c258b026881eea9844472fc778183a430db9090489f852b6b14d2d6",
+  "chars": 10108,
+  "status": "routed",
+  "winner": "ai-native-sdlc",
+  "confidence": 0.69
+}
