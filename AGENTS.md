@@ -9,8 +9,7 @@
 - Need a specialised skill mid-task? `tink-route --receipt runs/<slug>/skills.jsonl "<what you need>"` prints it on stdout; exit 1 means none fits, so continue without one.
 <!-- End AI-Native SDLC Router -->
 
-<!-- tink:rules begin skillset=build-skillset digest=7c693535576993412cc58f383c37322d844d6e20a29a781c170fe28446ec7b15 -->
+<!-- tink:rules begin skillset=deployment-skillset digest=dbf7e19cffa4cf6e99841c1fd2652e8002ed44fe76b7d425a8bcfe0d925fce5f -->
 Discipline rules for this phase (compiled by tink; do not edit by hand):
-- principle-build-the-lever: Apply to any non-trivial work, not just bulk work: edits, migrations, analyses, checks. Build the tool that does it or proves it (codemod, script, generator, or a skill your subagents follow) instead of working by hand. The tool is the artifact a reviewer can rerun. (full: .tink/.active/principle-build-the-lever/SKILL.md; run: tink mount principle-build-the-lever)
-- unslop: Cut AI tells from any writing. Must always apply. (full: .tink/.active/unslop/SKILL.md; run: tink mount unslop)
+- principle-prove-it-works: Apply after completing a task, before declaring done. Verify against the real artifact (run the feature, read the actual value, inspect the diff), not a proxy, self-report, or 'it compiles.' (full: .tink/.active/principle-prove-it-works/SKILL.md; run: tink mount principle-prove-it-works)
 <!-- tink:rules end -->
