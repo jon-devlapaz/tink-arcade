@@ -231,3 +231,13 @@ The terminal-check repair was committed as `d53acce` before formal verification.
 SDLC verification passed again with 129 suite tests, the repaired PTY check, help,
 and separate native audio tests. The evidence-only commit afterward preserves
 that result. Fresh CI and independent rereview are still required.
+
+
+## Focused review after CI harness repair
+
+Independent review of 7d26e522711208e8968c783b712825a0dcd0e618 found no Important
+issues. The reviewer confirmed the actual CI bounce is accepted, the real terminal
+check passes, and restoring the original game bug in a temporary copy still fails
+the check. The game code is unchanged by this last repair. REVIEW-findings.md
+contains that focused review; the initial failed review and CI logs remain saved.
+The final commit below saves evidence only; check GitHub at the final PR head.

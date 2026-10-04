@@ -1,3 +1,59 @@
+# Pong focused review of terminal-test repair
+
+Reviewed HEAD: `7d26e522711208e8968c783b712825a0dcd0e618`
+
+Previous reviewed HEAD: `eca10ff0d86032314ba89f66238913a4c9955050`
+
+Result: **No Important findings in this repair.** The revised terminal check
+accepts normal changes of direction and still detects the original freeze.
+Game code, unit tests, renderer and audio are unchanged since the prior review.
+This is local advisory review, not human release approval or a passing CI claim.
+
+## Independent checks
+
+- Read the exact diff, the retained Pong CI failure, the builder's old-guard
+  reproduction, updated handoff, and current SDLC status. Status reports current
+  verification and 6/6 passed. The only executable change is the PTY helper.
+- Parsed the actual two states from the failed CI log. The ball moved left from
+  x `58.68882589231052` to `58.2217608291302` with negative velocity. The revised
+  assertion accepts those exact states; it no longer requires rightward or
+  downward movement.
+- Ran the complete revised PTY helper against this candidate with its transcript
+  redirected to temporary output. All checks passed, including 20 Space samples,
+  pause/resume, restart, mute, resize, Q/SIGINT, terminal settings and cleanup.
+- Independently copied only the Pong/audio packages into a temporary directory,
+  restored the original broken transition guard there, and ran the current
+  unmodified helper against that copy. It failed with `No-op Space froze rally`
+  on identical consecutive playing states at x `31.144727041700328`,
+  y `10.360000000000003`. Thus the corrected check still rejects the original
+  bug. The production checkout was not modified; temporary files were removed.
+- The new comparison accepts changed ball coordinates, a scored point or a serve
+  state change. It still rejects an unchanged rally and requires an unpaused
+  state. The reset/serve after sampling ensures later pause checks start in a
+  rally even if a point ended the sampled rally. Existing later control checks
+  remain in place. The deterministic 60-frame exact-progress regression remains
+  unchanged and complements the direction-independent terminal observation.
+
+## Limits and process
+
+The prior review below remains applicable to unchanged game behavior and evidence.
+The earlier claim that the new PTY assertion passed was accurate locally, but that
+run did not encounter the bounce exposed in CI. The retained CI failure is a
+harness defect, not evidence that the ball froze. The separate existing Snake CI
+failure was read as context; Snake is unchanged and was not reviewed or repaired
+here. Fresh remote CI must still be inspected by the coordinator.
+
+Used the previously read `control-cli` and `principle-prove-it-works` skills to
+run both the real candidate and an isolated broken control. Tools were read-only
+Git inspection, Python, SDLC status and the existing PTY helper. The coordinator
+advanced the checkout and supplied the CI failure context. No additional session
+blocker, skill mount, installation, external posting, source/test/receipt edit,
+commit, push or approval occurred. Only this review file was updated.
+
+---
+
+## Preserved prior review (eca10ff)
+
 # Pong independent review after repair
 
 Reviewed HEAD: `eca10ff0d86032314ba89f66238913a4c9955050`
