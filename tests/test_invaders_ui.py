@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 from tink_invaders.engine import Enemy, Shot, STEP, SHIP_Y
 from tink_invaders.ui import Controller, Renderer, run, _run_loop, MAX_KEYS
 from tink_invaders.__main__ import main
-from neon_tetris.audio import KeyboardAudio
+from arcade_common.audio import KeyboardAudio
 
 
 class UITests(unittest.TestCase):
@@ -171,7 +171,7 @@ class UITests(unittest.TestCase):
                 screen = Mock()
                 backend = Mock(); backend.ready = True
                 with patch('curses.curs_set'), patch('curses.set_escdelay'), patch('tink_invaders.ui.Renderer'), \
-                     patch('neon_tetris.audio._make_backend', return_value=backend) as make, \
+                     patch('arcade_common.audio._make_backend', return_value=backend) as make, \
                      patch('tink_invaders.ui._run_loop', side_effect=RuntimeError('drawing failed') if fails else None):
                     if fails:
                         with self.assertRaises(RuntimeError): run(screen, no_sound=disabled)
@@ -180,7 +180,7 @@ class UITests(unittest.TestCase):
                     if disabled: make.assert_not_called()
                     else: backend.close.assert_called_once()
         with patch('curses.curs_set'), patch('curses.set_escdelay'), patch('tink_invaders.ui.Renderer'), \
-                patch('neon_tetris.audio._make_backend', side_effect=OSError('no backend')), patch('tink_invaders.ui._run_loop'):
+                patch('arcade_common.audio._make_backend', side_effect=OSError('no backend')), patch('tink_invaders.ui._run_loop'):
             self.assertEqual(run(Mock()), 'no backend')
 
     def test_cli_help_nonterminal_options_and_warning(self):

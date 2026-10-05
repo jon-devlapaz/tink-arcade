@@ -6,7 +6,7 @@ from unittest.mock import Mock, patch
 from tink_pong.engine import Game
 from tink_pong.ui import Renderer, handle_key, run, _run_loop
 from tink_pong.__main__ import main
-from neon_tetris.audio import KeyboardAudio, SOUND_DIR
+from arcade_common.audio import KeyboardAudio, SOUND_DIR
 
 
 class PongUITests(unittest.TestCase):
@@ -106,7 +106,7 @@ class PongUITests(unittest.TestCase):
 
     def test_audio_mute_restart_disabled_unavailable_cleanup(self):
         backend=Mock(ready=True)
-        with patch('neon_tetris.audio._make_backend',return_value=backend):
+        with patch('arcade_common.audio._make_backend',return_value=backend):
             with KeyboardAudio() as a:
                 g=Game();handle_key(g,32,a);a.tick();backend.play.assert_called_with(SOUND_DIR/'mx-blue.wav')
                 handle_key(g,ord('m'),a);handle_key(g,ord('r'),a);a.tick();self.assertTrue(a.muted);self.assertEqual(backend.play.call_count,1)
@@ -114,13 +114,13 @@ class PongUITests(unittest.TestCase):
                 backend.tick.side_effect=OSError('broken');a.tick();self.assertIn('unavailable',a.status)
                 handle_key(g,32,a);self.assertEqual(g.state,'playing')
             backend.close.assert_called_once()
-        with patch('neon_tetris.audio._make_backend') as factory:
+        with patch('arcade_common.audio._make_backend') as factory:
             with KeyboardAudio(False) as a:
                 handle_key(Game(),ord('m'),a);self.assertEqual(a.status,'key sound off')
             factory.assert_not_called()
         for error in (None,KeyboardInterrupt(),ValueError('render')):
             backend=Mock(ready=True)
-            with patch('curses.curs_set'),patch('curses.set_escdelay'),patch('tink_pong.ui.Renderer'),patch('tink_pong.ui._run_loop',side_effect=error),patch('neon_tetris.audio._make_backend',return_value=backend):
+            with patch('curses.curs_set'),patch('curses.set_escdelay'),patch('tink_pong.ui.Renderer'),patch('tink_pong.ui._run_loop',side_effect=error),patch('arcade_common.audio._make_backend',return_value=backend):
                 if error:
                     with self.assertRaises(type(error)):run(Mock())
                 else:run(Mock())

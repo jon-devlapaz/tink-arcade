@@ -38,7 +38,7 @@ class OrderedMovementTests(unittest.TestCase):
 class CheckerCompatibilityTests(unittest.TestCase):
     def copy_checkout(self, directory):
         root = Path(directory) / 'checkout'
-        for package in ('scripts', 'tink_snake', 'tink_breakout', 'neon_tetris'):
+        for package in ('scripts', 'tink_snake', 'tink_breakout', 'neon_tetris', 'arcade_common'):
             shutil.copytree(ROOT / package, root / package,
                             ignore=shutil.ignore_patterns('__pycache__'))
         return root

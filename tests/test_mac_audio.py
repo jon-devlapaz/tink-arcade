@@ -3,7 +3,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import Mock, patch, sentinel
 
-from neon_tetris._mac_audio import MacPlayer, _ObjC
+from arcade_common._mac_audio import MacPlayer, _ObjC
 
 
 class FakeObjC:
@@ -87,7 +87,7 @@ class RunLoopTests(unittest.TestCase):
 class NativePlaybackTests(unittest.TestCase):
     def setUp(self):
         self.objc = FakeObjC()
-        patcher = patch("neon_tetris._mac_audio._ObjC", return_value=self.objc)
+        patcher = patch("arcade_common._mac_audio._ObjC", return_value=self.objc)
         patcher.start()
         self.addCleanup(patcher.stop)
         patcher = patch.object(Path, "read_bytes", return_value=b"test-wave")

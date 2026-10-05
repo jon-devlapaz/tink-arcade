@@ -6,7 +6,7 @@ import unittest
 import wave
 
 
-SOUNDS = Path(__file__).resolve().parents[1] / "neon_tetris" / "sounds"
+SOUNDS = Path(__file__).resolve().parents[1] / "arcade_common" / "sounds"
 
 
 class SampleTests(unittest.TestCase):

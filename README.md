@@ -17,6 +17,13 @@ ln -sf "$PWD/play" ~/.local/bin/tink-arcade
 ```
 
 Games are listed in `arcade_menu/games.json`; add an entry to add a cabinet.
+
+### Adding a game
+
+Shared pieces live in `arcade_common/`: `PaperRenderer` (palette, `text`, `box`)
+and `KeyboardAudio` with the bundled sounds. A new game is a package with an
+`engine.py` (rules, no curses), a `ui.py` whose `Renderer` subclasses
+`PaperRenderer`, and a `__main__.py`. Then add it to `arcade_menu/games.json`.
 Run every check locally with `python3 -B scripts/check_all.py`.
 Tetris vs Jev needs `TYPESAFE_API_KEY` and makes billed API calls.
 
@@ -120,7 +127,7 @@ only mute and quit work until the terminal is large enough again.
 Snake uses Tetris's paper, ink and jade palette and its existing keyboard recordings.
 Automatic movement is silent. Turns click, food uses the clear cue, collision uses
 enter, and pause/restart/unmute use the switch cue. Credits remain in
-`neon_tetris/sounds/credits.json`. Unavailable audio leaves the game playable.
+`arcade_common/sounds/credits.json`. Unavailable audio leaves the game playable.
 
 Run `python3 -B scripts/check_snake_tests.py` for all game tests and
 `python3 -B scripts/check_snake_terminal.py` for real terminal checks. The latter
@@ -160,7 +167,7 @@ Pong uses the same paper, ink and jade palette and credited keyboard sounds as
 Snake and Tetris. Paddle contacts use `move`, points and wins use `clear`, final
 loss uses `over`, and serve/pause/restart/unmute use `switch`. Wall bounces and
 computer movement are silent. Missing or failed audio leaves the game playable.
-Sample credits remain in `neon_tetris/sounds/credits.json`.
+Sample credits remain in `arcade_common/sounds/credits.json`.
 
 ### Pong checks
 
@@ -410,7 +417,7 @@ python3 -B scripts/check_terminal.py --live
 The terminal script exercises the actual curses program in a pseudo-terminal,
 including input, pause, resize, restart, and exit. Native-audio integration tests
 are opt-in; their skips are reported. Sound sample credits and CC0 provenance are
-in `neon_tetris/sounds/credits.json`.
+in `arcade_common/sounds/credits.json`.
 
 ### Work in progress
 
