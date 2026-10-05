@@ -75,8 +75,9 @@ class Renderer:
             return
         ox, oy = (columns - MIN_COLUMNS) // 2, (rows - MIN_ROWS) // 2
         self.text(oy + 1, ox + 26, '. socratink / paper pong', self.ink | curses.A_BOLD)
-        self.text(oy + 2, ox + 9, f'YOU  {game.player_score}     FIRST TO 7     COMPUTER  {game.computer_score}', self.accent)
-        self.box(oy + 4, ox + 9, 22, 62)
+        self.text(oy + 2, ox + 34, 'first to seven.', self.muted)
+        self.text(oy + 3, ox + 9, f'YOU  {game.player_score}     FIRST TO 7     COMPUTER  {game.computer_score}', self.ink)
+        self.box(oy + 4, ox + 9, 22, 62, 'PLAY / PAPER')
         for y in range(HEIGHT):
             self.text(oy + 5 + y, ox + 40, ':', self.rule)
         for center, x in ((game.player, LEFT_X), (game.computer, RIGHT_X)):
@@ -88,10 +89,10 @@ class Renderer:
         state = 'PAUSED / P resume' if game.paused else {
             'waiting': 'SPACE to serve', 'playing': 'RALLY',
             'won': 'YOU WIN / R restart / Q quit', 'lost': 'COMPUTER WINS / R restart / Q quit'}[game.state]
-        self.text(oy + 3, ox + 9, state, self.ink | curses.A_BOLD)
-        self.text(oy + 26, ox + 9, sound_status, self.muted)
-        self.text(oy + 27, ox + 9, 'Up/Down or W/S move  Space serve  P pause  R restart')
-        self.text(oy + 28, ox + 9, 'M mute  Q quit  Ctrl-C exit', self.accent)
+        self.text(oy + 26, ox + 9, state, self.accent)
+        self.text(oy + 3, ox + 71 - len(sound_status), sound_status, self.muted)
+        self.text(oy + 27, ox + 9, 'Up/Down or W/S move  Space serve  P pause  R restart', self.ink)
+        self.text(oy + 28, ox + 9, 'M mute  Q quit  Ctrl-C exit', self.muted)
         self._refresh()
 
     def _refresh(self):
