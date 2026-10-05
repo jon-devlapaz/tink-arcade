@@ -114,7 +114,7 @@ class TranscriptDestinationTests(unittest.TestCase):
         for game in ('snake', 'breakout'):
             with self.subTest(game=game), tempfile.TemporaryDirectory() as directory:
                 root = Path(directory) / 'checkout'
-                for package in ('scripts', 'tink_snake', 'tink_breakout', 'neon_tetris'):
+                for package in ('scripts', 'tink_snake', 'tink_breakout', 'neon_tetris', 'arcade_common'):
                     shutil.copytree(ROOT / package, root / package, ignore=shutil.ignore_patterns('__pycache__'))
                 old = root / f'runs/{game}/04-test/output/terminal-transcript.txt'
                 old.parent.mkdir(parents=True)

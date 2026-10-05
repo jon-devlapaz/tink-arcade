@@ -2,7 +2,7 @@ import subprocess
 import unittest
 from unittest.mock import Mock, patch
 
-from neon_tetris.audio import MAX_CUE_AGE, SOUND_DIR, KeyboardAudio, _ProcessPlayer, _make_backend
+from arcade_common.audio import MAX_CUE_AGE, SOUND_DIR, KeyboardAudio, _ProcessPlayer, _make_backend
 from neon_tetris.engine import Game, Piece
 from neon_tetris.ui import _perform, handle_key
 
@@ -10,7 +10,7 @@ from neon_tetris.ui import _perform, handle_key
 class PlaybackTests(unittest.TestCase):
     def setUp(self):
         self.backend = Mock(ready=True)
-        patcher = patch("neon_tetris.audio._make_backend", return_value=self.backend)
+        patcher = patch("arcade_common.audio._make_backend", return_value=self.backend)
         self.factory = patcher.start()
         self.addCleanup(patcher.stop)
         self.audio = KeyboardAudio()
@@ -37,7 +37,7 @@ class PlaybackTests(unittest.TestCase):
         self.assertIsNone(self.audio._pending)
 
     def test_expired_cues_do_not_play_late(self):
-        with patch("neon_tetris.audio.time.monotonic", return_value=0.0) as clock:
+        with patch("arcade_common.audio.time.monotonic", return_value=0.0) as clock:
             self.backend.ready = False
             self.audio.play("move")
             self.audio.tick()
@@ -107,8 +107,8 @@ class PlaybackTests(unittest.TestCase):
 
 class SetupTests(unittest.TestCase):
     def test_disabled_audio_does_not_probe_assets_or_initialize_backend(self):
-        with (patch("neon_tetris.audio._make_backend") as factory,
-              patch("neon_tetris.audio.Path.is_file") as files):
+        with (patch("arcade_common.audio._make_backend") as factory,
+              patch("arcade_common.audio.Path.is_file") as files):
             with KeyboardAudio(enabled=False) as audio:
                 audio.toggle()
                 audio.play("move")
@@ -118,15 +118,15 @@ class SetupTests(unittest.TestCase):
             files.assert_not_called()
 
     def test_missing_asset_is_reported(self):
-        with (patch("neon_tetris.audio.Path.is_file", return_value=False),
-              patch("neon_tetris.audio._make_backend") as factory):
+        with (patch("arcade_common.audio.Path.is_file", return_value=False),
+              patch("arcade_common.audio._make_backend") as factory):
             with KeyboardAudio() as audio:
                 self.assertIn("Missing keyboard sound", audio.warning)
                 self.assertFalse(audio.audible)
             factory.assert_not_called()
 
     def test_unavailable_backend_is_reported(self):
-        with patch("neon_tetris.audio._make_backend", side_effect=OSError("No audio player found.")):
+        with patch("arcade_common.audio._make_backend", side_effect=OSError("No audio player found.")):
             with KeyboardAudio() as audio:
                 self.assertIn("No audio player", audio.warning)
                 self.assertEqual(audio.status, "key sound unavailable")
@@ -135,28 +135,28 @@ class SetupTests(unittest.TestCase):
 
     def test_mac_uses_preloaded_backend_not_external_player(self):
         paths = (SOUND_DIR / "tactile.wav",)
-        with (patch("neon_tetris.audio.sys.platform", "darwin"),
-              patch("neon_tetris._mac_audio.MacPlayer") as native,
-              patch("neon_tetris.audio._ProcessPlayer") as process):
+        with (patch("arcade_common.audio.sys.platform", "darwin"),
+              patch("arcade_common._mac_audio.MacPlayer") as native,
+              patch("arcade_common.audio._ProcessPlayer") as process):
             self.assertIs(_make_backend(paths), native.return_value)
             native.assert_called_once_with(paths)
             process.assert_not_called()
 
     def test_non_mac_retains_portable_fallback(self):
-        with (patch("neon_tetris.audio.sys.platform", "linux"),
-              patch("neon_tetris.audio._ProcessPlayer") as process):
+        with (patch("arcade_common.audio.sys.platform", "linux"),
+              patch("arcade_common.audio._ProcessPlayer") as process):
             self.assertIs(_make_backend(()), process.return_value)
 
 
 class ProcessFallbackTests(unittest.TestCase):
     def setUp(self):
-        patcher = patch("neon_tetris.audio.shutil.which", return_value="/player")
+        patcher = patch("arcade_common.audio.shutil.which", return_value="/player")
         patcher.start()
         self.addCleanup(patcher.stop)
         self.process = Mock()
         self.process.poll.return_value = None
         self.process.wait.return_value = 0
-        patcher = patch("neon_tetris.audio.subprocess.Popen", return_value=self.process)
+        patcher = patch("arcade_common.audio.subprocess.Popen", return_value=self.process)
         self.popen = patcher.start()
         self.addCleanup(patcher.stop)
         self.player = _ProcessPlayer()
@@ -196,7 +196,7 @@ class ProcessFallbackTests(unittest.TestCase):
             self.player.play(SOUND_DIR / "enter.wav")
 
     def test_hung_child_and_cleanup_are_bounded(self):
-        with patch("neon_tetris.audio.time.monotonic", return_value=0.0) as clock:
+        with patch("arcade_common.audio.time.monotonic", return_value=0.0) as clock:
             self.player.play(SOUND_DIR / "enter.wav")
             clock.return_value = 2.1
             with self.assertRaisesRegex(OSError, "timed out"):
@@ -208,7 +208,7 @@ class ProcessFallbackTests(unittest.TestCase):
         self.assertEqual(self.process.wait.call_count, 2)
 
     def test_mute_escalates_to_kill_without_blocking(self):
-        with patch("neon_tetris.audio.time.monotonic", return_value=0.0) as clock:
+        with patch("arcade_common.audio.time.monotonic", return_value=0.0) as clock:
             self.player.play(SOUND_DIR / "enter.wav")
             self.player.stop()
             clock.return_value = .3
@@ -217,10 +217,10 @@ class ProcessFallbackTests(unittest.TestCase):
             self.process.wait.assert_not_called()
 
     def test_missing_player_and_aplay_selection(self):
-        with patch("neon_tetris.audio.shutil.which", return_value=None):
+        with patch("arcade_common.audio.shutil.which", return_value=None):
             with self.assertRaisesRegex(OSError, "No audio player"):
                 _ProcessPlayer()
-        with patch("neon_tetris.audio.shutil.which", side_effect=[None, "/bin/aplay"]):
+        with patch("arcade_common.audio.shutil.which", side_effect=[None, "/bin/aplay"]):
             player = _ProcessPlayer()
             self.assertEqual(player.command, ("/bin/aplay", "-q"))
             player.close()

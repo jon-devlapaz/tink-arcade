@@ -6,7 +6,7 @@ import sys
 import time
 import unittest
 
-from neon_tetris.audio import CUES, SOUND_DIR, KeyboardAudio
+from arcade_common.audio import CUES, SOUND_DIR, KeyboardAudio
 
 
 @unittest.skipUnless(sys.platform == "darwin" and os.environ.get("NEON_TETRIS_AUDIO_TESTS") == "1",

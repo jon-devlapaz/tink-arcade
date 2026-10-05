@@ -3,7 +3,7 @@
 import curses
 import time
 
-from .audio import KeyboardAudio
+from arcade_common.audio import KeyboardAudio
 from .engine import HEIGHT, WIDTH
 from .jev import Worker
 from .race import Race

@@ -141,7 +141,7 @@ Restart and mute remain usable on pause/game-over overlays at a playable termina
 | Placement / hard drop, game over | Enter-key clack | `enter.wav` |
 | Line clear | Short paired click-clack | `clear.wav` |
 
-The three chosen recordings are by **StavSounds**, **Professor-Syntax**, and **alpinemesh**; the clear cue combines the latter two clips. They are bundled as short 44.1 kHz mono 16-bit PCM WAVs under CC0. Source links, transformations, and hashes live in [the sound credits](neon_tetris/sounds/credits.json). Playback requires no network access.
+The three chosen recordings are by **StavSounds**, **Professor-Syntax**, and **alpinemesh**; the clear cue combines the latter two clips. They are bundled as short 44.1 kHz mono 16-bit PCM WAVs under CC0. Source links, transformations, and hashes live in [the sound credits](arcade_common/sounds/credits.json). Playback requires no network access.
 
 ### Feedback rules
 
@@ -178,7 +178,7 @@ The non-macOS fallback uses `paplay` or `aplay`, with one child at a time and th
 | [audio.py](neon_tetris/audio.py) | Cue mapping, priority, expiry, mute, fallback process playback |
 | [_mac_audio.py](neon_tetris/_mac_audio.py) | Native sample ownership, voice reuse, completion-event processing, cleanup |
 | [__main__.py](neon_tetris/__main__.py) | CLI options, terminal checks, startup and exit handling |
-| [sounds/](neon_tetris/sounds/) | Local recordings and provenance |
+| [sounds/](arcade_common/sounds/) | Local recordings and provenance |
 
 The directory and Python package retain the legacy names `neon-tetris` and `neon_tetris`; these are implementation identifiers, not the visual identity.
 
