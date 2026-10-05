@@ -1,0 +1,7 @@
+{
+  "item": "compatibility-and-scope",
+  "result": "passed",
+  "evidence": "Nine focused tests pass in runs/check-evidence/04-test/output/focused-tests.txt. Supplemental tests run real default/relative PTYs in disposable copies, verify help and argument errors, retain failure output with nonzero exit, and reject actual left-then-up movement. scope-check.txt confirms unchanged original transcripts, locked baseline SHA-256, game packages, installed contracts, and CI. README documents external destinations. Pong remains a separate dependent follow-up. Existing controls, pause/restart/resize/mute/collision, Q/SIGINT, mode restoration and child cleanup checks remain in both scripts.",
+  "candidate": "4c14ea05ba6e7ea3a3d23f89019c9eac410a9b40c37e1cffa92f6720fac990b9",
+  "time_ns": 1791156737078426000
+}

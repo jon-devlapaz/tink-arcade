@@ -1,0 +1,9 @@
+{
+  "stage": 1,
+  "document": "runs/breakout/seed-contract.md",
+  "sha256": "2f09146054a2a0d66eb39a6d119cc20eb5dfbd2c48515807492bf49a4d944d1d",
+  "chars": 5570,
+  "status": "routed",
+  "winner": "control-cli",
+  "confidence": 0.7
+}

@@ -1,0 +1,14 @@
+test_default_and_relative_destinations (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_default_and_relative_destinations) ... ok
+test_failure_writes_selected_transcript_and_exits_nonzero (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_failure_writes_selected_transcript_and_exits_nonzero) ... ok
+test_help_and_argument_errors (test_terminal_checker_compatibility.CheckerCompatibilityTests.test_help_and_argument_errors) ... ok
+test_both_turns_in_wrong_order_are_rejected (test_terminal_checker_compatibility.OrderedMovementTests.test_both_turns_in_wrong_order_are_rejected) ... ok
+test_directions_without_movement_are_rejected (test_terminal_checker_compatibility.OrderedMovementTests.test_directions_without_movement_are_rejected) ... ok
+test_consumed_first_turn_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_consumed_first_turn_is_accepted) ... ok
+test_early_input_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_early_input_is_accepted) ... ok
+test_missing_or_wrong_order_turns_are_rejected (test_terminal_checkers.SnakeQueueCheckerTests.test_missing_or_wrong_order_turns_are_rejected) ... ok
+test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 26.075s
+
+OK

@@ -1,0 +1,98 @@
+[
+  {
+    "title": "neon_tetris 80x30 color play",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 80x30 color pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 80x30 color game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 80x30 color play",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 80x30 color pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 80x30 color game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 80x30 monochrome play",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 80x30 monochrome pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 80x30 monochrome game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 80x30 monochrome play",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 80x30 monochrome pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 80x30 monochrome game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 100x35 color play",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 100x35 color pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 100x35 color game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 100x35 color play",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 100x35 color pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 100x35 color game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 100x35 monochrome play",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 100x35 monochrome pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "neon_tetris 100x35 monochrome game-over",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 100x35 monochrome play",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 100x35 monochrome pause",
+    "state_label_visible": true
+  },
+  {
+    "title": "tink_snake 100x35 monochrome game-over",
+    "state_label_visible": true
+  }
+]

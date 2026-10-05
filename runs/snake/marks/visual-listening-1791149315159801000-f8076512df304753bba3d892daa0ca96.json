@@ -1,0 +1,7 @@
+{
+  "item": "visual-listening",
+  "result": "passed",
+  "evidence": "Jon reported \u201cit works. call this done.\u201d after the playable command and listening-feedback request. Accepted at his direction; output device and event-by-event listening details were not supplied and remain unknown. Actual visual comparison: runs/snake/04-test/output/visual/observations.md. Native playback is separately checked. See dated human acceptance in handoff.md; no detailed listening protocol is claimed.",
+  "candidate": "25eee7563fcae40a7b14090a207144b354cb358f287e84ad4e9e6e1a3b4df48c",
+  "time_ns": 1791149315159801000
+}

@@ -2,6 +2,6 @@ __pycache__/
 *.py[cod]
 .ruff_cache/
 
-# Local workflow locks, not approval evidence
+# Local SDLC coordination locks
 runs/.*.lock
-runs/*/.writer-lock
+runs/**/.writer-lock

@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "accepted-regressions",
+      "description": "Pass the independently accepted checker regression baseline.",
+      "verify": "Controlled real-loop queue traces plus early-input and negative controls; full PTY CLI destination checks in disposable copies.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_terminal_checkers.py",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "snake-and-existing-tests",
+      "description": "Pass the Snake runner and the full existing test suite.",
+      "verify": "Require nonempty Snake engine/UI tests, fail discovery errors, and report any expected native-audio skips.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_snake_tests.py"
+        ],
+        "timeout_seconds": 180
+      }
+    },
+    {
+      "id": "breakout-tests",
+      "description": "Keep the required Breakout test groups present and passing.",
+      "verify": "Existing runner requires nonempty engine/layout/UI groups and runs all tests.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_breakout_tests.py"
+        ],
+        "timeout_seconds": 180
+      }
+    },
+    {
+      "id": "snake-terminal",
+      "description": "Pass all existing Snake terminal behavior and cleanup checks.",
+      "verify": "Use real arrow/WASD inputs and preserve ordered turns, pause, restart, resize, mute, collision, Q/SIGINT, modes and child cleanup.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_snake_terminal.py",
+          "--output",
+          "runs/check-evidence/04-test/output/snake-terminal.txt"
+        ],
+        "timeout_seconds": 90
+      }
+    },
+    {
+      "id": "breakout-terminal",
+      "description": "Pass all existing Breakout terminal behavior and cleanup checks.",
+      "verify": "Real PTY input, launch, pause, resize, restart, Q/SIGINT, modes and child cleanup.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_breakout_terminal.py",
+          "--output",
+          "runs/check-evidence/04-test/output/breakout-terminal.txt"
+        ],
+        "timeout_seconds": 90
+      }
+    },
+    {
+      "id": "compatibility-and-scope",
+      "description": "Preserve default CLI use, meaningful assertions, and game behavior; document external evidence paths.",
+      "verify": "Retain commands/results for default and relative output paths and failure transcript behavior in disposable copies; confirm help documents --output. Inspect final diff for unchanged game packages and retained PTY checks. Document review invocation and separate dependent Pong follow-up. Attest with concrete evidence before final verification."
+    }
+  ]
+}

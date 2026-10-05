@@ -1,0 +1,4 @@
+runs/snake/04-test/output/terminal-transcript.txt: unchanged; sha256 65feec790ff429d7d8040c9df1bc94957370c99f1f78d0e6be9a040e80f21337
+runs/breakout/04-test/output/terminal-transcript.txt: unchanged; sha256 0dc088d81a638b65d12b8bef7b524e027db481078cc08c12558b2deab1a51d82
+Accepted regression baseline: locked SHA-256 unchanged.
+Game packages, installed contracts, verification policy, and CI workflows: unchanged.

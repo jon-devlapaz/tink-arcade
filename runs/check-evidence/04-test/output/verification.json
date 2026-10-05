@@ -1,0 +1,23 @@
+{
+  "result": "passed",
+  "candidate": {
+    "head": "f03e20dba3d6d6bd5eddc9ac4c28b0fa6c57010b",
+    "tree": "4c14ea05ba6e7ea3a3d23f89019c9eac410a9b40c37e1cffa92f6720fac990b9"
+  },
+  "inputs": "10d09979543f1a5df121dece1e1355795772903435dc061d57557b2f9df383de",
+  "policy": "638fde22eeed6f8a3be7876f376f53f30b5a26cada20e932e4e162a66f964fee",
+  "test_lock": "4f52209105e83f2ba6cd31d917c5d00e62eaa8000e0b9310c7af4dfdaec37760",
+  "checklist": "85377bdf806ecf4cba565bd97b64b97bc4404aba394809ea5ff5501cd7efc098",
+  "manual_marks": {
+    "compatibility-and-scope": "eccce0dc0f74cefddb47898cbba8e8c9361091b25e0293db859dfb9531d01cf9"
+  },
+  "checklist_items": {
+    "accepted-regressions": "proven",
+    "snake-and-existing-tests": "proven",
+    "breakout-tests": "proven",
+    "snake-terminal": "proven",
+    "breakout-terminal": "proven",
+    "compatibility-and-scope": "attested"
+  },
+  "log": "45657cdd7e9aaa43ddce0db9bb324b84797797599760331922d0170941d45a07"
+}

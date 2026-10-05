@@ -1,0 +1,4 @@
+snake failure child reaped and process group gone
+snake failure propagated and selected transcript retained
+breakout failure child reaped and process group gone
+breakout failure propagated and selected transcript retained

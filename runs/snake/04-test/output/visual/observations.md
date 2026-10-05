@@ -1,0 +1,7 @@
+# Visual comparison — 2026-10-04
+
+The coordinating Codex agent viewed all four comparison pages in the in-app browser: actual Tetris and Snake PTY output, color and monochrome, 80x30 and 100x35, play/pause/game over. HTML reconstructs ANSI output through pyte; it is not a screenshot of macOS Terminal. Native Terminal UI access was unavailable. Font rasterization and thin seams between HTML character spans are capture-display artifacts; terminal-specific appearance still needs human play feedback.
+
+Observed: matching warm paper/carbon/jade roles, centered title and subtitle, light ASCII panel boundaries, matching short state copy, persistent controls, and readable separate head/body/food shapes in monochrome. Snake adapts the board to the left and statistics to the right; the larger board fits without clipped controls at minimum size. Pause/game-over overlays preserve board context and statistics. Larger terminal adds margins without changing board geometry. No material style mismatch found in these views.
+
+All 24 requested frames were captured; pause/game-over labels appeared. Initial capture-tool issues (startup timing and pyte sparse-screen erase attributes) were corrected before these saved captures. Source hashes were recorded after capture; rerun if UI changes. Capture tool uses an external temporary pyte environment; pyte is not a product dependency. All captures disabled sound. No listening evidence is provided here.
