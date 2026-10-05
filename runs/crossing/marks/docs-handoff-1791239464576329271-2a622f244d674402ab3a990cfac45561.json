@@ -1,0 +1,7 @@
+{
+  "item": "docs-handoff",
+  "result": "passed",
+  "evidence": "README 'Paper Crossing' section matches approved rules and commands; sample credits untouched; handoff.md lists evidence, tools, 5 operator interventions and unverified items.",
+  "candidate": "21b385aa9de4a3e4aa2e2e35204ced05274663757ba918b2d0e3fe4cdefc90bb",
+  "time_ns": 1791239464576329271
+}

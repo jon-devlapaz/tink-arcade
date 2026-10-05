@@ -301,6 +301,41 @@ monochrome defaults; it does not reproduce a user's terminal font or palette.
 Native metering is not listening. Jon's play feedback and actual listening remain
 pending, so fairness, difficulty and sound quality remain unobserved.
 
+## Paper Crossing
+
+```sh
+python3 -m tink_crossing            # --no-color, --no-sound, --help
+```
+
+Hop a marker from the bottom row through five road lanes, rest on the median,
+then ride logs across five river lanes into one of five home bays. Needs 80 x 30.
+
+| Key | Action |
+| --- | --- |
+| Arrows or WASD | Hop one cell |
+| P | Pause or resume |
+| R | Restart at level 1 with three lives |
+| M | Mute or unmute |
+| Q or Ctrl-C | Quit |
+
+The board is 13 rows by 40 columns. Lanes are fixed patterns that wrap around and
+alternate direction; there is no randomness. Lanes move one whole cell at a time
+at 2-5 cells per second, checked every 1/120 s, so nothing can skip a cell. A car,
+open water, being carried off either edge, or hopping into a filled bay or the
+`^` wall costs a life and returns you to the start. Logs (`=`) carry you.
+
+Each new furthest row in an attempt scores 10, a bay 50, and five bays clear the
+level for 100. Levels 2 and 3 run every lane 1.25x and 1.5x faster. Clearing level
+3 wins; three lives cover the whole game. A win without losing a life scores
+2850; lost lives can add row points, because each attempt scores its rows again.
+
+Checks: `python3 -B scripts/check_crossing_tests.py` (all tests, nonempty Crossing
+groups), `python3 -B scripts/crossing_replay.py` (a legal-input win and loss),
+`python3 -B scripts/check_crossing_terminal.py` (real curses process in a PTY; it
+prints a SKIP line for mute when no audio player is available).
+`scripts/capture_crossing.py` saves screens for visual review. Human playtesting
+of difficulty has not happened yet.
+
 ## Formation shooter
 
 ```sh

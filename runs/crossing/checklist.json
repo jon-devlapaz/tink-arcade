@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "crossing-rules-regressions",
+      "description": "Implement Crossing rules, lanes, scoring, levels, controls, rendering and audio routing; keep every existing test passing.",
+      "verify": "Run all tests; require nonempty Crossing engine and UI groups; fail on discovery errors and report skips. Cover each brief rule and transition.",
+      "check": {"argv": ["python3", "-B", "scripts/check_crossing_tests.py"], "timeout_seconds": 180}
+    },
+    {
+      "id": "crossing-replays",
+      "description": "Prove both outcomes are reachable with legal input only.",
+      "verify": "Replay from a new game using only hops and elapsed time: one run wins level 3, one run loses all three lives.",
+      "check": {"argv": ["python3", "-B", "scripts/crossing_replay.py"], "timeout_seconds": 120}
+    },
+    {
+      "id": "crossing-terminal",
+      "description": "Check the real Crossing terminal loop and cleanup.",
+      "verify": "PTY drives hops, pause, restart, mute, resize while playing and paused, Q and SIGINT; compares trace states and restored terminal modes; retains a transcript.",
+      "check": {"argv": ["python3", "-B", "scripts/check_crossing_terminal.py"], "timeout_seconds": 90}
+    },
+    {
+      "id": "crossing-cli",
+      "description": "Provide the documented module command.",
+      "verify": "Help succeeds without a terminal; tests cover flags and the nonterminal error.",
+      "check": {"argv": ["python3", "-B", "-m", "tink_crossing", "--help"], "timeout_seconds": 10}
+    },
+    {
+      "id": "menu-on-mac",
+      "description": "Crossing appears in the arcade menu and passes the existing menu check on the macOS host.",
+      "verify": "Jon or a Mac session runs python3 -B scripts/check_arcade.py and reports the result; the Linux sandbox baseline fails for all games on missing audio, so it cannot prove this."
+    },
+    {
+      "id": "visual-review",
+      "description": "Inspect Crossing presentation against the paper/jade style.",
+      "verify": "Retain and inspect captures at 80x30 and 100x35, color and monochrome, covering play, pause, life lost, win and game over. Record concrete observations; not a playtest."
+    },
+    {
+      "id": "docs-handoff",
+      "description": "Document the game and the dogfood run for a fresh session.",
+      "verify": "README matches approved rules and commands. Handoff and retro name evidence, tools, failures and recoveries, operator interventions, and remaining human play/listening uncertainty. No invented approval or feedback."
+    }
+  ]
+}

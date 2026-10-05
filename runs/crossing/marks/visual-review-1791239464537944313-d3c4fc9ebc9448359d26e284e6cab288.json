@@ -1,0 +1,7 @@
+{
+  "item": "visual-review",
+  "result": "passed",
+  "evidence": "Inspected 20 PTY captures (play/pause/life-lost/win/over x 80x30,100x35 x color,mono) under runs/crossing/04-test/output/captures. Fixed wall/car glyph clash (# -> ^). Notes in handoff.md. Not a playtest.",
+  "candidate": "21b385aa9de4a3e4aa2e2e35204ced05274663757ba918b2d0e3fe4cdefc90bb",
+  "time_ns": 1791239464537944313
+}

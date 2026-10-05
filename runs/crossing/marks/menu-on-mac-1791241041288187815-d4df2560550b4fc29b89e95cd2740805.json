@@ -1,0 +1,7 @@
+{
+  "item": "menu-on-mac",
+  "result": "passed",
+  "evidence": "Jon ran python3 -B scripts/check_arcade.py on macOS in tink-arcade-crossing at 7294c9c and reported 'all passed' in Cowork, 2026-10-05. Operator did not observe the output.",
+  "candidate": "bd0b7b44ebbcddc8c356fc92d6c56b4ca40641bc43c68a514c871b599e2fe5b5",
+  "time_ns": 1791241041288187815
+}
