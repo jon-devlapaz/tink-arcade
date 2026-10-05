@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "gameplay",
+      "description": "Offline solo shooter rules and existing Tetris regressions pass",
+      "verify": "Run nonempty unittest discovery",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import unittest; s=unittest.defaultTestLoader.discover('tests'); assert s.countTestCases()>0, 'No tests discovered'; r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(not r.wasSuccessful())"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "terminal",
+      "description": "Actual terminal input, pause, resize, restart and exit work",
+      "verify": "Run the real curses program through a pseudo-terminal",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_galaga_terminal.py"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "shared-work",
+      "description": "Dashboard and agent snapshot agree with the run and PR; trial issues recorded",
+      "verify": "Read final snapshot and live sources; record comparison and limits"
+    }
+  ]
+}
