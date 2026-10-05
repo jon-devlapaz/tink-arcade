@@ -17,7 +17,8 @@ No release approval or human playtest has happened.
   search over a copied lane timeline; the replay drives a fresh Game through
   `hop()` and `advance(STEP)` only.
 - `scripts/check_crossing_terminal.py`: real curses process in a PTY; transcript at
-  `04-test/output/terminal-transcript.txt`.
+  `04-test/output/terminal-transcript.txt`. Mute is SKIPPED in this sandbox (no
+  audio player); it is proven only on the Mac.
 - `scripts/capture_crossing.py`: 20 captures (play, pause, life lost, win, game
   over) at 80x30 and 100x35, color and mono, under `04-test/output/captures/`.
 
@@ -52,5 +53,5 @@ off-target run.
 
 ## Still unverified
 
-Human playtest of difficulty and fairness, listening to cues, the menu check on
+Mute with real audio, human playtest of difficulty and fairness, listening to cues, the menu check on
 macOS, CI, and independent review.

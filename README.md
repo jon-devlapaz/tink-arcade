@@ -326,11 +326,13 @@ open water, being carried off either edge, or hopping into a filled bay or the
 
 Each new furthest row in an attempt scores 10, a bay 50, and five bays clear the
 level for 100. Levels 2 and 3 run every lane 1.25x and 1.5x faster. Clearing level
-3 wins; three lives cover the whole game. A full game scores at most 2850.
+3 wins; three lives cover the whole game. A win without losing a life scores
+2850; lost lives can add row points, because each attempt scores its rows again.
 
 Checks: `python3 -B scripts/check_crossing_tests.py` (all tests, nonempty Crossing
 groups), `python3 -B scripts/crossing_replay.py` (a legal-input win and loss),
-`python3 -B scripts/check_crossing_terminal.py` (real curses process in a PTY).
+`python3 -B scripts/check_crossing_terminal.py` (real curses process in a PTY; it
+prints a SKIP line for mute when no audio player is available).
 `scripts/capture_crossing.py` saves screens for visual review. Human playtesting
 of difficulty has not happened yet.
 

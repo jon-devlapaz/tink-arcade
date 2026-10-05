@@ -1,0 +1,7 @@
+{
+  "item": "docs-handoff",
+  "result": "passed",
+  "evidence": "After independent review: README score claim corrected (2850 is the no-death win), SKIP note for mute documented; handoff and retro corrected (finding 2 retracted, finding 4 narrowed, finding 7 and review summary added).",
+  "candidate": "bd0b7b44ebbcddc8c356fc92d6c56b4ca40641bc43c68a514c871b599e2fe5b5",
+  "time_ns": 1791240559846555835
+}

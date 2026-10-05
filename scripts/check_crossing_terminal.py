@@ -134,6 +134,7 @@ class Terminal:
 
 def main():
     transcripts = []
+    skipped = []
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     try:
         with tempfile.TemporaryDirectory(prefix='crossing-pty-') as directory:
@@ -143,6 +144,14 @@ def main():
                 initial = t.wait(lambda s: not s['small'], '80x30 new game')
                 t.expect(b'paper crossing')
                 assert (initial['row'], initial['col'], initial['lives']) == (12, 20, 3)
+                # Without an audio player the sound status is 'unavailable' and M cannot
+                # change it. Say so instead of letting the mute steps pass vacuously.
+                audio = 'unavailable' not in initial['sound']
+                if not audio:
+                    skipped.append('mute/unmute: no audio player; only checked that M keeps the game running')
+                    t.notes.append('SKIP ' + skipped[-1])
+                muted = (lambda s: 'muted' in s['sound']) if audio else (lambda s: 'unavailable' in s['sound'])
+                unmuted = (lambda s: 'on' in s['sound']) if audio else (lambda s: 'unavailable' in s['sound'])
                 t.wait(lambda s: s['counters'] != initial['counters'], 'Lanes move', len(t.states()))
                 t.send(b'\x1bOD', lambda s: s['col'] == 19, 'Left arrow')
                 t.send(b'D', lambda s: s['col'] == 20, 'Uppercase D')
@@ -162,8 +171,8 @@ def main():
                 t.expect(b'Resize terminal')
                 t.send(b'rwp s', lambda s: s['small'], 'Ignore small-window controls')
                 t.frozen(small, 'Undersize freezes state')
-                t.send(b'M', lambda s: 'muted' in s['sound'] or 'unavailable' in s['sound'], 'Mute while small')
-                t.send(b'm', lambda s: 'on' in s['sound'] or 'unavailable' in s['sound'], 'Unmute while small')
+                t.send(b'M', lambda s: muted(s) and s['small'], 'Mute while small')
+                t.send(b'm', lambda s: unmuted(s) and s['small'], 'Unmute while small')
                 start = len(t.states()); t.resize(100, 35)
                 restored = t.wait(lambda s: not s['small'], 'Restore at 100x35', start)
                 assert physics(restored) == physics(paused)
@@ -178,10 +187,10 @@ def main():
                 restored = t.wait(lambda s: not s['small'], 'Playing resize recovery', start)
                 assert physics(restored) == physics(small)
                 t.wait(lambda s: s['counters'] != restored['counters'], 'Lanes resume after resize', len(t.states()))
-                t.send(b'm', lambda s: 'muted' in s['sound'] or 'unavailable' in s['sound'], 'Mute before restart')
+                t.send(b'm', muted, 'Mute before restart')
                 restarted = t.send(b'R', lambda s: s['score'] == 0 and s['lives'] == 3 and s['row'] == 12
                                    and s['deaths'] == 0, 'Restart')
-                assert 'muted' in restarted['sound'] or 'unavailable' in restarted['sound']
+                assert muted(restarted), 'Restart must keep mute'
                 t.finish(b'q')
             finally:
                 transcripts.append(terminal.transcript()); terminal.close()
@@ -199,7 +208,10 @@ def main():
                 transcripts.append(terminal.transcript()); terminal.close()
     finally:
         OUTPUT.write_text('\n\n'.join(transcripts).rstrip() + '\n', encoding='utf-8')
-    print('PASS: Crossing real PTY arrows/WASD, hop, pause, restart, resize, mute, Q and SIGINT; '
+    for item in skipped:
+        print(f'SKIP {item}')
+    mute = '' if skipped else 'mute, '
+    print(f'PASS: Crossing real PTY arrows/WASD, hop, pause, restart, resize, {mute}Q and SIGINT; '
           'modes restored; child groups gone.')
     print(f'Transcript: {OUTPUT.relative_to(ROOT)}')
 
