@@ -1,0 +1,7 @@
+{
+  "item": "docs-continuation",
+  "result": "passed",
+  "evidence": "README and DESIGN match approved rules and controls; existing games, sample files and credits unchanged. Fresh build continuation records actual checks, skills, visual evidence and pending listening in runs/snake/handoff.md. Reusable verification recipe doctor and real PTY drive executed; transcript survives cleanup.",
+  "candidate": "25eee7563fcae40a7b14090a207144b354cb358f287e84ad4e9e6e1a3b4df48c",
+  "time_ns": 1791149126717817000
+}

@@ -1,0 +1,55 @@
+test_consumed_first_turn_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_consumed_first_turn_is_accepted) ... FAIL
+test_early_input_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_early_input_is_accepted) ... ok
+test_missing_or_wrong_order_turns_are_rejected (test_terminal_checkers.SnakeQueueCheckerTests.test_missing_or_wrong_order_turns_are_rejected) ... ok
+test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) ... 
+  test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) (game='snake') ... FAIL
+  test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) (game='breakout') ... FAIL
+
+======================================================================
+FAIL: test_consumed_first_turn_is_accepted (test_terminal_checkers.SnakeQueueCheckerTests.test_consumed_first_turn_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checkers.py", line 104, in test_consumed_first_turn_is_accepted
+    self.run_queue(states)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checkers.py", line 90, in run_queue
+    module.main()
+    ~~~~~~~~~~~^^
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/scripts/check_snake_terminal.py", line 146, in main
+    t.send(b'\x1bOA\x1bOD', lambda s: s['turns'] == [[0,-1],[-1,0]], 'Queue up then left arrows')
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checkers.py", line 75, in send
+    return self.wait(predicate, label, start)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/scripts/check_snake_terminal.py", line 77, in wait
+    raise AssertionError(f'Timed out: {label}; last states={self.states()[-2:]}')
+AssertionError: Timed out: Queue up then left arrows; last states=[{'snake': [[9, 9], [10, 9], [10, 10]], 'direction': [-1, 0], 'turns': [], 'food': [8, 3], 'score': 0, 'best': 0, 'paused': False, 'over': False, 'complete': False, 'elapsed': 0.0, 'small': False, 'sound': 'key sound unavailable', 'cue': 'move'}, {'snake': [[8, 9], [9, 9], [10, 9]], 'direction': [-1, 0], 'turns': [], 'food': [8, 3], 'score': 0, 'best': 0, 'paused': False, 'over': False, 'complete': False, 'elapsed': 0.0, 'small': False, 'sound': 'key sound unavailable', 'cue': None}]
+
+======================================================================
+FAIL: test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) (game='snake')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checkers.py", line 126, in test_explicit_external_destination_preserves_existing_evidence
+    self.assertEqual(old.read_text(), 'Retained evidence sentinel\n', result.stdout + result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '80x30 playing: {"best": 0, "complete": fa[15875 chars]it\n' != 'Retained evidence sentinel\n'
+Diff is 16169 characters long. Set self.maxDiff to None to see it. : PASS: Snake real PTY arrows/WASD, queue, pause, restart, resize, mute, wall collision, Q and SIGINT; modes restored; child groups gone.
+Transcript: runs/snake/04-test/output/terminal-transcript.txt
+
+
+======================================================================
+FAIL: test_explicit_external_destination_preserves_existing_evidence (test_terminal_checkers.TranscriptDestinationTests.test_explicit_external_destination_preserves_existing_evidence) (game='breakout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-check-evidence/tests/test_terminal_checkers.py", line 126, in test_explicit_external_destination_preserves_existing_evidence
+    self.assertEqual(old.read_text(), 'Retained evidence sentinel\n', result.stdout + result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '80x30 waiting: {"advanced": 0.02022745797[11075 chars]e.\n' != 'Retained evidence sentinel\n'
+Diff is 11190 characters long. Set self.maxDiff to None to see it. : PASS: real PTY input, launch, pause, resize, restart, quit and Ctrl-C; terminal restored; no child group remains.
+Transcript: runs/breakout/04-test/output/terminal-transcript.txt
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 8.579s
+
+FAILED (failures=3)

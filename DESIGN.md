@@ -198,3 +198,42 @@ Before accepting an interface or feedback change:
 From this directory, run the normal suite with `python3 -m unittest discover -s tests`. For audio changes on macOS, also run `NEON_TETRIS_AUDIO_TESTS=1 python3 -m unittest discover -s tests`; this opt-in suite plays and meters real samples.
 
 There is currently no persistent leaderboard, mouse interface, multiplayer mode, music, or theme selector. Do not introduce these as incidental parts of a visual cleanup. Keep the defining contrast: **calm paper, crisp keys, uninterrupted play.**
+
+## Snake
+
+Snake keeps Tetris's centered 80 by 30 canvas and paper palette. Its 20 by 20
+board uses two columns per cell. The board border starts at column 3, row 4;
+the SESSION panel starts at column 49, row 4. Statistics show score, steps per
+second, length and session best. Rows 27 and 28 retain controls on every overlay.
+
+Directional heads use `>>`, `<<`, `^^`, or `vv` in bold jade reverse video.
+Body cells use `[]` in ink reverse video; food uses `()` in bold jade. Empty
+cells use ` .` in graphite. Shapes and attributes preserve distinctions in
+monochrome. Pause, game over and board complete overlay the board.
+
+The pure engine owns the two-turn queue, seeded food, scoring, and remaining
+movement time. The terminal loop freezes time during pause and undersize,
+clears turns on entry to either, and discards elapsed resize time. Delayed frames
+advance at most one cell. Snake imports `KeyboardAudio` directly; samples,
+credits and the existing backend are unchanged. Eating or collision replaces
+the lower-priority turn cue for the same movement step.
+
+## Invaders
+
+Invaders uses the same centered 80 by 30 canvas and paper/ink/jade palette as
+Snake. Its 60 by 20 playfield starts inside a light border at canvas column 9,
+row 4. The title occupies row 1; score, shared lives and wave occupy row 2; sound
+status stays on row 3. State instructions and controls remain on rows 26 to 28.
+The 80 by 30 layout fits without scrolling; larger windows add margins.
+
+The ship is `/^\`, enemies are `[W]`, player shots are `^`, and enemy shots are `v`.
+Distinct shapes carry meaning in monochrome. Jade emphasizes the ship, its shots
+and the state instruction. Enemy formations use carbon ink. READY, PAUSED,
+YOU WIN and GAME OVER sit below the field, leaving enemies and statistics visible.
+The fixed field and timing rules are documented in README.md.
+
+Invaders imports KeyboardAudio directly. Successful movement, fire, life loss,
+wave clear/win and pause/restart map to `move`, `rotate`, `over`, `clear` and
+`switch`. Blocked/frozen actions stay silent. The per-frame audio tick services
+native completion events even while the game is paused. Mute survives restart;
+`--no-sound` prevents backend creation. Existing sound files and credits are unchanged.

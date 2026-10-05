@@ -1,0 +1,11 @@
+{
+  "files": {
+    "tests/test_terminal_checkers.py": "8cffa5d26fbff6a751c8c9ea2f1ae88f84a55a215fe884f93c2b1018627a216a"
+  },
+  "candidate": {
+    "head": "2125a67b3ebef15e3f3a7acf292d116144fed9d6",
+    "tree": "07c00a2d9011b8653edfa18ea37ab44addf065207b7613d6355460acc2c380a8"
+  },
+  "review_source": "runs/check-evidence/01-plan/output/baseline-review.md accepted by independent patch_baseline_review agent",
+  "failure_evidence": "runs/check-evidence/01-plan/output/baseline.txt"
+}

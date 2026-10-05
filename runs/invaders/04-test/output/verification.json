@@ -1,0 +1,24 @@
+{
+  "result": "passed",
+  "candidate": {
+    "head": "cf629a1f817488d8b7fa903b9782d6890965701f",
+    "tree": "4dd018462347f2020a6e505a57724f66dc1b19fda75ebd97ff9f489d8ca84780"
+  },
+  "inputs": "9aba8f6842f93115a1d902c2479fc55ba7319c6db38aad25621ca27ac141f4c6",
+  "policy": "638fde22eeed6f8a3be7876f376f53f30b5a26cada20e932e4e162a66f964fee",
+  "test_lock": null,
+  "checklist": "00c8110f411d161cc0cf9895bfab27edd817144ed7f6a90acb759b2ebba63803",
+  "manual_marks": {
+    "observations": "eb0b4b239d90086d0d9bb5522143962ff80d831679d7897e7a1cc9a6718a1d94",
+    "handoff-retrospective": "cb8fbee5697f3773d411ee05d0bd601c2a048d5dbc9305bdd02ece25def3c4fc"
+  },
+  "checklist_items": {
+    "rules-ui-replay": "proven",
+    "real-terminal": "proven",
+    "cli": "proven",
+    "native-playback": "proven",
+    "observations": "attested",
+    "handoff-retrospective": "attested"
+  },
+  "log": "8ac86fec45444a1a0aa2c8bbeab099fdcae96e1ed588e03d55b7394c57f4ee20"
+}

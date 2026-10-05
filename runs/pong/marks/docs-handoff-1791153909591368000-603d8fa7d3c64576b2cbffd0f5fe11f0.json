@@ -1,0 +1,7 @@
+{
+  "item": "docs-handoff",
+  "result": "passed",
+  "evidence": "README documents launch, controls, rules, timing, platforms, audio, rerunnable tests/replays/captures and limits. Handoff records actual skill/tool use, approval coordination race, Quick Look export recovery, supervisor help, 128-test results and default skips, separate 2/2 native playback success, and unverified human play/listening. Existing sample credits and games unchanged.",
+  "candidate": "60201fa6c90272bfe1276b8d65210dcf79351862df8305a67ea3ac8ca78fa69f",
+  "time_ns": 1791153909591368000
+}

@@ -1,0 +1,9 @@
+{
+  "stage": 3,
+  "document": "runs/snake/brief.md",
+  "sha256": "381a694e0d2340d24403fe3412676a4f2da80ab6d324773df5cfa0153066ebf4",
+  "chars": 9924,
+  "status": "routed",
+  "winner": "create-verification-skill",
+  "confidence": 0.49
+}

@@ -1,0 +1,10 @@
+{
+  "profile": "light",
+  "kind": "feature",
+  "schema": 1,
+  "seed_contract": {
+    "path": "runs/breakout/seed-contract.md",
+    "sha256": "2f09146054a2a0d66eb39a6d119cc20eb5dfbd2c48515807492bf49a4d944d1d",
+    "source": "/Users/jondev/dev/active/factory/tink-substrate/work/breakout/seed-contract.md"
+  }
+}

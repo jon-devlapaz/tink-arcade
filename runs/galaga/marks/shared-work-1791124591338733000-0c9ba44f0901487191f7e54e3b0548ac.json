@@ -1,0 +1,7 @@
+{
+  "item": "shared-work",
+  "result": "passed",
+  "evidence": "Parent read live substrate JSON at definition and after genuine approval. Branch feat/galaga and stage-3 approved matched Git and SDLC. PR is correctly not-linked because no PR exists yet. Issues recorded in tink-substrate docs/antipattern-log.md entries 12-16. Recheck after PR creation; this is a reported comparison, not independent proof.",
+  "candidate": "aa6d41d3d10649520fd0f39c7bc637368266e4b1aa29fb13f2da9c00b9fe2744",
+  "time_ns": 1791124591338733000
+}

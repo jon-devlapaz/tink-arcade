@@ -1,0 +1,175 @@
+80x30 waiting: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Up arrow: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 8.5, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Uppercase S: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Down arrow: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 11.5, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Lowercase W: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Serve: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Ball moves: {"accumulator": 0.003626500011887409, "computer": 10.250000000000004, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 31.144727041700328, "y": 10.360000000000003}
+Rally Space 1: {"accumulator": 0.0054948743044709245, "computer": 10.350000000000005, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 31.526302722267104, "y": 10.480000000000004}
+Rally Space 2: {"accumulator": 0.001313624329244107, "computer": 10.500000000000007, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 32.09866624311727, "y": 10.660000000000005}
+Rally Space 3: {"accumulator": 0.005128582652347793, "computer": 10.600000000000009, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 32.480241923684055, "y": 10.780000000000006}
+Rally Space 4: {"accumulator": 0.0009115416595401986, "computer": 10.75000000000001, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 33.05260544453423, "y": 10.960000000000008}
+Rally Space 5: {"accumulator": 0.005086290964391095, "computer": 10.850000000000012, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 33.43418112510101, "y": 11.080000000000009}
+Rally Space 6: {"accumulator": 0.0008665830129757669, "computer": 11.000000000000014, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 34.00654464595119, "y": 11.26000000000001}
+Rally Space 7: {"accumulator": 0.0018393333147590507, "computer": 11.100000000000016, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 34.38812032651797, "y": 11.380000000000011}
+Rally Space 8: {"accumulator": 0.0025176246805737566, "computer": 11.200000000000017, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 34.769696007084754, "y": 11.500000000000012}
+Rally Space 9: {"accumulator": 0.006649124994874016, "computer": 11.300000000000018, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 35.15127168765154, "y": 11.620000000000013}
+Rally Space 10: {"accumulator": 0.0024499999708496208, "computer": 11.45000000000002, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 35.72363520850171, "y": 11.800000000000015}
+Rally Space 11: {"accumulator": 0.005125541294304051, "computer": 11.550000000000022, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 36.105210889068495, "y": 11.920000000000016}
+Rally Space 12: {"accumulator": 0.0009174163181645371, "computer": 11.700000000000024, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 36.67757440991867, "y": 12.100000000000017}
+Rally Space 13: {"accumulator": 0.00506483264422667, "computer": 11.800000000000026, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 37.05915009048545, "y": 12.220000000000018}
+Rally Space 14: {"accumulator": 0.0051225409959443115, "computer": 11.900000000000027, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 37.440725771052236, "y": 12.34000000000002}
+Rally Space 15: {"accumulator": 0.0009330829838290998, "computer": 12.05000000000003, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 38.01308929190241, "y": 12.520000000000021}
+Rally Space 16: {"accumulator": 0.005085583341618398, "computer": 12.15000000000003, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 38.394664972469194, "y": 12.640000000000022}
+Rally Space 17: {"accumulator": 0.0008889163106990568, "computer": 12.300000000000033, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 38.96702849331937, "y": 12.820000000000023}
+Rally Space 18: {"accumulator": 0.005044124663497032, "computer": 12.400000000000034, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 39.34860417388615, "y": 12.940000000000024}
+Rally Space 19: {"accumulator": 0.0008464576831708585, "computer": 12.550000000000036, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 39.920967694736326, "y": 13.120000000000026}
+Rally Space 20: {"accumulator": 0.004971999977715337, "computer": 12.650000000000038, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 40.30254337530311, "y": 13.240000000000027}
+Reset after Space samples: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Serve for pause checks: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Pause: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Pause freezes both paddles and ball: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Pause freezes both paddles and ball: 20 unchanged frames
+Paused movement and serve ignored: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Paused inputs keep state: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Paused inputs keep state: 20 unchanged frames
+Shrink while paused: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Ignore small-window controls: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Undersize freezes state: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Undersize freezes state: 20 unchanged frames
+Mute while small: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound muted [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Unmute while small: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Restore at 100x35: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Restored pause stays frozen: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": true, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Restored pause stays frozen: 21 unchanged frames
+Resume: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Shrink while playing: {"accumulator": 0.0014619586678842854, "computer": 10.450000000000006, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 31.90787840283388, "y": 10.600000000000005}
+Playing resize freezes time: {"accumulator": 0.0014619586678842854, "computer": 10.450000000000006, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": true, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 31.90787840283388, "y": 10.600000000000005}
+Playing resize freezes time: 21 unchanged frames
+Playing resize recovery: {"accumulator": 0.0014619586678842854, "computer": 10.450000000000006, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 31.90787840283388, "y": 10.600000000000005}
+Movement resumes: {"accumulator": 0.0027960830251686428, "computer": 10.550000000000008, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound on [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 32.28945408340066, "y": 10.720000000000006}
+Mute before restart: {"accumulator": 0.0062637503452909644, "computer": 10.65000000000001, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 1, "small": false, "sound": "key sound muted [M]", "state": "playing", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 32.67102976396745, "y": 10.840000000000007}
+Restart: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound muted [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Waiting serve freezes physics: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound muted [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Waiting serve freezes physics: 21 unchanged frames
+Exit b'q': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+. socratink / paper pongYOU  0     FIRST TO 7     COMPUTER  0SPACE to serve+------------------------------------------------------------+|:||:||:||:||:||:||:|| |:||| |:||| |:||| |o||| |:|||:||:||:||:||:||:||:||:|+------------------------------------------------------------+key sound on [M]Up/Down or W/S move  Space serve  P pause  R restartM mute  Q quit  Ctrl-C exit|  | 
+ 
+
+
+
+|
+||
+|
+
+
+
+ 
+ RALLY:o  o| oM|:||| o o  o| 
+o o o oM |:|| oSPACE to serve|
+|
+|o   
+ RALLYPAUSED / P resume. socratink /YOU  0     FIRST TO 7     COMPUPAUSED / P resume+------------------------------|
+|
+|
+|
+|
+|
+|:
+:
+ :
+ :
+ :
+ :
+ o
+ :
+ :
+ :
+ :
+ :
+
+
+
+
+
+
+  Socratink / paper pong
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+  M mute  Q quit  Ctrl-C exitmuted [M]on [M]
+
+
+
+  Socratink / paper pong
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit100 x 35 // simulation frozen. socratink / paper pongYOU  0     FIRST TO 7     COMPUTER  0PAUSED / P resume+------------------------------------------------------------+|:||:||:||:||:||:||:|| |:|| | |  :|| | |:|| | |o|| | |:|| |         :||:||:||:||:||:||:||:|+------------------------------------------------------------+key sound on [M]Up/Down or W/S move  Space serve  P pause  R restartM mute  Q quit  Ctrl-C exitRALLY:o. soYOU  0     FIRST TO 7RALLY
++--------------------|
+|
+|
+|
+|:
+:
+:
+:
+ :
+ :
+ :o
+ :
+ :
+ :
+ :
+ :
+
+
+
+
+
+
+  Socratink / paper pong
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+  M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper pong
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit80 x 30. socratink / paper pongYOU  0     FIRST TO 7     COMPUTER  0RALLY
++------------------------------------------------------------+|:||:||:||:||:||:||:|| |:|| | |            :|| | |:|| | |:o|| | |      :|| |:||:||:||:||:||:||:||:|+------------------------------------------------------------+key sound on [M]Up/Down or W/S move  Space serve  P pause  R restartM mute  Q quit  Ctrl-C exit  o|muted [M] 
+ oSPACE to serve|o
+  
+
+
+
+Starts undersized: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": true, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Initial undersize freezes state: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": true, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Initial undersize freezes state: 20 unchanged frames
+Initial resize recovery: {"accumulator": 0, "computer": 10.0, "computer_score": 0, "cues": [], "paused": false, "player": 10.0, "player_score": 0, "serves": 0, "small": false, "sound": "key sound on [M]", "state": "waiting", "vx": 22.894540834006698, "vy": 7.199999999999999, "x": 30.0, "y": 10.0}
+Exit b'\x03': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+
+
+
+
+  Socratink / paper pong
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper pong
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit80 x 30. socratink / paper pongYOU  0     FIRST TO 7     COMPUTER  0SPACE to serve+------------------------------------------------------------+|:||:||:||:||:||:||:|| |:|| | |            :|| | |:|| | |o|| | |      :|| |:||:||:||:||:||:||:||:|+------------------------------------------------------------+key sound on [M]Up/Down or W/S move  Space serve  P pause  R restartM mute  Q quit  Ctrl-C exit

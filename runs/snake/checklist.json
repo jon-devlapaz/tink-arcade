@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "rules-ui-regressions",
+      "description": "Implement classic Snake rules, timing, inputs, paper presentation and audio mapping; preserve existing games.",
+      "verify": "Runner requires nonempty Snake engine/UI groups and runs the full existing suite; report skips and fail discovery errors. Include all brief edge cases and cleanup tests.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_snake_tests.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "snake-terminal",
+      "description": "Verify actual Snake terminal input, pause, restart, resize, mute and clean exit.",
+      "verify": "Real PTY with state assertions, Q and SIGINT exits, mode restoration and no surviving child group; retain Snake transcript.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_snake_terminal.py"
+        ],
+        "timeout_seconds": 90
+      }
+    },
+    {
+      "id": "snake-cli",
+      "description": "Provide documented terminal launch and CLI options.",
+      "verify": "Help works without a terminal; suite covers all CLI flags and nonterminal error.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "tink_snake",
+          "--help"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "native-playback",
+      "description": "Verify real macOS repeated sample playback and mute/resume.",
+      "verify": "Existing native tests must advance playback and meter signal; fail on missing tests, non-macOS host, failed tests or skips. This does not establish listener-perceived quality.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import os,sys,unittest; assert sys.platform == 'darwin', 'Native playback requires macOS'; os.environ['NEON_TETRIS_AUDIO_TESTS']='1'; suite=unittest.defaultTestLoader.discover('tests', pattern='test_native_audio.py'); assert suite.countTestCases() >= 2, 'Missing native audio tests'; result=unittest.TextTestRunner(verbosity=2).run(suite); sys.exit(0 if result.wasSuccessful() and result.testsRun >= 2 and not result.skipped else 1)"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "visual-listening",
+      "description": "Inspect Tetris/Snake style consistency and listen to reused sounds in actual play.",
+      "verify": "Retain actual viewed captures at 80x30 and 100x35, color/monochrome, play/pause/game over. Record concrete observations and real listening observer/output device, repeated/rapid turns, food, collision, pause/restart, mute/unmute. Never attest unheard audio or invent user feedback; unresolved listening remains pending."
+    },
+    {
+      "id": "docs-continuation",
+      "description": "Document Snake launch/rules and retain an accurate fresh-session handoff.",
+      "verify": "README/design reflect approved brief; sample credits are unchanged. Handoff names evidence, unresolved limits, fresh-file continuation and avoidable stops. A fresh build session can continue from the files without reconstructing chat; no status text is treated as approval."
+    }
+  ]
+}

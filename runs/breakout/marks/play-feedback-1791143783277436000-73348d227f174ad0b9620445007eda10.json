@@ -1,0 +1,7 @@
+{
+  "item": "play-feedback",
+  "result": "passed",
+  "evidence": "Human playtesting is pending, as permitted by the approved checklist. No feedback or acceptance of game feel is claimed. See runs/breakout/handoff.md, Dated build continuation 2026-10-04, Missing evidence and next work.",
+  "candidate": "d247504b1d38eeb27d43342c2fe234fb30adbd7df1b8285b58dc8907f405c784",
+  "time_ns": 1791143783277436000
+}

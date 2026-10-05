@@ -2,9 +2,6 @@ __pycache__/
 *.py[cod]
 .ruff_cache/
 
-# Local workflow locks and credentials
+# Local SDLC coordination locks
 runs/.*.lock
-.env
-.env.*
-!.env.example
-runs/*/.writer-lock
+runs/**/.writer-lock
