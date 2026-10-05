@@ -1,6 +1,16 @@
-# Invaders build handoff
+# Invaders run handoff
 
-## Current state and authority
+## Delivery update
+
+Independent review at eaaab79 found no actionable defects; see
+`05-deploy/output/REVIEW-findings.md` and its separate logs. All twelve reported
+CI jobs passed on that head (push and PR jobs across Linux/macOS).
+[PR 7](https://github.com/jon-devlapaz/tink-arcade/pull/7) delivers this run against
+`fix/arcade-check-evidence`. The retrospective is `retro.md`. Human play/listening
+and merge remain pending. Build/planning reports below preserve their original
+observations; their future review/CI instructions are now historical.
+
+## Build state and authority
 
 Fresh build session began on 2026-10-04 in the existing isolated checkout
 `/Users/jondev/dev/active/product/tink-arcade-invaders`, branch

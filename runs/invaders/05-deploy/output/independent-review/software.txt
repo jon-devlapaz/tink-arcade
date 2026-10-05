@@ -1,0 +1,12 @@
+Invaders engine: 14 tests
+Invaders ui: 13 tests
+..........................................................................................................ss.............................................
+----------------------------------------------------------------------
+Ran 153 tests in 26.812s
+
+OK (skipped=2)
+Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
+Legal replay: seed=7, steps=1528/36000, score=340, lives=3
+SKIP test_native_audio.NativeAudioIntegrationTests.test_each_sample_renders_on_repeated_spaced_plays: set NEON_TETRIS_AUDIO_TESTS=1 on macOS to play and meter real samples
+SKIP test_native_audio.NativeAudioIntegrationTests.test_replay_after_mute_and_resume: set NEON_TETRIS_AUDIO_TESTS=1 on macOS to play and meter real samples
+Total: 153; skips: 2
