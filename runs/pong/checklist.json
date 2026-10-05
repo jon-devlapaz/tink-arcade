@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "pong-rules-regressions",
+      "description": "Implement Pong rules, bounded computer movement, legal win/loss replays, controls, rendering and audio routing; preserve existing games.",
+      "verify": "Run all tests; require nonempty Pong engine/UI groups; fail discovery errors and report skips. Cover every brief rule, transition and failure path.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_pong_tests.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pong-terminal",
+      "description": "Check the real Pong terminal loop and cleanup.",
+      "verify": "PTY exercises movement, serve, pause/restart, mute, resize in play/pause, Q and SIGINT; compare states, restored modes and child cleanup; retain Pong evidence.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_pong_terminal.py"
+        ],
+        "timeout_seconds": 90
+      }
+    },
+    {
+      "id": "pong-cli",
+      "description": "Provide the documented Pong module command.",
+      "verify": "Help succeeds without a terminal; test suite verifies CLI flags and nonterminal errors.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "tink_pong",
+          "--help"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "native-playback",
+      "description": "Check actual reused macOS sample playback.",
+      "verify": "Run existing native playback/metering tests; require at least two cases, macOS and no skips. This does not establish listening quality.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import os,sys,unittest; assert sys.platform == 'darwin', 'Native playback requires this trial macOS host'; os.environ['NEON_TETRIS_AUDIO_TESTS']='1'; suite=unittest.defaultTestLoader.discover('tests', pattern='test_native_audio.py'); assert suite.countTestCases() >= 2, 'Missing native audio tests'; result=unittest.TextTestRunner(verbosity=2).run(suite); sys.exit(0 if result.wasSuccessful() and result.testsRun >= 2 and not result.skipped else 1)"
+        ],
+        "timeout_seconds": 60
+      }
+    },
+    {
+      "id": "visual-review",
+      "description": "Inspect Pong presentation against the existing paper/jade game style.",
+      "verify": "Retain and actually inspect terminal captures at 80x30 and 100x35 in color and monochrome, covering serve, rally, pause, win and loss. Record readability, state/score/control visibility and style comparison; do not equate snapshots with human playtesting."
+    },
+    {
+      "id": "docs-handoff",
+      "description": "Document the game and observed workflow for a fresh session.",
+      "verify": "README matches approved rules and commands; sample credits unchanged. Handoff names check evidence, skips, tools/skills actually used, failures/recovery, coordinator help, and remaining human play/listening uncertainty. Do not fabricate approval or feedback."
+    }
+  ]
+}

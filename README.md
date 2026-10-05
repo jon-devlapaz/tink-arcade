@@ -110,6 +110,73 @@ plays sounds when audio is available and writes only Snake's transcript under
 `runs/snake/04-test/output/`. Native sample metering requires macOS and
 `NEON_TETRIS_AUDIO_TESTS=1`. Metering does not replace listening.
 
+## Paper Pong
+
+Run `python3 -B -m tink_pong` with Python 3.9+ on macOS or Linux in an 80 by 30
+or larger terminal. The court opens immediately. `--no-color` uses monochrome;
+`--no-sound` disables sound for the session. `--help` works outside a terminal.
+Native Windows is not supported. No dependencies or network access are needed.
+
+Up/down arrows or W/S move the left paddle 1.5 cells per key event. Letter keys
+accept either case. Space serves, P pauses or resumes, R restarts, M mutes, and
+Q or Ctrl-C exits. Restart preserves mute. Pause freezes both paddles and ball.
+Shrinking below 80 by 30 freezes the game and ignores gameplay keys. M and quit
+still work. Restoring the size preserves a prior pause and discards elapsed time
+from the resize. Quit restores terminal settings and closes audio.
+
+First to seven wins. Each point resets both paddles and the ball to center and
+waits for Space. The first serve goes toward the computer; later serves alternate
+direction and vertical sign. The court is 60 by 20 cells with five-cell paddles.
+The computer follows the ball's current height at no more than six cells per
+second. It moves only during a rally and does not predict future bounces.
+
+The ball travels at 24 cells per second. Top and bottom walls bounce it; a missed
+ball crossing an end boundary scores one point. Paddle contact sets the angle,
+up to 60 degrees from horizontal. A center hit keeps a small vertical component.
+Physics uses a point ball, whole-segment contact checks, steps of 1/120 second,
+and at most 0.1 seconds from a delayed frame. ASCII cells approximate these
+continuous positions. Both scores, winner, and restart/quit controls remain visible
+at match end; physics stops until restart.
+
+Pong uses the same paper, ink and jade palette and credited keyboard sounds as
+Snake and Tetris. Paddle contacts use `move`, points and wins use `clear`, final
+loss uses `over`, and serve/pause/restart/unmute use `switch`. Wall bounces and
+computer movement are silent. Missing or failed audio leaves the game playable.
+Sample credits remain in `neon_tetris/sounds/credits.json`.
+
+### Pong checks
+
+```sh
+python3 -B scripts/check_pong_tests.py
+python3 -B scripts/check_pong_terminal.py
+PYTHONPATH=. python3 -B scripts/pong_replay.py
+python3 -B scripts/capture_pong.py
+```
+
+The test runner checks every game's tests and requires nonempty Pong engine/UI
+groups. The repeatable player wins 7–0 in 7,578 physics steps; an idle player loses
+0–7 in 2,598 steps. Both start ordinary new matches and use only player input and
+time. This establishes reachable outcomes, not human difficulty or enjoyment.
+
+The terminal check launches the actual game through a POSIX pseudo terminal and
+compares states during movement, serve, pause, resize, restart and mute. It checks
+Q/SIGINT exit, persistent terminal modes and process cleanup. It saves only Pong's
+transcript at `runs/pong/04-test/output/terminal-transcript.txt`. The optional
+`TINK_PONG_TRACE=/path/to/file.jsonl` records loop state without changing gameplay.
+The Pong CI workflow runs help, tests and terminal checks on macOS and Linux.
+Local checks do not establish a CI result.
+
+The capture script uses the actual curses renderer in a pseudo terminal, reads
+its cells/attributes, and exports JSON, raw terminal output, and SVGs for both
+sizes and color modes. Win/loss screens come from legal replays; these are render
+checks, not live human matches. On macOS, `qlmanage -t -s 1600 -o OUTPUT FILE.svg`
+can make PNG previews. They approximate terminal font rasterization.
+
+Native playback/metering passes separately on this macOS trial host with
+`NEON_TETRIS_AUDIO_TESTS=1`. Those two tests skip in the default suite. Metering
+does not establish listener-perceived sound. Human play and listening remain
+unverified.
+
 ### Save terminal checks separately
 
 Both terminal checkers accept `--output PATH`. Relative paths use your current

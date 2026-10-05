@@ -1,0 +1,9 @@
+{
+  "stage": 3,
+  "document": "runs/pong/brief.md",
+  "sha256": "14814ea9464230e52f5c8ebed1590807710c9becca79f60253b7afedec20483a",
+  "chars": 6694,
+  "status": "routed",
+  "winner": "control-cli",
+  "confidence": 0.74
+}

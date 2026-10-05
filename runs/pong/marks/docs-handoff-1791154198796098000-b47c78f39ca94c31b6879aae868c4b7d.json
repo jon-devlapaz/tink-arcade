@@ -1,0 +1,7 @@
+{
+  "item": "docs-handoff",
+  "result": "passed",
+  "evidence": "README remains accurate. Handoff records independent review failure, retained pre-fix reproduction, actual-transition timing repair, 129 passing tests and new real PTY repeated-Space proof. Original visual evidence remains applicable because rendering/rules did not change. Human play/listening remain unverified.",
+  "candidate": "1a75a8333c39faeae333e66a7ff4e6141e0f9dc5f796826ff9f15cb72949f46e",
+  "time_ns": 1791154198796098000
+}

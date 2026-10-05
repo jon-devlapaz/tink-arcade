@@ -1,0 +1,7 @@
+{
+  "item": "docs-handoff",
+  "result": "passed",
+  "evidence": "Handoff records Pong CI assertion defect, revised bounce/score-aware PTY proof, isolated old-guard failure, and separate unresolved Snake CI observation failure with retained logs. README behavior is unchanged. No claim that CI is green; prior visual evidence remains applicable because renderer is unchanged.",
+  "candidate": "1ab5530ac5b19e0bc95cdcc56ebfc17e23171f0af2ce771e4d2be2a2f0aebed7",
+  "time_ns": 1791154551867099000
+}

@@ -1,0 +1,9 @@
+Temporary isolated copy with old timing guard; revised PTY assertion unchanged.
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/pong-old-guard-x3hk4ydg/scripts/check_pong_terminal.py", line 212, in <module>
+    main()
+    ~~~~^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/pong-old-guard-x3hk4ydg/scripts/check_pong_terminal.py", line 158, in main
+    assert any(after[k] != before[k] for k in motion), f'No-op Space froze rally: {before} -> {after}'
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: No-op Space froze rally: {'state': 'playing', 'paused': False, 'player_score': 0, 'computer_score': 0, 'serves': 1, 'player': 10.0, 'computer': 10.250000000000004, 'x': 31.144727041700328, 'y': 10.360000000000003, 'vx': 22.894540834006698, 'vy': 7.199999999999999, 'accumulator': 0.0027871659724041896, 'small': False, 'sound': 'key sound on [M]', 'cues': []} -> {'state': 'playing', 'paused': False, 'player_score': 0, 'computer_score': 0, 'serves': 1, 'player': 10.0, 'computer': 10.250000000000004, 'x': 31.144727041700328, 'y': 10.360000000000003, 'vx': 22.894540834006698, 'vy': 7.199999999999999, 'accumulator': 0.0027871659724041896, 'small': False, 'sound': 'key sound on [M]', 'cues': []}
