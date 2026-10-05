@@ -55,7 +55,7 @@ def run_check(quit_key):
 
     try:
         resize(30, 80)
-        expect(b'TINK ARCADE')
+        expect(b'paper galaga')
         # Move, fire, and wait for actual redraws. Model tests check the resulting rules.
         os.write(master, b'aa \x1bOD\x1bOC')
         assert collect(.35), 'Input produced no terminal output'
@@ -64,7 +64,7 @@ def run_check(quit_key):
         collect(.1)
         assert collect(.25) == b'', 'Paused screen continued changing'
         resize(12, 45)
-        expect(b'Terminal too small')
+        expect(b'Resize terminal to at least 80 x 30')
         collect(.1)
         assert collect(.25) == b'', 'Small terminal continued changing'
         resize(30, 80)
