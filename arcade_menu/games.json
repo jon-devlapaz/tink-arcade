@@ -91,5 +91,18 @@
     ],
     "path": ".",
     "module": "tink_galaga"
+  },
+  {
+    "title": "Crossing",
+    "tagline": "Five bays, three lives.",
+    "about": "Hop through traffic and ride the logs home. Lanes are fixed patterns, so every run is learnable.",
+    "controls": [
+      "Arrows / WASD  hop",
+      "P  pause",
+      "R  restart",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_crossing"
   }
 ]
