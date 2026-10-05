@@ -1,0 +1,7 @@
+{
+  "item": "observations",
+  "result": "passed",
+  "evidence": "Coordinator actually viewed all 20 current capture states in browser screenshots: readable color/mono at80x30/100x35, no clipping or visual blocker. Actual curses cells, ANSI and HTML in runs/invaders/04-test/output/captures/current-*; screenshots in visual-review. HTML reconstruction limits and absent visible shots in first play frames disclosed in handoff. Human listening and Jon play remain pending; metering and replay are not game-feel acceptance.",
+  "candidate": "4dd018462347f2020a6e505a57724f66dc1b19fda75ebd97ff9f489d8ca84780",
+  "time_ns": 1791159946293080000
+}

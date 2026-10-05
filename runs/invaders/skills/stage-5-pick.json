@@ -1,0 +1,9 @@
+{
+  "stage": 5,
+  "document": "runs/invaders/brief.md",
+  "sha256": "ffa82dd9c62832c30109c62b9d9b7d2fd95065f9304984834e53b02773305364",
+  "chars": 12156,
+  "status": "routed",
+  "winner": "ai-native-sdlc",
+  "confidence": 0.61
+}
