@@ -217,3 +217,23 @@ clears turns on entry to either, and discards elapsed resize time. Delayed frame
 advance at most one cell. Snake imports `KeyboardAudio` directly; samples,
 credits and the existing backend are unchanged. Eating or collision replaces
 the lower-priority turn cue for the same movement step.
+
+## Invaders
+
+Invaders uses the same centered 80 by 30 canvas and paper/ink/jade palette as
+Snake. Its 60 by 20 playfield starts inside a light border at canvas column 9,
+row 4. The title occupies row 1; score, shared lives and wave occupy row 2; sound
+status stays on row 3. State instructions and controls remain on rows 26 to 28.
+The 80 by 30 layout fits without scrolling; larger windows add margins.
+
+The ship is `/^\`, enemies are `[W]`, player shots are `^`, and enemy shots are `v`.
+Distinct shapes carry meaning in monochrome. Jade emphasizes the ship, its shots
+and the state instruction. Enemy formations use carbon ink. READY, PAUSED,
+YOU WIN and GAME OVER sit below the field, leaving enemies and statistics visible.
+The fixed field and timing rules are documented in README.md.
+
+Invaders imports KeyboardAudio directly. Successful movement, fire, life loss,
+wave clear/win and pause/restart map to `move`, `rotate`, `over`, `clear` and
+`switch`. Blocked/frozen actions stay silent. The per-frame audio tick services
+native completion events even while the game is paused. Mute survives restart;
+`--no-sound` prevents backend creation. Existing sound files and credits are unchanged.

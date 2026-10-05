@@ -1,0 +1,26 @@
+name: Invaders checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python3 -B -m tink_invaders --help
+      - run: python3 -B scripts/check_invaders_tests.py
+      - run: python3 -B scripts/check_invaders_terminal.py --output runs/invaders/04-test/output/ci-terminal.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: invaders-terminal-${{ matrix.os }}
+          path: runs/invaders/04-test/output/ci-terminal.txt
