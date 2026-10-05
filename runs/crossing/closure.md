@@ -1,20 +1,30 @@
 # Closure: crossing
 
-Resumed after Jon's macOS menu check. This file is finalised after merge.
+Merged 2026-10-05.
 
-## State (2026-10-05)
-- `menu-on-mac`: Jon reported `scripts/check_arcade.py` "all passed" on macOS
-  at 7294c9c; marked as attested from his report.
-- `verify`: current. Checklist 7/7 (4 proven by check, 3 attested). Status notes
-  `visual-review` was attested before later changes; those changes touched
-  README, the PTY checker and run notes, not the rendered UI.
-- Independent review (Sonnet, read-only): ACCEPT WITH FIXES; fixes applied.
-- Follow-ups filed: tink-sdlc #45 (closure record in SDLC.md), #46 (text status
-  hides the verify failure reason).
+- PR: https://github.com/jon-devlapaz/tink-arcade/pull/13
+- Merge revision: 968b32125c969f160c4199bd9482420ea472a5c0 (merge commit on main);
+  verified candidate 019a0a9.
+- Outcome: Paper Crossing ships as the eighth cabinet.
 
-## Remaining
-1. Jon pushes `crossing` to origin (the operator sandbox has no GitHub
-   credentials); the operator opens the PR.
-2. Jon reviews and merges.
-3. Record here: PR URL, merge revision, outcome. Then `archive --phase closure`
-   from a host with tink-substrate installed.
+## Evidence at merge
+- `verify`: current at 019a0a9; checklist 7/7 (4 proven by check, 3 attested).
+- `menu-on-mac`: Jon reported `scripts/check_arcade.py` all passed on macOS.
+- Independent read-only review (Sonnet): ACCEPT WITH FIXES; fixes applied.
+- No CI exists in this repo; the local receipt and review were the gate.
+
+## Who did what
+Jon approved the brief, ran the Mac check, and authorized push, PR and merge.
+The operator (Claude in Cowork) pushed through GitHub Desktop with Jon's existing
+sign-in, opened the PR and merged it in the browser, as Jon directed. This departs
+from SDLC.md's "only a human merges"; the human decision was Jon's explicit
+instruction rather than his own click.
+
+## Not done
+- `archive --phase closure`: tink-substrate is not installed where the operator
+  runs. Run it on a host that has it, if wanted.
+- Human playtest and listening.
+
+## Follow-ups
+tink-sdlc #45 (closure record in SDLC.md), #46 (text status hides the verify
+failure reason).
