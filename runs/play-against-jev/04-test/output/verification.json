@@ -1,0 +1,23 @@
+{
+  "result": "passed",
+  "candidate": {
+    "head": "a0b26dcb242a76cc999438ffdf445fdd0569aae2",
+    "tree": "2bec12c02fa71cdd4dcf05afd730b378895b1de0a059e7c0617354ad8b03249f"
+  },
+  "inputs": "0fae23acd39541ae9057cabdf7afe6f15709456124868c48a999d50f4ebb40dd",
+  "policy": "c6077a12cef87ba0082669f8e9a8b92488eebe9c7dc88ffb9ea00c6fe6cd312d",
+  "test_lock": null,
+  "checklist": "903e9449f7562058a85d4b3bf2b2341f6b80a03c96dac7fbd61ad6f94d22931a",
+  "manual_marks": {
+    "live-match": "26cc8743ab4ea9ef0c9e7963bbd4fcae0e4051ceb4379633f7bcf0e509eeedd4",
+    "handoff": "398326d5945a923b6b0949c52a8091a92673bcfeb24829901cae9a4a7d10194a"
+  },
+  "checklist_items": {
+    "race": "proven",
+    "cost": "proven",
+    "terminal": "proven",
+    "live-match": "attested",
+    "handoff": "attested"
+  },
+  "log": "e5a5e13424e64b4ca1c0ec407ef1bb25e594be22290fbf2689298586611750a4"
+}
