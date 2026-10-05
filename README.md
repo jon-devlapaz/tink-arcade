@@ -110,6 +110,73 @@ plays sounds when audio is available and writes only Snake's transcript under
 `runs/snake/04-test/output/`. Native sample metering requires macOS and
 `NEON_TETRIS_AUDIO_TESTS=1`. Metering does not replace listening.
 
+## Paper Pong
+
+Run `python3 -B -m tink_pong` with Python 3.9+ on macOS or Linux in an 80 by 30
+or larger terminal. The court opens immediately. `--no-color` uses monochrome;
+`--no-sound` disables sound for the session. `--help` works outside a terminal.
+Native Windows is not supported. No dependencies or network access are needed.
+
+Up/down arrows or W/S move the left paddle 1.5 cells per key event. Letter keys
+accept either case. Space serves, P pauses or resumes, R restarts, M mutes, and
+Q or Ctrl-C exits. Restart preserves mute. Pause freezes both paddles and ball.
+Shrinking below 80 by 30 freezes the game and ignores gameplay keys. M and quit
+still work. Restoring the size preserves a prior pause and discards elapsed time
+from the resize. Quit restores terminal settings and closes audio.
+
+First to seven wins. Each point resets both paddles and the ball to center and
+waits for Space. The first serve goes toward the computer; later serves alternate
+direction and vertical sign. The court is 60 by 20 cells with five-cell paddles.
+The computer follows the ball's current height at no more than six cells per
+second. It moves only during a rally and does not predict future bounces.
+
+The ball travels at 24 cells per second. Top and bottom walls bounce it; a missed
+ball crossing an end boundary scores one point. Paddle contact sets the angle,
+up to 60 degrees from horizontal. A center hit keeps a small vertical component.
+Physics uses a point ball, whole-segment contact checks, steps of 1/120 second,
+and at most 0.1 seconds from a delayed frame. ASCII cells approximate these
+continuous positions. Both scores, winner, and restart/quit controls remain visible
+at match end; physics stops until restart.
+
+Pong uses the same paper, ink and jade palette and credited keyboard sounds as
+Snake and Tetris. Paddle contacts use `move`, points and wins use `clear`, final
+loss uses `over`, and serve/pause/restart/unmute use `switch`. Wall bounces and
+computer movement are silent. Missing or failed audio leaves the game playable.
+Sample credits remain in `neon_tetris/sounds/credits.json`.
+
+### Pong checks
+
+```sh
+python3 -B scripts/check_pong_tests.py
+python3 -B scripts/check_pong_terminal.py
+PYTHONPATH=. python3 -B scripts/pong_replay.py
+python3 -B scripts/capture_pong.py
+```
+
+The test runner checks every game's tests and requires nonempty Pong engine/UI
+groups. The repeatable player wins 7–0 in 7,578 physics steps; an idle player loses
+0–7 in 2,598 steps. Both start ordinary new matches and use only player input and
+time. This establishes reachable outcomes, not human difficulty or enjoyment.
+
+The terminal check launches the actual game through a POSIX pseudo terminal and
+compares states during movement, serve, pause, resize, restart and mute. It checks
+Q/SIGINT exit, persistent terminal modes and process cleanup. It saves only Pong's
+transcript at `runs/pong/04-test/output/terminal-transcript.txt`. The optional
+`TINK_PONG_TRACE=/path/to/file.jsonl` records loop state without changing gameplay.
+The Pong CI workflow runs help, tests and terminal checks on macOS and Linux.
+Local checks do not establish a CI result.
+
+The capture script uses the actual curses renderer in a pseudo terminal, reads
+its cells/attributes, and exports JSON, raw terminal output, and SVGs for both
+sizes and color modes. Win/loss screens come from legal replays; these are render
+checks, not live human matches. On macOS, `qlmanage -t -s 1600 -o OUTPUT FILE.svg`
+can make PNG previews. They approximate terminal font rasterization.
+
+Native playback/metering passes separately on this macOS trial host with
+`NEON_TETRIS_AUDIO_TESTS=1`. Those two tests skip in the default suite. Metering
+does not establish listener-perceived sound. Human play and listening remain
+unverified.
+
 ### Save terminal checks separately
 
 Both terminal checkers accept `--output PATH`. Relative paths use your current
@@ -208,3 +275,52 @@ and an HTML contact sheet. HTML uses standard xterm colors and assumed dark
 monochrome defaults; it does not reproduce a user's terminal font or palette.
 Native metering is not listening. Jon's play feedback and actual listening remain
 pending, so fairness, difficulty and sound quality remain unobserved.
+
+## Formation shooter
+
+```sh
+python3 -m tink_galaga
+```
+
+Move with left/right arrows or A/D. Space fires. P pauses or resumes, R restarts, and Q or Ctrl-C quits. The game starts immediately. Hold a key to use your terminal's key repeat.
+
+Shoot the rows of enemies and avoid their shots and diving attacks. You have three lives. A hit gives two seconds of protection, shown by a blinking ship. Clearing the formation starts a harder wave. Formation enemies award 100 points; diving enemies award 150. Game over shows your final score and lets you restart.
+
+```sh
+python3 -m tink_galaga --seed 17 --no-color
+python3 -m tink_galaga --help
+```
+
+A seed repeats enemy choices for the same sequence of inputs and simulation ticks. Restart uses that seed again. Timing still depends on when you press keys. The game freezes when the terminal is too small, and tells you how to resize it. Long rendering stalls are discarded so the game does not simulate unseen time. Scores last only for the current game.
+
+The game uses original ASCII graphics and newly written rules inspired by formation shooters such as Galaga. It includes no arcade ROMs, copied sprites, sound recordings, or third-party game code. It has no network calls, model charges, or credential requirements.
+
+## Tetris
+
+```sh
+python3 -m neon_tetris
+python3 -m neon_tetris --help
+```
+
+The existing Tetris game and its source remain unchanged by the formation-shooter work. The separate Tetris-versus-Jev feature is under review in PR 1 and is not included on this branch.
+
+## Checks
+
+```sh
+python3 -B -m unittest discover -s tests
+python3 -B scripts/check_galaga_terminal.py
+```
+
+The tests cover deterministic gameplay and input rules alongside the existing Tetris tests. The terminal script launches the actual curses application in a pseudo-terminal. It exercises keyboard input, pause, resize, resume, restart, and both exit paths. The GitHub Actions job runs both commands on the PR head with Python 3.11 and 3.14. Existing native-audio tests skip where the macOS backend is unavailable.
+
+These checks establish behavior, not whether the game is enjoyable. Jon's play test remains needed for difficulty, controls, and visual taste.
+
+## Current work
+
+The Galaga trial's purpose, decisions, and evidence are under `runs/galaga/`. Start with its `handoff.md`; consult the installed runtime for current verification state:
+
+```sh
+python3 _system/scripts/sdlc.py status galaga
+```
+
+The shared tink-substrate view tracks this work separately. Its labels do not authorize a merge.

@@ -1,0 +1,7 @@
+{
+  "item": "shared-work",
+  "result": "passed",
+  "evidence": "Post-PR parent comparison: substrate snapshot points to PR 2, branch feat/galaga, local/forge HEAD f4c5203, approved stage 3 and current local verification. Actual GitHub jobs on Python 3.11/3.14 succeeded. PR draft state is shown accurately. Fresh reviewer identified purpose/approval/owner/limits from files; stale handoff corrected. Issues logged in tink-substrate. This is an attestation, not authenticated release approval.",
+  "candidate": "89752312672db0907e00a2b5e2d53d5aa698c8e78e79ca2dbf140ff95854b524",
+  "time_ns": 1791124841296528000
+}

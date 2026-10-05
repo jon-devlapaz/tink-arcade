@@ -1,0 +1,24 @@
+test_audio_mute_restart_disabled_unavailable_cleanup (test_pong_ui.PongUITests.test_audio_mute_restart_disabled_unavailable_cleanup) ... ok
+test_bindings_and_action_cues (test_pong_ui.PongUITests.test_bindings_and_action_cues) ... ok
+test_cli_flags_help_and_nonterminal (test_pong_ui.PongUITests.test_cli_flags_help_and_nonterminal) ... ok
+test_layout_all_states_sizes_and_bounds (test_pong_ui.PongUITests.test_layout_all_states_sizes_and_bounds) ... ok
+test_loop_routes_contact_point_loss_and_silent_wall (test_pong_ui.PongUITests.test_loop_routes_contact_point_loss_and_silent_wall) ... ok
+test_palette_and_monochrome (test_pong_ui.PongUITests.test_palette_and_monochrome) ... ok
+test_repeated_noop_input_does_not_discard_rally_time (test_pong_ui.PongUITests.test_repeated_noop_input_does_not_discard_rally_time) ... 
+  test_repeated_noop_input_does_not_discard_rally_time (test_pong_ui.PongUITests.test_repeated_noop_input_does_not_discard_rally_time) (key=' ') ... FAIL
+test_resize_and_transition_frames_discard_elapsed (test_pong_ui.PongUITests.test_resize_and_transition_frames_discard_elapsed) ... ok
+test_small_and_clipping_errors (test_pong_ui.PongUITests.test_small_and_clipping_errors) ... ok
+
+======================================================================
+FAIL: test_repeated_noop_input_does_not_discard_rally_time (test_pong_ui.PongUITests.test_repeated_noop_input_does_not_discard_rally_time) (key=' ')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/product/tink-arcade-pong/tests/test_pong_ui.py", line 91, in test_repeated_noop_input_does_not_discard_rally_time
+    self.assertAlmostEqual(getattr(game, field), getattr(expected, field), msg=field)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 30.0 != 52.89454083400695 within 7 places (22.894540834006953 difference) : x
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.029s
+
+FAILED (failures=1)
