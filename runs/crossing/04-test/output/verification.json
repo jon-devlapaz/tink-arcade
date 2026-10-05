@@ -1,0 +1,4 @@
+{
+  "result": "failed",
+  "error": "Checklist incomplete: menu-on-mac (mark them with: sdlc.py mark crossing <id> passed --evidence \"...\")"
+}
