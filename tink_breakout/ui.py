@@ -3,6 +3,7 @@ import curses
 import json
 import os
 import time
+from neon_tetris.audio import KeyboardAudio
 from .engine import Game, HEIGHT, WIDTH, PADDLE_WIDTH
 from .layouts import NAMES
 
@@ -55,11 +56,23 @@ class Renderer:
         self.screen = screen
         self.ink = 0
         self.accent = curses.A_BOLD
+        self.muted = self.rule = curses.A_DIM
         if not no_color and curses.has_colors():
             curses.start_color()
-            if curses.COLORS >= 8 and curses.COLOR_PAIRS >= 2:
-                curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
-                self.accent |= curses.color_pair(1)
+            if curses.COLORS >= 8 and curses.COLOR_PAIRS >= 5:
+                # Indexed approximations of Socratink's paper, carbon and jade.
+                if curses.COLORS >= 256:
+                    paper, ink, jade, graphite, rule = 230, 233, 29, 240, 245
+                else:
+                    paper, ink, jade = curses.COLOR_WHITE, curses.COLOR_BLACK, curses.COLOR_CYAN
+                    graphite = rule = ink
+                for number, color in enumerate((ink, jade, graphite, rule), 1):
+                    curses.init_pair(number, color, paper)
+                self.ink = curses.color_pair(1)
+                self.accent = curses.color_pair(2) | curses.A_BOLD
+                self.muted = curses.color_pair(3)
+                self.rule = curses.color_pair(4)
+                self.screen.bkgd(' ', self.ink)
 
     def text(self, y, x, value, attr=0):
         rows, cols = self.screen.getmaxyx()
@@ -74,34 +87,70 @@ class Renderer:
             except curses.error:
                 pass  # A resize can occur between measuring and writing.
 
-    def draw(self, controller):
+    def box(self, y, x, height, width, title=''):
+        self.text(y, x, '+' + '-' * (width - 2) + '+', self.rule)
+        for row in range(y + 1, y + height - 1):
+            self.text(row, x, '|', self.rule)
+            self.text(row, x + width - 1, '|', self.rule)
+        self.text(y + height - 1, x, '+' + '-' * (width - 2) + '+', self.rule)
+        if title:
+            self.text(y, x + 2, ' ' + title + ' ', self.ink)
+
+    def draw(self, controller, sound_status=''):
         self.screen.erase()
         rows, cols = self.screen.getmaxyx()
         if controller.small:
-            self.text(0, 0, 'Terminal too small. Need 80 x 30.')
-            self.text(2, 0, 'Resize to continue. Q quits.')
+            y = max(0, rows // 2 - 2)
+            self.text(y, 2, 'Socratink / paper breakout', self.ink | curses.A_BOLD)
+            self.text(y + 1, 2, 'Resize terminal to at least 80 x 30.', curses.A_BOLD)
+            self.text(y + 2, 2, f'Current: {cols} x {rows} // simulation frozen')
+            self.text(y + 3, 2, sound_status, self.muted)
+            self.text(y + 4, 2, 'M mute  Q quit  Ctrl-C exit', self.muted)
         else:
             g = controller.game
-            left, top = (cols - WIDTH - 2) // 2, (rows - HEIGHT - 8) // 2
-            self.text(top, left, f'BREAKOUT  Board {g.board + 1}/3: {NAMES[g.board]}', self.accent)
-            self.text(top + 1, left, f'Score {g.score}   Lives {g.lives}   Bricks {len(g.bricks)}')
-            self.text(top + 2, left, '+' + '-' * WIDTH + '+')
-            for y in range(HEIGHT):
-                self.text(top + 3 + y, left, '|')
-                self.text(top + 3 + y, left + WIDTH + 1, '|')
+            ox, oy = (cols - MIN_COLUMNS) // 2, (rows - MIN_ROWS) // 2
+            left, top = ox + 9, oy + 4
+            self.text(oy + 1, ox + 25, '. socratink / paper breakout', self.ink | curses.A_BOLD)
+            self.text(oy + 2, ox + 30, 'three boards, three lives.', self.muted)
+            self.text(oy + 3, left, f'SCORE {g.score:03}   LIVES {g.lives}   BRICKS {len(g.bricks)}'
+                                    f'   BOARD {g.board + 1}/3  {NAMES[g.board]}', self.ink)
+            self.box(top, left, HEIGHT + 2, WIDTH + 2, 'PLAY / PAPER')
             for brick in g.bricks.values():
-                self.text(top + 3 + int(brick.y), left + 1 + int(brick.x), '[==]', self.accent)
-            self.text(top + 21, left + 1 + int(g.paddle - PADDLE_WIDTH / 2), '=' * int(PADDLE_WIDTH), self.accent)
-            self.text(top + 3 + min(HEIGHT - 1, int(g.y)), left + 1 + min(WIDTH - 1, int(g.x)), 'o', self.accent)
-            self.text(top + 23, left, '+' + '-' * WIDTH + '+')
+                self.text(top + 1 + int(brick.y), left + 1 + int(brick.x), '[==]', self.ink | curses.A_REVERSE)
+            self.text(top + 19, left + 1 + int(g.paddle - PADDLE_WIDTH / 2), '=' * int(PADDLE_WIDTH),
+                      self.accent | curses.A_REVERSE)
+            self.text(top + 1 + min(HEIGHT - 1, int(g.y)), left + 1 + min(WIDTH - 1, int(g.x)), 'o',
+                      self.accent)
             message = {'waiting': 'SPACE to launch', 'playing': 'Clear every brick to advance.',
-                       'won': 'YOU WIN! R to restart', 'lost': 'GAME OVER. R to restart'}[g.state]
-            self.text(top + 24, left, 'PAUSED. P to resume' if controller.paused else message, self.accent)
-            self.text(top + 25, left, 'Arrows/A D: move  Space: launch  P: pause  R: restart  Q: quit')
+                       'won': 'YOU WIN  R to restart', 'lost': 'GAME OVER  R to restart'}[g.state]
+            self.text(oy + 26, left, 'PAUSED  P to resume' if controller.paused else message, self.accent)
+            self.text(oy + 27, left, 'Arrows / A D move   Space launch   P pause   R restart', self.ink)
+            self.text(oy + 28, left, 'M mute   Q quit   Ctrl-C exit', self.muted)
+            self.text(oy + 28, left + WIDTH + 2 - len(sound_status), sound_status, self.muted)
         self.screen.refresh()
 
 
-def run(screen, no_color=False):
+def cues_for(before, after, key):
+    """Map one frame's observable change to a keyboard-sound cue, or None."""
+    if after['small'] or before is None:
+        return None
+    if after['board'] > before['board'] or (after['state'] == 'won' and before['state'] != 'won'):
+        return 'clear'
+    if after['state'] == 'lost' and before['state'] != 'lost':
+        return 'over'
+    if after['lives'] < before['lives']:
+        return 'over'
+    if after['score'] > before['score']:
+        return 'place'
+    if (after['paused'] != before['paused'] or after['state'] != before['state']
+            or after['score'] < before['score']):
+        return 'switch'
+    if key in (curses.KEY_LEFT, curses.KEY_RIGHT, ord('a'), ord('A'), ord('d'), ord('D')):
+        return 'move'
+    return None
+
+
+def run(screen, no_color=False, no_sound=False):
     try:
         curses.curs_set(0)
     except curses.error:
@@ -114,14 +163,26 @@ def run(screen, no_color=False):
     trace_path = os.environ.get('TINK_BREAKOUT_TRACE')
     trace = open(trace_path, 'w', encoding='utf-8') if trace_path else None
     try:
-        while not controller.quit:
-            key = screen.getch()
-            rows, cols = screen.getmaxyx()
-            state = controller.frame(time.monotonic(), rows, cols, key)
-            renderer.draw(controller)
-            if trace:
-                trace.write(json.dumps(state) + '\n')
-                trace.flush()
+        with KeyboardAudio(enabled=not no_sound) as audio:
+            previous = None
+            while not controller.quit:
+                key = screen.getch()
+                rows, cols = screen.getmaxyx()
+                if key in (ord('m'), ord('M')):
+                    audio.toggle()
+                state = controller.frame(time.monotonic(), rows, cols, key)
+                if state['small']:
+                    audio.stop()
+                cue = cues_for(previous, state, key)
+                if cue:
+                    audio.play(cue)
+                previous = state
+                audio.tick()
+                renderer.draw(controller, audio.status)
+                if trace:
+                    trace.write(json.dumps(dict(state, sound=audio.status, cue=cue)) + '\n')
+                    trace.flush()
+            return audio.warning
     finally:
         if trace:
             trace.close()

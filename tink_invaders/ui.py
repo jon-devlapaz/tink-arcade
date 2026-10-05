@@ -107,6 +107,15 @@ class Renderer:
             # A resize can invalidate dimensions between getmaxyx and addnstr.
             pass
 
+    def box(self, y, x, height, width, title=''):
+        self.text(y, x, '+' + '-' * (width - 2) + '+', self.rule)
+        for row in range(y + 1, y + height - 1):
+            self.text(row, x, '|', self.rule)
+            self.text(row, x + width - 1, '|', self.rule)
+        self.text(y + height - 1, x, '+' + '-' * (width - 2) + '+', self.rule)
+        if title:
+            self.text(y, x + 2, ' ' + title + ' ', self.ink)
+
     def draw(self, controller, sound_status='key sound off'):
         self.screen.erase()
         rows, columns = self.screen.getmaxyx()
@@ -121,13 +130,10 @@ class Renderer:
             left, top = ox + 9, oy + 4
             game = controller.game
             self.text(oy + 1, ox + 24, '. socratink / paper invaders', self.ink | curses.A_BOLD)
-            self.text(oy + 2, left, f'SCORE {game.score:03}   LIVES {game.lives}   WAVE {game.wave + 1}/3  {NAMES[game.wave]}', self.ink)
-            self.text(oy + 3, left, sound_status, self.muted)
-            self.text(top, left, '+' + '-' * WIDTH + '+', self.rule)
-            for row in range(HEIGHT):
-                self.text(top + 1 + row, left, '|', self.rule)
-                self.text(top + 1 + row, left + WIDTH + 1, '|', self.rule)
-            self.text(top + HEIGHT + 1, left, '+' + '-' * WIDTH + '+', self.rule)
+            self.text(oy + 2, ox + 32, 'hold the line.', self.muted)
+            self.text(oy + 3, left, f'SCORE {game.score:03}   LIVES {game.lives}   WAVE {game.wave + 1}/3  {NAMES[game.wave]}', self.ink)
+            self.text(oy + 3, left + WIDTH + 2 - len(sound_status), sound_status, self.muted)
+            self.box(top, left, HEIGHT + 2, WIDTH + 2, 'PLAY / PAPER')
             for enemy in game.enemies:
                 self.text(top + 1 + enemy.y, left + enemy.x, '[W]', self.ink | curses.A_BOLD)
             self.text(top + 1 + SHIP_Y, left + game.ship, '/^\\', self.accent)

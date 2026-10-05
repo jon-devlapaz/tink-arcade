@@ -146,7 +146,7 @@ def main():
             try:
                 t = terminal
                 initial = t.wait(lambda s: s['state'] == 'waiting', '80x30 waiting')
-                t.expect(b'BREAKOUT'); t.expect(b'SPACE to launch')
+                t.expect(b'paper breakout'); t.expect(b'PLAY / PAPER'); t.expect(b'SPACE to launch')
                 t.send(b'D', lambda s: s['paddle'] > initial['paddle'], 'Move right')
                 t.send(b'\x1bOD', lambda s: s['paddle'] == initial['paddle'], 'Left arrow')
                 t.resize(100, 35)
@@ -157,7 +157,7 @@ def main():
                 start = len(t.states()); t.resize(40, 12)
                 small = t.wait(lambda s: s['small'], 'Shrink while paused', start)
                 assert physics(small) == physics(paused)
-                t.expect(b'Terminal too small')
+                t.expect(b'Resize terminal to at least 80 x 30')
                 t.send(b'r d ', lambda s: s['small'], 'Ignored small-screen gameplay')
                 t.frozen(small, 'Undersize freezes physics')
                 start = len(t.states()); t.resize(80, 30)
