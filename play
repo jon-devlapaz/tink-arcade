@@ -1,0 +1,9 @@
+#!/bin/sh
+# Arcade entry point: ./play [--no-color]. Safe to symlink onto PATH.
+self=$0
+while [ -L "$self" ]; do
+  link=$(readlink "$self")
+  case $link in /*) self=$link ;; *) self=$(dirname "$self")/$link ;; esac
+done
+root=$(cd "$(dirname "$self")" && pwd)
+PYTHONPATH=$root${PYTHONPATH:+:$PYTHONPATH} exec python3 -m arcade_menu "$@"
