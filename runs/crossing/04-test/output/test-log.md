@@ -243,7 +243,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests) ... ok
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 241 tests in 25.219s
+Ran 241 tests in 25.256s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -493,7 +493,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests) ... ok
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 241 tests in 25.430s
+Ran 241 tests in 24.908s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -518,7 +518,7 @@ Crossing engine: 14 tests
 Crossing ui: 8 tests
 .............................................................................................................................................................ss..................................................................................
 ----------------------------------------------------------------------
-Ran 241 tests in 25.012s
+Ran 241 tests in 25.232s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -534,7 +534,8 @@ Legal loss: score=70 deaths=3 steps=105
 
 # checklist item crossing-terminal
 $ ["python3", "-B", "scripts/check_crossing_terminal.py"]
-PASS: Crossing real PTY arrows/WASD, hop, pause, restart, resize, mute, Q and SIGINT; modes restored; child groups gone.
+SKIP mute/unmute: no audio player; only checked that M keeps the game running
+PASS: Crossing real PTY arrows/WASD, hop, pause, restart, resize, Q and SIGINT; modes restored; child groups gone.
 Transcript: runs/crossing/04-test/output/terminal-transcript.txt
 
 # checklist item crossing-cli
