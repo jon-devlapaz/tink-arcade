@@ -1,0 +1,95 @@
+[
+  {
+    "title": "Tetris",
+    "tagline": "Make room for the next idea.",
+    "about": "Seven-bag Tetris on a paper board with hold, ghost piece and short mechanical key clicks.",
+    "controls": [
+      "Arrows / A D  move",
+      "Up / X  rotate",
+      "Space  hard drop",
+      "C  hold"
+    ],
+    "path": ".",
+    "module": "neon_tetris"
+  },
+  {
+    "title": "Tetris vs Jev",
+    "tagline": "Race Jev to twenty lines.",
+    "about": "A live head-to-head Tetris race against the Jev model on a shared seven-bag.",
+    "controls": [
+      "Arrows / A D  move",
+      "Up / X  rotate",
+      "Space  hard drop",
+      "C  hold"
+    ],
+    "note": "Every race makes billed API calls.",
+    "path": ".",
+    "module": "neon_tetris",
+    "args": [
+      "--versus-jev"
+    ],
+    "requires_env": "TYPESAFE_API_KEY"
+  },
+  {
+    "title": "Breakout",
+    "tagline": "Three boards, three lives.",
+    "about": "Clear Gate, Chevron, then Islands. No power-ups and no speed-ups; just the angle of the paddle.",
+    "controls": [
+      "Arrows / A D  move",
+      "Space  launch",
+      "P  pause"
+    ],
+    "path": ".",
+    "module": "tink_breakout"
+  },
+  {
+    "title": "Snake",
+    "tagline": "Classic, on a quiet canvas.",
+    "about": "Offline Snake with a seedable food sequence.",
+    "controls": [
+      "Arrows / WASD  steer",
+      "P  pause",
+      "R  restart",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_snake"
+  },
+  {
+    "title": "Invaders",
+    "tagline": "Three waves, three shared lives.",
+    "about": "Clear each wave before it lands. Enemy attacks are seedable for repeatable runs.",
+    "controls": [
+      "Arrows / A D  move",
+      "Space  fire",
+      "P  pause"
+    ],
+    "path": ".",
+    "module": "tink_invaders"
+  },
+  {
+    "title": "Pong",
+    "tagline": "First to seven.",
+    "about": "Solo Pong against the wall-and-paddle machine. Audio can be muted for the whole session.",
+    "controls": [
+      "Up / Down or W S  paddle",
+      "Space  serve",
+      "P  pause",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_pong"
+  },
+  {
+    "title": "Galaga",
+    "tagline": "Hold the formation off.",
+    "about": "An offline formation shooter with original text graphics and repeatable enemy choices.",
+    "controls": [
+      "Arrows / A D  move",
+      "Space  fire",
+      "P  pause"
+    ],
+    "path": ".",
+    "module": "tink_galaga"
+  }
+]

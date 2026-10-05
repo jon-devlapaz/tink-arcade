@@ -2,6 +2,24 @@
 
 Offline terminal games using Python's standard library.
 
+## Arcade menu
+
+Start every game from one menu:
+
+```sh
+./play            # or: python3 -m arcade_menu
+```
+
+Link it onto your PATH to run it from anywhere:
+
+```sh
+ln -sf "$PWD/play" ~/.local/bin/tink-arcade
+```
+
+Games are listed in `arcade_menu/games.json`; add an entry to add a cabinet.
+Run every check locally with `python3 -B scripts/check_all.py`.
+Tetris vs Jev needs `TYPESAFE_API_KEY` and makes billed API calls.
+
 ## Breakout
 
 Run from this checkout with Python 3.9 or newer on macOS or Linux:
