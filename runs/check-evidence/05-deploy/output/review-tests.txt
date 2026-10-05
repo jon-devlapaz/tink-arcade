@@ -1,0 +1,11 @@
+Snake engine: 9 tests
+Snake ui: 10 tests
+..........................................................................ss.............................................
+----------------------------------------------------------------------
+Ran 121 tests in 26.744s
+
+OK (skipped=2)
+Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
+Total: 121; skips: 2
+SKIP test_native_audio.NativeAudioIntegrationTests.test_each_sample_renders_on_repeated_spaced_plays: set NEON_TETRIS_AUDIO_TESTS=1 on macOS to play and meter real samples
+SKIP test_native_audio.NativeAudioIntegrationTests.test_replay_after_mute_and_resume: set NEON_TETRIS_AUDIO_TESTS=1 on macOS to play and meter real samples

@@ -1,0 +1,222 @@
+80x30 playing: {"best": 0, "complete": false, "cue": null, "direction": [1, 0], "elapsed": 2.500019036233425e-07, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[10, 10], [9, 10], [8, 10]], "sound": "key sound on [M]", "turns": []}
+Queue up then left arrows: {"best": 0, "complete": false, "cue": null, "direction": [1, 0], "elapsed": 0.019759625021833926, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[10, 10], [9, 10], [8, 10]], "sound": "key sound on [M]", "turns": [[0, -1], [-1, 0]]}
+Uppercase WASD turn: {"best": 0, "complete": false, "cue": "move", "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Pause: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Pause freezes snake and timer: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Pause freezes snake and timer: 21 unchanged frames
+Shrink while paused: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Ignore small-window game controls: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Undersize freezes snake and timer: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Undersize freezes snake and timer: 20 unchanged frames
+Mute while small: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound muted [M]", "turns": []}
+Unmute while small: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Restore at 100x35: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Restored pause stays frozen: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": true, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Restored pause stays frozen: 20 unchanged frames
+Resume: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.011607583009172251, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Shrink while playing: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.09319183303974571, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Playing resize freezes time: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.09319183303974571, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": true, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Playing resize freezes time: 21 unchanged frames
+Playing resize recovery: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.09319183303974571, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[9, 10], [9, 9], [10, 9]], "sound": "key sound on [M]", "turns": []}
+Movement resumes: {"best": 0, "complete": false, "cue": null, "direction": [0, 1], "elapsed": 0.013752958069089827, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[9, 11], [9, 10], [9, 9]], "sound": "key sound on [M]", "turns": []}
+Restart: {"best": 0, "complete": false, "cue": null, "direction": [1, 0], "elapsed": 0.0, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[10, 10], [9, 10], [8, 10]], "sound": "key sound on [M]", "turns": []}
+Lowercase WASD turn: {"best": 0, "complete": false, "cue": "move", "direction": [0, -1], "elapsed": 0.01575291697401554, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[10, 9], [10, 10], [9, 10]], "sound": "key sound on [M]", "turns": []}
+Wall collision game over: {"best": 0, "complete": false, "cue": "over", "direction": [0, -1], "elapsed": 0.004532916976604684, "food": [8, 3], "over": true, "paused": false, "score": 0, "small": false, "snake": [[10, 0], [10, 1], [10, 2]], "sound": "key sound on [M]", "turns": []}
+Game over freezes snake: {"best": 0, "complete": false, "cue": null, "direction": [0, -1], "elapsed": 0.004532916976604684, "food": [8, 3], "over": true, "paused": false, "score": 0, "small": false, "snake": [[10, 0], [10, 1], [10, 2]], "sound": "key sound on [M]", "turns": []}
+Game over freezes snake: 20 unchanged frames
+Exit b'q': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+. socratink  /  paper snakeleave room to grow.
+
++- PLAY / PAPER -------------------------+    +- SESSION ---------------+
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  SCORE|
+| . . . . . . . . . . . . . . . . . . . .|    |  0|
+| . . . . . . . .() . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  SPEED / STEPS PER SEC  |
+| . . . . . . . . . . . . . . . . . . . .|    |  5.6|
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  LENGTH|
+| . . . . . . . . . . . . . . . . . . . .|    |  3|
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . .[][]>> . . . . . . . . .|    |  SESSION BEST|
+| . . . . . . . . . . . . . . . . . . . .|    |  0|
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    +-------------------------+
+| . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . .|A fresh page.
+   | . . . . . . . . . . . . . . . . . . . .|key sound on [M]
+| . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . .|>> head   [] body
+| . . . . . . . . . . . . . . . . . . . .|() food
++----------------------------------------+
+
+Arrows / WASD steer   P pause   R restart
+   M mute   Q quit   Ctrl-C exit^^
+ .[][]<<[]
+ .[]
+vv .+--------------------------+|          PAUSED          ||   Take a breath.         ||   P resume  R restart    ||||   M mute    Q quit       |+--------------------------+. socratink  /leave room+- PLAY / PAPER ---------------------| . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . .| . . . . . . . .() . . . . . . . . .| . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . .| . . .+--------------------------+ . . . . . . . . . . . . .|    |  SPEED /
+ . . . . . . . . . . . .|    |  5.6
+-----------------+ . . .|    |
+ PAUSED| . . .|    |  LENGTH
+ breath.         | . . .|    |  3
+me  R restart    ||    | ||    |  SESSION
+ Q quit       ||    |  0
+-----------------+ . . .|    |
+ . .|    +---------- . .|
+ . . . . . . . . .|      A fresh
+
+
+
+
+
+  Socratink / paper snake
+  Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+  M mute  Q quit  Ctrl-C exitmuted [M]on [M]
+
+
+
+  Socratink / paper snake
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit100 x 35 // simulation frozen. socratink  /  paper snakeleave room to grow.+- PLAY / PAPER -------------------------+    +- SESSION ---------------+| . . . . . . . . . . . . . . . . . . . .|    ||| . . . . . . . . . . . . . . . . . . . .|    |  SCORE|| . . . . . . . . . . . . . . . . . . . .|    |  0|| . . . . . . . .() . . . . . . . . . . .|    ||| . . . . . . . . . . . . . . . . . . . .|    |  SPEED / STEPS PER SEC  || . . . . . . . . . . . . . . . . . . . .|    |  5.6|| . . .+--------------------------+ . . .|    ||| . . .|PAUSED| . . .|    |  LENGTH| | . . .|   Take a breath.| . . .|    |  3| | . . .|   P resume  R restart    | . . .|    || | . . .|| . . .|    |  SESSION BEST| | . . .|   M mute    Q quit| . . .|    |  0| | . . .+--------------------------+ . . .|    ||| . . . . . . . . . . . . . . . . . . . .|    +-------------------------+| . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . .|A fresh page.| . . . . . . . . . . . . . . . . . . . .|key sound on [M]| . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . .|>> head   [] body| . . . . . . . . . . . . . . . . . . . .|() food+----------------------------------------+Arrows / WASD steer   P pause   R restartM mute   Q quit   Ctrl-C exit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .[][] . . . . . . . . . . . .vv . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. so+- PLAY / PAPER -----------| . . . . . . . . . . . . .| . . . . . . . . . . . . .| . . . . . . . . . . . . .| . . . . . . . .() . . . .| . . . . . . . . . . . . . . . . . . . . . . . . .|    |  SPEED /
+ . . . . . . . . . . . .|    |  5.6
+ . . . . . . . . . . . .|    |
+ . . . . . . . . . . . .|    |  LENGTH
+ . . . . . . . . . . . .|    |  3
+ .[][] . . . . . . . . .|    |
+ .vv . . . . . . . . . .|    |  SESSION
+ . . . . . . .|    |  0
+ . . . . . . .|    |
+ . . . . . . .|    +---------- . . . . . . .|
+ . . . . . . .|      A fresh 
+
+
+
+  Socratink / paper snake
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12 // simulation frozen
+  key sound on [M]
+  M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper snake
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit80 x 30. socratink  /  paper snakeleave room to grow.
+
++- PLAY / PAPER -------------------------+    +- SESSION ---------------+
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  SCORE|
+| . . . . . . . . . . . . . . . . . . . .|    |  0|
+| . . . . . . . .() . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  SPEED / STEPS PER SEC  |
+| . . . . . . . . . . . . . . . . . . . .|    |  5.6|
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  LENGTH|
+ | . . . . . . . . . . . . . . . . . . . .|    |  3|
+ | . . . . . . . . .[][] . . . . . . . . .|    ||
+ | . . . . . . . . .vv . . . . . . . . . .|    |  SESSION BEST|
+ | . . . . . . . . . . . . . . . . . . . .|    |  0|
+ | . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    +-------------------------+
+| . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . .|A fresh page.
+   | . . . . . . . . . . . . . . . . . . . .|key sound on [M]
+| . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . .|>> head   [] body
+| . . . . . . . . . . . . . . . . . . . .|() food
++----------------------------------------+
+
+Arrows / WASD steer   P pause   R restart
+   M mute   Q quit   Ctrl-C exit .
+[]
+vv .
+[][]>>
+ .^^
+ .[][]^^
+[]
+ .^^
+[]
+
+ .^^
+[]
+
+ .^^
+[]
+
+ .^^
+[]
+
+ .^^
+[]
+
+ .^^
+[]
+
+ .^^
+[]
+
+ .^^
+[]
+
+ .+--------------------------+|        GAME OVER         ||   Turn a fresh page.     ||   R restart||||   M mute    Q quit       |+--------------------------+
+
+
+
+Starts undersized: {"best": 0, "complete": false, "cue": null, "direction": [1, 0], "elapsed": 0.0, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": true, "snake": [[10, 10], [9, 10], [8, 10]], "sound": "key sound on [M]", "turns": []}
+Initial undersize freezes time: {"best": 0, "complete": false, "cue": null, "direction": [1, 0], "elapsed": 0.0, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": true, "snake": [[10, 10], [9, 10], [8, 10]], "sound": "key sound on [M]", "turns": []}
+Initial undersize freezes time: 20 unchanged frames
+Initial resize recovery: {"best": 0, "complete": false, "cue": null, "direction": [1, 0], "elapsed": 0.0, "food": [8, 3], "over": false, "paused": false, "score": 0, "small": false, "snake": [[10, 10], [9, 10], [8, 10]], "sound": "key sound on [M]", "turns": []}
+Exit b'\x03': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+
+
+
+
+  Socratink / paper snake
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper snake
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit80 x 30. socratink  /  paper snakeleave room to grow.
+
++- PLAY / PAPER -------------------------+    +- SESSION ---------------+
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  SCORE|
+| . . . . . . . . . . . . . . . . . . . .|    |  0|
+| . . . . . . . .() . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  SPEED / STEPS PER SEC  |
+| . . . . . . . . . . . . . . . . . . . .|    |  5.6|
+| . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    |  LENGTH|
+ | . . . . . . . . . . . . . . . . . . . .|    |  3|
+ | . . . . . . . . . . . . . . . . . . . .|    ||
+ | . . . . . . . .[][]>> . . . . . . . . .|    |  SESSION BEST|
+ | . . . . . . . . . . . . . . . . . . . .|    |  0|
+ | . . . . . . . . . . . . . . . . . . . .|    ||
+| . . . . . . . . . . . . . . . . . . . .|    +-------------------------+
+| . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . .|A fresh page.
+   | . . . . . . . . . . . . . . . . . . . .|key sound on [M]
+| . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . .|>> head   [] body
+| . . . . . . . . . . . . . . . . . . . .|() food
++----------------------------------------+
+
+Arrows / WASD steer   P pause   R restart
+   M mute   Q quit   Ctrl-C exit

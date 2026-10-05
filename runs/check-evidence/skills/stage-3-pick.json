@@ -1,0 +1,9 @@
+{
+  "stage": 3,
+  "document": "runs/check-evidence/brief.md",
+  "sha256": "6f0e1d6a2e228f45d924c588f26bd8e1fdd1019c1e0fb64a2ef2ac898dfaa7bf",
+  "chars": 6803,
+  "status": "routed",
+  "winner": "principle-build-the-lever",
+  "confidence": 0.84
+}
