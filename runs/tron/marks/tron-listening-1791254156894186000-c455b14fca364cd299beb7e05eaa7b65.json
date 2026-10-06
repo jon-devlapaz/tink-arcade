@@ -1,0 +1,7 @@
+{
+  "item": "tron-listening",
+  "result": "passed",
+  "evidence": "Jon answered 'yes' in chat when asked whether he listened to the sound in both games, after playing them and calling them good. Which device he used and what he heard were not stated, so this does not describe the output device or individual cues.",
+  "candidate": "420f0330d90abcb1138e17b73938c13c51bcb94c78e03d16bd4b272f9c9810d9",
+  "time_ns": 1791254156894186000
+}

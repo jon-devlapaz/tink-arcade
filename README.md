@@ -135,6 +135,39 @@ plays sounds when audio is available and writes only Snake's transcript under
 `runs/snake/04-test/output/`. Native sample metering requires macOS and
 `NEON_TETRIS_AUDIO_TESTS=1`. Metering does not replace listening.
 
+## Paper Tron
+
+Run `python3 -B -m tink_tron` in a terminal at least 80 columns by 30 rows. By default
+you play player 1 against a machine; add `--two-player` for a second human on the same
+keyboard. `--level easy|normal|hard` picks the machine (default normal), `--seed 42`
+repeats its tie-breaks, `--no-color` selects monochrome and `--no-sound` disables audio
+for the whole session.
+
+Both cycles move one cell every 90 ms on a 38 by 20 grid and leave a trail. A cycle that
+leaves the grid or enters any trail or head loses the round. If both crash on the same
+step, including a head-on or a swap, the round is a draw: nobody scores and it replays.
+The match is best of five (first to three round wins). Space starts the next round.
+
+Solo, arrows or WASD steer you. In two-player, WASD steers player 1 and arrows steer
+player 2. One turn can wait per cycle per step, so two quick presses cannot reverse you
+into your own trail. P pauses, R restarts the match, M mutes, and Q or Ctrl-C exits.
+Shrinking below 80 by 30 freezes play until the terminal is large enough again.
+
+The machine is offline and deterministic. It reads only the board, never your pending key.
+Easy takes a random safe move. Normal takes the safe move with the largest reachable room,
+so it avoids sealing itself in. Hard counts the cells it can reach before you can (a
+Voronoi territory count) and takes the move that claims the most, using reachable room as
+the tiebreak. No level moves into a wall or trail while a safe move exists.
+
+Player 1 is `##` heads and `==` trails in jade; player 2 is `@@` heads and `::` trails in
+ink, so the players differ without color. Audio reuses the existing cues: turns click, a
+round win uses the clear cue, a loss or draw uses enter, and pause/restart use switch.
+
+Run `python3 -B -m unittest tests.test_tron_engine tests.test_tron_ai tests.test_tron_ui`
+for the rules, machine and presentation tests and `python3 -B scripts/check_tron_terminal.py`
+for the real-terminal check, which writes only Tron's transcript under
+`runs/tron/04-test/output/`.
+
 ## Paper Pong
 
 Run `python3 -B -m tink_pong` with Python 3.9+ on macOS or Linux in an 80 by 30
