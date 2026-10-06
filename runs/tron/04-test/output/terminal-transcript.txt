@@ -1,0 +1,281 @@
+80x30 playing: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 1.4160177670419216e-06, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Uppercase WASD turn: {"cue": "move", "dirs": [[0, -1], [0, 1]], "elapsed": 0.10373308300040662, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Pause: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Pause freezes both cycles and the clock: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Pause freezes both cycles and the clock: 20 unchanged frames
+Shrink while paused: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Ignore small-window game controls: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Undersize freezes both cycles and the clock: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Undersize freezes both cycles and the clock: 20 unchanged frames
+Mute while small: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound muted [M]", "trail": 4, "winner": null}
+Unmute while small: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Restore at 100x35: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Restored pause stays frozen: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": true, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Restored pause stays frozen: 21 unchanged frames
+Resume: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.15511295798933133, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Shrink while playing: {"cue": null, "dirs": [[0, -1], [-1, 0]], "elapsed": 0.23261599999386817, "heads": [[6, 8], [30, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 6, "winner": null}
+Playing resize freezes time: {"cue": null, "dirs": [[0, -1], [-1, 0]], "elapsed": 0.23261599999386817, "heads": [[6, 8], [30, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 6, "winner": null}
+Playing resize freezes time: 20 unchanged frames
+Playing resize recovery: {"cue": null, "dirs": [[0, -1], [-1, 0]], "elapsed": 0.23261599999386817, "heads": [[6, 8], [30, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 6, "winner": null}
+Movement resumes: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 0.2720680420170538, "heads": [[6, 7], [30, 12]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 8, "winner": null}
+Restart: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Lowercase WASD turn, round 1: {"cue": "move", "dirs": [[0, -1], [0, 1]], "elapsed": 0.09837324998807162, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Wall loses round 1: {"cue": "over", "dirs": [[0, -1], [0, 1]], "elapsed": 1.0053455000161193, "heads": [[6, 0], [29, 17]], "match": null, "over": true, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 1], "small": false, "sound": "key sound on [M]", "trail": 23, "winner": 1}
+Round 1 result freezes the board: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 1.0053455000161193, "heads": [[6, 0], [29, 17]], "match": null, "over": true, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 1], "small": false, "sound": "key sound on [M]", "trail": 23, "winner": 1}
+Round 1 result freezes the board: 20 unchanged frames
+Space starts round 2: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 2, "scores": [0, 1], "small": false, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Lowercase WASD turn, round 2: {"cue": "move", "dirs": [[0, -1], [1, 0]], "elapsed": 0.09911995800212026, "heads": [[6, 9], [32, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 2, "scores": [0, 1], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Wall loses round 2: {"cue": "over", "dirs": [[0, -1], [0, -1]], "elapsed": 0.9995159169775434, "heads": [[6, 0], [29, 13]], "match": null, "over": true, "paused": false, "pending": [null, null], "round": 2, "scores": [0, 2], "small": false, "sound": "key sound on [M]", "trail": 23, "winner": 1}
+Round 2 result freezes the board: {"cue": null, "dirs": [[0, -1], [0, -1]], "elapsed": 0.9995159169775434, "heads": [[6, 0], [29, 13]], "match": null, "over": true, "paused": false, "pending": [null, null], "round": 2, "scores": [0, 2], "small": false, "sound": "key sound on [M]", "trail": 23, "winner": 1}
+Round 2 result freezes the board: 20 unchanged frames
+Space starts round 3: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 3, "scores": [0, 2], "small": false, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Third losing turn: {"cue": "move", "dirs": [[0, -1], [0, 1]], "elapsed": 0.09999216702999547, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 3, "scores": [0, 2], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Machine wins the match: {"cue": "over", "dirs": [[0, -1], [0, 1]], "elapsed": 1.0000905829947442, "heads": [[6, 0], [34, 12]], "match": 1, "over": true, "paused": false, "pending": [null, null], "round": 3, "scores": [0, 3], "small": false, "sound": "key sound on [M]", "trail": 23, "winner": 1}
+Space does not leave a finished match: {"cue": null, "dirs": [[0, -1], [0, 1]], "elapsed": 1.0000905829947442, "heads": [[6, 0], [34, 12]], "match": 1, "over": true, "paused": false, "pending": [null, null], "round": 3, "scores": [0, 3], "small": false, "sound": "key sound on [M]", "trail": 23, "winner": 1}
+Restart a finished match: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Exit b'q': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+. socratink  /  paper tronleave a line, cut a line.
+YOU ##  0ROUND 1  first to 30  @@ MACHINE (easy)
++- PLAY / PAPER -------------------------------------------------------------+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . .## . . . . . . . . . . . . . . . . . . . . . . . .@@ . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
++----------------------------------------------------------------------------+
+## P1 head  == trail    @@ P2 head  :: trailkey sound on [M]
+Arrows / WASD steer   Space next round   P pause   R restart
+   M mute   Q quit   Ctrl-C exit##
+==::
+@@+----------------------------------+|PAUSED||     Take a breath.||     P resume  R restart          ||||     M mute    Q quit             |+----------------------------------+. socratinkleave a line,YOU ##  0ROUND 1  f+- PLAY / PAPER -----------------------| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . .+----------------- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .+----------------------------------+ . .|       PAUSED       | . .|     Take a breath.| . .|     P resume  R restart          |
+ .||
+ .|     M mute    Q quit             |
+ .+----------------------------------+
+ .
+ .
+ . . . . . . . . . 
+
+
+
+
+
+  Socratink / paper tron
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12 // simulation frozen
+  key sound on [M]
+  M mute  Q quit  Ctrl-C exitmuted [M]on [M]
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit100 x 35 // simulation frozen. socratink  /  paper tronleave a line, cut a line.YOU ##  0ROUND 1  first to 30  @@ MACHINE (easy)+- PLAY / PAPER -------------------------------------------------------------+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|| . . . . . . . . . .|PAUSED| . . . . . . . . . .| | . . . . . . . . . .|     Take a breath.| . . . . . . . . . .| | . . . . . .## . . .|     P resume  R restart| . . . . . . . . . .| | . . . . . .== . . .|       | . . .:: . . . . . .| | . . . . . . . . . .|     M mute    Q quit| . . .@@ . . . . . .| | . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|+----------------------------------------------------------------------------+## P1 head  == trail    @@ P2 head  :: trailkey sound on [M]Arrows / WASD steer   Space next round   P pause   R restartM mute   Q quit   Ctrl-C exit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::. sleaYOU ##  0+- PLAY / PAPER -------------| . . . . . . . . . . . . . .| . . . . . . . . . . . . . .| . . . . . . . . . . . . . .| . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+ . . . . . .
+ . . . . . .
+ . . . . . .
+ . . . . . .
+
+
+
+  Socratink / paper tron
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12 // simulation frozen
+  key sound on [M]
+  M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit80 x 30. socratink  /  paper tronleave a line, cut a line.
+YOU ##  0ROUND 1  first to 30  @@ MACHINE (easy)
++- PLAY / PAPER -------------------------------------------------------------+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . .## . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . .:: . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .@@:: . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
++----------------------------------------------------------------------------+
+## P1 head  == trail    @@ P2 head  :: trailkey sound on [M]
+Arrows / WASD steer   Space next round   P pause   R restart
+   M mute   Q quit   Ctrl-C exit
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@ .
+ .
+ .
+##@@
+ . .
+ .##
+==::
+@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@
+M| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+
+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .:: . . . . . . .|
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@
+M| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .:: . . . . . .|
+M| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .:: . . . . . .|
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::1+----------------------------------+|   THE MACHINE TAKES THE ROUND    ||     Space for the next round.    ||     Space next  R restart        ||||     M mute    Q quit             |+----------------------------------+
+
+
+
+ .::
+@@2 .
+ .
+ .
+ .
+ .
+ .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .## . . . . . . . . . . . . . . . . . .@@ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+ . .
+ .
+ .
+ . . .
+ .##
+==::@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@
+M| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+
+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .:: . . . .|
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::2+----------------------------------+|   THE MACHINE TAKES THE ROUND    ||     Space for the next round.    ||     Space next  R restart        ||||     M mute    Q quit             |+----------------------------------+
+ .@@
+::3 .
+ .
+ .
+ .
+ .
+ .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .## . . . . . . . . . . . . . . . . . .@@ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .##
+==::
+@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::
+@@
+M| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+
+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .:: . . . . . . .|
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::@@
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@
+::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@
+::
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|::@@3+----------------------------------+|    THE MACHINE WINS THE MATCH    ||     Turn a fresh page.           ||     R new match||||     M mute    Q quit             |::+----------------------------------+@@10 .
+ .
+ .
+ .
+ .
+ .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .## . . . . . . . . . . . . . . . . . .@@ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .==##::
+@@
+
+
+
+Starts undersized: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Initial undersize freezes time: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": true, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Initial undersize freezes time: 20 unchanged frames
+Initial resize recovery: {"cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "heads": [[6, 10], [31, 10]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 2, "winner": null}
+Two players: WASD steers player 1, arrows steer player 2: {"cue": "move", "dirs": [[0, -1], [0, 1]], "elapsed": 0.09897183300927281, "heads": [[6, 9], [31, 11]], "match": null, "over": false, "paused": false, "pending": [null, null], "round": 1, "scores": [0, 0], "small": false, "sound": "key sound on [M]", "trail": 4, "winner": null}
+Exit b'\x03': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound on [M]
+M mute  Q quit  Ctrl-C exit80 x 30. socratink  /  paper tronleave a line, cut a line.
+PLAYER 1 ##  0ROUND 1  first to 30  @@ PLAYER 2
++- PLAY / PAPER -------------------------------------------------------------+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . .## . . . . . . . . . . . . . . . . . . . . . . . .@@ . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
++----------------------------------------------------------------------------+
+## P1 head  == trail    @@ P2 head  :: trailkey sound on [M]
+WASD player 1   Arrows player 2   Space next round   P pause   R restart
+   M mute   Q quit   Ctrl-C exit##
+==::
+@@
