@@ -20,10 +20,18 @@ sign-in, opened the PR and merged it in the browser, as Jon directed. This depar
 from SDLC.md's "only a human merges"; the human decision was Jon's explicit
 instruction rather than his own click.
 
+## Human playtest
+Jon played Crossing after merge and reported (Cowork, 2026-10-05): "it works as
+intended." No changes requested.
+
+## Process note
+Commit e29c07e (this file's first version) was pushed straight to main, against
+Substrate's finish guide ("do not push directly to a protected main branch").
+main is not protected, so nothing broke; this follow-up goes through a PR.
+
 ## Not done
 - `archive --phase closure`: tink-substrate is not installed where the operator
   runs. Run it on a host that has it, if wanted.
-- Human playtest and listening.
 
 ## Follow-ups
 tink-sdlc #45 (closure record in SDLC.md), #46 (text status hides the verify
