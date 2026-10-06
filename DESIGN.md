@@ -218,6 +218,24 @@ advance at most one cell. Snake imports `KeyboardAudio` directly; samples,
 credits and the existing backend are unchanged. Eating or collision replaces
 the lower-priority turn cue for the same movement step.
 
+## Tron
+
+Tron keeps the centered 80 by 30 canvas and paper palette. Its 38 by 20 grid uses two
+columns per cell and fills the canvas width (border at column 1, row 4), so there is no
+side panel: a scoreboard row above the grid shows each player's mark and round wins, and
+the round number sits between them. The legend and sound status are on row 26; rows 27
+and 28 retain controls on every overlay.
+
+Player 1 heads are `##` and trails `==` in jade; player 2 heads are `@@` and trails `::`
+in ink. Heads use bold reverse video, trails do not, so heads, trails and players stay
+distinct in monochrome. Pause, round results and match results overlay the grid.
+
+The pure engine owns simultaneous movement, collision, draws, scoring and the one-turn
+buffer; the machine opponents are pure functions in `ai.py`. The terminal loop freezes
+time during pause and undersize, clears buffered turns on entry, and discards elapsed
+resize time. A delayed frame advances at most one step. Tron imports `KeyboardAudio`
+directly; samples and credits are unchanged.
+
 ## Invaders
 
 Invaders uses the same centered 80 by 30 canvas and paper/ink/jade palette as

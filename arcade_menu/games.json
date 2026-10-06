@@ -104,5 +104,18 @@
     ],
     "path": ".",
     "module": "tink_crossing"
+  },
+  {
+    "title": "Tron",
+    "tagline": "Leave a line, cut a line.",
+    "about": "Light cycles on a paper grid. Beat the machine (easy, normal or hard) best of five; a second player can join with --two-player.",
+    "controls": [
+      "Arrows / WASD  steer",
+      "Space  next round",
+      "P  pause",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_tron"
   }
 ]
