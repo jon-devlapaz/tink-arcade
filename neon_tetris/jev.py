@@ -13,6 +13,12 @@ PRICE_SOURCE = 'https://docs.typesafe.ai/models.md (checked 2026-10-03)'
 INPUT_USD_PER_MILLION = {MODEL: Decimal('0.042')}
 
 
+TETRIS_INSTRUCTIONS = ('Choose the best legal Tetris move to race to 20 cleared lines. '
+                       'Clear lines, avoid covered empty cells and topping out, and keep the stack low. '
+                       'x=0 is left, y=0 is top. Each placement rotates, moves and hard-drops '
+                       'the current piece. You decide the move; options are not ranked.')
+
+
 @dataclass(frozen=True)
 class Reply:
     choice: str = ''
@@ -54,15 +60,12 @@ class JevClient:
         self.model = model
         self.timeout = timeout
 
-    def choose(self, state, criteria):
+    def choose(self, state, criteria, instructions=TETRIS_INSTRUCTIONS):
         body = json.dumps({
             'model': self.model, 'state': state,
             'questions': {'move': {
                 'type': 'choice',
-                'instructions': ('Choose the best legal Tetris move to race to 20 cleared lines. '
-                                 'Clear lines, avoid covered empty cells and topping out, and keep the stack low. '
-                                 'x=0 is left, y=0 is top. Each placement rotates, moves and hard-drops '
-                                 'the current piece. You decide the move; options are not ranked.'),
+                'instructions': instructions,
                 'criteria': criteria,
             }},
         }).encode()

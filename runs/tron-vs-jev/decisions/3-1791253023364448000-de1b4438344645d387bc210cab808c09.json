@@ -1,0 +1,8 @@
+{
+  "inputs": "87386806cc973cdc79aa56d09dc3c94fcc012aea0234915e69d7708163b219b4",
+  "decision": "approved",
+  "has_checklist": true,
+  "reviewer": "Jon",
+  "source": "Chat approval in this session: \"approved, build the jev option\"",
+  "reason": "Accepted Tron vs Jev brief r1: route pacing, no fallback, reuse of neon_tetris.jev, checklist"
+}

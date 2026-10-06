@@ -1,0 +1,77 @@
+{
+  "model": "jev-1.13.0",
+  "calls": 6,
+  "succeeded": 6,
+  "route_length": 16,
+  "request_at": 10,
+  "step_seconds": 0.09,
+  "budget_seconds": 0.9,
+  "route_seconds": 1.44,
+  "median_seconds": 0.226,
+  "max_seconds": 0.293,
+  "within_budget": 6,
+  "estimated_cost": "$0.00081220",
+  "when": "2026-10-05",
+  "rows": [
+    {
+      "call": 1,
+      "kind": "opening",
+      "seconds": 0.293,
+      "routes": 42,
+      "input_tokens": 4383,
+      "model": "jev-1.13.0",
+      "choice_valid": true,
+      "error": ""
+    },
+    {
+      "call": 2,
+      "kind": "mid-round",
+      "seconds": 0.22,
+      "routes": 16,
+      "input_tokens": 2063,
+      "model": "jev-1.13.0",
+      "choice_valid": true,
+      "error": ""
+    },
+    {
+      "call": 3,
+      "kind": "mid-round",
+      "seconds": 0.271,
+      "routes": 42,
+      "input_tokens": 4383,
+      "model": "jev-1.13.0",
+      "choice_valid": true,
+      "error": ""
+    },
+    {
+      "call": 4,
+      "kind": "mid-round",
+      "seconds": 0.187,
+      "routes": 16,
+      "input_tokens": 2063,
+      "model": "jev-1.13.0",
+      "choice_valid": true,
+      "error": ""
+    },
+    {
+      "call": 5,
+      "kind": "mid-round",
+      "seconds": 0.231,
+      "routes": 42,
+      "input_tokens": 4383,
+      "model": "jev-1.13.0",
+      "choice_valid": true,
+      "error": ""
+    },
+    {
+      "call": 6,
+      "kind": "mid-round",
+      "seconds": 0.218,
+      "routes": 16,
+      "input_tokens": 2063,
+      "model": "jev-1.13.0",
+      "choice_valid": true,
+      "error": ""
+    }
+  ]
+}

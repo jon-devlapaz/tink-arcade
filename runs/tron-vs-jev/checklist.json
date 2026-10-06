@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "jev-routes",
+      "description": "Pure deterministic route enumeration with neutral facts.",
+      "verify": "Tests prove routes avoid walls and trails, respect the cap, are stable, and the facts are correct on constructed boards.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_tron_jev_routes",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "jev-controller",
+      "description": "Route following, early replanning, no-fallback exhaustion, opening wait, stale-reply handling, one in flight, error and retry, and key hygiene, all with a fixture provider.",
+      "verify": "Controller tests pass with no network and no key.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_tron_jev",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "jev-ui",
+      "description": "Status, cost and error presentation, layout at 80x30 and 100x35, and a clear refusal when the key is missing.",
+      "verify": "UI tests pass.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_tron_jev_ui",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "tetris-prompt-unchanged",
+      "description": "Tetris vs Jev behaves exactly as before after the instructions parameter is added.",
+      "verify": "The prompt is byte-for-byte identical and all existing Jev tests pass.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_[jr]*.py",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "jev-terminal",
+      "description": "The real program in a PTY with a fixture provider, including an error and retry.",
+      "verify": "State assertions, restored terminal modes, no surviving child group; no live calls.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_tron_jev_terminal.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "jev-no-regressions",
+      "description": "All existing games and the menu are unchanged.",
+      "verify": "Full local check passes.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_all.py"
+        ],
+        "timeout_seconds": 300
+      }
+    },
+    {
+      "id": "jev-live-latency",
+      "description": "With Jon's go-ahead, a few real calls record Jev's latency and token usage, and the route constants are tuned from them.",
+      "verify": "Mark only with the measured numbers, the date and the estimated cost; if no live run was authorised, leave unmarked and say so."
+    },
+    {
+      "id": "jev-play-feel",
+      "description": "A human plays at least one full match against Jev and records how it feels, including whether slow replies cost it rounds.",
+      "verify": "Mark only with the player's actual observation."
+    }
+  ]
+}

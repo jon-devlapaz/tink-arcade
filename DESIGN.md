@@ -236,6 +236,10 @@ time during pause and undersize, clears buffered turns on entry, and discards el
 resize time. A delayed frame advances at most one step. Tron imports `KeyboardAudio`
 directly; samples and credits are unchanged.
 
+Tron vs Jev uses the same canvas. The subtitle row shows Jev's status and the running cost estimate instead of the
+tagline, the right-hand scoreboard name is `JEV`, and a hold overlay reads `WAITING FOR JEV` or `JEV ERROR` (with
+`Enter retry`). Everything else, including marks and audio cues, is unchanged.
+
 ## Invaders
 
 Invaders uses the same centered 80 by 30 canvas and paper/ink/jade palette as

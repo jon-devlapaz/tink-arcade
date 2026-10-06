@@ -168,6 +168,34 @@ for the rules, machine and presentation tests and `python3 -B scripts/check_tron
 for the real-terminal check, which writes only Tron's transcript under
 `runs/tron/04-test/output/`.
 
+### Tron vs Jev
+
+```sh
+python3 -B -m tink_tron --versus-jev --seed 1
+```
+
+Jev steers player 2. It needs `TYPESAFE_API_KEY` in your environment (never in source control) and every
+match makes billed API calls, shown as an estimated session cost. It cannot be combined with `--two-player` or
+`--level`; solo and two-player stay offline. Python 3.11 or newer is needed for the Jev client.
+
+A model call takes seconds and a step is 90 ms, so Jev does not choose each move. The app lists up to 60 clear
+16-step routes from Jev's cycle, with neutral facts (turns, open room at the end, distance to your head and to a
+wall), and Jev picks one. The next route is requested while 10 steps of the current one remain and starts where it
+ends. Nothing ranks the routes.
+
+Jev's thinking time counts as play time. If a route runs out before the next reply arrives, Jev's cycle goes
+straight, and if that is blocked it crashes: there is no scripted dodge, so a slow reply can lose a round. The
+one exception is the start of a round, which waits for Jev's opening route (fetched while the previous result is
+on screen) so Jev is never beaten before the first step. The subtitle shows what Jev is doing and the running cost.
+
+A failed request holds both cycles and shows a short message; Enter retries, R restarts, Q quits. Nothing retries
+silently. Replies that arrive after a restart or a new round never steer, but their reported usage still counts.
+Only board state and route facts are sent; the key is read from the environment and never printed or traced.
+Costs use the same input-token price as Tetris vs Jev, with no spending cap; unknown usage shows `+ unknown`.
+
+`python3 -B scripts/check_tron_jev_terminal.py` drives the real program with a fixture client (no network, no key).
+It never calls real Jev. Opponent strength and pacing need human playtesting.
+
 ## Paper Pong
 
 Run `python3 -B -m tink_pong` with Python 3.9+ on macOS or Linux in an 80 by 30

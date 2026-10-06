@@ -1,0 +1,188 @@
+80x30 first frame: {"busy": true, "calls": 0, "cost": "Est. $0.00000000 + pending", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "", "heads": [[6, 10], [31, 10]], "hold": "WAITING FOR JEV", "match": null, "over": false, "paused": false, "plan": 0, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Opening route arrived, play released: {"busy": false, "calls": 1, "cost": "Est. $0.00000420", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.01803995796944946, "error": "", "heads": [[6, 10], [31, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 16, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Both cycles move along the route: {"busy": false, "calls": 1, "cost": "Est. $0.00000420", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.20133516599889845, "error": "", "heads": [[8, 10], [29, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 14, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Request 2 fails mid-round: play is held: {"busy": false, "calls": 2, "cost": "Est. $0.00000420 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.546820415998809, "error": "Jev request failed or timed out.", "heads": [[12, 10], [25, 10]], "hold": "JEV ERROR", "match": null, "over": false, "paused": false, "plan": 10, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+An error freezes both cycles and the clock: {"busy": false, "calls": 2, "cost": "Est. $0.00000420 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.546820415998809, "error": "Jev request failed or timed out.", "heads": [[12, 10], [25, 10]], "hold": "JEV ERROR", "match": null, "over": false, "paused": false, "plan": 10, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+An error freezes both cycles and the clock: 21 unchanged frames
+Enter retries explicitly: {"busy": true, "calls": 2, "cost": "Est. $0.00000420 + unknown + pending", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.546820415998809, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 10, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Third request succeeds, play resumes: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 26, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Pause: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": true, "plan": 26, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Pause freezes both cycles: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": true, "plan": 26, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Pause freezes both cycles: 21 unchanged frames
+Shrink while paused: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": true, "plan": 26, "round": 1, "scores": [0, 0], "small": true, "sound": "key sound off", "winner": null}
+Undersize freezes both cycles: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": true, "plan": 26, "round": 1, "scores": [0, 0], "small": true, "sound": "key sound off", "winner": null}
+Undersize freezes both cycles: 20 unchanged frames
+Restore: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": true, "plan": 26, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Resume: {"busy": false, "calls": 3, "cost": "Est. $0.00000840 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.5650068739778362, "error": "", "heads": [[12, 10], [25, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 26, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Restart a match: {"busy": true, "calls": 3, "cost": "Est. $0.00000840 + unknown + pending", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "", "heads": [[6, 10], [31, 10]], "hold": "WAITING FOR JEV", "match": null, "over": false, "paused": false, "plan": 0, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+New match waits for a fresh opening route, then plays: {"busy": false, "calls": 4, "cost": "Est. $0.00001260 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.03977849998045713, "error": "", "heads": [[6, 10], [31, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 16, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Steer up: {"busy": false, "calls": 4, "cost": "Est. $0.00001260 + unknown", "cue": "move", "dirs": [[0, -1], [-1, 0]], "elapsed": 0.1020172499702312, "error": "", "heads": [[6, 9], [30, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 15, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Wall loses the round: {"busy": true, "calls": 5, "cost": "Est. $0.00001680 + unknown + pending", "cue": "over", "dirs": [[0, -1], [-1, 0]], "elapsed": 0.9968043749686331, "error": "", "heads": [[6, 0], [20, 10]], "hold": "", "match": null, "over": true, "paused": false, "plan": 21, "round": 1, "scores": [0, 1], "small": false, "sound": "key sound off", "winner": 1}
+Round result freezes the board: {"busy": false, "calls": 6, "cost": "Est. $0.00002100 + unknown", "cue": null, "dirs": [[0, -1], [-1, 0]], "elapsed": 0.9968043749686331, "error": "", "heads": [[6, 0], [20, 10]], "hold": "", "match": null, "over": true, "paused": false, "plan": 21, "round": 1, "scores": [0, 1], "small": false, "sound": "key sound off", "winner": 1}
+Round result freezes the board: 20 unchanged frames
+Space starts the next round: {"busy": false, "calls": 6, "cost": "Est. $0.00002100 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "", "heads": [[6, 10], [31, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 16, "round": 2, "scores": [0, 1], "small": false, "sound": "key sound off", "winner": null}
+Exit b'q': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+. socratink  /  paper tron
+Waiting for Jev to choose an opening route  |  Est. $0.00000000 + pending
+YOU ##  0ROUND 1  first to 30  @@ JEV
++- PLAY / PAPER -------------------------------------------------------------+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|
+| . . . . . . . . . .|WAITING FOR JEV| . . . . . . . . . .|
+| . . . . . . . . . .|     Choosing an opening route.   | . . . . . . . . . .|
+| . . . . . . . . . .|     R restart| . . . . . . . . . .|
+| . . . . . .## . . .|| . . .@@ . . . . . .|
+| . . . . . . . . . .|     M mute    Q quit| . . . . . . . . . .|
+| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
++----------------------------------------------------------------------------+
+## P1 head  == trail    @@ P2 head  :: trailkey sound off
+Arrows / WASD steer   Space next round   P pause   R restart
+   M mute   Q quit   Ctrl-C exit Jev following a route (16 steps left)  |  Est. $0.00000420 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .5==##@@::4==##@@::3==##@@::2==##@@::1==##@@::Jev thinking (10 planned steps left)  |  Est. $0.00000420 + pending==##@@::Jev error: Jev request failed or timed out.  |  Est. $0.00000420 + unknown+----------------------------------+|            JEV ERROR             ||     Jev request failed or timed out|     Enter retry  R restart       ||||     M mute    Q quit             |+----------------------------------+Enter retry   R restart   Q quit
+
+ Jev thinking (10 planned steps left)  |  Est. $0.00000420 + unknown + pending . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . . . . . . . . . . . . . . . .====## . . . . . . . . . . . .@@:::: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .M mute   Q quit   Ctrl-C exit Jev following a route (26 steps left)  |  Est. $0.00000840 + unknown+----------------------------------+|PAUSED||     Take a breath.||     P resume  R restart          ||||     M mute    Q quit             |+----------------------------------+. socratink
+Jev following a route (26 steps leYOU ##  0ROUND 1  f+- PLAY / PAPER -----------------------| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . . . . . . . . . . .| . . . . . . . . . .+----------------- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .+----------------------------------+ . .|       PAUSED       | . .|     Take a breath.| . .|     P resume  R restart          |
+==||:: .|     M mute    Q quit             |
+ .+----------------------------------+
+ .
+ .
+ . . . . . . . . . 
+
+
+
+
+
+  Socratink / paper tron
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12 // simulation frozen
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound off
+M mute  Q quit  Ctrl-C exit80 x 30. socratink  /  paper tron
+Jev following a route (26 steps left)  |  Est. $0.00000840 + unknown
+YOU ##  0ROUND 1  first to 30  @@ JEV
++- PLAY / PAPER -------------------------------------------------------------+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|
+| . . . . . . . . . .|PAUSED| . . . . . . . . . .|
+| . . . . . . . . . .|     Take a breath.| . . . . . . . . . .|
+| . . . . . . . . . .|     P resume  R restart| . . . . . . . . . .|
+| . . . . . .========||:::::::: . . . . . .|
+| . . . . . . . . . .|     M mute    Q quit| . . . . . . . . . .|
+| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
++----------------------------------------------------------------------------+
+## P1 head  == trail    @@ P2 head  :: trailkey sound off
+Arrows / WASD steer   Space next round   P pause   R restart
+   M mute   Q quit   Ctrl-C exit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .====## . . . . . . . . . . . .@@:::: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+ Waiting for Jev to choose an opening route + pe+----------------------------------+|         WAITING FOR JEV          ||     Choosing an opening route.   ||     R restart|## . . .|| . . .@@|     M mute    Q quit             |+----------------------------------+ Jev following a route (16 steps left)126 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .5##
+==@@::
+4 . .
+| . . . . . .== . . . . . . . . . . . . . . . . . . . . . .@@:::: . . . . . .|
+3| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+2| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+1| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+Jev thinking (10 planned steps left)  |  Est. $0.00001260 + unknown + pending| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@:: Jev following a route (26 steps left)  |  Est. $0.00001680 + unknown
+5| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+4| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+3| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+2| . . . . . .== . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|@@::
+
+ Jev thinking (21 planned steps left)  |  Est. $0.00001680 + unknown + pending1+----------------------------------+|       JEV TAKES THE ROUND        ||     Space for the next round.    ||     Space next  R restart        ||||     M mute    Q quit             |+----------------------------------+ Jev following a route (21 steps left)  |  Est. $0.00002100 + unknown16
+2 .
+ .
+ .
+ .
+ .
+ .
+ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .## . . . . . . . . . . . . . . . . . . . . .@@ . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Tron vs Jev: unfinished, 0-1. Est. $0.00002100 + unknown
+
+
+
+Starts undersized: {"busy": false, "calls": 0, "cost": "Est. $0.00000000", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "", "heads": [[6, 10], [31, 10]], "hold": "WAITING FOR JEV", "match": null, "over": false, "paused": false, "plan": 0, "round": 1, "scores": [0, 0], "small": true, "sound": "key sound off", "winner": null}
+Opening request fails: the round never starts: {"busy": false, "calls": 1, "cost": "Est. $0.00000000 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "Jev request failed or timed out.", "heads": [[6, 10], [31, 10]], "hold": "JEV ERROR", "match": null, "over": false, "paused": false, "plan": 0, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+A failed opening leaves the board untouched: {"busy": false, "calls": 1, "cost": "Est. $0.00000000 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "Jev request failed or timed out.", "heads": [[6, 10], [31, 10]], "hold": "JEV ERROR", "match": null, "over": false, "paused": false, "plan": 0, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+A failed opening leaves the board untouched: 20 unchanged frames
+Enter retries the opening: {"busy": true, "calls": 1, "cost": "Est. $0.00000000 + unknown + pending", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.0, "error": "", "heads": [[6, 10], [31, 10]], "hold": "WAITING FOR JEV", "match": null, "over": false, "paused": false, "plan": 0, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Retry succeeds and play starts: {"busy": false, "calls": 2, "cost": "Est. $0.00000420 + unknown", "cue": null, "dirs": [[1, 0], [-1, 0]], "elapsed": 0.024944750010035932, "error": "", "heads": [[6, 10], [31, 10]], "hold": "", "match": null, "over": false, "paused": false, "plan": 16, "round": 1, "scores": [0, 0], "small": false, "sound": "key sound off", "winner": null}
+Exit b'\x03': code 0, original terminal settings restored, process group gone
+
+Sanitized terminal output:
+
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound off
+M mute  Q quit  Ctrl-C exit
+
+
+
+  Socratink / paper tron
+Resize terminal to at least 80 x 30.
+Current: 40 x 12 // simulation frozen
+  key sound off
+M mute  Q quit  Ctrl-C exit80 x 30. socratink  /  paper tron
+Waiting for Jev to choose an opening route  |  Est. $0.00000000 + pending
+YOU ##  0ROUND 1  first to 30  @@ JEV
++- PLAY / PAPER -------------------------------------------------------------+
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|
+| . . . . . . . . . .|WAITING FOR JEV| . . . . . . . . . .|
+| . . . . . . . . . .|     Choosing an opening route.   | . . . . . . . . . .|
+| . . . . . . . . . .|     R restart | . . . . . . . . . .|
+| . . . . . .## . . .|| . . .@@ . . . . . .|
+| . . . . . . . . . .|     M mute    Q quit| . . . . . . . . . .|
+| . . . . . . . . . .+----------------------------------+ . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
+| . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|
++----------------------------------------------------------------------------+
+## P1 head  == trail    @@ P2 head  :: trailkey sound off
+Arrows / WASD steer   Space next round   P pause   R restart
+   M mute   Q quit   Ctrl-C exitJev error: Jev request failed or timed out.  |  Est. $0.0 + unknown   JEV ERROR   Jev request failed or timed outEnter retry  R restartEnter retry   R restart   Q quit
+
+ Waiting for Jev to choose an opening route  |  Est. $0.00000000 + unknown + peWAITING FOR JEVChoosing an opening route.   | R restart             M mute   Q quit   Ctrl-C exit Jev following a route (16 steps left)42 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .

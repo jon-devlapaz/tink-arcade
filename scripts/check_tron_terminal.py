@@ -26,7 +26,7 @@ def physics(state):
 
 
 class Terminal:
-    def __init__(self, directory, cols=80, rows=30, args=('--level', 'easy')):
+    def __init__(self, directory, cols=80, rows=30, args=('--level', 'easy'), command=None, env_extra=None):
         self.master, self.slave = pty.openpty()
         os.set_blocking(self.master, False)
         self.before = termios.tcgetattr(self.slave)
@@ -35,8 +35,8 @@ class Terminal:
         self.notes = []
         self.proc = None
         self.resize(cols, rows)
-        env = dict(os.environ, TERM='xterm-256color', TINK_TRON_TRACE=str(self.trace))
-        self.proc = subprocess.Popen([sys.executable, '-B', '-m', 'tink_tron', '--seed', '1', '--no-color', *args],
+        env = dict(os.environ, TERM='xterm-256color', TINK_TRON_TRACE=str(self.trace), **(env_extra or {}))
+        self.proc = subprocess.Popen(command or [sys.executable, '-B', '-m', 'tink_tron', '--seed', '1', '--no-color', *args],
                                      cwd=ROOT, env=env, stdin=self.slave, stdout=self.slave,
                                      stderr=self.slave, start_new_session=True, close_fds=True)
 

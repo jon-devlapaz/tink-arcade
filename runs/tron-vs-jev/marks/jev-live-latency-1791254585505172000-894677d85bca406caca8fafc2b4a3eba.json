@@ -1,0 +1,7 @@
+{
+  "item": "jev-live-latency",
+  "result": "passed",
+  "evidence": "Measured 2026-10-05 with Jon's go-ahead against real jev-1.13.0 (scripts/measure_tron_jev_latency.py --live; raw numbers in 04-test/output/live-latency.json): 6 sequential requests built from realistic opening and mid-round boards (16-42 routes, 5-12 KB each), all 6 succeeded with valid choices. Latency 0.19-0.29 s, median 0.23 s, against the 0.90 s early-request budget (10 steps x 90 ms) and 1.44 s route length: all 6 fit, about 3x margin, so the constants 16 and 10 were left unchanged. Estimated cost for the 6 calls about $0.0008. Limits: one run from one machine, sequential, small sample; reported input tokens took only two distinct values (4383, 2063) across six different payloads, unexplained, so the cost estimate may not track payload size; says nothing about Jev's move quality.",
+  "candidate": "4c8475486c96a324ee9e4427386726df6afc7f2f001884c26d24ee98c98a3c5c",
+  "time_ns": 1791254585505172000
+}

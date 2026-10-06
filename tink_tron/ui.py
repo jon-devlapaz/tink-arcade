@@ -27,13 +27,14 @@ def key_turns(game, key):
 
 
 class Renderer(PaperRenderer):
-    def _scoreboard(self, game):
-        names = ('PLAYER 1', 'PLAYER 2') if game.two_player else ('YOU', f'MACHINE ({game.level})')
+    def _scoreboard(self, game, jev=None):
+        names = ('YOU', 'JEV') if jev else ('PLAYER 1', 'PLAYER 2') if game.two_player else ('YOU', f'MACHINE ({game.level})')
         left = f'{names[0]} {MARKS[0][0]}  {game.scores[0]}'
         right = f'{game.scores[1]}  {MARKS[1][0]} {names[1]}'
         return left, f'ROUND {game.round}  first to {WINS}', right
 
-    def draw(self, game, too_small, sound_status=''):
+    def draw(self, game, too_small, sound_status='', jev=None):
+        """`jev` is an optional (status, cost, hold_title, hold_hint) tuple for Tron vs Jev; hold_title is '' when play runs."""
         self.screen.erase()
         rows, columns = self.screen.getmaxyx()
         if too_small:
@@ -46,10 +47,11 @@ class Renderer(PaperRenderer):
             self._refresh()
             return
         ox, oy = (columns - MIN_COLUMNS) // 2, (rows - MIN_ROWS) // 2
+        subtitle = f'{jev[0]}  |  {jev[1]}' if jev else 'leave a line, cut a line.'
         for row, text, attr in ((1, '. socratink  /  paper tron', self.ink | curses.A_BOLD),
-                                (2, 'leave a line, cut a line.', self.muted)):
+                                (2, subtitle[:MIN_COLUMNS - 2], self.muted)):
             self.text(oy + row, ox + (MIN_COLUMNS - len(text)) // 2, text, attr)
-        left, middle, right = self._scoreboard(game)
+        left, middle, right = self._scoreboard(game, jev)
         self.text(oy + 3, ox + 1, left, self.accent)
         self.text(oy + 3, ox + (MIN_COLUMNS - len(middle)) // 2, middle, self.muted)
         self.text(oy + 3, ox + MIN_COLUMNS - 1 - len(right), right, self.ink | curses.A_BOLD)
@@ -70,14 +72,18 @@ class Renderer(PaperRenderer):
                 self.text(oy + 5 + y, ox + 2 + x * 2, text, attr)
         self.text(oy + 26, ox + 3, f'{MARKS[0][0]} P1 head  {MARKS[0][1]} trail    {MARKS[1][0]} P2 head  {MARKS[1][1]} trail', self.muted)
         self.text(oy + 26, ox + MIN_COLUMNS - 3 - len(sound_status), sound_status, self.muted)
-        if game.paused or game.round_over:
+        hold = jev[2] if jev else ''
+        rival = 'JEV' if jev else 'THE MACHINE'
+        if hold or game.paused or game.round_over:
             x, y = ox + 22, oy + 11
             self.box(y, x, 7, 36)
             for row in range(1, 6):
                 self.text(y + row, x + 1, ' ' * 34, self.ink)
-            if game.match_winner is not None:
+            if hold:
+                title, hint, keys = hold, jev[3], 'Enter retry  R restart' if 'ERROR' in hold else 'R restart'
+            elif game.match_winner is not None:
                 title = ('PLAYER 2 WINS THE MATCH' if game.match_winner else 'PLAYER 1 WINS THE MATCH') if game.two_player \
-                    else ('YOU WIN THE MATCH' if game.match_winner == 0 else 'THE MACHINE WINS THE MATCH')
+                    else ('YOU WIN THE MATCH' if game.match_winner == 0 else f'{rival} WINS THE MATCH')
                 hint, keys = 'Turn a fresh page.', 'R new match'
             elif game.round_over:
                 if game.winner is None:
@@ -85,7 +91,7 @@ class Renderer(PaperRenderer):
                 elif game.two_player:
                     title = f'PLAYER {game.winner + 1} TAKES THE ROUND'
                 else:
-                    title = 'YOU TAKE THE ROUND' if game.winner == 0 else 'THE MACHINE TAKES THE ROUND'
+                    title = 'YOU TAKE THE ROUND' if game.winner == 0 else f'{rival} TAKES THE ROUND'
                 hint, keys = 'Space for the next round.', 'Space next  R restart'
             else:
                 title, hint, keys = 'PAUSED', 'Take a breath.', 'P resume  R restart'
@@ -95,7 +101,7 @@ class Renderer(PaperRenderer):
             self.text(y + 5, x + 6, 'M mute    Q quit')
         controls = ('WASD player 1   Arrows player 2' if game.two_player else 'Arrows / WASD steer')
         self.text(oy + 27, ox + 3, f'{controls}   Space next round   P pause   R restart')
-        self.text(oy + 28, ox + 3, 'M mute   Q quit   Ctrl-C exit', self.accent)
+        self.text(oy + 28, ox + 3, 'Enter retry   R restart   Q quit' if hold and 'ERROR' in hold else 'M mute   Q quit   Ctrl-C exit', self.accent)
         self._refresh()
 
 
