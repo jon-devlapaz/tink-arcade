@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "tron-engine",
+      "description": "Implement the deterministic Tron engine: simultaneous movement, trails, collisions, draws, best-of-five scoring, turn queue, delayed-frame cap.",
+      "verify": "Engine tests cover every rule in the brief and pass.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_tron_engine",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "tron-ai",
+      "description": "Implement easy, normal and hard opponents as seedable pure functions.",
+      "verify": "AI tests prove no-suicide, larger-pocket choice, territory preference, seeded determinism, terminating AI-vs-AI match and a per-decision time bound.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_tron_ai",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "tron-ui",
+      "description": "Implement the paper-styled curses UI, controls for one and two players, and audio mapping.",
+      "verify": "UI tests cover bindings, palette fallback, layout at 80x30 and 100x35, monochrome distinction, cues, mute and cleanup.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_tron_ui",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "tron-terminal",
+      "description": "Verify real terminal input, pause, restart, resize, mute and clean exit.",
+      "verify": "Real PTY with state assertions, Q and SIGINT exits, mode restoration and no surviving child group; retain transcript.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_tron_terminal.py"
+        ],
+        "timeout_seconds": 90
+      }
+    },
+    {
+      "id": "tron-cli",
+      "description": "Provide documented launch and CLI options, and a menu cabinet.",
+      "verify": "Help works without a terminal and lists every flag.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "tink_tron",
+          "--help"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "tron-no-regressions",
+      "description": "Existing games and menu are unchanged and still pass.",
+      "verify": "Full local check passes, including the menu check that launches every game.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_all.py"
+        ],
+        "timeout_seconds": 300
+      }
+    },
+    {
+      "id": "tron-play-feel",
+      "description": "A human plays at least one full match on each level and in two-player mode and records how it feels.",
+      "verify": "Mark only with the player's actual observation; if nobody played, leave unmarked and say so."
+    },
+    {
+      "id": "tron-listening",
+      "description": "A human listens to the cues for turn, round win, crash, pause and mute.",
+      "verify": "Mark only with who listened, the output device and what they heard; do not invent a listener."
+    }
+  ]
+}
