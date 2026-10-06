@@ -117,5 +117,23 @@
     ],
     "path": ".",
     "module": "tink_tron"
+  },
+  {
+    "title": "Tron vs Jev",
+    "tagline": "Jev picks the route.",
+    "about": "Light cycles against the Jev model: it chooses routes while your cycle keeps moving, and a slow reply can cost it the round. Best of five.",
+    "controls": [
+      "Arrows / WASD  steer",
+      "Space  next round",
+      "P  pause",
+      "Enter  retry after an error"
+    ],
+    "note": "Every match makes billed API calls.",
+    "path": ".",
+    "module": "tink_tron",
+    "args": [
+      "--versus-jev"
+    ],
+    "requires_env": "TYPESAFE_API_KEY"
   }
 ]

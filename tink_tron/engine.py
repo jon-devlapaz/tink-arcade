@@ -10,10 +10,12 @@ FACING = (RIGHT, LEFT)
 
 
 class Game:
-    def __init__(self, seed=None, two_player=False, level='normal'):
+    def __init__(self, seed=None, two_player=False, level='normal', opponent=None):
+        """`opponent(game)` may steer player 2 in place of the built-in machine; it must not mutate the game."""
         if level not in LEVELS:
             raise ValueError(f'level must be one of {", ".join(LEVELS)}')
-        self.seed, self.two_player, self.level = seed, two_player, level
+        self.seed, self.two_player, self.level, self.opponent = seed, two_player, level, opponent
+        self.round_id = 0
         self.restart()
 
     def restart(self):
@@ -24,6 +26,7 @@ class Game:
         self.new_round()
 
     def new_round(self):
+        self.round_id += 1
         self.heads = list(STARTS)
         self.dirs = list(FACING)
         self.trails = {STARTS[0]: 0, STARTS[1]: 1}
@@ -77,7 +80,9 @@ class Game:
 
     def _step(self):
         before = list(self.dirs)
-        if not self.two_player:
+        if self.opponent is not None:
+            self.dirs[1] = self.opponent(self)
+        elif not self.two_player:
             # The machine reads the board only, never the pending key press.
             self.dirs[1] = choose(set(self.trails), self.heads[1], self.heads[0], self.dirs[1], self.level, self.rng)
         for player in (0, 1):
