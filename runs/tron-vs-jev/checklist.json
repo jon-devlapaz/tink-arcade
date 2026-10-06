@@ -59,9 +59,11 @@
           "-B",
           "-m",
           "unittest",
-          "tests.test_jev_cost",
-          "tests.test_race",
-          "tests.test_race_ui",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_[jr]*.py",
           "-v"
         ],
         "timeout_seconds": 120

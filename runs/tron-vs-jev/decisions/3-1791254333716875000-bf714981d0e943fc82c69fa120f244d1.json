@@ -1,0 +1,8 @@
+{
+  "inputs": "25dc705efb21c433dce84f403f951ecb703eadbde82db503a245c56d65563879",
+  "decision": "approved",
+  "has_checklist": true,
+  "reviewer": "Jon",
+  "source": "Chat reply \"yes to all, two stacked PRs, default archive root\" approving the one-line checklist fix (tetris-prompt-unchanged now runs unittest discover -s tests -p test_[jr]*.py)",
+  "reason": "Re-approved after a drafting error in one checklist command; no other definition changed"
+}
