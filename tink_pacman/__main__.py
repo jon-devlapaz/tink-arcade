@@ -6,8 +6,11 @@ from .ui import run
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog='python3 -m tink_pacman', description='Offline Pac-Man on a paper terminal canvas.',
-        epilog='Requires 80 x 40. Arrows/WASD steer; P pauses; R restarts; Q or Ctrl-C quits.')
+    parser = argparse.ArgumentParser(
+        prog='python3 -m tink_pacman',
+        description='Offline Pac-Man on a paper terminal canvas.',
+        epilog='Requires 80 x 40. Arrows/WASD steer; P pauses; R restarts; Q or Ctrl-C quits.',
+    )
     parser.add_argument('--seed', type=int, help='repeat the same run')
     parser.add_argument('--no-color', action='store_true', help='use monochrome rendering')
     parser.add_argument('--classic', action='store_true', help='disable Bookmark and Eraser')

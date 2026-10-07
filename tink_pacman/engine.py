@@ -1,10 +1,10 @@
 """Deterministic Pac-Man rules, independent of the terminal and audio."""
 import random
 
-from .ghosts import (CHASE, EYES_SPEED, NAMES, SCATTER, Ghost, Pen, Waves, chase_target, choose_direction,  # noqa: F401
+from .ghosts import (CHASE, EYES_SPEED, NAMES, SCATTER, Ghost, Pen, Waves, chase_target, choose_direction,
                      dot_limits, fright_flashes, fright_speed, fright_time, frightened_direction, ghost_speed,
                      idle_limit, plan_direction, scatter_target, wave_schedule)
-from .maze import DIRECTIONS, DOWN, LAYOUT, LEFT, RIGHT, UP, Maze  # noqa: F401  (directions re-exported)
+from .maze import DIRECTIONS, DOWN, LAYOUT, LEFT, RIGHT, UP, Maze
 
 TOP_SPEED = 10  # tiles per second at 100%
 LIVES = 3

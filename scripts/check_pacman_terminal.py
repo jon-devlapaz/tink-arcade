@@ -56,7 +56,7 @@ def main():
                                  'Uppercase WASD turns down and reaches a thin wall')
                 assert [9, 27] in at_wall['walls']
                 t.send(b' ', lambda s: s['bookmark'] == [9, 26] and not s['bookmark_available'],
-                                  'Space places Bookmark')
+                       'Space places Bookmark')
                 erased = t.send(b'E', lambda s: not s['eraser_available'] and [9, 27] not in s['walls'],
                                 'E erases the wall ahead')
                 assert len(erased['walls']) == len(at_wall['walls']) - 1
