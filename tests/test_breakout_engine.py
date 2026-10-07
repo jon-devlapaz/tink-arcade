@@ -18,6 +18,34 @@ class BreakoutEngineTests(unittest.TestCase):
         g.advance(STEP)
         self.assertLess(g.y, PADDLE_Y)
 
+    def test_session_best_tracks_score_and_survives_restart(self):
+        g = Game()
+        self.assertEqual(g.best, 0)
+        for expected in (10, 20):
+            brick = list(g.bricks.values())[-1]
+            g.x, g.y = brick.x + 2, brick.y + 2
+            g.vx, g.vy, g.state = 0, -1000, 'playing'
+            g.advance(STEP)
+            self.assertEqual((g.score, g.best), (expected, expected))
+        g.restart()
+        self.assertEqual((g.score, g.best), (0, 20))
+        brick = list(g.bricks.values())[-1]
+        g.x, g.y = brick.x + 2, brick.y + 2
+        g.vx, g.vy, g.state = 0, -1000, 'playing'
+        g.advance(STEP)
+        self.assertEqual((g.score, g.best), (10, 20))
+
+    def test_snapshot_reports_session_best(self):
+        g = Game()
+        self.assertEqual(g.snapshot()['best'], 0)
+        brick = list(g.bricks.values())[-1]
+        g.x, g.y = brick.x + 2, brick.y + 2
+        g.vx, g.vy, g.state = 0, -1000, 'playing'
+        g.advance(STEP)
+        self.assertEqual(g.snapshot()['best'], 10)
+        g.restart()
+        self.assertEqual((g.snapshot()['score'], g.snapshot()['best']), (0, 10))
+
     def test_fast_brick_crossing_scores_once(self):
         g = Game()
         brick = list(g.bricks.values())[-1]

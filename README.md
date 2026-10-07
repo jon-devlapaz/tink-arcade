@@ -54,6 +54,7 @@ Clear Gate, Chevron, then Islands. Each brick is worth 10 points. Progress requi
 clearing every brick, for a total of 760 points. Three lives cover the entire run.
 Losing a life keeps your score and cleared bricks; restarting resets everything.
 There are no power-ups, sound, saved scores, network requests, or speed increases.
+Session best lasts until exit.
 
 The field is fixed at 60 by 20 cells. The paddle is nine cells wide and moves two
 cells per key event. The ball travels 18 cells per second, with simulation steps

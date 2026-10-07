@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "run": "breakout-session-best",
+  "components": {
+    "tink-substrate": {
+      "url": "https://github.com/jon-devlapaz/tink-substrate.git",
+      "workflow": "ci.yml",
+      "revision": "c7d8a88105fee03e796112c0afd45bd6f332c48d",
+      "ci_run": 37571046161,
+      "version": "0.2.0"
+    },
+    "tink-skills": {
+      "url": "https://github.com/jon-devlapaz/tink-skills.git",
+      "workflow": "validate.yml",
+      "revision": "38b016378426b3835e04e1c9570e52f2d2ff7085",
+      "ci_run": 37574795895,
+      "version": "2.0.1"
+    },
+    "tink-sdlc": {
+      "url": "https://github.com/jon-devlapaz/tink-sdlc.git",
+      "workflow": "validate.yml",
+      "revision": "eae276f09057d0c4f9ebd19b83f520d4bfe3b5a9",
+      "ci_run": 37574110789,
+      "version": "1.21.0"
+    }
+  },
+  "integrations": "bundled-only",
+  "checked_at": "2026-10-07T05:10:06.270038+00:00",
+  "compatibility": {
+    "result": "passed",
+    "checks": [
+      "seed-simulated-session",
+      "sdlc-api-1",
+      "dashboard-unapproved-run",
+      "unapproved-verify-refused"
+    ],
+    "limits": "Synthetic compatibility check; no interview or feature delivery."
+  }
+}

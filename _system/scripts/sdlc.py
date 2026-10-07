@@ -5,6 +5,7 @@ import contextlib
 import errno
 import fcntl
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -225,7 +226,13 @@ def ready(path):
 
 
 def git(*args):
-    return subprocess.check_output(['git', '-C', str(ROOT), *args], stderr=subprocess.PIPE)
+    result = subprocess.run(['git', '-C', str(ROOT), *args], capture_output=True)
+    if result.returncode:
+        lines = [line for line in result.stderr.decode('utf-8', 'replace').splitlines() if line.strip()]
+        reason = next((line for line in lines if line.startswith(('fatal:', 'error:'))), lines[0] if lines else f'exit {result.returncode}')
+        raise ValueError(f"git {' '.join(args)} failed ({reason}); "
+                         'verification needs the scaffold inside a git repository with at least one commit')
+    return result.stdout
 
 
 def strip_generated_rules(data):
@@ -298,6 +305,10 @@ def changed_report(before_files, after_files):
     tracked = tracked_paths()
     if any(name in tracked and (Path(name).suffix in {'.pyc', '.pyo'} or '__pycache__' in Path(name).parts) for name in shown):
         text += ' Hint: tracked bytecode files change during test runs; untrack them and ignore __pycache__'
+    created = [name for name in shown if name not in before_files and name not in tracked]
+    if created:
+        text += (' Hint: a check created these untracked files. Add generated output to .gitignore; '
+                 'if the file is meant to be committed, commit it and rerun verification.')
     return text
 
 
@@ -340,15 +351,29 @@ def evidence_inputs(path):
             **({'checklist': checklist_digest(path), 'manual_marks': attested} if checklist_digest(path) is not None else {})}
 
 
+def run_tags(requested):
+    """Validated, sorted run tags: each must be a `profile` tag used by some stages/*/TRIGGERS.json."""
+    tags = sorted(set(requested or []))
+    if not tags:
+        return []
+    known = stations_module().known_tags(trigger_files())
+    unknown = [t for t in tags if t not in known]
+    if unknown:
+        raise ValueError(f"unknown tag {', '.join(unknown)}; known tags: {', '.join(sorted(known)) or '(none)'} "
+                         '(tags come from the profile lists in stages/*/TRIGGERS.json)')
+    return tags
+
+
 def create(args):
     path = run_path(args.run)
+    tags = run_tags(args.tag)
     path.parent.mkdir(exist_ok=True)
     with locked(path.parent / f'.{args.run}.lock'):
         if path.exists():
             raise ValueError('Run already exists; nothing overwritten.')
         temporary = Path(tempfile.mkdtemp(prefix=f'.{args.run}-', dir=path.parent))
         try:
-            write_json(temporary / 'run.json', {'profile': args.profile, 'kind': args.kind, 'schema': 1})
+            write_json(temporary / 'run.json', {'profile': args.profile, 'kind': args.kind, 'schema': 1, 'tags': tags})
             write_json(temporary / 'checklist.json', {'schema': 1, 'items': []})
             if args.profile == 'light':
                 shutil.copyfile(ROOT / '_shared/brief-template.md', temporary / 'brief.md')
@@ -479,9 +504,40 @@ def lock_tests(args):
             if target.resolve() != target.absolute() or not target.is_file() or not target.is_relative_to(ROOT) or '..' in Path(name).parts:
                 raise ValueError('Lock only regular files inside the checkout.')
             files[str(target.relative_to(ROOT))] = digest(target.read_bytes())
+        reproduction = run_reproduction(args.reproduce, path / 'reproduction-log.md') if args.reproduce else None
         write_json(record, {'files': files, 'candidate': snapshot(), 'review_source': args.source,
-                            'failure_evidence': args.failure_evidence})
-    print('Local test baseline recorded. CI must independently validate the failing reproduction and protect the baseline.')
+                            'failure_evidence': args.failure_evidence, **({'reproduction': reproduction} if reproduction else {})})
+    if reproduction:
+        print(f"Reproduction failed with exit {reproduction['exit_code']} on this tree, as a bug baseline must. "
+              'Local test baseline recorded. CI must still validate it and protect the baseline.')
+    else:
+        print('Local test baseline recorded. The failing reproduction was NOT run here (pass --reproduce to run it now); '
+              'CI must independently validate it and protect the baseline.')
+
+
+REPRODUCE_TIMEOUT = 120
+
+
+def run_reproduction(raw, log_path):
+    """Run the reproduction command now; a bug baseline is only real if it fails on the unfixed code."""
+    try:
+        argv = json.loads(raw)
+    except ValueError as error:
+        raise ValueError(f'--reproduce must be a JSON argv array, e.g. \'["python3","-m","unittest","tests.test_x"]\': {error}') from error
+    validate_check({'argv': argv, 'timeout_seconds': REPRODUCE_TIMEOUT})
+    with log_path.open('w') as log:
+        log.write(f'$ {json.dumps(argv)}\n')
+        log.flush()
+        try:
+            result = subprocess.run(argv, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, timeout=REPRODUCE_TIMEOUT)
+        except (subprocess.TimeoutExpired, OSError) as error:
+            log.write(f'{type(error).__name__}: {error}\n')
+            raise ValueError(f'Reproduction could not run to completion ({type(error).__name__}); see {log_path.relative_to(ROOT)}') from error
+    if result.returncode == 0:
+        log_path.unlink()
+        raise ValueError('Reproduction passed on the current tree. A bug baseline must fail before the fix; '
+                         'fix the test (or the reproduction command) and lock again.')
+    return {'argv': argv, 'exit_code': result.returncode, 'log': digest(log_path.read_bytes())}
 
 
 def mark(args):
@@ -543,10 +599,10 @@ def checklist_text(view):
     items = view['items']
     passed = sum(item['status'] == 'passed' for item in items)
     proven = sum(item['automatic'] for item in items)
-    lines = [f'Checklist: {passed}/{len(items)} passed ({proven} proven by check, {len(items) - proven} attested)']
+    lines = [f'Checklist: {passed}/{len(items)} passed ({proven} with a check, {len(items) - proven} attested)']
     for item in items:
         if item['status'] != 'passed':
-            suffix = ' (proved by verify)' if item['automatic'] else ''
+            suffix = ' (its check runs in verify)' if item['automatic'] else ''
             lines.append(f"  - {item['id']}: {item['status']}{suffix}")
         elif item['needs_recheck']:
             lines.append(f"  - {item['id']}: attested before the latest changes; re-check it only if the change affects it")
@@ -638,6 +694,13 @@ def status_state(path):
         test_lock(path)
     except (ValueError, OSError, KeyError, TypeError) as error:
         errors.append(str(error))
+    reproduction = None
+    if (path / 'test-lock.json').is_file():
+        try:
+            recorded = read_json(path / 'test-lock.json').get('reproduction')
+            reproduction = {'executed': True, 'argv': recorded['argv'], 'exit_code': recorded['exit_code']} if recorded else {'executed': False}
+        except (ValueError, OSError, KeyError, TypeError, AttributeError):
+            pass
     if checklist['state'] == 'invalid':
         errors.append(checklist['error'])
     first_gate = next((g for g in gates if g['status'] != 'approved'), None)
@@ -659,6 +722,7 @@ def status_state(path):
             'verification': {**{key: record.get(key) for key in ('result', 'candidate', 'log', 'error')}, 'passed': verified} if record else None,
             'checklist': checklist['items'], 'checklist_state': checklist['state'],
             'checklist_text': checklist_text(checklist), 'next_action': next_action, 'errors': errors,
+            'reproduction': reproduction,
             'verification_config': config,
             'actions': {'verify': {'allowed': not verify_reason, 'reason': verify_reason,
                                    'timeout_seconds': timeout if not verify_reason else None},
@@ -676,6 +740,11 @@ def status_text(view):
                           f"  python3 _system/scripts/sdlc.py decide {view['slug']} {stage} DECISION "
                           "--reviewer 'REVIEWER' --source 'SOURCE' --reason 'REASON'"])
     lines.append(view['checklist_text'])
+    repro = view.get('reproduction')
+    if repro is not None:
+        lines.append(f"Reproduction: failed with exit {repro['exit_code']} when locked ({' '.join(repro['argv'])})" if repro['executed'] else
+                     'Reproduction: recorded from review evidence, not run locally; CI must confirm it fails on the unfixed code '
+                     '(lock-tests --reproduce runs it at lock time).')
     if view['verification'] is not None:
         lines.append('Verification: ' + ('current' if view['verification_status'] == 'current' else 'failed, stale, or blocked'))
     else:
@@ -872,11 +941,16 @@ def walk_w1(root, agents_text):
         if size > GENERATED_BYTE_LIMIT:
             problems.append(f'AGENTS.md:{start + 1}: generated block is {size} bytes (limit {GENERATED_BYTE_LIMIT})')
     outside = len(lines) - len(generated)
-    if outside > ENTRY_LINE_LIMIT:
-        problems.append(f'AGENTS.md: {outside} lines outside generated blocks (limit {ENTRY_LINE_LIMIT})')
+    router_lines = end - begin + 1 if begin is not None and end is not None and end >= begin else outside
+    if router_lines > ENTRY_LINE_LIMIT:
+        problems.append(f'AGENTS.md: the SDLC router is {router_lines} lines (limit {ENTRY_LINE_LIMIT})')
     info = f'{outside} lines outside generated blocks; ' + (f'generated block {sizes[0]} bytes (cap {GENERATED_BYTE_LIMIT})' if sizes else 'no generated block')
     if problems:
         return walk_result('W1', name, 'fail', 'entry file breaks the router contract', info, problems)
+    if outside > ENTRY_LINE_LIMIT:
+        return walk_result('W1', name, 'warn', f'AGENTS.md carries {outside - router_lines} lines of project instructions beside the router',
+                           info + f'; install keeps existing AGENTS.md text, but an entry file past {ENTRY_LINE_LIMIT} lines is slow to orient from. '
+                           'Consider moving detail into docs/ and linking it.', [f'AGENTS.md: {outside} lines outside generated blocks (soft limit {ENTRY_LINE_LIMIT})'])
     return walk_result('W1', name, 'pass', f'AGENTS.md is a router ({info})', info)
 
 
@@ -1046,11 +1120,34 @@ def walk_w7(root, agents_text):
     return walk_result('W7', name, 'warn', f'tink use --check exited {result.returncode}', message)
 
 
+def walk_w8(root):
+    name = 'triggers-locked'
+    files = trigger_files(root)
+    if not files:
+        return walk_result('W8', name, 'pass', 'skipped (no stages/*/TRIGGERS.json)', '')
+    pool = root / '.tink/pool.lock.json'
+    detail = 'Each lock entry must match its trigger (need_sha, stable, skill == expect) and the lock pool hash must match .tink/pool.lock.json.'
+    if not pool.is_file():
+        return walk_result('W8', name, 'fail', 'trigger files without a pool lock', detail, ['.tink/pool.lock.json is missing'])
+    try:
+        tool = stations_module()
+    except Exception as error:
+        return walk_result('W8', name, 'fail', 'cannot load the trigger tool', detail, [str(error)])
+    problems = []
+    for f in files:
+        problems += [str(x).replace(str(root) + '/', '') for x in tool.lint(f, pool)]
+    if problems:
+        return walk_result('W8', name, 'fail', f'{len(problems)} trigger lock problem(s)',
+                           detail + ' Re-lock with: python3 _system/scripts/stations.py check stages/*/TRIGGERS.json', problems)
+    count = sum(len(json.loads(f.read_text()).get('triggers', [])) for f in files)
+    return walk_result('W8', name, 'pass', f'{count} triggers in {len(files)} stage(s) match their locks and the pool', '')
+
+
 def walk(args):
     agents_text = read_text_safe(ROOT / 'AGENTS.md')
     w4, tokens = walk_w4(ROOT, agents_text)
     checks = [walk_w1(ROOT, agents_text), walk_w2(ROOT, agents_text), walk_w3(ROOT), w4,
-              walk_w5(ROOT), walk_w6(ROOT), walk_w7(ROOT, agents_text)]
+              walk_w5(ROOT), walk_w6(ROOT), walk_w7(ROOT, agents_text), walk_w8(ROOT)]
     summary = {key: sum(1 for c in checks if c['status'] == key) for key in ('pass', 'warn', 'fail')}
     if args.json:
         print(json.dumps({'schema': 1, 'checks': checks, 'tokens': tokens, 'summary': summary}, indent=2))
@@ -1279,77 +1376,90 @@ def delivery_warning(run):
             f'hand the owner these commands instead of stopping silently: git push -u origin {run}; gh pr create --fill')
 
 
-PICK_LIMIT = 120000
-PICK_TIMEOUT = 120
+STATIONS = Path(__file__).resolve().parent / 'stations.py'
 
 
-def stage_pick_document(path, n):
-    """The stage's input document: the confirmed seed contract, intent, spec/brief, or review findings; None when absent."""
-    metadata = require_run(path)
-    if n == 1:
-        bound = metadata.get('seed_contract')
-        if not bound:
-            return None
-        found = Path(bound['path'])
-        return found if found.is_absolute() else ROOT / found
-    relative = {2: '01-plan/output/intent.md', 6: '05-deploy/output/REVIEW-findings.md',
-                3: 'brief.md' if metadata['profile'] == 'light' else '02-design/output/spec.md'}
-    relative[5] = relative[3]
-    found = path / relative[n] if n in relative else None
-    return found if found is not None and found.is_file() else None
-
-
-def stage_pick(path, run, n, check):
-    """Route the whole input document once at stage open. Returns (line to print or None, launch-prompt sentence or None).
-
-    Never blocks the stage: every failure is a printed skip and a receipt under runs/<run>/skills/."""
-    document, route = stage_pick_document(path, n), shutil.which('tink-route')
-    if document is None or not route:
-        return None, None
+def stations_module():
+    """The trigger tool next to this script, loaded in-process (no router, no network)."""
+    spec = importlib.util.spec_from_file_location('sdlc_stations', STATIONS)
+    if spec is None or not STATIONS.is_file():
+        raise ValueError(f'{STATIONS.name} is missing from {STATIONS.parent}')
+    module = importlib.util.module_from_spec(spec)
+    previous = sys.dont_write_bytecode
+    sys.dont_write_bytecode = True
     try:
-        shown = str(document.relative_to(ROOT))
-    except ValueError:
-        shown = str(document)
-    if check:
-        return f'Would pick a skill from {shown}', None
-    raw = document.read_bytes()
-    text = raw.decode('utf-8', errors='replace')
-    receipt = {'stage': n, 'document': shown, 'sha256': digest(raw), 'chars': len(text)}
-    line = sentence = None
-    if len(text) > PICK_LIMIT:
-        receipt['status'] = 'skipped'
-        line = f'skill pick: skipped (document is {len(text)} characters; limit {PICK_LIMIT})'
-    else:
-        try:
-            done = subprocess.run([route, '--pick', '--json', '--anywhere', text], capture_output=True, text=True, timeout=PICK_TIMEOUT)
-            code, out = done.returncode, done.stdout
-        except (subprocess.TimeoutExpired, OSError) as error:
-            code, out = -1, str(error)
-        try:
-            picked = json.loads(out)
-        except ValueError:
-            picked = {}
-        if not isinstance(picked, dict):
-            picked = {}
-        if code == 0 and picked.get('status') == 'routed' and picked.get('winner'):
-            receipt.update(status='routed', winner=picked['winner'], confidence=picked.get('confidence'))
-            sentence = (f" Stage-open skill pick: {picked['winner']} (confidence {picked.get('confidence')}); "
-                        f"read it before relying on it: tink mount {picked['winner']} --json --payload.")
-        elif code == 1:
-            receipt['status'] = 'none'
-            line = 'skill pick: no specialist skill applies'
-        else:
-            receipt['status'] = 'error'
-            reason = picked.get('reason')
-            reason = ' '.join(''.join(c if c.isprintable() else ' ' for c in reason).split())[:120] if isinstance(reason, str) else ''
-            if reason:
-                receipt['reason'] = reason
-            suffix = f': {reason}' if reason else ''
-            line = (f'skill pick: skipped (router exited {code}{suffix})' if code > 0 else
-                    'skill pick: skipped (router output unreadable)' if code == 0 else 'skill pick: skipped (router did not complete)')
-    with locked(path / '.writer-lock'):
-        write_json(path / 'skills' / f'stage-{n}-pick.json', receipt)
-    return line, sentence
+        spec.loader.exec_module(module)
+    finally:
+        sys.dont_write_bytecode = previous
+    return module
+
+
+def trigger_files(root=ROOT):
+    return sorted((root / 'stages').glob('*/TRIGGERS.json'))
+
+
+def stage_pull(path, run, n):
+    """Evaluate the stage's TRIGGERS.json against the run's diff and tags. Returns (lines, sheet or None).
+
+    Never raises and never blocks the stage: any failure is one printed line. Makes no router call."""
+    try:
+        triggers = ROOT / 'stages' / STAGE_DIRS[n] / 'TRIGGERS.json'
+        if not triggers.is_file():
+            return [f'pulls: skipped (no stages/{STAGE_DIRS[n]}/TRIGGERS.json)'], None
+        tags = require_run(path).get('tags', [])
+        result, lines = stations_module().pull(triggers, ROOT, tags=tags)
+        return lines, result
+    except Exception as error:  # a pull is advice; it must never stop the stage
+        return [pull_failure(error)], None
+
+
+def pull_failure(error):
+    reason = ' '.join(str(error).split())[:160] or type(error).__name__
+    return f'pulls: skipped ({reason})'
+
+
+def pull_sheet_path(path, n):
+    return path / 'skills' / f'stage-{n}-pulls.json'
+
+
+def pull_sheet_changes(path, n, result):
+    """True when writing this sheet would change runs/<run>/skills/stage-<n>-pulls.json."""
+    if result is None:
+        return False
+    target = pull_sheet_path(path, n)
+    return not target.is_file() or target.read_bytes() != (json.dumps(result, indent=2) + '\n').encode()
+
+
+def write_pull_sheet(path, run, n, result, lines):
+    """Record the sheet; returns the launch-prompt sentence naming pulled skills (or None). Never raises."""
+    if result is None:
+        return None
+    sheet = f'runs/{run}/skills/stage-{n}-pulls.json'
+    try:
+        with locked(path / '.writer-lock'):
+            write_json(pull_sheet_path(path, n), result)
+    except Exception as error:  # still advice only
+        lines.append(pull_failure(error))
+        return None
+    lines.append(f'pull sheet: {sheet}')
+    if not result['pulls']:
+        return None
+    named = f" Pulled skills for this stage ({sheet}): {', '.join(result['pulls'])}"
+    if not shutil.which('tink'):
+        return named + '; tink is not installed here, so continue without them.'
+    return named + '; read each in full before acting on it: tink mount <skill> --json --payload.'
+
+
+def pull(args):
+    path = run_path(args.run)
+    require_run(path)
+    if args.n not in STAGE_DIRS:
+        raise ValueError('stage must be one of 1, 2, 3, 4, 5, 6')
+    lines, result = stage_pull(path, args.run, args.n)
+    sentence = write_pull_sheet(path, args.run, args.n, result, lines)
+    print('\n'.join(lines))
+    if sentence:
+        print(sentence.strip())
 
 
 def stage(args):
@@ -1408,8 +1518,9 @@ def stage(args):
             source = previous.get('source', str(seed_source)) if seed_source == copy.resolve() else str(seed_source)
             write_json(path / 'run.json', {**read_json(path / 'run.json'),
                                             'seed_contract': {'path': seed_contract, 'sha256': digest(seed_bytes), 'source': source}})
-    pick_line, pick_sentence = stage_pick(path, run, n, args.check)
-    pending = bool(run_git(ROOT, 'status', '--porcelain', '--', f'runs/{run}').stdout.strip()) if make_worktree else False
+    pull_lines, pull_result = stage_pull(path, run, n)
+    pending = make_worktree and (bool(run_git(ROOT, 'status', '--porcelain', '--', f'runs/{run}').stdout.strip())
+                                 or pull_sheet_changes(path, n, pull_result))
     if pending and not stage_identity_ok():
         raise ValueError('no committer identity configured; set user.name and user.email (or GIT_COMMITTER_*) so the launcher can commit '
                          f'runs/{run}')
@@ -1420,14 +1531,14 @@ def stage(args):
     prompt = f'Begin stage {n} ({STAGE_WORDS[n]}) of SDLC run `{run}`.'
     if seed_contract:
         prompt += f' The operator-confirmed seed contract is at {seed_contract}; it is input, not authorization.'
-    prompt += pick_sentence or ''
     warn = stage_dirty(run) if make_worktree else []
     warning = ('warning: not carried into the new checkout: ' + ', '.join(warn[:5]) + (f' (+{len(warn) - 5} more)' if len(warn) > 5 else '')
                if warn else None)
 
-    if args.check and pick_line:
-        print(pick_line)
+    if not args.check:
+        prompt += write_pull_sheet(path, run, n, pull_result, pull_lines) or ''
     if args.check:
+        print('\n'.join(pull_lines))
         if seed_contract and seed_source != (ROOT / seed_contract).resolve():
             print(f'Would copy {seed_source} to {seed_contract}')
         print(f'Would commit: {"yes" if pending else "no"}')
@@ -1481,19 +1592,23 @@ def stage(args):
         print(warning)
     if n in (3, 5) and (undeliverable := delivery_warning(run)):
         print(undeliverable)
-    if pick_line and not args.check:
-        print(pick_line)
+    if not args.check:
+        print('\n'.join(pull_lines))
     if not args.check and (stale_route := tink_route_warning()):
         print(stale_route)
-    print(f'Checkout: {target}')
-    print('Launch prompt (start a NEW session there):')
+    if args.check and make_worktree:
+        print('Checkout: none yet (--check creates nothing; the real run creates the worktree above)')
+        print('Launch prompt (start a NEW session in that checkout):')
+    else:
+        print(f'Checkout: {target}')
+        print('Launch prompt (start a NEW session there):')
     print(prompt)
 
 
 class ShortErrorParser(argparse.ArgumentParser):
     def error(self, message):
         self.exit(2, f'sdlc.py: error: {message}\n'
-                     'Commands: new, status, decide, verify, mark, lock-tests, skills, stage, walk. See _system/SDLC.md.\n')
+                     'Commands: new, status, decide, verify, mark, lock-tests, skills, stage, pull, walk. See _system/SDLC.md.\n')
 
 
 def main():
@@ -1503,6 +1618,8 @@ def main():
     new.add_argument('run')
     new.add_argument('--profile', choices=['light', 'full'], default='light')
     new.add_argument('--kind', choices=['feature', 'bug'], default='feature')
+    new.add_argument('--tag', action='append', metavar='TAG',
+                     help='a fact about the project that profile triggers match (repeatable; see stages/*/TRIGGERS.json)')
     state = commands.add_parser('status')
     state.add_argument('run', nargs='?')
     state.add_argument('--json', action='store_true', help='read-only versioned machine interface')
@@ -1526,6 +1643,8 @@ def main():
     baseline.add_argument('paths', nargs='+')
     baseline.add_argument('--source', required=True)
     baseline.add_argument('--failure-evidence', required=True)
+    baseline.add_argument('--reproduce', metavar='ARGV_JSON',
+                          help='run this command now (JSON argv array) and require it to fail on the unfixed code')
     skill = commands.add_parser('skills')
     skill.add_argument('tool', choices=list(TOOL_ACCEPTABLE_CODES))
     skill.add_argument('arguments', nargs=argparse.REMAINDER)
@@ -1537,11 +1656,14 @@ def main():
     where.add_argument('--here', action='store_true')
     launch.add_argument('--seed-contract', metavar='PATH')
     launch.add_argument('--check', action='store_true', help='validate and print the plan; write nothing')
+    sheet = commands.add_parser('pull', help="evaluate a stage's triggers and write runs/<run>/skills/stage-<n>-pulls.json")
+    sheet.add_argument('run')
+    sheet.add_argument('n', type=int)
     lint = commands.add_parser('walk', help='structural walk lint (read-only)')
     lint.add_argument('--json', action='store_true')
     args = parser.parse_args()
     try:
-        {'new': create, 'status': status, 'capabilities': capabilities, 'decide': decide, 'verify': verify, 'mark': mark, 'lock-tests': lock_tests, 'skills': skills, 'stage': stage, 'walk': walk}[args.command](args)
+        {'new': create, 'status': status, 'capabilities': capabilities, 'decide': decide, 'verify': verify, 'mark': mark, 'lock-tests': lock_tests, 'skills': skills, 'stage': stage, 'pull': pull, 'walk': walk}[args.command](args)
     except (ValueError, OSError, KeyError, TypeError, AttributeError, RuntimeError, subprocess.SubprocessError) as error:
         if args.command in ('status', 'capabilities') and args.json:
             machine_output({'error': {'code': 'not-found' if isinstance(error, FileNotFoundError) else 'invalid-state',
