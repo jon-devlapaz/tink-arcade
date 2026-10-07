@@ -1,0 +1,7 @@
+{
+  "item": "hud-looks-right-at-80x30",
+  "result": "passed",
+  "evidence": "Rendered Renderer.draw via a fake 30x80 screen (oy=0, ox=0) and read the text grid. Row 1: '. socratink / paper breakout' from col 25. Row 2: 'SESSION BEST 070' at cols 9-24, then 'three boards, three lives.' from col 30 (5 blank cols between, no overlap). Row 3: 'SCORE 050   LIVES 3   BRICKS 36   BOARD 1/3  Gate' unchanged at col 9, ends col 56, no clipping. Same layout at 40x100 offset.",
+  "candidate": "3c0061b982e9dad856baedd32d090e912612c01ac00723c8e0b5f2ea2dd1325f",
+  "time_ns": 1791350524975930000
+}

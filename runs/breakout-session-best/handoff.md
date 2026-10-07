@@ -55,3 +55,13 @@ Stage 1 is opened without `--seed-contract`.
 - Checked: `oy + 2` already carries the subtitle at `ox + 30`; the new text ends at `ox + 24`, so no overlap. Existing restart test (`snapshot()` equality) is unaffected by adding `best`.
 - Build must add tests: `BreakoutEngineTests.test_session_best_tracks_score_and_survives_restart`, `...test_snapshot_reports_session_best`, `BreakoutUITests.test_hud_shows_session_best`, `...test_restart_key_keeps_session_best`.
 - Not approved; the human records the stage 3 gate.
+
+## Stage 3-4 (build and test)
+
+- Code commit ec3816a: `Game.best` (set before `restart()`), `max(best, score)` per brick, `best` in `snapshot()`, `SESSION BEST nnn` on row `oy + 2` at column `left`, README line "Session best lasts until exit." Four new tests added and confirmed failing on the unchanged code first.
+- Checks: 333 tests pass under both discovery loaders (2 audio skips); `check_breakout_tests.py` and `check_breakout_terminal.py` pass; `verify` passed; 7/7 checklist items.
+- HUD attestation (30x80 fake screen): row 2 holds `SESSION BEST 070` at cols 9-24 and the subtitle from col 30; row 3 SCORE line unchanged. No overlap.
+- Note: `check_breakout_terminal.py` rewrites the tracked `runs/breakout/04-test/output/terminal-transcript.txt`; I restored it with `git checkout` so it is not in this change.
+- README: the earlier sentence "restarting resets everything" is slightly at odds with the new line (best survives restart); left as the brief specified.
+- Stage 4 pull sheet: 0 of 4 triggers fired; 0 skills pulled. No skill changed a decision.
+- Not approved; independent PR review remains.

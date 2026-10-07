@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "stage": "04-test",
+  "base": "origin/main",
+  "head": "HEAD",
+  "tags": [],
+  "fired": 0,
+  "triggers": 4,
+  "pulls": [],
+  "sheet": [
+    {
+      "id": "form-input",
+      "skill": "break-ui",
+      "why": "The diff adds form fields; people will type garbage into them.",
+      "status": "not fired"
+    },
+    {
+      "id": "motion-check",
+      "skill": "review-animations",
+      "why": "The diff adds animation; it must be checked by looking, not only by tests.",
+      "status": "not fired"
+    },
+    {
+      "id": "perf-claim",
+      "skill": "benchmark-checklist",
+      "why": "Benchmark or perf files changed: vet the measurement before anyone reports it.",
+      "status": "not fired"
+    },
+    {
+      "id": "web-ui-verification",
+      "skill": "create-verification-skill",
+      "why": "A web UI needs a repeatable browser check, not a one-off.",
+      "status": "not fired"
+    }
+  ]
+}
