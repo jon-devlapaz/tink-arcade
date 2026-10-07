@@ -69,6 +69,7 @@ class Renderer(PaperRenderer):
             left, top = ox + 9, oy + 4
             self.text(oy + 1, ox + 25, '. socratink / paper breakout', self.ink | curses.A_BOLD)
             self.text(oy + 2, ox + 30, 'three boards, three lives.', self.muted)
+            self.text(oy + 2, left, f'SESSION BEST {g.best:03}', self.muted)
             self.text(oy + 3, left, f'SCORE {g.score:03}   LIVES {g.lives}   BRICKS {len(g.bricks)}'
                                     f'   BOARD {g.board + 1}/3  {NAMES[g.board]}', self.ink)
             self.box(top, left, HEIGHT + 2, WIDTH + 2, 'PLAY / PAPER')

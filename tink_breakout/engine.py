@@ -28,6 +28,7 @@ def rectangle_hit(x, y, vx, vy, brick, duration):
 
 class Game:
     def __init__(self):
+        self.best = 0
         self.restart()
 
     def restart(self):
@@ -54,7 +55,7 @@ class Game:
             self.state = 'playing'
 
     def snapshot(self):
-        return dict(board=self.board, score=self.score, lives=self.lives, state=self.state,
+        return dict(board=self.board, score=self.score, lives=self.lives, best=self.best, state=self.state,
                     paddle=self.paddle, x=self.x, y=self.y, vx=self.vx, vy=self.vy,
                     bricks=sorted(self.bricks))
 
@@ -109,6 +110,7 @@ class Game:
             for key in {c[4] for c in hits if c[3] == 'brick'}:
                 del self.bricks[key]
                 self.score += 10
+                self.best = max(self.best, self.score)
             if not self.bricks:
                 if self.board == 2:
                     self.state = 'won'

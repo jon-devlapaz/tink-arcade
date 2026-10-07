@@ -33,6 +33,23 @@ class BreakoutUITests(unittest.TestCase):
             c = Controller(0); c.frame(.01, 1, 1, quit_key)
             self.assertTrue(c.quit)
 
+    def test_hud_shows_session_best(self):
+        c = Controller(0); c.game.best = 70
+        screen = Mock(); screen.getmaxyx.return_value = (30, 80)
+        with patch('curses.has_colors', return_value=False):
+            r = Renderer(screen, True)
+        r.draw(c)
+        drawn = {(call.args[0], call.args[1]): call.args[2] for call in screen.addnstr.call_args_list}
+        self.assertEqual(drawn[(2, 9)], 'SESSION BEST 070')
+        self.assertTrue(drawn[(3, 9)].startswith('SCORE 000   LIVES 3'))
+
+    def test_restart_key_keeps_session_best(self):
+        c = Controller(0)
+        c.game.score = c.game.best = 30
+        c.frame(.01, 30, 80, ord('r'))
+        self.assertEqual((c.game.score, c.game.best), (0, 30))
+        self.assertEqual(c.frame(.02, 30, 80)['best'], 30)
+
     def test_resize_ignores_game_input_and_preserves_pause(self):
         for paused in (False, True):
             c = Controller(0); c.game.launch(); c.paused = paused
