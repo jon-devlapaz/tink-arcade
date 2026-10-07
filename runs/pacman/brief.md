@@ -84,11 +84,11 @@ Existing games and the menu's behavior stay unchanged.
 
 After each slice, run its checks, inspect the diff, and choose proceed, consolidate, re-scope or stop and repair. Record the choice in the handoff.
 
-1. **Maze and Pac-Man.** `maze.py` with validator tests, movement, buffered turn, tunnel, dots, level clear. Future to protect: one owner for "which tiles are open".
-2. **Ghosts.** `ghosts.py` targets and junction rule, waves, house release, touch, lives. Future to protect: one function picks a target; the twist later overrides it in one place.
+1. **Maze and Pac-Man.** `maze.py` with validator tests, movement, buffered turn, tunnel, dots, level clear, and a bare renderer that draws the maze, Pac-Man and dots in the paper theme at 80 x 40 (no ghosts, no sound, no menu entry). You look at it before slice 2 starts. Future to protect: one owner for "which tiles are open".
+2. **Ghosts.** First, read the Dossier page directly and write down any difference from the fetch summaries before coding the rules. Then `ghosts.py` targets and junction rule, waves, house release, touch, lives. Future to protect: one function picks a target; the twist later overrides it in one place.
 3. **Energizers and levels.** Frightened mode, chain, eyes, the speed table, endless levels.
 4. **Twist.** Bookmark first, then Eraser, each its own step with its own tests. `--classic`.
-5. **UI, CLI, menu, docs, real-terminal check.**
+5. **Polish the UI; CLI, menu, docs, real-terminal check.** Marks, panel and messages are finished here; the bare renderer from slice 1 is the starting point.
 
 Determinism: the engine, ghosts, maze and every test are deterministic. Randomness is only frightened-ghost junction choice, from `random.Random(seed)`, so `--seed` repeats a run. The wall clock exists only in the UI loop. No model calls, no network, no new dependency.
 
@@ -106,7 +106,7 @@ Each item in `checklist.json` has a command unless it needs a human. A passing c
 8. `pacman-menu`: the menu launches Pac-Man and returns, with the updated `check_arcade.py`.
 9. `pacman-docs`: README and DESIGN.md mention `tink_pacman`, `--classic` and the 80 x 40 minimum.
 10. `pacman-no-regressions`: the full local check passes.
-11. `pacman-look` (human): you compare Pac-Man with Snake at the minimum size, in color and monochrome, and judge it matches the paper theme and is not ugly. Nothing here proves this.
+11. `pacman-look` (human): you compare Pac-Man with Snake at the minimum size, in color and monochrome, and judge it matches the paper theme and is not ugly. First look after slice 1, final look at the end. Nothing here proves this.
 12. `pacman-fidelity` (human): you or a reviewer spot-check the ghost targets, junction rule and wave times against the Dossier page.
 
 ## Risks and verification

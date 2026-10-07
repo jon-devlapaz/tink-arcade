@@ -1,0 +1,7 @@
+{
+  "item": "pacman-look",
+  "result": "passed",
+  "evidence": "Explicit operator acceptance and waiver: operator said \"its wonderful\" and selected \"Commit, push, and open PR\" after being asked to accept the current look and waive remaining review requirements. See runs/pacman/operator-acceptance.md and retained model captures in runs/pacman/04-test/output/review-captures/. No claim that the waived human Snake/palette comparison was performed.",
+  "candidate": "6dfea15dce64a3fffc46900d20caedc0823b8200b5b9bf45b4d76a01e608762c",
+  "time_ns": 1791411917091674000
+}

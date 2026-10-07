@@ -1,0 +1,7 @@
+{
+  "item": "pacman-fidelity",
+  "result": "passed",
+  "evidence": "Explicit operator acceptance of the documented adaptation and waiver of remaining fidelity review, recorded in runs/pacman/operator-acceptance.md. Source: current conversation structured answer \"Commit, push, and open PR\" to acceptance/waiver question. Dossier differences are documented in runs/pacman/dossier-notes.md. This attests operator disposition, not exact arcade fidelity or independent reviewer approval.",
+  "candidate": "6dfea15dce64a3fffc46900d20caedc0823b8200b5b9bf45b4d76a01e608762c",
+  "time_ns": 1791411917440938000
+}

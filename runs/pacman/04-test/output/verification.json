@@ -1,0 +1,4 @@
+{
+  "result": "failed",
+  "error": "Checklist incomplete: pacman-look, pacman-fidelity (mark them with: sdlc.py mark pacman <id> passed --evidence \"...\")"
+}

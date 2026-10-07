@@ -151,12 +151,12 @@
     },
     {
       "id": "pacman-look",
-      "description": "Human compares Pac-Man with Snake at 80 x 40, in color and monochrome.",
+      "description": "Human compares Pac-Man with Snake at 80 x 40, in color and monochrome: first look after slice 1, final look at the end.",
       "verify": "The operator judges it matches the paper theme and is not ugly. Mark only with the operator's actual words and a retained capture; never invent a judgement."
     },
     {
       "id": "pacman-fidelity",
-      "description": "Human or reviewer spot-checks ghost targets, junction rule and wave times against the Pac-Man Dossier page.",
+      "description": "Human or reviewer spot-checks ghost targets, junction rule and wave times against the Pac-Man Dossier page text read at the start of slice 2.",
       "verify": "The reviewer records what they compared and any mismatch. The brief's rules came from fetch summaries, not the page."
     }
   ]

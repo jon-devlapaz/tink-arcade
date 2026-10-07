@@ -17,7 +17,7 @@ def main():
         os.environ['TERM'] = 'xterm-256color'
         os.chdir(ROOT)
         os.execvp(sys.executable, [sys.executable, '-m', 'arcade_menu'])
-    fcntl.ioctl(fd, termios.TIOCSWINSZ, struct.pack('HHHH', 32, 90, 0, 0))
+    fcntl.ioctl(fd, termios.TIOCSWINSZ, struct.pack('HHHH', 42, 90, 0, 0))
     buf = b''
 
     def expect(*needles, timeout=8):
@@ -36,11 +36,14 @@ def main():
     failures = []
     try:
         expect(b'tink / arcade', PAPER)
-        for number, game in enumerate(games, 1):
+        selected = 0
+        for index, game in enumerate(games):
             if game.requires_env:  # billed or credentialed; never launched by routine checks
                 continue
             buf = b''
-            os.write(fd, str(number).encode()); os.write(fd, b'\r')
+            # The menu retains selection after a game; digits cannot reach cabinet 10+.
+            os.write(fd, b'j' * ((index - selected) % len(games)) + b'\r')
+            selected = index
             try:
                 name = game.title.lower().encode()
                 expect(b'socratink', b'paper ' + name, b'PLAY / PAPER', PAPER, b'key sound on')
