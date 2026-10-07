@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "session_id": "879c02d1-064d-4c59-bb20-76329b2ca700",
+  "version": 7,
+  "revision": 2,
+  "created_at": "2026-10-06T22:07:59.098562+00:00",
+  "updated_at": "2026-10-06T22:19:27.541312+00:00",
+  "status": "completed",
+  "draft": {
+    "goal": "Add a faithful terminal take on Pac-Man to tink-arcade, plus one twist.",
+    "outcome": "tink_pacman with Bookmark and Eraser",
+    "options": [
+      "Twist on by default; --classic turns it off",
+      "Twist off by default; --twist turns it on"
+    ]
+  },
+  "goal": "Add a faithful terminal take on Pac-Man to tink-arcade, plus one twist.",
+  "origin": "D0",
+  "current_question": null,
+  "frontier": [],
+  "nodes": [
+    {
+      "id": "D0",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "Add a faithful terminal take on Pac-Man to tink-arcade, plus one twist.",
+      "authority": "user",
+      "authority_source": "Chat: 'it looks good' after the working draft (accepts the goal only, not the candidate rules or twist)",
+      "history": [
+        {
+          "state": {
+            "id": "D0",
+            "kind": "decision",
+            "status": "settled",
+            "prerequisites": [],
+            "evidence": [],
+            "owner": "user",
+            "gate": "intake",
+            "answer": "Add a faithful terminal take on Pac-Man to tink-arcade, plus one twist.",
+            "authority": "user",
+            "authority_source": "Chat: 'it looks good' after the working draft (accepts the goal only, not the candidate rules or twist)",
+            "revision": 0,
+            "premise_version": 2,
+            "reviewed_version": 2
+          },
+          "superseded_at": "2026-10-06T22:09:30.654389+00:00",
+          "reason": "User chose option B for maze size"
+        },
+        {
+          "state": {
+            "id": "D0",
+            "kind": "decision",
+            "status": "settled",
+            "prerequisites": [],
+            "evidence": [],
+            "owner": "user",
+            "gate": "intake",
+            "answer": "Add a faithful terminal take on Pac-Man to tink-arcade, plus one twist.",
+            "authority": "user",
+            "authority_source": "Chat: 'it looks good' after the working draft (goal only)",
+            "revision": 1,
+            "premise_version": 2,
+            "reviewed_version": 2
+          },
+          "superseded_at": "2026-10-06T22:11:54.809210+00:00",
+          "reason": "User chose both Bookmark and Eraser; next is whether the twist is on by default"
+        }
+      ],
+      "revision": 2,
+      "premise_version": 2,
+      "reviewed_version": 2
+    },
+    {
+      "id": "F1",
+      "kind": "fact",
+      "status": "settled",
+      "prerequisites": [],
+      "evidence": [
+        "arcade_menu/ui.py:8-9 'MIN_COLUMNS = 80' / 'MIN_ROWS = 30'; DESIGN.md:56 fixed 80x30 canvas"
+      ],
+      "answer": "The menu and every existing game assume an 80x30 canvas; Pac-Man would be the first game that needs more rows.",
+      "authority": "evidence",
+      "authority_source": "Read arcade_menu/ui.py and DESIGN.md this session, 2026-10-06",
+      "history": [],
+      "revision": 1,
+      "premise_version": 4,
+      "reviewed_version": 4
+    },
+    {
+      "id": "D1",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [
+        "F1"
+      ],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "Option B: taller minimum terminal for this game only.",
+      "authority": "user",
+      "authority_source": "Chat turn: 'B'",
+      "history": [
+        {
+          "state": {
+            "id": "D1",
+            "kind": "decision",
+            "status": "unresolved",
+            "prerequisites": [],
+            "evidence": [],
+            "owner": "user",
+            "gate": "intake",
+            "revision": 0,
+            "premise_version": 2,
+            "reviewed_version": 2
+          },
+          "superseded_at": "2026-10-06T22:09:30.654389+00:00",
+          "reason": "User chose option B for maze size"
+        },
+        {
+          "state": {
+            "id": "D1",
+            "kind": "decision",
+            "status": "settled",
+            "prerequisites": [
+              "F1"
+            ],
+            "evidence": [],
+            "owner": "user",
+            "gate": "intake",
+            "answer": "Option B: a taller minimum terminal so the classic-proportion maze fits; this breaks the fixed 80x30 rule for this game only.",
+            "authority": "user",
+            "authority_source": "Chat turn: 'B'",
+            "revision": 1,
+            "premise_version": 4,
+            "reviewed_version": 4
+          },
+          "superseded_at": "2026-10-06T22:11:54.809210+00:00",
+          "reason": "User chose both Bookmark and Eraser; next is whether the twist is on by default"
+        }
+      ],
+      "revision": 2,
+      "premise_version": 6,
+      "reviewed_version": 4
+    },
+    {
+      "id": "D2",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "Include both mechanics, Bookmark and Eraser, as the twist. Agent reads this as one combined twist.",
+      "authority": "user",
+      "authority_source": "Chat turns: 'both' and 'both mechanics'",
+      "history": [
+        {
+          "state": {
+            "id": "D2",
+            "kind": "decision",
+            "status": "unresolved",
+            "prerequisites": [],
+            "evidence": [],
+            "owner": "user",
+            "gate": "intake",
+            "revision": 1,
+            "premise_version": 4,
+            "reviewed_version": 4
+          },
+          "superseded_at": "2026-10-06T22:11:54.809210+00:00",
+          "reason": "User chose both Bookmark and Eraser; next is whether the twist is on by default"
+        }
+      ],
+      "revision": 2,
+      "premise_version": 6,
+      "reviewed_version": 6
+    },
+    {
+      "id": "D3",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [
+        "D2"
+      ],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "Option A: twist on by default; --classic turns it off. One menu entry.",
+      "authority": "user",
+      "authority_source": "Chat turn: 'A'",
+      "history": [
+        {
+          "state": {
+            "id": "D3",
+            "kind": "decision",
+            "status": "unresolved",
+            "prerequisites": [
+              "D2"
+            ],
+            "evidence": [],
+            "owner": "user",
+            "gate": "intake",
+            "revision": 2,
+            "premise_version": 6,
+            "reviewed_version": 6
+          },
+          "superseded_at": "2026-10-06T22:12:34.368483+00:00",
+          "reason": "User chose option A for twist default; frontier clear, moving to probes"
+        }
+      ],
+      "revision": 2,
+      "premise_version": 8,
+      "reviewed_version": 8
+    },
+    {
+      "id": "D4",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "Levels are not limited: play continues level after level with a capped speed ramp. The look must match the Socratink paper theme.",
+      "authority": "user",
+      "authority_source": "Chat, pre-mortem probe: 'it was ugly and didnt match the socraintk paper theme. also it only had limited levels.'",
+      "history": [],
+      "revision": 2,
+      "premise_version": 10,
+      "reviewed_version": 10
+    },
+    {
+      "id": "D5",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [
+        "D2"
+      ],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "The twist applies in play (it is not an optional extra); Bookmark and Eraser work in every ghost mode.",
+      "authority": "user",
+      "authority_source": "Chat, counter-example probe: 'i think the twist should be aplied. it would make it fun'",
+      "history": [],
+      "revision": 2,
+      "premise_version": 10,
+      "reviewed_version": 10
+    },
+    {
+      "id": "D6",
+      "kind": "decision",
+      "status": "settled",
+      "prerequisites": [],
+      "evidence": [],
+      "owner": "user",
+      "gate": "intake",
+      "answer": "Keep the build simple and lightweight; deterministic in the right places and non-deterministic in the right places; the features-and-futures skill is the spirit of all generated code.",
+      "authority": "user",
+      "authority_source": "Chat: 'focus on keeping things simple, lightweight and deterministic in the right places and non-deterministic in the right places. /Users/jondev/.agents/skills/features-and-futures is the spirit of all AI generated code'",
+      "history": [],
+      "revision": 2,
+      "premise_version": 12,
+      "reviewed_version": 12
+    }
+  ],
+  "assumed": [
+    {
+      "text": "Space drops a Bookmark; E erases a wall.",
+      "why": "Both keys are free in the control set; easy to rebind."
+    },
+    {
+      "text": "One Bookmark and one Eraser use per life.",
+      "why": "Mirrors the earlier one-per-life draft; numbers are the agent's."
+    },
+    {
+      "text": "Eraser removes one interior wall cell in front of Pac-Man, never the border, ghost house or tunnel, and it stays open until level end.",
+      "why": "Keeps ghost-house and wrap rules intact."
+    },
+    {
+      "text": "Bookmark lasts 4 seconds or until a ghost touches it.",
+      "why": "Agent's number; adjustable in the brief."
+    }
+  ],
+  "operator": "human"
+}

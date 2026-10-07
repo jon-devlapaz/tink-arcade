@@ -136,6 +136,45 @@ plays sounds when audio is available and writes only Snake's transcript under
 `runs/snake/04-test/output/`. Native sample metering requires macOS and
 `NEON_TETRIS_AUDIO_TESTS=1`. Metering does not replace listening.
 
+## Paper Pac-Man
+
+Run `python3 -B -m tink_pacman` or select Pac-Man from `./play`. It requires
+an **80 x 40** terminal, taller than the other games' 80 by 30 minimum.
+Use Up/Down or `j`/`k` to select cabinet 11 in the menu; digit shortcuts stop at 9.
+
+Arrows or WASD steer automatically moving Pac-Man. Space places a Bookmark;
+E erases the wall directly ahead when it is a thin, unprotected interior wall.
+Each mechanic has one charge per life. Bookmark lasts four simulation seconds
+or until a ghost reaches it, attracting chasing and scattering ghosts but not
+frightened ghosts or eyes. Erased walls stay open until the level ends. Charges
+refill after losing a life, not after clearing a level.
+
+Eat dots and energizers, avoid live ghosts, and clear the maze to start the next
+level. You have three lives and no extra lives. Dots score 10, energizers 50,
+and frightened ghosts score 200, 400, 800 and 1600 in a chain. Restart resets
+the run while preserving session best and mute. Scores are not saved.
+
+`--classic` disables Bookmark and Eraser and hides their charges. `--seed 42`
+repeats frightened-ghost choices, `--no-color` selects monochrome, and
+`--no-sound` disables audio setup. `--help` works without a terminal. P pauses,
+R restarts, M mutes, and Q or Ctrl-C quits. Letter keys accept either case.
+Below 80 x 40, play freezes and only mute and quit work. Recovery discards
+elapsed resize time and preserves an existing pause.
+
+```sh
+python3 -B -m unittest tests.test_pacman_maze tests.test_pacman_engine tests.test_pacman_ghosts tests.test_pacman_twist tests.test_pacman_ui tests.test_pacman_terminal tests.test_pacman_integration
+python3 -B scripts/check_pacman_terminal.py
+python3 -B scripts/check_arcade.py
+```
+
+The PTY check exercises steering, both mechanics, pause, restart, resize, mute,
+classic/no-sound modes, Q and SIGINT, then checks terminal restoration and
+process cleanup. It keeps a transcript at
+`runs/pacman/04-test/output/terminal-transcript.txt`; `--output PATH` selects
+another location. `TINK_PACMAN_TRACE` enables observation-only loop snapshots.
+These checks do not establish visual quality, ghost-rule fidelity or remote CI
+results; those still need review.
+
 ## Paper Tron
 
 Run `python3 -B -m tink_tron` in a terminal at least 80 columns by 30 rows. By default

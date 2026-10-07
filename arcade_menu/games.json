@@ -135,5 +135,19 @@
       "--versus-jev"
     ],
     "requires_env": "TYPESAFE_API_KEY"
+  },
+  {
+    "title": "Pac-Man",
+    "tagline": "Clear the page, dot by dot.",
+    "about": "Offline Pac-Man on an original maze. Bookmark draws ghosts to a tile; Eraser opens a thin wall. Use --classic to disable both.",
+    "controls": [
+      "Arrows / WASD  steer",
+      "Space  bookmark",
+      "E  erase",
+      "P  pause, M  mute"
+    ],
+    "note": "Requires an 80 x 40 terminal.",
+    "path": ".",
+    "module": "tink_pacman"
   }
 ]

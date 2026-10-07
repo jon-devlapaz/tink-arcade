@@ -218,6 +218,36 @@ advance at most one cell. Snake imports `KeyboardAudio` directly; samples,
 credits and the existing backend are unchanged. Eating or collision replaces
 the lower-priority turn cue for the same movement step.
 
+## Pac-Man
+
+`tink_pacman` uses the shared paper/ink/jade palette and ASCII marks, but its
+28 by 31 maze requires an **80 x 40** minimum canvas. This is an exception to
+the other games' 80 by 30 layout. Larger terminals add centered margins rather
+than changing the maze. The PLAY / PAPER border starts at column 3, row 4;
+the SESSION panel starts at column 62, row 4. Sound status is on row 37 and
+controls remain on rows 38 and 39 during pause and game over.
+
+Pac-Man uses `O>`, `<O`, `O^` or `Ov` in jade reverse video. Ghost initials
+`Bl`, `Pk`, `In` and `Cl` use ink reverse video; frightened ghosts use `~~`,
+and returning eyes use `oo`. Dots are ` .`, energizers `()`, and Bookmark `[]`.
+Walls are line art rather than filled blocks. Shapes and attributes distinguish
+actors in monochrome. `--classic` hides Bookmark/Eraser charges and leaves
+Space and E inert. The default menu entry enables both mechanics and names
+the taller terminal requirement in its cabinet note.
+
+The pure engine owns movement, ghost rules, scoring and twist charges. The
+terminal loop reads bounded input batches, freezes actors and clocks during
+pause or undersize, clears buffered turns on undersize entry, and discards
+elapsed time on recovery. Mute and quit remain available below the minimum.
+A delayed frame moves each actor at most one tile.
+
+KeyboardAudio and its existing samples provide energizer `switch`, ghost/level
+clear `clear`, Bookmark `rotate`, Eraser `place`, and life-loss/game-over `over`
+cues. Ordinary dots and movement are silent. `--no-sound` prevents audio setup;
+resources close on quit, SIGINT and exceptions. The real PTY checker records
+state and terminal output without injecting game state. Human comparison with
+Snake and a ghost-rule fidelity review remain separate acceptance checks.
+
 ## Tron
 
 Tron keeps the centered 80 by 30 canvas and paper palette. Its 38 by 20 grid uses two
