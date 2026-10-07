@@ -501,7 +501,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 499 tests in 37.830s
+Ran 499 tests in 36.848s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1009,7 +1009,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 499 tests in 38.540s
+Ran 499 tests in 36.004s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1058,7 +1058,7 @@ test_unreachable_dot (tests.test_pacman_maze.ValidatorRejectsEachDefectTests.tes
 test_wrong_size (tests.test_pacman_maze.ValidatorRejectsEachDefectTests.test_wrong_size) ... ok
 
 ----------------------------------------------------------------------
-Ran 26 tests in 0.018s
+Ran 26 tests in 0.011s
 
 OK
 
@@ -1154,7 +1154,7 @@ test_modes_follow_the_schedule_and_report_changes (tests.test_pacman_ghosts.Wave
 test_reset_starts_over (tests.test_pacman_ghosts.WaveTests.test_reset_starts_over) ... ok
 
 ----------------------------------------------------------------------
-Ran 64 tests in 0.221s
+Ran 64 tests in 0.134s
 
 OK
 
@@ -1180,7 +1180,7 @@ test_pause_and_game_over_reject_mechanics_without_spending (tests.test_pacman_tw
 test_space_and_e_keys_use_the_mechanics (tests.test_pacman_twist.InputTests.test_space_and_e_keys_use_the_mechanics) ... ok
 
 ----------------------------------------------------------------------
-Ran 18 tests in 0.024s
+Ran 18 tests in 0.015s
 
 OK
 
@@ -1210,7 +1210,7 @@ test_open_tiles_have_no_wall_mark (tests.test_pacman_ui.WallMarkTests.test_open_
 test_ring_tiles_are_never_drawn (tests.test_pacman_ui.WallMarkTests.test_ring_tiles_are_never_drawn) ... ok
 
 ----------------------------------------------------------------------
-Ran 22 tests in 0.283s
+Ran 22 tests in 0.170s
 
 OK
 
@@ -1256,7 +1256,7 @@ $ ["python3", "-B", "scripts/check_all.py"]
 == games: unit and terminal tests
 .............................................................................................................................................................ss....................................................................................................................................................................................................................................................................................................................................................
 ----------------------------------------------------------------------
-Ran 499 tests in 38.616s
+Ran 499 tests in 35.458s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]

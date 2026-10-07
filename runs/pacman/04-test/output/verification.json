@@ -1,4 +1,30 @@
 {
-  "result": "failed",
-  "error": "Checklist incomplete: pacman-look, pacman-fidelity (mark them with: sdlc.py mark pacman <id> passed --evidence \"...\")"
+  "result": "passed",
+  "candidate": {
+    "head": "fac793f092fdf1d1236c5c86a8901c58f1eaa1f5",
+    "tree": "6dfea15dce64a3fffc46900d20caedc0823b8200b5b9bf45b4d76a01e608762c"
+  },
+  "inputs": "c40aca4e5f0651ebd8dbf35ecdb7f151779cea6a9a707b68b3298c2ca032efd1",
+  "policy": "24ccb1f66746bf3f8ec0ff01966a3db1d622a351a5b8344c021dbc45571875be",
+  "test_lock": null,
+  "checklist": "307f8a3815d1ad12edeb2211ba0f6f2af3eb63ee2be019f0c5bf030f7ab8625c",
+  "manual_marks": {
+    "pacman-look": "1b99a52cfeecbd7b580df9815044ee3abcd5375609ea3d7dcc58441523c9c845",
+    "pacman-fidelity": "3fffdd6cc48429303918dcd649045fd8f2f7f0268ecd871a99caaf41949ae632"
+  },
+  "checklist_items": {
+    "pacman-maze": "proven",
+    "pacman-engine": "proven",
+    "pacman-ghosts": "proven",
+    "pacman-twist": "proven",
+    "pacman-ui": "proven",
+    "pacman-terminal": "proven",
+    "pacman-cli": "proven",
+    "pacman-menu": "proven",
+    "pacman-docs": "proven",
+    "pacman-no-regressions": "proven",
+    "pacman-look": "attested",
+    "pacman-fidelity": "attested"
+  },
+  "log": "a4e9f1c19aa3265f2d204561c5d7a94b0681d389137da68955170da5628dcb0e"
 }
