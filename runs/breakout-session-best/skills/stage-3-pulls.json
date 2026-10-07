@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "stage": "03-build",
+  "base": "origin/main",
+  "head": "HEAD",
+  "tags": [],
+  "fired": 0,
+  "triggers": 4,
+  "pulls": [],
+  "sheet": [
+    {
+      "id": "ios",
+      "skill": "write-swift",
+      "why": "The project is a Swift app.",
+      "status": "not fired"
+    },
+    {
+      "id": "ui-motion-diff",
+      "skill": "animate",
+      "why": "The diff adds animation or transition code.",
+      "status": "not fired"
+    },
+    {
+      "id": "legacy-removal",
+      "skill": "principle-migrate-callers-then-delete-legacy-apis",
+      "why": "Three or more source files are deleted: an old API is being replaced, so every caller must move first.",
+      "status": "not fired"
+    },
+    {
+      "id": "agent-loop-build",
+      "skill": "build-iterated-agentic-loop",
+      "why": "The project is an agent that iterates until a measurable goal.",
+      "status": "not fired"
+    }
+  ]
+}
