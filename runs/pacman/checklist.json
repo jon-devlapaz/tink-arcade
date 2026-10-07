@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "pacman-maze",
+      "description": "Ship the original 28 x 31 maze in maze.py with a validator.",
+      "verify": "Tests reject asymmetry, unreachable dots, dead ends, missing tunnel or house, an energizer count other than four, and fewer than 8 erasable wall tiles; the shipped layout passes.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_pacman_maze",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pacman-engine",
+      "description": "Implement the pure engine: movement, buffered turn, wrap, dots, scoring, lives, restart, delayed-frame cap, level clear, speed table.",
+      "verify": "Engine tests cover every rule in the brief and pass; a stalled frame never moves an actor more than one tile.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_pacman_engine",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pacman-ghosts",
+      "description": "Implement ghost targets, junction rule, waves, house release, frightened chain, eyes as pure functions.",
+      "verify": "Tests pin each ghost's target, every tie-break, no reverse, the wave schedule, reversal on mode change, house release, the 200/400/800/1600 chain, and seeded wandering that repeats.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_pacman_ghosts",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pacman-twist",
+      "description": "Implement Bookmark and Eraser with one owner for each rule, and --classic.",
+      "verify": "Tests cover bookmark override and expiry, can_erase accepting thin interior walls and rejecting border, house, door, tunnel and thick walls, one use per life, and inert keys under --classic.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_pacman_twist",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pacman-ui",
+      "description": "Implement the paper-theme curses UI, input loop and cue mapping.",
+      "verify": "Tests cover palette pairs equal to Snake's in 256 and 8 colors, ASCII only, bounds at 80x40 and 100x45, undersize freeze and recovery, the strings check_arcade needs, cue map, mute, --no-sound, and terminal restore on every exit path.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tests.test_pacman_ui",
+          "-v"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pacman-terminal",
+      "description": "Verify the real curses process through a pseudo-terminal.",
+      "verify": "Steering, Bookmark, Eraser, pause, restart, shrink and recover, mute, Q and SIGINT, with terminal modes restored and no surviving child group; transcript kept.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_pacman_terminal.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "pacman-cli",
+      "description": "Provide the CLI: --seed, --classic, --no-color, --no-sound.",
+      "verify": "Help exits 0 without a terminal.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-m",
+          "tink_pacman",
+          "--help"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "pacman-menu",
+      "description": "Append the Pac-Man entry to games.json and update scripts/check_arcade.py (42 x 90 pty, select by j presses).",
+      "verify": "The menu launches every game including Pac-Man and returns.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_arcade.py"
+        ],
+        "timeout_seconds": 240
+      }
+    },
+    {
+      "id": "pacman-docs",
+      "description": "Add Pac-Man sections to README.md and DESIGN.md, naming the 80 x 40 exception.",
+      "verify": "Both files mention tink_pacman, --classic and the 80 x 40 minimum.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "from pathlib import Path as P; [(_ for _ in ()).throw(SystemExit(f'{f} missing {s}')) for f in ('README.md','DESIGN.md') for s in ('tink_pacman','--classic','80 x 40') if s not in P(f).read_text()]"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "pacman-no-regressions",
+      "description": "Existing games and the menu are unchanged and still pass.",
+      "verify": "Full local check passes.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/check_all.py"
+        ],
+        "timeout_seconds": 600
+      }
+    },
+    {
+      "id": "pacman-look",
+      "description": "Human compares Pac-Man with Snake at 80 x 40, in color and monochrome.",
+      "verify": "The operator judges it matches the paper theme and is not ugly. Mark only with the operator's actual words and a retained capture; never invent a judgement."
+    },
+    {
+      "id": "pacman-fidelity",
+      "description": "Human or reviewer spot-checks ghost targets, junction rule and wave times against the Pac-Man Dossier page.",
+      "verify": "The reviewer records what they compared and any mismatch. The brief's rules came from fetch summaries, not the page."
+    }
+  ]
+}

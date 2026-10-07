@@ -1,0 +1,8 @@
+{
+  "inputs": "6d29b8e440706cfb6cc45e39d0b66fab7b9be50e36561c36bbd2baa138708260",
+  "decision": "approved",
+  "has_checklist": true,
+  "reviewer": "jon",
+  "source": "Chat, 2026-10-06: Jon told the agent to record this approval on his behalf after reviewing runs/pacman/brief.md and checklist.json (agent ran the command; Jon made the decision)",
+  "reason": "it looks good"
+}
