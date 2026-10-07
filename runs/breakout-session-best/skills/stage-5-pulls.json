@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "stage": "05-deploy",
+  "base": "origin/main",
+  "head": "HEAD",
+  "tags": [],
+  "fired": 0,
+  "triggers": 3,
+  "pulls": [],
+  "sheet": [
+    {
+      "id": "ui-pr",
+      "skill": "visual-pr",
+      "why": "Two or more UI files changed: reviewers need to see the change, not read it.",
+      "status": "not fired"
+    },
+    {
+      "id": "wide-change",
+      "skill": "blast-radius",
+      "why": "Five or more top-level folders touched: what else could this break downstream?",
+      "status": "not fired"
+    },
+    {
+      "id": "narrating-comments",
+      "skill": "no-comments",
+      "why": "The diff adds a lot of comment lines; agents narrate the obvious.",
+      "status": "not fired"
+    }
+  ]
+}
