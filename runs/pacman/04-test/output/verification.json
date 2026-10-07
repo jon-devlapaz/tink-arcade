@@ -1,8 +1,8 @@
 {
   "result": "passed",
   "candidate": {
-    "head": "fac793f092fdf1d1236c5c86a8901c58f1eaa1f5",
-    "tree": "6dfea15dce64a3fffc46900d20caedc0823b8200b5b9bf45b4d76a01e608762c"
+    "head": "5da8da7c545382d79d34ba540218ec6529d61938",
+    "tree": "7aa5c0ee8c88ddad1d300049d95d1bf2e51ee4c8e4340d55929f530f487c2b65"
   },
   "inputs": "c40aca4e5f0651ebd8dbf35ecdb7f151779cea6a9a707b68b3298c2ca032efd1",
   "policy": "24ccb1f66746bf3f8ec0ff01966a3db1d622a351a5b8344c021dbc45571875be",
@@ -26,5 +26,5 @@
     "pacman-look": "attested",
     "pacman-fidelity": "attested"
   },
-  "log": "a4e9f1c19aa3265f2d204561c5d7a94b0681d389137da68955170da5628dcb0e"
+  "log": "3a9e131734d9f7ecdfede7ea071c1d7456277db18ca6e639cdd8832632d49f19"
 }

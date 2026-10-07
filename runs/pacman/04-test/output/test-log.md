@@ -501,7 +501,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 499 tests in 36.848s
+Ran 499 tests in 35.597s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1009,7 +1009,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 499 tests in 36.004s
+Ran 499 tests in 34.964s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1256,7 +1256,7 @@ $ ["python3", "-B", "scripts/check_all.py"]
 == games: unit and terminal tests
 .............................................................................................................................................................ss....................................................................................................................................................................................................................................................................................................................................................
 ----------------------------------------------------------------------
-Ran 499 tests in 35.458s
+Ran 499 tests in 35.112s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
