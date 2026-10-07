@@ -1,4 +1,46 @@
 {
   "schema": 1,
-  "items": []
+  "items": [
+    {
+      "id": "engine-best-tracks-and-survives-restart",
+      "description": "Game keeps `best` (set to 0 in __init__ before restart()); every brick score does best = max(best, score); restart() leaves best alone, as in tink_snake.",
+      "verify": "New engine test: score bricks, check best equals score, restart, check score is 0 and best is kept.",
+      "check": {"argv": ["python3", "-B", "-m", "unittest", "tests.test_breakout_engine.BreakoutEngineTests.test_session_best_tracks_score_and_survives_restart"], "timeout_seconds": 30}
+    },
+    {
+      "id": "engine-snapshot-reports-best",
+      "description": "Game.snapshot() includes `best`, so the optional trace records it as Snake's does; existing snapshot-equality tests still hold.",
+      "verify": "New engine test asserts snapshot()['best'] tracks best.",
+      "check": {"argv": ["python3", "-B", "-m", "unittest", "tests.test_breakout_engine.BreakoutEngineTests.test_snapshot_reports_session_best"], "timeout_seconds": 30}
+    },
+    {
+      "id": "ui-hud-shows-session-best",
+      "description": "Renderer draws `SESSION BEST nnn` (3-digit) on row oy + 2 at the HUD's left edge, without touching the existing SCORE/LIVES/BRICKS/BOARD line.",
+      "verify": "New UI test renders a Game with a known best and asserts the SESSION BEST text and row.",
+      "check": {"argv": ["python3", "-B", "-m", "unittest", "tests.test_breakout_ui.BreakoutUITests.test_hud_shows_session_best"], "timeout_seconds": 30}
+    },
+    {
+      "id": "ui-restart-key-keeps-best",
+      "description": "Pressing R through Controller restarts the game but the session best stays, within one program run; nothing is written to disk.",
+      "verify": "New UI test drives Controller: score, press R, check best kept and score reset.",
+      "check": {"argv": ["python3", "-B", "-m", "unittest", "tests.test_breakout_ui.BreakoutUITests.test_restart_key_keeps_session_best"], "timeout_seconds": 30}
+    },
+    {
+      "id": "readme-session-best-line",
+      "description": "README Breakout section states that session best lasts until exit, next to the 'no saved scores' sentence, matching Snake's wording.",
+      "verify": "Python one-liner finds 'Session best' within 400 characters after the Breakout 'There are no power-ups' sentence.",
+      "check": {"argv": ["python3", "-B", "-c", "t=open('README.md').read(); i=t.index('There are no power-ups'); assert 'Session best' in t[i:i+400], 'README Breakout section lacks session best line'"], "timeout_seconds": 10}
+    },
+    {
+      "id": "breakout-regression-scripts",
+      "description": "Existing Breakout test script and real-PTY terminal script still pass with the change (restart and physics comparisons unaffected by the new `best` key).",
+      "verify": "Both repo scripts exit 0.",
+      "check": {"argv": ["sh", "-c", "python3 -B scripts/check_breakout_tests.py && python3 -B scripts/check_breakout_terminal.py"], "timeout_seconds": 240}
+    },
+    {
+      "id": "hud-looks-right-at-80x30",
+      "description": "At the minimum 80x30 terminal the new HUD line sits cleanly above the SCORE line, left of the 'three boards, three lives.' subtitle, with no overlap or clipping.",
+      "verify": "Attested: run `python3 -B -m tink_breakout` at 80x30 (or read the terminal-transcript frame) and record what was seen via sdlc.py mark."
+    }
+  ]
 }

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "stage": "01-plan",
+  "base": "origin/main",
+  "head": "HEAD",
+  "tags": [],
+  "fired": 0,
+  "triggers": 1,
+  "pulls": [],
+  "sheet": [
+    {
+      "id": "existing-codebase",
+      "skill": "blast-radius",
+      "why": "Planning a change to code that already exists: size its reach before committing to scope.",
+      "status": "not fired"
+    }
+  ]
+}
