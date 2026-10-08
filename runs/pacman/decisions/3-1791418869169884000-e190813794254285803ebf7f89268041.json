@@ -1,0 +1,8 @@
+{
+  "inputs": "95a01cf8d5397f94ef0c1fd9bc5bcd8cfa6978c80ed5c5b4f9433bafc7adbf96",
+  "decision": "approved",
+  "has_checklist": true,
+  "reviewer": "Operator in current Pi session",
+  "source": "runs/pacman/operator-acceptance.md#evidence-refresh-on-merged-main",
+  "reason": "Operator selected Approve and merge (Recommended), renewing unchanged Pacman scope under the current stage contract and retaining existing acceptance and review waivers."
+}

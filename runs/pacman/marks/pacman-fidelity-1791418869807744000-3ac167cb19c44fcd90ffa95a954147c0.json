@@ -1,0 +1,7 @@
+{
+  "item": "pacman-fidelity",
+  "result": "passed",
+  "evidence": "Renewed operator disposition on merged-main code e4d224c: retain acceptance of documented intentional adaptations and independent fidelity-review waiver. See runs/pacman/operator-acceptance.md#evidence-refresh-on-merged-main and dossier-notes.md. No new independent fidelity review is claimed.",
+  "candidate": "423f0600172213dd182678754d6e20b59808c5b8b1817e0b44e183d6638f462d",
+  "time_ns": 1791418869807744000
+}

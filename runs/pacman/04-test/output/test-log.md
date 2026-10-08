@@ -32,6 +32,8 @@ test_fast_brick_crossing_scores_once (test_breakout_engine.BreakoutEngineTests.t
 test_loss_keeps_progress_and_stops_at_zero (test_breakout_engine.BreakoutEngineTests.test_loss_keeps_progress_and_stops_at_zero) ... ok
 test_only_last_brick_advances_and_final_wins (test_breakout_engine.BreakoutEngineTests.test_only_last_brick_advances_and_final_wins) ... ok
 test_paddle_bounds_and_terminal_states (test_breakout_engine.BreakoutEngineTests.test_paddle_bounds_and_terminal_states) ... ok
+test_session_best_tracks_score_and_survives_restart (test_breakout_engine.BreakoutEngineTests.test_session_best_tracks_score_and_survives_restart) ... ok
+test_snapshot_reports_session_best (test_breakout_engine.BreakoutEngineTests.test_snapshot_reports_session_best) ... ok
 test_start_launch_and_invalid_time (test_breakout_engine.BreakoutEngineTests.test_start_launch_and_invalid_time) ... ok
 test_tied_bricks_and_corner_reflect_once (test_breakout_engine.BreakoutEngineTests.test_tied_bricks_and_corner_reflect_once) ... ok
 test_wall_and_paddle_center_edges (test_breakout_engine.BreakoutEngineTests.test_wall_and_paddle_center_edges) ... ok
@@ -39,8 +41,10 @@ test_legal_full_clear_and_determinism (test_breakout_layouts.BreakoutLayoutTests
 test_patterns_and_bounds (test_breakout_layouts.BreakoutLayoutTests.test_patterns_and_bounds) ... ok
 test_controls_and_case_variants (test_breakout_ui.BreakoutUITests.test_controls_and_case_variants) ... ok
 test_help_nonterminal_and_interrupt_cleanup (test_breakout_ui.BreakoutUITests.test_help_nonterminal_and_interrupt_cleanup) ... ok
+test_hud_shows_session_best (test_breakout_ui.BreakoutUITests.test_hud_shows_session_best) ... ok
 test_monochrome_and_safe_clipping (test_breakout_ui.BreakoutUITests.test_monochrome_and_safe_clipping) ... ok
 test_resize_ignores_game_input_and_preserves_pause (test_breakout_ui.BreakoutUITests.test_resize_ignores_game_input_and_preserves_pause) ... ok
+test_restart_key_keeps_session_best (test_breakout_ui.BreakoutUITests.test_restart_key_keeps_session_best) ... ok
 test_bays (test_crossing_engine.LayoutTests.test_bays) ... ok
 test_board_rows_and_lanes (test_crossing_engine.LayoutTests.test_board_rows_and_lanes) ... ok
 test_periods_scale_with_level (test_crossing_engine.LayoutTests.test_periods_scale_with_level) ... ok
@@ -501,7 +505,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 499 tests in 35.597s
+Ran 503 tests in 37.165s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -540,6 +544,8 @@ test_fast_brick_crossing_scores_once (test_breakout_engine.BreakoutEngineTests.t
 test_loss_keeps_progress_and_stops_at_zero (test_breakout_engine.BreakoutEngineTests.test_loss_keeps_progress_and_stops_at_zero) ... ok
 test_only_last_brick_advances_and_final_wins (test_breakout_engine.BreakoutEngineTests.test_only_last_brick_advances_and_final_wins) ... ok
 test_paddle_bounds_and_terminal_states (test_breakout_engine.BreakoutEngineTests.test_paddle_bounds_and_terminal_states) ... ok
+test_session_best_tracks_score_and_survives_restart (test_breakout_engine.BreakoutEngineTests.test_session_best_tracks_score_and_survives_restart) ... ok
+test_snapshot_reports_session_best (test_breakout_engine.BreakoutEngineTests.test_snapshot_reports_session_best) ... ok
 test_start_launch_and_invalid_time (test_breakout_engine.BreakoutEngineTests.test_start_launch_and_invalid_time) ... ok
 test_tied_bricks_and_corner_reflect_once (test_breakout_engine.BreakoutEngineTests.test_tied_bricks_and_corner_reflect_once) ... ok
 test_wall_and_paddle_center_edges (test_breakout_engine.BreakoutEngineTests.test_wall_and_paddle_center_edges) ... ok
@@ -547,8 +553,10 @@ test_legal_full_clear_and_determinism (test_breakout_layouts.BreakoutLayoutTests
 test_patterns_and_bounds (test_breakout_layouts.BreakoutLayoutTests.test_patterns_and_bounds) ... ok
 test_controls_and_case_variants (test_breakout_ui.BreakoutUITests.test_controls_and_case_variants) ... ok
 test_help_nonterminal_and_interrupt_cleanup (test_breakout_ui.BreakoutUITests.test_help_nonterminal_and_interrupt_cleanup) ... ok
+test_hud_shows_session_best (test_breakout_ui.BreakoutUITests.test_hud_shows_session_best) ... ok
 test_monochrome_and_safe_clipping (test_breakout_ui.BreakoutUITests.test_monochrome_and_safe_clipping) ... ok
 test_resize_ignores_game_input_and_preserves_pause (test_breakout_ui.BreakoutUITests.test_resize_ignores_game_input_and_preserves_pause) ... ok
+test_restart_key_keeps_session_best (test_breakout_ui.BreakoutUITests.test_restart_key_keeps_session_best) ... ok
 test_bays (test_crossing_engine.LayoutTests.test_bays) ... ok
 test_board_rows_and_lanes (test_crossing_engine.LayoutTests.test_board_rows_and_lanes) ... ok
 test_periods_scale_with_level (test_crossing_engine.LayoutTests.test_periods_scale_with_level) ... ok
@@ -1009,7 +1017,7 @@ test_paper_palette_and_basic_terminal_fallback (test_ui.ThemeTests.test_paper_pa
 test_socratink_copy_on_board_and_overlays (test_ui.ThemeTests.test_socratink_copy_on_board_and_overlays) ... ok
 
 ----------------------------------------------------------------------
-Ran 499 tests in 34.964s
+Ran 503 tests in 38.456s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1058,7 +1066,7 @@ test_unreachable_dot (tests.test_pacman_maze.ValidatorRejectsEachDefectTests.tes
 test_wrong_size (tests.test_pacman_maze.ValidatorRejectsEachDefectTests.test_wrong_size) ... ok
 
 ----------------------------------------------------------------------
-Ran 26 tests in 0.011s
+Ran 26 tests in 0.018s
 
 OK
 
@@ -1154,7 +1162,7 @@ test_modes_follow_the_schedule_and_report_changes (tests.test_pacman_ghosts.Wave
 test_reset_starts_over (tests.test_pacman_ghosts.WaveTests.test_reset_starts_over) ... ok
 
 ----------------------------------------------------------------------
-Ran 64 tests in 0.134s
+Ran 64 tests in 0.214s
 
 OK
 
@@ -1180,7 +1188,7 @@ test_pause_and_game_over_reject_mechanics_without_spending (tests.test_pacman_tw
 test_space_and_e_keys_use_the_mechanics (tests.test_pacman_twist.InputTests.test_space_and_e_keys_use_the_mechanics) ... ok
 
 ----------------------------------------------------------------------
-Ran 18 tests in 0.015s
+Ran 18 tests in 0.026s
 
 OK
 
@@ -1210,14 +1218,14 @@ test_open_tiles_have_no_wall_mark (tests.test_pacman_ui.WallMarkTests.test_open_
 test_ring_tiles_are_never_drawn (tests.test_pacman_ui.WallMarkTests.test_ring_tiles_are_never_drawn) ... ok
 
 ----------------------------------------------------------------------
-Ran 22 tests in 0.170s
+Ran 22 tests in 0.286s
 
 OK
 
 # checklist item pacman-terminal
 $ ["python3", "-B", "scripts/check_pacman_terminal.py"]
 PASS: Pac-Man real PTY arrows/WASD, Bookmark, Eraser, pause, restart, resize, mute status, classic, no sound, Q and SIGINT; modes restored; child groups gone.
-Transcript: /Users/jondev/dev/active/lab/tink-arcade-pacman/runs/pacman/04-test/output/terminal-transcript.txt
+Transcript: /Users/jondev/dev/active/lab/tink-arcade-pacman-evidence/runs/pacman/04-test/output/terminal-transcript.txt
 
 # checklist item pacman-cli
 $ ["python3", "-B", "-m", "tink_pacman", "--help"]
@@ -1254,9 +1262,9 @@ $ ["python3", "-B", "-c", "from pathlib import Path as P; [(_ for _ in ()).throw
 $ ["python3", "-B", "scripts/check_all.py"]
 
 == games: unit and terminal tests
-.............................................................................................................................................................ss....................................................................................................................................................................................................................................................................................................................................................
+.................................................................................................................................................................ss....................................................................................................................................................................................................................................................................................................................................................
 ----------------------------------------------------------------------
-Ran 499 tests in 35.112s
+Ran 503 tests in 38.094s
 
 OK (skipped=2)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]

@@ -18,3 +18,13 @@ The operator selected "Commit, push, and open PR". The selected option explicitl
 These are explicit operator dispositions from the current conversation, not fabricated test results or authenticated forge approval. Approval receipts and checklist definitions are unchanged. The two attested marks reference this waiver rather than claiming the waived reviews were performed.
 
 Delivery is through a PR. Merge, independent release approval, deployment and final archival closure are not inferred from this acceptance.
+
+## Evidence refresh on merged main
+
+After PR #20 merged at `e4d224c`, the operator asked: "Refresh the stale SDLC evidence against the merged main branch and rerun the checklist to confirm tink-arcade is in a golden state."
+
+The Pacman brief and checklist were unchanged. The stage-3 contract now asks the launcher to generate a skill pull sheet instead of referring to the earlier stage skill pick.
+
+The assistant asked: "Approve the unchanged Pacman scope under the updated stage contract, retain your existing acceptance/waivers, and merge an evidence-only refresh?"
+
+The operator selected "Approve and merge (Recommended)". This renews the stage-3 decision under the current contract, retains the two operator dispositions above, and authorizes an evidence-only PR and merge after the official verification passes. It does not claim the waived reviews occurred or authorize changes to application code, tests, checklist definitions or factory policy.
