@@ -1,0 +1,15 @@
+PASS W1 entry-file: AGENTS.md is a router (11 lines outside generated blocks; generated block 534 bytes (cap 8192))
+PASS W2 pointers-resolve: 41 pointers resolve
+PASS W3 stage-contracts: 6 stage contracts name inputs, output, and gate
+PASS W4 token-budget: largest stage context ~1231 tokens
+PASS W5 skillsets-consistent: 6 pins, all named and present
+PASS W6 status-derivable: status derivable for 12 run(s)
+PASS W7 rules-block-current: rules block current for build-skillset
+PASS W8 triggers-locked: 17 triggers in 6 stage(s) match their locks and the pool
+  tokens 01-plan: ~1098
+  tokens 02-design: ~969
+  tokens 03-build: ~1025
+  tokens 04-test: ~1016
+  tokens 05-deploy: ~1231
+  tokens 06-maintain: ~901
+Walk: 8 passed, 0 warned, 0 failed
