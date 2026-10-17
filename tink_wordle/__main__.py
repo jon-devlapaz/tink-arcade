@@ -9,7 +9,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(
         prog='python3 -m tink_wordle',
         description='Offline Wordle: find the five-letter word in six tries.',
-        epilog='Type letters; Backspace deletes; Enter guesses; R restarts; M mutes; Q quits.',
+        epilog='Type letters; Backspace deletes; Enter guesses; F2 restarts; F3 mutes; Esc quits.',
     )
     parser.add_argument('--seed', type=int, help='repeat the answer selection')
     parser.add_argument('--no-color', action='store_true', help='use monochrome rendering')

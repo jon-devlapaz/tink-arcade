@@ -144,7 +144,7 @@
       "Type letters  build a guess",
       "Backspace  delete",
       "Enter  submit guess",
-      "R  restart, M  mute"
+      "F2  restart, F3  mute, Esc  quit"
     ],
     "path": ".",
     "module": "tink_wordle"

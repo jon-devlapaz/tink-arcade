@@ -50,6 +50,17 @@ class Game:
     def remaining(self):
         return MAX_GUESSES - len(self.guesses)
 
+    @property
+    def letter_states(self):
+        """Best-known feedback for every letter used in submitted guesses."""
+        priority = {"absent": 0, "present": 1, "correct": 2}
+        states = {}
+        for guess, result in zip(self.guesses, self.results):
+            for letter, state in zip(guess, result):
+                if priority[state] > priority.get(states.get(letter, "absent"), -1):
+                    states[letter] = state
+        return states
+
     def add_letter(self, letter):
         if self.status != "playing" or len(self.current) >= WORD_LENGTH:
             return False

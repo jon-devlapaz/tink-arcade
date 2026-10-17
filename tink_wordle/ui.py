@@ -41,9 +41,19 @@ class Renderer(PaperRenderer):
         self.box(oy + 4, ox + 47, 20, 25, 'SESSION')
         self.text(oy + 7, ox + 50, f'TRIES  {len(game.guesses)} / {MAX_GUESSES}', self.ink | curses.A_BOLD)
         self.text(oy + 10, ox + 50, game.message or 'Make a guess.', self.muted)
-        self.text(oy + 14, ox + 50, 'GREEN  right place', self.accent)
-        self.text(oy + 15, ox + 50, 'JADE   wrong place', self.ink)
-        self.text(oy + 16, ox + 50, 'DIM    not in word', self.muted)
+        keyboard = ('QWERTYUIOP', ' ASDFGHJKL', '  ZXCVBNM')
+        states = game.letter_states
+        state_attrs = {'correct': self.accent, 'present': self.ink, 'absent': self.muted}
+        for row, keys in enumerate(keyboard):
+            x = ox + 50
+            for letter in keys:
+                state = states.get(letter.lower())
+                label = f'[{letter}]' if state else f' {letter} '
+                self.text(oy + 13 + row, x, label, state_attrs.get(state, self.muted))
+                x += 4
+        self.text(oy + 17, ox + 50, 'GREEN  right place', self.accent)
+        self.text(oy + 18, ox + 50, 'JADE   wrong place', self.ink)
+        self.text(oy + 19, ox + 50, 'DIM    not in word', self.muted)
         self.text(oy + 20, ox + 50, sound_status, self.muted)
         if game.status != 'playing':
             self.box(oy + 11, ox + 14, 7, 29)
@@ -51,17 +61,19 @@ class Renderer(PaperRenderer):
             self.text(oy + 12, ox + 15 + (27 - len(title)) // 2, title, self.ink | curses.A_BOLD)
             self.text(oy + 14, ox + 17, game.message, self.muted)
             self.text(oy + 16, ox + 18, 'R restart   Q quit', self.ink)
-        self.text(oy + 26, ox + 8, 'Type letters   Backspace delete   Enter guess   R restart', self.ink)
-        self.text(oy + 27, ox + 8, 'M mute   Q quit   Ctrl-C exit', self.accent)
+        self.text(oy + 26, ox + 8, 'Type letters   Backspace delete   Enter guess   F2 restart', self.ink)
+        self.text(oy + 27, ox + 8, 'F3 mute   Esc quit   Ctrl-C exit', self.accent)
         self._refresh()
 
 
 def handle_key(game, key, audio):
-    if key in (ord('q'), ord('Q'), 3):
+    if key == 3:
         return False
-    if key in (ord('m'), ord('M')):
-        audio.toggle()
-    elif key in (ord('r'), ord('R')):
+    if key in (curses.KEY_F3, 27):
+        if key == curses.KEY_F3:
+            audio.toggle()
+        return key != 27
+    if key == curses.KEY_F2:
         game.restart()
         audio.stop()
         audio.play('switch')
@@ -102,7 +114,7 @@ def run(screen, seed=None, no_color=False, no_sound=False):
                         key = -1
                     if key == -1:
                         break
-                    if not too_small or key in (ord('q'), ord('Q'), ord('m'), ord('M'), 3):
+                    if not too_small or key in (curses.KEY_F2, curses.KEY_F3, 27, 3):
                         if not handle_key(game, key, audio):
                             return audio.warning
                 audio.tick()

@@ -106,7 +106,7 @@ wanted. Breakout does not use audio.
 python3 -m tink_wordle
 ```
 
-Find the five-letter word in six tries. Type letters, use Backspace to edit, and press Enter to submit. Green means the letter is in the right place; jade means it appears elsewhere; dim means it is absent. `--seed` repeats answer selection, `--no-color` uses monochrome, and `--no-sound` disables audio. R restarts, M mutes, and Q quits. Wordle uses the shared paper, ink and jade palette and keyboard cues.
+Find the five-letter word in six tries. Type letters, use Backspace to edit, and press Enter to submit. Green means the letter is in the right place; jade means it appears elsewhere; dim means it is absent. The on-screen keyboard keeps each guessed letter's best-known state. `--seed` repeats answer selection, `--no-color` uses monochrome, and `--no-sound` disables audio. F2 restarts, F3 mutes, and Escape quits, so every A-Z key remains typeable. Wordle uses the shared paper, ink and jade palette and keyboard cues.
 
 ## Existing Tetris
 
