@@ -14,10 +14,13 @@ FRAME_TIME = 1 / 30
 class Renderer(PaperRenderer):
     def __init__(self, screen, no_color=False):
         super().__init__(screen, no_color)
-        # Pair 5 is reserved here so the shared palette stays unchanged for other games.
-        if not no_color and curses.has_colors() and curses.COLORS >= 256 and curses.COLOR_PAIRS >= 5:
-            curses.init_pair(5, 226, 230)
+        # Pairs 5 and 6 are reserved here so the shared palette stays unchanged for other games.
+        if not no_color and curses.has_colors() and curses.COLORS >= 256 and curses.COLOR_PAIRS >= 6:
+            # Wordle states are filled blocks with high-contrast text, not colored ink on paper.
+            curses.init_pair(5, 233, 178)  # ink on mustard/ochre
+            curses.init_pair(6, 15, 29)    # white on jade (4.5:1+ contrast)
             self.warning = curses.color_pair(5) | curses.A_BOLD
+            self.correct = curses.color_pair(6) | curses.A_BOLD
 
     def _sound_status(self, sound_status):
         """Wordle uses F3; the shared audio service keeps its M hint for other games."""
@@ -26,7 +29,7 @@ class Renderer(PaperRenderer):
     def _state_attrs(self):
         strikeout = getattr(curses, 'A_STRIKEOUT', curses.A_DIM)
         return {
-            'correct': self.accent | curses.A_REVERSE,
+            'correct': getattr(self, 'correct', self.accent | curses.A_REVERSE),
             'present': self.warning,
             'absent': self.muted | strikeout | curses.A_REVERSE,
         }

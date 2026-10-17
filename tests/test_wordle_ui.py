@@ -74,7 +74,7 @@ class WordleInputTests(unittest.TestCase):
         renderer.draw(Game(answer='arise'), False, 'key sound on [M]')
         self.assertIn('YELLOW wrong place', [call.args[2] for call in screen.addnstr.call_args_list])
 
-    def test_color_renderer_adds_wordle_yellow_pair(self):
+    def test_color_renderer_adds_filled_wordle_state_pairs(self):
         with (patch('tink_wordle.ui.curses.has_colors', return_value=True),
               patch('tink_wordle.ui.curses.start_color'),
               patch('tink_wordle.ui.curses.COLORS', 256, create=True),
@@ -82,7 +82,42 @@ class WordleInputTests(unittest.TestCase):
               patch('tink_wordle.ui.curses.init_pair') as init_pair,
               patch('tink_wordle.ui.curses.color_pair', side_effect=lambda n: n << 8)):
             Renderer(Mock(), False)
-        self.assertIn(call(5, 226, 230), init_pair.call_args_list)
+        self.assertIn(call(5, 233, 178), init_pair.call_args_list)
+        self.assertIn(call(6, 15, 29), init_pair.call_args_list)
+
+    def test_all_wordle_state_colors_meet_contrast_requirement(self):
+        # These are the effective foreground/background colors after filled blocks
+        # (including the reverse-video shared states) are rendered.
+        states = {
+            'correct': (15, 29),
+            'present': (233, 178),
+            'absent': (230, 240),
+        }
+
+        def xterm_rgb(index):
+            if index < 16:
+                return ((0, 0, 0), (128, 0, 0), (0, 128, 0), (128, 128, 0),
+                        (0, 0, 128), (128, 0, 128), (0, 128, 128), (192, 192, 192),
+                        (128, 128, 128), (255, 0, 0), (0, 255, 0), (255, 255, 0),
+                        (0, 0, 255), (255, 0, 255), (0, 255, 255), (255, 255, 255))[index]
+            if index >= 232:
+                value = 8 + (index - 232) * 10
+                return (value, value, value)
+            cube = index - 16
+            levels = (0, 95, 135, 175, 215, 255)
+            return (levels[cube // 36], levels[(cube // 6) % 6], levels[cube % 6])
+
+        def luminance(index):
+            channels = []
+            for channel in xterm_rgb(index):
+                value = channel / 255
+                channels.append(value / 12.92 if value <= 0.04045 else ((value + 0.055) / 1.055) ** 2.4)
+            return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2]
+
+        for state, (foreground, background) in states.items():
+            lighter, darker = sorted((luminance(foreground), luminance(background)), reverse=True)
+            contrast = (lighter + 0.05) / (darker + 0.05)
+            self.assertGreaterEqual(contrast, 4.5, state)
 
     def test_keyboard_fits_play_box_at_minimum_size(self):
         screen = Mock()
