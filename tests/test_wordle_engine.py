@@ -28,9 +28,16 @@ class WordleEngineTests(unittest.TestCase):
         self.assertFalse(game.add_letter('z'))
         self.assertEqual(game.current, 'zzzzz')
         self.assertIsNone(game.submit())
-        self.assertIn('word list', game.message)
+        self.assertIn('recognized word', game.message)
         self.assertTrue(game.remove_letter())
         self.assertEqual(game.current, 'zzzz')
+
+    def test_common_five_letter_guess_outside_answer_list_is_accepted(self):
+        game = Game(answer='arise')
+        for letter in 'which':
+            game.add_letter(letter)
+        self.assertIsNotNone(game.submit())
+        self.assertEqual(game.guesses, ['which'])
 
     def test_win_and_loss_stop_input(self):
         game = Game(answer='arise')

@@ -576,6 +576,10 @@ python3 _system/scripts/sdlc.py status play-against-jev
 
 The original solo design is recorded in [DESIGN.md](DESIGN.md).
 
+Paper Wordle accepts guesses from the vendored [5-Letter-Words list](https://github.com/darkermango/5-Letter-words),
+licensed under MIT; its notice is in [licenses/5-letter-words-MIT.txt](licenses/5-letter-words-MIT.txt).
+The secret-answer list remains curated in `tink_wordle/engine.py`.
+
 The installed workflow files in `_system`, `_shared`, `stages`, and the skillset
 pins come from [tink-sdlc](https://github.com/jon-devlapaz/tink-sdlc), scaffold
 1.19.0. Its [MIT notice](licenses/tink-sdlc-MIT.txt) applies to those files.

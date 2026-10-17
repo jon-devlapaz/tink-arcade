@@ -1,4 +1,5 @@
 """Deterministic Wordle rules, independent of curses and audio."""
+from pathlib import Path
 import random
 
 WORD_LENGTH = 5
@@ -20,7 +21,12 @@ WORDS = (
     "vivid", "voice", "watch", "water", "whale", "wheel", "world", "write", "young", "zebra",
 )
 WORDS = tuple(word for word in WORDS if len(word) == WORD_LENGTH)
-VALID_WORDS = frozenset(WORDS)
+_GUESS_WORDS_PATH = Path(__file__).with_name("guess_words.txt")
+GUESS_WORDS = frozenset(
+    word.strip() for word in _GUESS_WORDS_PATH.read_text().splitlines()
+    if len(word.strip()) == WORD_LENGTH and word.strip().isalpha()
+)
+VALID_WORDS = frozenset(WORDS) | GUESS_WORDS
 
 
 class Game:
@@ -67,7 +73,7 @@ class Game:
             self.message = "Need five letters."
             return None
         if self.current not in VALID_WORDS:
-            self.message = "Not in this word list."
+            self.message = "Not a recognized word."
             return None
         guess = self.current
         counts = {}
