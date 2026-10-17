@@ -84,7 +84,7 @@ class WordleInputTests(unittest.TestCase):
             Renderer(Mock(), False)
         self.assertIn(call(5, 226, 230), init_pair.call_args_list)
 
-    def test_keyboard_fits_session_box_at_minimum_size(self):
+    def test_keyboard_fits_play_box_at_minimum_size(self):
         screen = Mock()
         screen.getmaxyx.return_value = (30, 80)
         Renderer(screen, True).draw(Game(answer='arise'), False, 'key sound on [F3]')
@@ -93,7 +93,10 @@ class WordleInputTests(unittest.TestCase):
             self.assertTrue(0 <= y < 30)
             self.assertTrue(0 <= x and x + len(text) <= 80)
         keyboard = set('QWERTYUIOPASDFGHJKLZXCVBNM')
-        self.assertTrue(keyboard.issubset({call[2] for call in calls}))
+        keyboard_calls = [call for call in calls if call[2] in keyboard and 18 <= call[0] <= 20]
+        self.assertTrue(keyboard.issubset({call[2] for call in keyboard_calls}))
+        self.assertTrue(all(4 < call[0] < 24 and 8 < call[1] < 42 for call in keyboard_calls))
+        self.assertIn('INK    unused letter', {call[2] for call in calls})
 
     def test_controls_use_function_keys_and_escape(self):
         screen = Mock()

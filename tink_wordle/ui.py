@@ -68,16 +68,19 @@ class Renderer(PaperRenderer):
         keyboard = ('QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM')
         states = game.letter_states
         state_attrs = self._state_attrs()
+        # Keep the physical keyboard with the guess grid, like Wordle, and
+        # leave SESSION for status and the four-state legend.
         for row, keys in enumerate(keyboard):
-            x = ox + 50 + (1 if row else 0)
+            x = ox + (15, 16, 18)[row]
             for letter in keys:
                 state = states.get(letter.lower())
-                self.text(oy + 13 + row, x, letter,
+                self.text(oy + 18 + row, x, letter,
                           state_attrs.get(state, self.ink))
                 x += 2
-        self.text(oy + 17, ox + 50, 'GREEN  right place', state_attrs['correct'])
-        self.text(oy + 18, ox + 50, 'YELLOW wrong place', state_attrs['present'])
-        self.text(oy + 19, ox + 50, 'DIM    not in word', state_attrs['absent'])
+        self.text(oy + 13, ox + 50, 'GREEN  right place', state_attrs['correct'])
+        self.text(oy + 14, ox + 50, 'YELLOW wrong place', state_attrs['present'])
+        self.text(oy + 15, ox + 50, 'DIM    not in word', state_attrs['absent'])
+        self.text(oy + 16, ox + 50, 'INK    unused letter', self.ink)
         self.text(oy + 20, ox + 50, sound_status, self.muted)
         if game.status != 'playing':
             self.box(oy + 11, ox + 14, 7, 29)
