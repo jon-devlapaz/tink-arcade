@@ -100,6 +100,14 @@ The existing Tetris native audio checks are opt-in and skipped by default. Run
 those separately on macOS with `NEON_TETRIS_AUDIO_TESTS=1` if audio testing is
 wanted. Breakout does not use audio.
 
+## Paper Wordle
+
+```sh
+python3 -m tink_wordle
+```
+
+Find the five-letter word in six tries. Type letters, use Backspace to edit, and press Enter to submit. Green means the letter is in the right place; jade means it appears elsewhere; dim means it is absent. The on-screen keyboard keeps each guessed letter's best-known state. `--seed` repeats answer selection, `--no-color` uses monochrome, and `--no-sound` disables audio. F2 restarts, F3 mutes, and Escape quits, so every A-Z key remains typeable. Wordle uses the shared paper, ink and jade palette and keyboard cues.
+
 ## Existing Tetris
 
 ```sh
@@ -567,6 +575,10 @@ python3 _system/scripts/sdlc.py status play-against-jev
 ```
 
 The original solo design is recorded in [DESIGN.md](DESIGN.md).
+
+Paper Wordle accepts guesses from the vendored [5-Letter-Words list](https://github.com/darkermango/5-Letter-words),
+licensed under MIT; its notice is in [licenses/5-letter-words-MIT.txt](licenses/5-letter-words-MIT.txt).
+The secret-answer list remains curated in `tink_wordle/engine.py`.
 
 The installed workflow files in `_system`, `_shared`, `stages`, and the skillset
 pins come from [tink-sdlc](https://github.com/jon-devlapaz/tink-sdlc), scaffold

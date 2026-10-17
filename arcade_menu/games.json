@@ -137,6 +137,19 @@
     "requires_env": "TYPESAFE_API_KEY"
   },
   {
+    "title": "Wordle",
+    "tagline": "Six tries, one quiet word.",
+    "about": "Offline Wordle with duplicate-aware clues and a repeatable answer seed.",
+    "controls": [
+      "Type letters  build a guess",
+      "Backspace  delete",
+      "Enter  submit guess",
+      "F2  restart, F3  mute, Esc  quit"
+    ],
+    "path": ".",
+    "module": "tink_wordle"
+  },
+  {
     "title": "Pac-Man",
     "tagline": "Clear the page, dot by dot.",
     "about": "Offline Pac-Man on an original maze. Bookmark draws ghosts to a tile; Eraser opens a thin wall. Use --classic to disable both.",

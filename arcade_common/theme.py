@@ -10,6 +10,7 @@ class PaperRenderer:
         self.screen = screen
         self.ink = 0
         self.accent = curses.A_BOLD
+        self.warning = curses.A_BOLD | curses.A_UNDERLINE
         self.muted = self.rule = curses.A_DIM
         if not no_color and curses.has_colors():
             curses.start_color()
@@ -20,12 +21,14 @@ class PaperRenderer:
                 else:
                     paper, ink, jade = curses.COLOR_WHITE, curses.COLOR_BLACK, curses.COLOR_CYAN
                     graphite = rule = ink
-                for number, color in enumerate((ink, jade, graphite, rule), 1):
+                colors = (ink, jade, graphite, rule)
+                for number, color in enumerate(colors, 1):
                     curses.init_pair(number, color, paper)
                 self.ink = curses.color_pair(1)
                 self.accent = curses.color_pair(2) | curses.A_BOLD
                 self.muted = curses.color_pair(3)
                 self.rule = curses.color_pair(4)
+                self.warning = curses.A_BOLD | curses.A_UNDERLINE
                 self.screen.bkgd(" ", self.ink)
 
     def text(self, y, x, text, attr=0):
