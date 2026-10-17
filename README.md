@@ -100,6 +100,14 @@ The existing Tetris native audio checks are opt-in and skipped by default. Run
 those separately on macOS with `NEON_TETRIS_AUDIO_TESTS=1` if audio testing is
 wanted. Breakout does not use audio.
 
+## Paper Wordle
+
+```sh
+python3 -m tink_wordle
+```
+
+Find the five-letter word in six tries. Type letters, use Backspace to edit, and press Enter to submit. Green means the letter is in the right place; jade means it appears elsewhere; dim means it is absent. `--seed` repeats answer selection, `--no-color` uses monochrome, and `--no-sound` disables audio. R restarts, M mutes, and Q quits. Wordle uses the shared paper, ink and jade palette and keyboard cues.
+
 ## Existing Tetris
 
 ```sh
