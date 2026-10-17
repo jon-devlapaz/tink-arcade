@@ -29,6 +29,7 @@ The renderer uses indexed terminal colors rather than true-color brand values. T
 | Jade | `#1f7a72` | `29` / `#00875f` | Active piece, clear flash, important control hints |
 | Graphite | `#575653` | `240` / `#585858` | Metadata, empty grid, pencil ghost |
 | Rules | Subtle ink dividers | `245` / `#8a8a8a` | Panel outlines |
+| Wordle yellow | Amber paper mark | `226` / `#ffff00` | Wrong-place letter feedback only |
 
 On an eight-color terminal, use white paper, black ink, and cyan as the accent approximation. Graphite and rules collapse to black. Color setup requires at least five color pairs; otherwise retain attribute-based rendering. `--no-color` skips color initialization and uses the terminal's existing foreground/background.
 

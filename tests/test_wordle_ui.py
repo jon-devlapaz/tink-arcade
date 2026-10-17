@@ -1,6 +1,6 @@
 import curses
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, call, patch
 
 from tink_wordle.engine import Game
 from tink_wordle.ui import Renderer, handle_key
@@ -49,6 +49,40 @@ class WordleInputTests(unittest.TestCase):
         self.assertTrue(handle_key(game, curses.KEY_F3, audio))
         self.assertIn('toggle', audio.actions)
         self.assertFalse(handle_key(game, 27, audio))
+
+    def test_keyboard_states_have_distinct_rendering_without_color(self):
+        screen = Mock()
+        screen.getmaxyx.return_value = (30, 80)
+        game = Game(answer='arise')
+        for letter in 'paper':
+            game.add_letter(letter)
+        game.submit()
+        renderer = Renderer(screen, True)
+        attrs = renderer._state_attrs()
+        self.assertEqual(len(set(attrs.values())), 3)
+        renderer.draw(game, False, 'key sound on [M]')
+        calls = {call.args[2]: call.args[4] for call in screen.addnstr.call_args_list
+                 if call.args[2] in 'PLR'}
+        self.assertEqual(calls['P'], attrs['absent'])
+        self.assertEqual(calls['L'], renderer.ink)
+        self.assertEqual(calls['R'], attrs['present'])
+
+    def test_keyboard_legend_names_wrong_place_as_yellow(self):
+        screen = Mock()
+        screen.getmaxyx.return_value = (30, 80)
+        renderer = Renderer(screen, True)
+        renderer.draw(Game(answer='arise'), False, 'key sound on [M]')
+        self.assertIn('YELLOW wrong place', [call.args[2] for call in screen.addnstr.call_args_list])
+
+    def test_color_renderer_adds_wordle_yellow_pair(self):
+        with (patch('tink_wordle.ui.curses.has_colors', return_value=True),
+              patch('tink_wordle.ui.curses.start_color'),
+              patch('tink_wordle.ui.curses.COLORS', 256, create=True),
+              patch('tink_wordle.ui.curses.COLOR_PAIRS', 64, create=True),
+              patch('tink_wordle.ui.curses.init_pair') as init_pair,
+              patch('tink_wordle.ui.curses.color_pair', side_effect=lambda n: n << 8)):
+            Renderer(Mock(), False)
+        self.assertIn(call(5, 226, 230), init_pair.call_args_list)
 
     def test_keyboard_fits_session_box_at_minimum_size(self):
         screen = Mock()

@@ -57,7 +57,8 @@ class Game:
         states = {}
         for guess, result in zip(self.guesses, self.results):
             for letter, state in zip(guess, result):
-                if priority[state] > priority.get(states.get(letter, "absent"), -1):
+                previous = states.get(letter)
+                if previous is None or priority[state] > priority[previous]:
                     states[letter] = state
         return states
 

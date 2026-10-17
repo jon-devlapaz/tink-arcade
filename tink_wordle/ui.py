@@ -12,8 +12,28 @@ FRAME_TIME = 1 / 30
 
 
 class Renderer(PaperRenderer):
+    def __init__(self, screen, no_color=False):
+        super().__init__(screen, no_color)
+        # Pair 5 is reserved here so the shared palette stays unchanged for other games.
+        if not no_color and curses.has_colors() and curses.COLORS >= 256 and curses.COLOR_PAIRS >= 5:
+            curses.init_pair(5, 226, 230)
+            self.warning = curses.color_pair(5) | curses.A_BOLD
+
+    def _sound_status(self, sound_status):
+        """Wordle uses F3; the shared audio service keeps its M hint for other games."""
+        return sound_status.replace('[M]', '[F3]')
+
+    def _state_attrs(self):
+        strikeout = getattr(curses, 'A_STRIKEOUT', curses.A_DIM)
+        return {
+            'correct': self.accent | curses.A_REVERSE,
+            'present': self.warning,
+            'absent': self.muted | strikeout | curses.A_REVERSE,
+        }
+
     def draw(self, game, too_small, sound_status=''):
         self.screen.erase()
+        sound_status = self._sound_status(sound_status)
         rows, columns = self.screen.getmaxyx()
         if too_small:
             y = max(0, rows // 2 - 2)
@@ -34,25 +54,30 @@ class Renderer(PaperRenderer):
             for col in range(WORD_LENGTH):
                 letter = guess[col].upper() if col < len(guess) else ' '
                 attr = self.muted
+                mark = f'[{letter}]'
                 if col < len(result):
-                    attr = {'correct': self.accent | curses.A_REVERSE,
-                            'present': self.accent, 'absent': self.muted}[result[col]]
-                self.text(oy + 6 + row * 2, ox + 12 + col * 5, f'[{letter}]', attr | curses.A_BOLD)
+                    state = result[col]
+                    attr = self._state_attrs()[state]
+                    mark = {'correct': f'[{letter}]',
+                            'present': f'{{{letter}}}',
+                            'absent': f'-{letter}-'}[state]
+                self.text(oy + 6 + row * 2, ox + 12 + col * 5, mark, attr | curses.A_BOLD)
         self.box(oy + 4, ox + 47, 20, 25, 'SESSION')
         self.text(oy + 7, ox + 50, f'TRIES  {len(game.guesses)} / {MAX_GUESSES}', self.ink | curses.A_BOLD)
         self.text(oy + 10, ox + 50, game.message or 'Make a guess.', self.muted)
         keyboard = ('QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM')
         states = game.letter_states
-        state_attrs = {'correct': self.accent, 'present': self.ink, 'absent': self.muted}
+        state_attrs = self._state_attrs()
         for row, keys in enumerate(keyboard):
             x = ox + 50 + (1 if row else 0)
             for letter in keys:
                 state = states.get(letter.lower())
-                self.text(oy + 13 + row, x, letter, state_attrs.get(state, self.muted))
+                self.text(oy + 13 + row, x, letter,
+                          state_attrs.get(state, self.ink))
                 x += 2
-        self.text(oy + 17, ox + 50, 'GREEN  right place', self.accent)
-        self.text(oy + 18, ox + 50, 'JADE   wrong place', self.ink)
-        self.text(oy + 19, ox + 50, 'DIM    not in word', self.muted)
+        self.text(oy + 17, ox + 50, 'GREEN  right place', state_attrs['correct'])
+        self.text(oy + 18, ox + 50, 'YELLOW wrong place', state_attrs['present'])
+        self.text(oy + 19, ox + 50, 'DIM    not in word', state_attrs['absent'])
         self.text(oy + 20, ox + 50, sound_status, self.muted)
         if game.status != 'playing':
             self.box(oy + 11, ox + 14, 7, 29)

@@ -20,7 +20,18 @@ class WordleEngineTests(unittest.TestCase):
         result = game.submit()
         self.assertEqual(result, ('present', 'absent', 'absent', 'absent', 'correct'))
 
-    def test_letter_states_keep_best_feedback(self):
+    def test_letter_states_record_absent_and_keep_best_feedback(self):
+        game = Game(answer='arise')
+        for letter in 'paper':
+            game.add_letter(letter)
+        game.submit()
+        for letter in 'laser':
+            game.add_letter(letter)
+        game.submit()
+        self.assertEqual(game.letter_states['p'], 'absent')
+        self.assertEqual(game.letter_states['l'], 'absent')
+        self.assertEqual(game.letter_states['s'], 'present')
+
         game = Game(answer='arise')
         for letter in 'raise':
             game.add_letter(letter)
