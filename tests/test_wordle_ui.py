@@ -1,8 +1,9 @@
 import curses
 import unittest
+from unittest.mock import Mock
 
 from tink_wordle.engine import Game
-from tink_wordle.ui import handle_key
+from tink_wordle.ui import Renderer, handle_key
 
 
 class FakeAudio:
@@ -48,6 +49,34 @@ class WordleInputTests(unittest.TestCase):
         self.assertTrue(handle_key(game, curses.KEY_F3, audio))
         self.assertIn('toggle', audio.actions)
         self.assertFalse(handle_key(game, 27, audio))
+
+    def test_keyboard_fits_session_box_at_minimum_size(self):
+        screen = Mock()
+        screen.getmaxyx.return_value = (30, 80)
+        Renderer(screen, True).draw(Game(answer='arise'), False, 'key sound on [F3]')
+        calls = [call.args for call in screen.addnstr.call_args_list]
+        for y, x, text, width, _ in calls:
+            self.assertTrue(0 <= y < 30)
+            self.assertTrue(0 <= x and x + len(text) <= 80)
+        keyboard = set('QWERTYUIOPASDFGHJKLZXCVBNM')
+        self.assertTrue(keyboard.issubset({call[2] for call in calls}))
+
+    def test_controls_use_function_keys_and_escape(self):
+        screen = Mock()
+        screen.getmaxyx.return_value = (30, 80)
+        renderer = Renderer(screen, True)
+        renderer.draw(Game(answer='arise'), True, 'key sound on [F3]')
+        small_texts = [call.args[2] for call in screen.addnstr.call_args_list]
+        self.assertIn('F3 mute  Esc quit  Ctrl-C exit', small_texts)
+        screen.reset_mock()
+        game = Game(answer='arise')
+        game.submit()  # invalid empty submission keeps the renderer in playing state
+        game.status = 'won'
+        game.message = 'Solved!'
+        renderer.draw(game, False, 'key sound on [F3]')
+        texts = [call.args[2] for call in screen.addnstr.call_args_list]
+        self.assertIn('F2 restart   Esc quit', texts)
+        self.assertNotIn('R restart   Q quit', texts)
 
 
 if __name__ == '__main__':

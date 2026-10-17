@@ -21,7 +21,7 @@ class Renderer(PaperRenderer):
             self.text(y + 1, 2, 'Resize terminal to at least 80 x 30.', curses.A_BOLD)
             self.text(y + 2, 2, f'Current: {columns} x {rows} // game frozen')
             self.text(y + 3, 2, sound_status, self.muted)
-            self.text(y + 4, 2, 'M mute  Q quit  Ctrl-C exit', self.muted)
+            self.text(y + 4, 2, 'F3 mute  Esc quit  Ctrl-C exit', self.muted)
             self._refresh()
             return
         ox, oy = (columns - MIN_COLUMNS) // 2, (rows - MIN_ROWS) // 2
@@ -41,16 +41,15 @@ class Renderer(PaperRenderer):
         self.box(oy + 4, ox + 47, 20, 25, 'SESSION')
         self.text(oy + 7, ox + 50, f'TRIES  {len(game.guesses)} / {MAX_GUESSES}', self.ink | curses.A_BOLD)
         self.text(oy + 10, ox + 50, game.message or 'Make a guess.', self.muted)
-        keyboard = ('QWERTYUIOP', ' ASDFGHJKL', '  ZXCVBNM')
+        keyboard = ('QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM')
         states = game.letter_states
         state_attrs = {'correct': self.accent, 'present': self.ink, 'absent': self.muted}
         for row, keys in enumerate(keyboard):
-            x = ox + 50
+            x = ox + 50 + (1 if row else 0)
             for letter in keys:
                 state = states.get(letter.lower())
-                label = f'[{letter}]' if state else f' {letter} '
-                self.text(oy + 13 + row, x, label, state_attrs.get(state, self.muted))
-                x += 4
+                self.text(oy + 13 + row, x, letter, state_attrs.get(state, self.muted))
+                x += 2
         self.text(oy + 17, ox + 50, 'GREEN  right place', self.accent)
         self.text(oy + 18, ox + 50, 'JADE   wrong place', self.ink)
         self.text(oy + 19, ox + 50, 'DIM    not in word', self.muted)
@@ -60,7 +59,7 @@ class Renderer(PaperRenderer):
             title = 'YOU WIN' if game.status == 'won' else 'WORD REVEALED'
             self.text(oy + 12, ox + 15 + (27 - len(title)) // 2, title, self.ink | curses.A_BOLD)
             self.text(oy + 14, ox + 17, game.message, self.muted)
-            self.text(oy + 16, ox + 18, 'R restart   Q quit', self.ink)
+            self.text(oy + 16, ox + 18, 'F2 restart   Esc quit', self.ink)
         self.text(oy + 26, ox + 8, 'Type letters   Backspace delete   Enter guess   F2 restart', self.ink)
         self.text(oy + 27, ox + 8, 'F3 mute   Esc quit   Ctrl-C exit', self.accent)
         self._refresh()

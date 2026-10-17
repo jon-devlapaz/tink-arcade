@@ -47,9 +47,11 @@ def main():
             try:
                 name = game.title.lower().encode()
                 expect(b'socratink', b'paper ' + name, b'PLAY / PAPER', PAPER, b'key sound on')
-                os.write(fd, b'm')
+                mute_key = b'\x1bOR' if game.module == 'tink_wordle' else b'm'
+                os.write(fd, mute_key)
                 expect(b'muted')  # curses redraws only the changed cells
-                os.write(fd, b'q')
+                quit_key = b'\x1b' if game.module == 'tink_wordle' else b'q'
+                os.write(fd, quit_key)
                 buf = b''
                 expect(b'tink / arcade')
                 print(f'PASS {game.title}')
