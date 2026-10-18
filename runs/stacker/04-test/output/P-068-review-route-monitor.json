@@ -1,0 +1,37 @@
+{
+  "started_monotonic": 557224.589763791,
+  "ended_monotonic": 557404.600336541,
+  "samples": 1730,
+  "changes": [
+    {
+      "seconds": 0.047,
+      "device": 75,
+      "sample_rate": 48000.0
+    },
+    {
+      "seconds": 84.317,
+      "device": 82,
+      "sample_rate": 48000.0
+    },
+    {
+      "seconds": 88.921,
+      "device": 75,
+      "sample_rate": 48000.0
+    },
+    {
+      "seconds": 124.243,
+      "device": 82,
+      "sample_rate": 48000.0
+    },
+    {
+      "seconds": 134.772,
+      "device": 75,
+      "sample_rate": 48000.0
+    },
+    {
+      "seconds": 150.854,
+      "device": 82,
+      "sample_rate": 48000.0
+    }
+  ]
+}

@@ -1,37 +1,13 @@
 {
-  "result": "passed",
-  "candidate": {
-    "head": "b29d26814833ee5a5e7430e5698fc11f412cd5dc",
-    "tree": "67ce47843721b76d6a12067d42745f785a4e6ccd73f19b8f13fb5789d3580013"
-  },
-  "inputs": "9343cc6c8da73531bee5b609703ce55bc9a61d7ddd5b195469d06a2a0d6cf015",
-  "policy": "24ccb1f66746bf3f8ec0ff01966a3db1d622a351a5b8344c021dbc45571875be",
-  "test_lock": null,
-  "checklist": "49ffce99a71d2bb16707274d6c23bf50f404cf743edfcd02b7ca32347a0622b0",
-  "manual_marks": {
-    "stacker-red-probes": "9cdc5ec3f4b2ab01e33c6ad14a567fbd480661383c058b8f62cd55e7ee1ad034",
-    "stacker-documentation-and-boundaries": "f40ace9360a3f116c2012b7643a57a39d221569820b70d251294b7a769f6c69e",
-    "seed-1-expect": "456b8ce182f3fd3782d21ed2b9f0e1bb4e42daddf5d7fdf2ba512133d859f93d",
-    "seed-2": "6ff07077608f536239a216f050d8b6cb687e8181d66e2fd3d09c0b3e2d9eeddc",
-    "seed-3-expect": "aed370be25588baabdb4dce2c42e444a30769c2b63bd0557b63cf4d71510e787",
-    "seed-4-expect": "adeb241064690683545b6309bf02bc59201916b2541cea9942104262ca9ac9e8"
-  },
-  "checklist_items": {
-    "stacker-registration": "proven",
-    "stacker-unit-regressions": "proven",
-    "stacker-cli": "proven",
-    "stacker-terminal": "proven",
-    "stacker-red-probes": "attested",
-    "stacker-documentation-and-boundaries": "attested"
-  },
+  "result": "failed",
+  "error": "Seed check failed: seed-3 (output: runs/stacker/04-test/output/test-log.md)",
   "seed_checks": {
     "seed-1": "proven",
-    "seed-1-expect": "attested",
-    "seed-2": "attested",
-    "seed-3": "proven",
-    "seed-3-expect": "attested",
-    "seed-4": "proven",
-    "seed-4-expect": "attested"
-  },
-  "log": "bd23504a37561dd2d1bcf7afbf9aee3aa90584d8df1bd90f9a0b159eb1454a01"
+    "seed-1-expect": "pending",
+    "seed-2": "pending",
+    "seed-3": "failed",
+    "seed-3-expect": "pending",
+    "seed-4": "not-run",
+    "seed-4-expect": "pending"
+  }
 }

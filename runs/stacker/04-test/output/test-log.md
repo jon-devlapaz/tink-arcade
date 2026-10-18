@@ -245,7 +245,7 @@ test_modes_follow_the_schedule_and_report_changes (test_pacman_ghosts.WaveTests.
 test_reset_starts_over (test_pacman_ghosts.WaveTests.test_reset_starts_over) ... ok
 test_docs_describe_launch_classic_and_taller_minimum (test_pacman_integration.PacmanIntegrationTests.test_docs_describe_launch_classic_and_taller_minimum) ... ok
 test_menu_can_launch_pacman_past_the_digit_shortcuts (test_pacman_integration.PacmanIntegrationTests.test_menu_can_launch_pacman_past_the_digit_shortcuts) ... ok
-test_registered_once_at_the_end_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_the_end_and_ready_offline) ... ok
+test_registered_once_at_original_number_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_original_number_and_ready_offline) ... ok
 test_can_erase_thin_interior_walls_between_corridors (test_pacman_maze.MazeRulesTests.test_can_erase_thin_interior_walls_between_corridors) ... ok
 test_cannot_erase_a_corner_so_it_only_joins_corridors (test_pacman_maze.MazeRulesTests.test_cannot_erase_a_corner_so_it_only_joins_corridors) ... ok
 test_cannot_erase_beside_the_house_or_its_door (test_pacman_maze.MazeRulesTests.test_cannot_erase_beside_the_house_or_its_door) ... ok
@@ -403,6 +403,7 @@ test_any_failure_is_fatal_and_optional_skips_are_reported (test_stacker_checks.S
 test_approved_test_names_are_required (test_stacker_checks.StackerCheckRunnerTests.test_approved_test_names_are_required) ... ok
 test_empty_missing_duplicate_and_skipped_required_tests_fail (test_stacker_checks.StackerCheckRunnerTests.test_empty_missing_duplicate_and_skipped_required_tests_fail) ... ok
 test_native_mode_requires_platform_and_explicit_opt_in (test_stacker_checks.StackerCheckRunnerTests.test_native_mode_requires_platform_and_explicit_opt_in) ... ok
+test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets) ... ok
 test_engine_does_not_import_io_or_randomness (test_stacker_engine.StackerRuleTests.test_engine_does_not_import_io_or_randomness) ... ok
 test_first_row_locks_without_support (test_stacker_engine.StackerRuleTests.test_first_row_locks_without_support) ... ok
 test_fractional_time_and_long_stall_discard (test_stacker_engine.StackerRuleTests.test_fractional_time_and_long_stall_discard) ... ok
@@ -555,7 +556,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 553 tests in 38.059s
+Ran 554 tests in 36.592s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -807,7 +808,7 @@ test_modes_follow_the_schedule_and_report_changes (test_pacman_ghosts.WaveTests.
 test_reset_starts_over (test_pacman_ghosts.WaveTests.test_reset_starts_over) ... ok
 test_docs_describe_launch_classic_and_taller_minimum (test_pacman_integration.PacmanIntegrationTests.test_docs_describe_launch_classic_and_taller_minimum) ... ok
 test_menu_can_launch_pacman_past_the_digit_shortcuts (test_pacman_integration.PacmanIntegrationTests.test_menu_can_launch_pacman_past_the_digit_shortcuts) ... ok
-test_registered_once_at_the_end_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_the_end_and_ready_offline) ... ok
+test_registered_once_at_original_number_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_original_number_and_ready_offline) ... ok
 test_can_erase_thin_interior_walls_between_corridors (test_pacman_maze.MazeRulesTests.test_can_erase_thin_interior_walls_between_corridors) ... ok
 test_cannot_erase_a_corner_so_it_only_joins_corridors (test_pacman_maze.MazeRulesTests.test_cannot_erase_a_corner_so_it_only_joins_corridors) ... ok
 test_cannot_erase_beside_the_house_or_its_door (test_pacman_maze.MazeRulesTests.test_cannot_erase_beside_the_house_or_its_door) ... ok
@@ -965,6 +966,7 @@ test_any_failure_is_fatal_and_optional_skips_are_reported (test_stacker_checks.S
 test_approved_test_names_are_required (test_stacker_checks.StackerCheckRunnerTests.test_approved_test_names_are_required) ... ok
 test_empty_missing_duplicate_and_skipped_required_tests_fail (test_stacker_checks.StackerCheckRunnerTests.test_empty_missing_duplicate_and_skipped_required_tests_fail) ... ok
 test_native_mode_requires_platform_and_explicit_opt_in (test_stacker_checks.StackerCheckRunnerTests.test_native_mode_requires_platform_and_explicit_opt_in) ... ok
+test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets) ... ok
 test_engine_does_not_import_io_or_randomness (test_stacker_engine.StackerRuleTests.test_engine_does_not_import_io_or_randomness) ... ok
 test_first_row_locks_without_support (test_stacker_engine.StackerRuleTests.test_first_row_locks_without_support) ... ok
 test_fractional_time_and_long_stall_discard (test_stacker_engine.StackerRuleTests.test_fractional_time_and_long_stall_discard) ... ok
@@ -1117,7 +1119,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 553 tests in 40.228s
+Ran 554 tests in 36.425s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1387,7 +1389,7 @@ test_modes_follow_the_schedule_and_report_changes (test_pacman_ghosts.WaveTests.
 test_reset_starts_over (test_pacman_ghosts.WaveTests.test_reset_starts_over) ... ok
 test_docs_describe_launch_classic_and_taller_minimum (test_pacman_integration.PacmanIntegrationTests.test_docs_describe_launch_classic_and_taller_minimum) ... ok
 test_menu_can_launch_pacman_past_the_digit_shortcuts (test_pacman_integration.PacmanIntegrationTests.test_menu_can_launch_pacman_past_the_digit_shortcuts) ... ok
-test_registered_once_at_the_end_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_the_end_and_ready_offline) ... ok
+test_registered_once_at_original_number_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_original_number_and_ready_offline) ... ok
 test_can_erase_thin_interior_walls_between_corridors (test_pacman_maze.MazeRulesTests.test_can_erase_thin_interior_walls_between_corridors) ... ok
 test_cannot_erase_a_corner_so_it_only_joins_corridors (test_pacman_maze.MazeRulesTests.test_cannot_erase_a_corner_so_it_only_joins_corridors) ... ok
 test_cannot_erase_beside_the_house_or_its_door (test_pacman_maze.MazeRulesTests.test_cannot_erase_beside_the_house_or_its_door) ... ok
@@ -1545,6 +1547,7 @@ test_any_failure_is_fatal_and_optional_skips_are_reported (test_stacker_checks.S
 test_approved_test_names_are_required (test_stacker_checks.StackerCheckRunnerTests.test_approved_test_names_are_required) ... ok
 test_empty_missing_duplicate_and_skipped_required_tests_fail (test_stacker_checks.StackerCheckRunnerTests.test_empty_missing_duplicate_and_skipped_required_tests_fail) ... ok
 test_native_mode_requires_platform_and_explicit_opt_in (test_stacker_checks.StackerCheckRunnerTests.test_native_mode_requires_platform_and_explicit_opt_in) ... ok
+test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets) ... ok
 test_engine_does_not_import_io_or_randomness (test_stacker_engine.StackerRuleTests.test_engine_does_not_import_io_or_randomness) ... ok
 test_first_row_locks_without_support (test_stacker_engine.StackerRuleTests.test_first_row_locks_without_support) ... ok
 test_fractional_time_and_long_stall_discard (test_stacker_engine.StackerRuleTests.test_fractional_time_and_long_stall_discard) ... ok
@@ -1697,7 +1700,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 553 tests in 37.834s
+Ran 554 tests in 36.033s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1707,7 +1710,7 @@ SKIP test_native_audio.NativeAudioIntegrationTests.test_replay_after_mute_and_re
 SKIP test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_rapid_repeats: requires macOS and NEON_TETRIS_AUDIO_TESTS=1 for real playback metering
 SKIP test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats: requires macOS and NEON_TETRIS_AUDIO_TESTS=1 for real playback metering
 SKIP test_stacker_native_audio.NativeStackerAudioTests.test_stacker_playback_resumes_after_mute_and_closes_voices: requires macOS and NEON_TETRIS_AUDIO_TESTS=1 for real playback metering
-Total: 553; skips: 5; required passed: 23/23
+Total: 554; skips: 5; required passed: 23/23
 
 # checklist item stacker-cli
 $ ["python3", "-B", "-m", "tink_stacker", "--help"]
@@ -1732,7 +1735,6 @@ Transcript: /Users/jondev/dev/active/factory/tink-arcade-stacker2/runs/stacker/0
 $ ["bash", "-c", "python3 -B scripts/check_arcade.py"]
 cwd: .
 expect (operator confirms): Exit 0, including PASS Stacker for the registered Stacker cabinet, with successful launch, mute and return to menu.
-PASS Stacker
 PASS Tetris
 PASS Breakout
 PASS Snake
@@ -1743,6 +1745,7 @@ PASS Crossing
 PASS Tron
 PASS Wordle
 PASS Pac-Man
+PASS Stacker
 
 # seed check seed-3
 $ ["bash", "-c", "env -u TYPESAFE_API_KEY NEON_TETRIS_AUDIO_TESTS=1 python3 -B scripts/check_stacker_tests.py --sounds --require-native"]
@@ -1779,45 +1782,39 @@ Stacker sample time=0.2444s; peak=-10.03 dB
 Stacker sample time=0.2444s; peak=-10.03 dB
 Stacker sample time=0.2444s; peak=-10.03 dB
 Stacker sample time=0.1453s; peak=-7.54 dB
-Stacker sample time=0.1453s; peak=-7.54 dB
-Stacker sample time=0.1453s; peak=-7.54 dB
-ok
+
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=1) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=2) ... FAIL
 test_stacker_playback_resumes_after_mute_and_closes_voices (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_playback_resumes_after_mute_and_closes_voices) ... Stacker sample time=0.1794s; peak=-9.26 dB
 ok
 
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=1)
 ----------------------------------------------------------------------
-Ran 11 tests in 16.611s
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_native_audio.py", line 59, in meter
+    self.assertGreater(furthest, .01, f'Playback did not advance: time={furthest}, peak={peak}, duration={duration}')
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 not greater than 0.01 : Playback did not advance: time=0.0, peak=-7.535367488861084, duration=0.14526077097505669
 
-OK
-Total: 11; skips: 0; required passed: 11/11
-
-# seed check seed-4
-$ ["bash", "-c", "env -u TYPESAFE_API_KEY python3 -B scripts/check_stacker_tests.py --rules"]
-cwd: .
-expect (operator confirms): Moving rows lock according to fair skill-based timing; only overlapping blocks survive, overhang is lost, zero overlap ends the run, and successful rows progress automatically toward the top without a take-the-minor-win choice. Deterministic regression assertions cover these behaviors, and play inspection confirms recognizable Stacker feel.
-test_engine_does_not_import_io_or_randomness (test_stacker_engine.StackerRuleTests.test_engine_does_not_import_io_or_randomness) ... ok
-test_first_row_locks_without_support (test_stacker_engine.StackerRuleTests.test_first_row_locks_without_support) ... ok
-test_fractional_time_and_long_stall_discard (test_stacker_engine.StackerRuleTests.test_fractional_time_and_long_stall_discard) ... ok
-test_height_only_speed_curve_and_identical_elapsed_inputs_repeat (test_stacker_engine.StackerRuleTests.test_height_only_speed_curve_and_identical_elapsed_inputs_repeat) ... ok
-test_legal_timed_input_replay_reaches_top (test_stacker_engine.StackerRuleTests.test_legal_timed_input_replay_reaches_top) ... ok
-test_lock_retains_only_overlap_and_discards_overhang (test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang) ... ok
-test_moving_row_reflects_at_both_edges (test_stacker_engine.StackerRuleTests.test_moving_row_reflects_at_both_edges) ... ok
-test_next_row_width_equals_surviving_blocks (test_stacker_engine.StackerRuleTests.test_next_row_width_equals_surviving_blocks) ... ok
-test_restart_restores_initial_state (test_stacker_engine.StackerRuleTests.test_restart_restores_initial_state) ... ok
-test_successful_lock_automatically_starts_next_row (test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row) ... ok
-test_top_row_wins_without_checkpoint_or_payout_choice (test_stacker_engine.StackerRuleTests.test_top_row_wins_without_checkpoint_or_payout_choice) ... ok
-test_zero_overlap_loses_without_advancing (test_stacker_engine.StackerRuleTests.test_zero_overlap_loses_without_advancing) ... ok
-test_bounded_input_does_not_starve_update_or_render (test_stacker_ui.StackerUITests.test_bounded_input_does_not_starve_update_or_render) ... ok
-test_cli_flags_nonterminal_and_warning (test_stacker_ui.StackerUITests.test_cli_flags_nonterminal_and_warning) ... ok
-test_end_states_ignore_placement_and_restart_is_available (test_stacker_ui.StackerUITests.test_end_states_ignore_placement_and_restart_is_available) ... ok
-test_lock_uses_displayed_position_once_per_input_batch (test_stacker_ui.StackerUITests.test_lock_uses_displayed_position_once_per_input_batch) ... ok
-test_palette_states_clipping_and_monochrome (test_stacker_ui.StackerUITests.test_palette_states_clipping_and_monochrome) ... ok
-test_pause_and_small_terminal_freeze_without_catchup (test_stacker_ui.StackerUITests.test_pause_and_small_terminal_freeze_without_catchup) ... ok
-test_resize_recovery_preserves_prior_pause (test_stacker_ui.StackerUITests.test_resize_recovery_preserves_prior_pause) ... ok
-test_small_terminal_keeps_mute_and_quit_available (test_stacker_ui.StackerUITests.test_small_terminal_keeps_mute_and_quit_available) ... ok
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_native_audio.py", line 59, in meter
+    self.assertGreater(furthest, .01, f'Playback did not advance: time={furthest}, peak={peak}, duration={duration}')
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 not greater than 0.01 : Playback did not advance: time=0.0, peak=-7.535367488861084, duration=0.14526077097505669
 
 ----------------------------------------------------------------------
-Ran 20 tests in 0.083s
+Ran 11 tests in 16.297s
 
-OK
-Total: 20; skips: 0; required passed: 15/15
+FAILED (failures=2)
+Required tests did not pass: ['test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats']
+Total: 11; skips: 0; required passed: 10/11
