@@ -3,7 +3,7 @@
 Inputs: current stage 04 evidence, candidate diff, approved brief or spec/plan,
 and `_shared/REVIEW.md`.
 Output: `runs/<slug>/05-deploy/output/REVIEW-findings.md` and a PR when requested.
-Open (or confirm) the PR from the verified, committed candidate; the agent may open it, only a human merges it.
+Open (or confirm) the PR from the verified, committed candidate. The agent may open it. Only a human authorizes a merge: directly for this PR, or through a recorded standing approval that names merging (tink-substrate's approved-sequence contract). With that authorization the agent may merge.
 If code changes after the PR is open, run verify again before the review continues.
 
 Manual delivery recipe: `git push -u origin <slug>`, then `gh pr create --fill`.
@@ -13,9 +13,11 @@ finish the review, then hand the owner these commands at the end.
 Check logic, security boundaries, and acceptance criteria. Use separate review
 passes for risk that warrants them; a model review is not human approval.
 Important findings return to stage 03 and require renewed verification.
+For Tinkery-originated work, follow [Tinkery result handoff and retention](../../_system/SDLC.md#tinkery-ownership-and-handoff)
+in the existing review findings and PR handoff; do not record a Taste verdict.
 
-Gate: independently authenticated code-owner approval and current required CI in
-the forge. Local review files cannot approve a release. Consult the deployment
+Gate: the human's merge authorization (direct or standing), current required CI,
+and whatever the forge enforces (protected branches, required reviews). Local review files cannot approve a release. Consult the deployment
 system for the deployed revision, health result, and rollback reference.
 
 Skill mounts land in the git-ignored `.active` directory inside `.tink` (created on first mount, not shipped); nothing to clean up at run closure.
@@ -35,4 +37,4 @@ Skillset: `deployment-skillset` (pin: `.tink/skillsets/deployment-skillset.json`
 
 Stage skills (always for this stage; `tink use` compiles the same set):
 - `principle-prove-it-works`: Before declaring done: run the real artifact and show its output; a green build or "it compiles" is not proof.
-At stage open the launcher checks `stages/05-deploy/TRIGGERS.json` against the run's diff and tags and writes the pull sheet `runs/<slug>/skills/stage-5-pulls.json`. When one of these triggers fires, or the pull sheet names a skill, read that skill in full before acting on it. In the handoff note, name each skill that changed a decision and the decision it changed.
+When one of these applies, read that skill in full before acting on it. In the handoff note, name each skill that changed a decision and the decision it changed.

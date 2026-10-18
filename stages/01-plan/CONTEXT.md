@@ -2,9 +2,18 @@
 
 Inputs: originator's request and `_shared/intent-template.md` for full runs.
 Read the run's `run.json` to select its profile.
+For Tinkery-originated work, follow [Tinkery intake boundaries](../../_system/SDLC.md#tinkery-ownership-and-handoff)
+before translating the supplied confirmed seed into intent.
+Stage-1 `--seed-contract <session>/seed-contract.md --seed-me-helper <path>/session.py`
+verifies the v2 confirmation binding and imports records into `runs/<slug>/seed-checks.json`
+as LOCKED operator-confirmed items, separate from worker checks. Do not edit or drop
+these definitions. Preserve pending provisional checks; when a prerequisite exists,
+add a real command and prerequisite evidence via `activation` and obtain renewed
+operator definition approval. Prose `expect` and `judge` records require actual operator
+attestations, never the worker's judgment. See the guide's locked seed checks section.
 
-For light runs, write `runs/<slug>/brief.md` with problem, acceptance criteria,
-approach, risks, and verification. Define the implementation checklist as
+For light runs, write `runs/<slug>/brief.md` with problem and outcome, acceptance criteria,
+constraints and exclusions, approach, risks, and verification. Define the implementation checklist as
 item definitions in `runs/<slug>/checklist.json` (id, description, verify, and a `check` whenever an automated proof exists). Combine stages 01–03
 into one human-reviewed definition. Light runs have ONE definition gate, recorded as stage 3 (`sdlc.py decide <run> 3 ...`): the approved `brief.md` + `checklist.json` are the intent, design and plan.
 For full runs, write `runs/<slug>/01-plan/output/intent.md`.
@@ -30,4 +39,4 @@ Skillset: `planning-skillset` (pin: `.tink/skillsets/planning-skillset.json`).
 
 Stage skills (always for this stage; `tink use` compiles the same set):
 - `principle-build-the-lever`: Non-trivial work: build the script or tool that does or proves it, so a reviewer can rerun it, instead of doing it by hand.
-At stage open the launcher checks `stages/01-plan/TRIGGERS.json` against the run's diff and tags and writes the pull sheet `runs/<slug>/skills/stage-1-pulls.json`. When one of these triggers fires, or the pull sheet names a skill, read that skill in full before acting on it. In the handoff note, name each skill that changed a decision and the decision it changed.
+When one of these applies, read that skill in full before acting on it. In the handoff note, name each skill that changed a decision and the decision it changed.
