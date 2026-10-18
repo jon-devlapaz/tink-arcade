@@ -34,6 +34,9 @@ python3 -m tink_stacker                 # or select Stacker from the arcade menu
 python3 -m tink_stacker --no-color --no-sound
 ```
 
+Stacker is appended as cabinet 13, preserving every existing cabinet's number.
+Select it with Up/Down or `j`/`k` and Enter; digit shortcuts stop at 9.
+
 Space or Enter locks the moving row. Only blocks overlapping the previous row
 survive; no overlap ends the run. Successful placements automatically start the
 next row. Reach row 15 to win. P pauses, R restarts, M toggles sound, and Q or
@@ -190,7 +193,7 @@ plays sounds when audio is available and writes only Snake's transcript under
 
 Run `python3 -B -m tink_pacman` or select Pac-Man from `./play`. It requires
 an **80 x 40** terminal, taller than the other games' 80 by 30 minimum.
-Use Up/Down or `j`/`k` to select cabinet 11 in the menu; digit shortcuts stop at 9.
+Use Up/Down or `j`/`k` to select Pac-Man, cabinet 12 in the menu; digit shortcuts stop at 9.
 
 Arrows or WASD steer automatically moving Pac-Man. Space places a Bookmark;
 E erases the wall directly ahead when it is a thin, unprotected interior wall.

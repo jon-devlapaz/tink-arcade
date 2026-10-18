@@ -1,0 +1,52 @@
+test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets) ... FAIL
+
+======================================================================
+FAIL: test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_checks.py", line 47, in test_stacker_is_appended_without_renumbering_existing_cabinets
+    self.assertEqual(titles, [
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+        'Tetris', 'Tetris vs Jev', 'Breakout', 'Snake', 'Invaders', 'Pong',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'Galaga', 'Crossing', 'Tron', 'Tron vs Jev', 'Wordle', 'Pac-Man',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'Stacker',
+        ^^^^^^^^^^
+    ])
+    ^^
+AssertionError: Lists differ: ['Stacker', 'Tetris', 'Tetris vs Jev', 'Bre[97 chars]Man'] != ['Tetris', 'Tetris vs Jev', 'Breakout', 'Sn[97 chars]ker']
+
+First differing element 0:
+'Stacker'
+'Tetris'
+
+- ['Stacker',
+-  'Tetris',
+? ^
+
++ ['Tetris',
+? ^
+
+   'Tetris vs Jev',
+   'Breakout',
+   'Snake',
+   'Invaders',
+   'Pong',
+   'Galaga',
+   'Crossing',
+   'Tron',
+   'Tron vs Jev',
+   'Wordle',
+-  'Pac-Man']
+?           ^
+
++  'Pac-Man',
+?           ^
+
++  'Stacker']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

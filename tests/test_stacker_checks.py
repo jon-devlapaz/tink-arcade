@@ -1,6 +1,7 @@
 import contextlib
 import importlib.util
 import io
+import json
 import os
 from pathlib import Path
 import unittest
@@ -40,6 +41,14 @@ class StackerCheckRunnerTests(unittest.TestCase):
         for platform, env in (('linux', {'NEON_TETRIS_AUDIO_TESTS': '1'}), ('darwin', {})):
             with patch.object(checks.sys, 'platform', platform), patch.dict(os.environ, env, clear=True), contextlib.redirect_stderr(io.StringIO()):
                 self.assertEqual(checks.main(['--sounds', '--require-native']), 1)
+
+    def test_stacker_is_appended_without_renumbering_existing_cabinets(self):
+        titles = [entry['title'] for entry in json.loads(Path('arcade_menu/games.json').read_text())]
+        self.assertEqual(titles, [
+            'Tetris', 'Tetris vs Jev', 'Breakout', 'Snake', 'Invaders', 'Pong',
+            'Galaga', 'Crossing', 'Tron', 'Tron vs Jev', 'Wordle', 'Pac-Man',
+            'Stacker',
+        ])
 
     def test_approved_test_names_are_required(self):
         required = checks.required_ids('all', native=True)
