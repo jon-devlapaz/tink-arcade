@@ -1,5 +1,18 @@
 [
   {
+    "title": "Stacker",
+    "tagline": "One row, then the next.",
+    "about": "Skill-based stacking. Keep the overlap and aim for the top, with no checkpoints or payout.",
+    "controls": [
+      "Space / Enter  lock row",
+      "P  pause",
+      "R  restart",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_stacker"
+  },
+  {
     "title": "Tetris",
     "tagline": "Make room for the next idea.",
     "about": "Seven-bag Tetris on a paper board with hold, ghost piece and short mechanical key clicks.",
