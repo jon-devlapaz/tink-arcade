@@ -1,0 +1,13 @@
+test_docs_describe_launch_classic_and_taller_minimum (test_pacman_integration.PacmanIntegrationTests.test_docs_describe_launch_classic_and_taller_minimum) ... ok
+test_menu_can_launch_pacman_past_the_digit_shortcuts (test_pacman_integration.PacmanIntegrationTests.test_menu_can_launch_pacman_past_the_digit_shortcuts) ... ok
+test_registered_once_at_original_number_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_original_number_and_ready_offline) ... ok
+test_any_failure_is_fatal_and_optional_skips_are_reported (test_stacker_checks.StackerCheckRunnerTests.test_any_failure_is_fatal_and_optional_skips_are_reported) ... ok
+test_approved_test_names_are_required (test_stacker_checks.StackerCheckRunnerTests.test_approved_test_names_are_required) ... ok
+test_empty_missing_duplicate_and_skipped_required_tests_fail (test_stacker_checks.StackerCheckRunnerTests.test_empty_missing_duplicate_and_skipped_required_tests_fail) ... ok
+test_native_mode_requires_platform_and_explicit_opt_in (test_stacker_checks.StackerCheckRunnerTests.test_native_mode_requires_platform_and_explicit_opt_in) ... ok
+test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK
