@@ -1,0 +1,5 @@
+--- tink_stacker/engine.py
++++ disposable mutation
+-        return 'place'
++        self.state = 'waiting'
+        return 'place'

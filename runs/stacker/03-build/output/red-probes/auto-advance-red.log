@@ -1,0 +1,20 @@
+$ ["/Users/jondev/.pyenv/versions/3.13.12/bin/python3", "-B", "-m", "unittest", "-v", "test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row"]
+exit: 1
+test_successful_lock_automatically_starts_next_row (test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row) ... FAIL
+
+======================================================================
+FAIL: test_successful_lock_automatically_starts_next_row (test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-48kvdoml/tests/test_stacker_engine.py", line 56, in test_successful_lock_automatically_starts_next_row
+    self.assertEqual(game.state, 'playing')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'waiting' != 'playing'
+- waiting
++ playing
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

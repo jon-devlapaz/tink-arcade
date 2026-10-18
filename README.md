@@ -27,6 +27,48 @@ and `KeyboardAudio` with the bundled sounds. A new game is a package with an
 Run every check locally with `python3 -B scripts/check_all.py`.
 Tetris vs Jev needs `TYPESAFE_API_KEY` and makes billed API calls.
 
+## Paper Stacker
+
+```sh
+python3 -m tink_stacker                 # or select Stacker from the arcade menu
+python3 -m tink_stacker --no-color --no-sound
+```
+
+Space or Enter locks the moving row. Only blocks overlapping the previous row
+survive; no overlap ends the run. Successful placements automatically start the
+next row. Reach row 15 to win. P pauses, R restarts, M toggles sound, and Q or
+Ctrl-C quits. There is no checkpoint, payout, minor-win choice or hidden odds.
+
+The 7-column board starts with three blocks. Motion reflects at each edge and
+speeds up only with height, from 240 ms per column by 12 ms per completed row,
+with a 72 ms minimum. A placement uses the currently displayed position, once
+per input batch. These are this cabinet's reviewed rules, not an exact timing
+claim about a commercial machine. No randomness or seed option is needed.
+
+The shared paper/ink/jade canvas needs 80 x 30. Smaller windows freeze the game;
+recovery preserves pause and discards catch-up time. Mute and quit work while
+small. Restart preserves mute. `--no-sound` prevents audio setup for the session.
+Shared bundled keyboard cues mark placement, loss, completion and pause/restart;
+automatic travel is silent. Missing audio does not prevent play.
+
+```sh
+python3 -B scripts/check_stacker_tests.py
+python3 -B scripts/check_stacker_tests.py --rules
+python3 -B scripts/check_stacker_terminal.py --no-sound
+NEON_TETRIS_AUDIO_TESTS=1 python3 -B scripts/check_stacker_tests.py --sounds --require-native
+NEON_TETRIS_AUDIO_TESTS=1 python3 -B scripts/check_stacker_red_probes.py --native
+```
+
+The default test runner runs repository regressions and requires the named
+Stacker engine/UI/mocked-audio tests to pass. Opt-in native checks require macOS,
+play bundled samples through Stacker's action path and meter playback progress
+and levels. They fail on absent prerequisites or skipped required tests. They do
+not record audio or establish listener-perceived quality. Operator listening,
+visual comparison and play judgment remain required. The PTY checker restores
+terminal modes and writes only Stacker's transcript under
+`runs/stacker/04-test/output/`. Red probes mutate disposable copies, require
+assertion-level failures, restore protections and require green reruns.
+
 ## Breakout
 
 Run from this checkout with Python 3.9 or newer on macOS or Linux:

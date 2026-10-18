@@ -1,0 +1,7 @@
+{
+  "item": "stacker-red-probes",
+  "result": "passed",
+  "evidence": "Worker engineering attestation: tests were written before implementation; runs/stacker/03-build/output/initial-red.log retains the missing-module red. Reviewed red-probes.log plus red-probes/{overhang,auto-advance,cue-dispatch,frame-servicing}-{baseline,red,restored}.log and .diff files: each targeted reversion failed its intended assertion without import/setup errors, and each restored copy passed without skips. The two audio reversions also failed the native Stacker action path. Current rule/audio source-set hashes match approved seed activation evidence. These are engineering observations, not operator gameplay/style/listening acceptance.",
+  "candidate": "07927cadcebe1579082cd71164fb5403fe43218273dc6c4129d24fed34238d16",
+  "time_ns": 1792339591307619000
+}

@@ -1,0 +1,65 @@
+EEEE
+======================================================================
+ERROR: test_stacker_audio (unittest.loader._FailedTest.test_stacker_audio)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_stacker_audio
+Traceback (most recent call last):
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_audio.py", line 5, in <module>
+    from tink_stacker.ui import Controller, run
+ModuleNotFoundError: No module named 'tink_stacker'
+
+
+======================================================================
+ERROR: test_stacker_engine (unittest.loader._FailedTest.test_stacker_engine)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_stacker_engine
+Traceback (most recent call last):
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_engine.py", line 4, in <module>
+    from tink_stacker.engine import Game, WIDTH, HEIGHT
+ModuleNotFoundError: No module named 'tink_stacker'
+
+
+======================================================================
+ERROR: test_stacker_native_audio (unittest.loader._FailedTest.test_stacker_native_audio)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_stacker_native_audio
+Traceback (most recent call last):
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_native_audio.py", line 9, in <module>
+    from tink_stacker.ui import Controller
+ModuleNotFoundError: No module named 'tink_stacker'
+
+
+======================================================================
+ERROR: test_stacker_ui (unittest.loader._FailedTest.test_stacker_ui)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_stacker_ui
+Traceback (most recent call last):
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_stacker_ui.py", line 10, in <module>
+    from tink_stacker.ui import Controller, Renderer, run, _run_loop, MAX_KEYS
+ModuleNotFoundError: No module named 'tink_stacker'
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (errors=4)

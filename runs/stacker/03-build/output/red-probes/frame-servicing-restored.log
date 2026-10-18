@@ -1,0 +1,21 @@
+$ ["/Users/jondev/.pyenv/versions/3.13.12/bin/python3", "-B", "-m", "unittest", "-v", "test_stacker_audio.StackerAudioTests.test_audio_tick_runs_each_frame_including_pause_resize_and_end_states", "test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats"]
+exit: 0
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+test_audio_tick_runs_each_frame_including_pause_resize_and_end_states (test_stacker_audio.StackerAudioTests.test_audio_tick_runs_each_frame_including_pause_resize_and_end_states) ... ok
+test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 5.146s
+
+OK

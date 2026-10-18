@@ -1,0 +1,4 @@
+--- tink_stacker/ui.py
++++ disposable mutation
+-            audio.tick()
++            pass

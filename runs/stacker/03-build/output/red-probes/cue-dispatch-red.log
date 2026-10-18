@@ -1,0 +1,176 @@
+$ ["/Users/jondev/.pyenv/versions/3.13.12/bin/python3", "-B", "-m", "unittest", "-v", "test_stacker_audio.StackerAudioTests.test_lock_loss_and_win_dispatch_shared_cues", "test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats"]
+exit: 1
+test_lock_loss_and_win_dispatch_shared_cues (test_stacker_audio.StackerAudioTests.test_lock_loss_and_win_dispatch_shared_cues) ... FAIL
+test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) ... 
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='place', attempt=0) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='place', attempt=1) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='place', attempt=2) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='over', attempt=0) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='over', attempt=1) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='over', attempt=2) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='clear', attempt=0) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='clear', attempt=1) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='clear', attempt=2) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=0) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=1) ... FAIL
+  test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=2) ... FAIL
+
+======================================================================
+FAIL: test_lock_loss_and_win_dispatch_shared_cues (test_stacker_audio.StackerAudioTests.test_lock_loss_and_win_dispatch_shared_cues)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_audio.py", line 14, in test_lock_loss_and_win_dispatch_shared_cues
+    self.frame(c, a, ' '); a.play.assert_called_once_with('place')
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/jondev/.pyenv/versions/3.13.12/lib/python3.13/unittest/mock.py", line 990, in assert_called_once_with
+    raise AssertionError(msg)
+AssertionError: Expected 'play' to be called once. Called 0 times.
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='place', attempt=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : place: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='place', attempt=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : place: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='place', attempt=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : place: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='over', attempt=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : over: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='over', attempt=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : over: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='over', attempt=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : over: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='clear', attempt=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : clear: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='clear', attempt=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : clear: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='clear', attempt=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : clear: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : switch: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : switch: Stacker did not dispatch and service its cue
+
+======================================================================
+FAIL: test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) (cue='switch', attempt=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 67, in test_stacker_action_cues_advance_and_meter_on_spaced_repeats
+    self.meter(*self.action(cue))
+                ~~~~~~~~~~~^^^^^
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-dtozz5cl/tests/test_stacker_native_audio.py", line 38, in action
+    self.assertEqual(self.player._order, before + 1, f'{cue}: Stacker did not dispatch and service its cue')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1 : switch: Stacker did not dispatch and service its cue
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.272s
+
+FAILED (failures=13)

@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "id": "stacker-registration",
+      "description": "Exactly one installed, noncredentialed Stacker cabinet is registered with the reviewed module and checkout-relative path.",
+      "verify": "Assert the exact registry entry and installed package so the menu check cannot pass by omitting Stacker.",
+      "check": {
+        "argv": [
+          "python3",
+          "-B",
+          "-c",
+          "import json; from pathlib import Path; from arcade_menu.registry import load_games; raw=json.loads(Path('arcade_menu/games.json').read_text()); entries=[g for g in raw if g.get('title')=='Stacker' or g.get('module')=='tink_stacker']; assert len(entries)==1, 'Expected exactly one Stacker cabinet'; g=entries[0]; assert g['title']=='Stacker' and g['module']=='tink_stacker' and g['path']=='.' and not g.get('requires_env') and not g.get('args'), 'Incorrect Stacker registration'; games=[g for g in load_games() if g.module=='tink_stacker']; assert len(games)==1 and games[0].available, 'Stacker cabinet unavailable'; print('PASS Stacker registration')"
+        ],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "stacker-unit-regressions",
+      "description": "The full existing suite and nonempty required Stacker engine, UI and mocked-audio groups pass without any product model calls.",
+      "verify": "Run the proposed fail-closed runner. Required Stacker tests cannot be skipped or absent; list existing optional native skips separately. This default run is not native sound acceptance.",
+      "check": {
+        "argv": [
+          "env",
+          "-u",
+          "TYPESAFE_API_KEY",
+          "-u",
+          "NEON_TETRIS_AUDIO_TESTS",
+          "python3",
+          "-B",
+          "scripts/check_stacker_tests.py"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "stacker-cli",
+      "description": "The Stacker module exposes help outside a terminal and documents its controls and optional color/sound flags.",
+      "verify": "Help must exit successfully without starting curses or an audio backend. UI tests separately assert terminal refusal and flag behavior.",
+      "check": {
+        "argv": ["python3", "-B", "-m", "tink_stacker", "--help"],
+        "timeout_seconds": 10
+      }
+    },
+    {
+      "id": "stacker-terminal",
+      "description": "The real Stacker CLI preserves controls, pause, resize recovery, restart, quit/SIGINT and terminal cleanup in a POSIX PTY.",
+      "verify": "Run the proposed terminal checker in no-sound mode without game-state injection; preserve its transcript under runs/stacker/04-test/output/. Menu launch/mute/return remains the separate unchanged seed-1 check.",
+      "check": {
+        "argv": [
+          "env",
+          "-u",
+          "TYPESAFE_API_KEY",
+          "python3",
+          "-B",
+          "scripts/check_stacker_terminal.py",
+          "--no-sound"
+        ],
+        "timeout_seconds": 120
+      }
+    },
+    {
+      "id": "stacker-red-probes",
+      "description": "Rules and audio tests were written first and independently detect targeted removal of the protections they cover.",
+      "verify": "Retain initial missing-implementation red logs and assertion-level failing logs/diffs for overhang retention, automatic progression, Stacker cue dispatch and per-frame audio servicing reversions. Restore each protection and retain green reruns. Missing imports alone do not satisfy this item. Record actual evidence only after current definition approval."
+    },
+    {
+      "id": "stacker-documentation-and-boundaries",
+      "description": "README and DESIGN document the reviewed rules, controls, sound behavior and limitations; engine is rules-only and shared interfaces/assets remain unchanged.",
+      "verify": "Review the candidate diff for engine isolation, PaperRenderer/KeyboardAudio reuse, no credential/model/network calls, no recordings, no checkpoint/payout, no incidental shared-code changes, accurate documentation and no push/PR. This engineering attestation cannot replace seed-2 style judgment, sound listening or any seed expectation attestation."
+    }
+  ]
+}

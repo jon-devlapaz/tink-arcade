@@ -1,0 +1,7 @@
+{
+  "item": "stacker-documentation-and-boundaries",
+  "result": "passed",
+  "evidence": "Worker engineering attestation: reviewed current tink_stacker/engine.py, ui.py, __main__.py, README.md, DESIGN.md and arcade_menu/games.json against the approved brief. Engine imports math only; renderer subclasses shared PaperRenderer; UI uses shared KeyboardAudio with per-frame servicing and context cleanup. Docs accurately describe 7x15 overlap rules, height-only timing, controls, pause/resize recovery, flags and evidence limitations. No product credential/model/network calls, recording, checkpoint/payout logic or incidental shared-code/assets/policy changes were introduced. git diff --check passed. No push or PR performed. This does not attest operator style, sound quality or recognizable-gameplay judgments.",
+  "candidate": "07927cadcebe1579082cd71164fb5403fe43218273dc6c4129d24fed34238d16",
+  "time_ns": 1792339591621684000
+}

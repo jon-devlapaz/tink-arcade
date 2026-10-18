@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "cmd": "python3 -B scripts/check_arcade.py",
+      "cwd": ".",
+      "expect": "Exit 0, including PASS Stacker for the registered Stacker cabinet, with successful launch, mute and return to menu.",
+      "kind": "cmd",
+      "source": "Confirmed goal; proposed invocation from scripts/check_all.py:7\u201312; existing behavior assertions in scripts/check_arcade.py:38\u201365. Prerequisite: Stacker must be registered as a noncredentialed cabinet; this check alone cannot detect omitted registration. Intended targeted red: revert Stacker mute or return handling so the existing muted or menu-return assertion fails; not run.",
+      "statement": "stacker available to tink-arcade",
+      "id": "seed-1",
+      "description": "stacker available to tink-arcade",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "how_to_judge": "Play Stacker alongside existing cabinets. Inspect shared paper/ink/jade presentation, readable controls and states, consistent overlays and short mechanical feedback. Confirm the game feels part of tink-arcade rather than a neon cabinet imitation.",
+      "kind": "judge",
+      "source": "Confirmed goal; README.md:23\u201326 and DESIGN.md:134\u2013169; earlier presentation findings remain in the ledger.",
+      "statement": "matches the tink-arcade style",
+      "id": "seed-2",
+      "description": "matches the tink-arcade style",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "Successful Stacker actions produce appropriate audible mechanical cues across repeated plays; mute and --no-sound suppress playback as specified; unavailable audio does not prevent play; resources are released on exit. Repeated playback advances and sample levels are nonzero; listening confirms quality on the intended output device.",
+      "kind": "provisional",
+      "missing": "Stacker audio integration and its behavior-specific regression assertions do not yet exist. A concrete applicable sound-test invocation and intended-device verification setup have not been established. Add checks whose assertions fail when Stacker cue dispatch or repeated-play servicing is removed, plus device listening.",
+      "source": "Confirmed goal; DESIGN.md:147\u2013165 requires successful-action feedback, mute/no-sound behavior, repeated-play advancement, nonzero sample levels and listening.",
+      "statement": "has working sounds",
+      "id": "seed-3",
+      "description": "has working sounds",
+      "origin": "operator-confirmed-seed",
+      "locked": true,
+      "activation": {
+        "cmd": "env -u TYPESAFE_API_KEY NEON_TETRIS_AUDIO_TESTS=1 python3 -B scripts/check_stacker_tests.py --sounds --require-native",
+        "cwd": ".",
+        "evidence": "tink_stacker/ui.py and tests/test_stacker_audio.py plus tests/test_stacker_native_audio.py exist. The native command passed 11/11 with no skips on this macOS default output path in 03-build/output/native-sounds-stability-{1,2,3}.log. 03-build/output/red-probes/ contains assertion-level cue-dispatch and frame-servicing reversions, including native action-path failures, with green baselines/restorations. Actual intended-device listening remains an operator observation, not this evidence. Source-set SHA-256: 14c0d7c9e4680b4df4c5a0ce3b0eb3f629f7a8c38228acbf0cd75d32bb67911b."
+      }
+    },
+    {
+      "cwd": ".",
+      "expect": "Moving rows lock according to fair skill-based timing; only overlapping blocks survive, overhang is lost, zero overlap ends the run, and successful rows progress automatically toward the top without a take-the-minor-win choice. Deterministic regression assertions cover these behaviors, and play inspection confirms recognizable Stacker feel.",
+      "kind": "provisional",
+      "missing": "Stacker rules implementation, verified rules calibration and behavior-specific tests are absent. Establish an exact invocation once those tests exist; overlap-retention assertions should fail under a targeted overhang-rule reversion, and progression assertions should fail if automatic advancement toward the top is removed.",
+      "source": "Confirmed goal; settled stacker-fidelity answer \u201cskill\u201d and prize-progression answer \u201caim for top.\u201d Earlier repository search found no Stacker implementation or tests.",
+      "statement": "plays like the real game",
+      "id": "seed-4",
+      "description": "plays like the real game",
+      "origin": "operator-confirmed-seed",
+      "locked": true,
+      "activation": {
+        "cmd": "env -u TYPESAFE_API_KEY python3 -B scripts/check_stacker_tests.py --rules",
+        "cwd": ".",
+        "evidence": "tink_stacker/engine.py and tests/test_stacker_engine.py plus tests/test_stacker_ui.py exist. 03-build/output/rules-command.log records the rules command passing all 15 required tests with no skips. 03-build/output/red-probes/ contains assertion-level overhang and auto-advance reversions with green baselines/restorations. Recognizable feel remains an operator observation. Source-set SHA-256: d20bcb9c09474df024dc6503781b329a7c6c14a6ba7767eeea088e1496b0a8d8."
+      }
+    }
+  ]
+}
