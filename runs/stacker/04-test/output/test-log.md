@@ -555,7 +555,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 553 tests in 38.922s
+Ran 553 tests in 38.059s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1117,7 +1117,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 553 tests in 39.192s
+Ran 553 tests in 40.228s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1697,7 +1697,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 553 tests in 38.852s
+Ran 553 tests in 37.834s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1786,7 +1786,7 @@ test_stacker_playback_resumes_after_mute_and_closes_voices (test_stacker_native_
 ok
 
 ----------------------------------------------------------------------
-Ran 11 tests in 16.705s
+Ran 11 tests in 16.611s
 
 OK
 Total: 11; skips: 0; required passed: 11/11
