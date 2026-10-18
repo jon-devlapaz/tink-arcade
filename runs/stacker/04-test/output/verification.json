@@ -1,0 +1,13 @@
+{
+  "result": "failed",
+  "error": "Seed check failed: seed-3 (output: runs/stacker/04-test/output/test-log.md)",
+  "seed_checks": {
+    "seed-1": "proven",
+    "seed-1-expect": "pending",
+    "seed-2": "pending",
+    "seed-3": "failed",
+    "seed-3-expect": "pending",
+    "seed-4": "not-run",
+    "seed-4-expect": "pending"
+  }
+}

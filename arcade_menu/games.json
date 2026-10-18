@@ -162,5 +162,18 @@
     "note": "Requires an 80 x 40 terminal.",
     "path": ".",
     "module": "tink_pacman"
+  },
+  {
+    "title": "Stacker",
+    "tagline": "One row, then the next.",
+    "about": "Skill-based stacking. Keep the overlap and aim for the top, with no checkpoints or payout.",
+    "controls": [
+      "Space / Enter  lock row",
+      "P  pause",
+      "R  restart",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_stacker"
   }
 ]

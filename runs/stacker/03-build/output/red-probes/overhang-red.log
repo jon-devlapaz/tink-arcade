@@ -1,0 +1,26 @@
+$ ["/Users/jondev/.pyenv/versions/3.13.12/bin/python3", "-B", "-m", "unittest", "-v", "test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang"]
+exit: 1
+test_lock_retains_only_overlap_and_discards_overhang (test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang) ... FAIL
+
+======================================================================
+FAIL: test_lock_retains_only_overlap_and_discards_overhang (test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/folders/sk/r2ns7lvn2ygcsj7bhd0mvnyw0000gn/T/stacker-red-rwqse_ew/tests/test_stacker_engine.py", line 31, in test_lock_retains_only_overlap_and_discards_overhang
+    self.assertEqual(game.rows, [(1, 2, 3), (3,)])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [(1, 2, 3), (3, 4, 5)] != [(1, 2, 3), (3,)]
+
+First differing element 1:
+(3, 4, 5)
+(3,)
+
+- [(1, 2, 3), (3, 4, 5)]
+?                -----
+
++ [(1, 2, 3), (3,)]
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (failures=1)

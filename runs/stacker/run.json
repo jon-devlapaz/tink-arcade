@@ -1,0 +1,23 @@
+{
+  "profile": "light",
+  "kind": "feature",
+  "schema": 1,
+  "run_id": "5688403e-f9e7-4cf2-a076-b6f7c7714986",
+  "seed_contract": {
+    "path": "runs/stacker/seed-contract.md",
+    "sha256": "533a1cdc3ca6649d2f8f7e52ed05782c5b0f8a83b729559f87405f1c3c23162a",
+    "source": "/private/tmp/tinkery-TEST-stacker2-dgATpt/sessions/cc1413f8-5b39-4816-b3f1-b5db51895cef/seed-contract.md",
+    "definitions_sha256": "84a8fe1612f58767a1b4605861abf38c7f0c223d0e7c73e6aa0ee1eb843f5924",
+    "confirmation": {
+      "schema_version": 2,
+      "checks_sha256": "cad1c1f29698c9460d2f5e6489a0ec9808f929aee29feb652c321bc8a4b5972a",
+      "session_id": "cc1413f8-5b39-4816-b3f1-b5db51895cef",
+      "operator": "human",
+      "revision": "r1",
+      "source": "I confirm",
+      "confirmed_at": "2026-10-18T15:24:49.470373+00:00",
+      "seed_sha256": "533a1cdc3ca6649d2f8f7e52ed05782c5b0f8a83b729559f87405f1c3c23162a",
+      "decisions_sha256": "54575d1d2e18b2366e1549c845a5ac9373113ff15a614deb727764e5522c39ef"
+    }
+  }
+}

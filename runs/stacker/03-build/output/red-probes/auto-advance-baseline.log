@@ -1,0 +1,8 @@
+$ ["/Users/jondev/.pyenv/versions/3.13.12/bin/python3", "-B", "-m", "unittest", "-v", "test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row"]
+exit: 0
+test_successful_lock_automatically_starts_next_row (test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

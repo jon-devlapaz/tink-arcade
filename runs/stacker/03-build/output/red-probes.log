@@ -1,0 +1,12 @@
+PASS overhang-baseline: green without skips
+PASS overhang-red: assertion-level red
+PASS overhang-restored: green without skips
+PASS auto-advance-baseline: green without skips
+PASS auto-advance-red: assertion-level red
+PASS auto-advance-restored: green without skips
+PASS cue-dispatch-baseline: green without skips
+PASS cue-dispatch-red: assertion-level red
+PASS cue-dispatch-restored: green without skips
+PASS frame-servicing-baseline: green without skips
+PASS frame-servicing-red: assertion-level red
+PASS frame-servicing-restored: green without skips

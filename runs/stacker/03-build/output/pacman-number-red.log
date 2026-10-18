@@ -1,0 +1,15 @@
+test_registered_once_at_the_end_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_the_end_and_ready_offline) ... FAIL
+
+======================================================================
+FAIL: test_registered_once_at_the_end_and_ready_offline (test_pacman_integration.PacmanIntegrationTests.test_registered_once_at_the_end_and_ready_offline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/active/factory/tink-arcade-stacker2/tests/test_pacman_integration.py", line 14, in test_registered_once_at_the_end_and_ready_offline
+    self.assertEqual(game, games[-1])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: Game(title='Pac-Man', tagline='Clear the page, dot by[383 chars]al.') != Game(title='Stacker', tagline='One row, then the next[303 chars]e='')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

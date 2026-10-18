@@ -1,0 +1,26 @@
+test_engine_does_not_import_io_or_randomness (test_stacker_engine.StackerRuleTests.test_engine_does_not_import_io_or_randomness) ... ok
+test_first_row_locks_without_support (test_stacker_engine.StackerRuleTests.test_first_row_locks_without_support) ... ok
+test_fractional_time_and_long_stall_discard (test_stacker_engine.StackerRuleTests.test_fractional_time_and_long_stall_discard) ... ok
+test_height_only_speed_curve_and_identical_elapsed_inputs_repeat (test_stacker_engine.StackerRuleTests.test_height_only_speed_curve_and_identical_elapsed_inputs_repeat) ... ok
+test_legal_timed_input_replay_reaches_top (test_stacker_engine.StackerRuleTests.test_legal_timed_input_replay_reaches_top) ... ok
+test_lock_retains_only_overlap_and_discards_overhang (test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang) ... ok
+test_moving_row_reflects_at_both_edges (test_stacker_engine.StackerRuleTests.test_moving_row_reflects_at_both_edges) ... ok
+test_next_row_width_equals_surviving_blocks (test_stacker_engine.StackerRuleTests.test_next_row_width_equals_surviving_blocks) ... ok
+test_restart_restores_initial_state (test_stacker_engine.StackerRuleTests.test_restart_restores_initial_state) ... ok
+test_successful_lock_automatically_starts_next_row (test_stacker_engine.StackerRuleTests.test_successful_lock_automatically_starts_next_row) ... ok
+test_top_row_wins_without_checkpoint_or_payout_choice (test_stacker_engine.StackerRuleTests.test_top_row_wins_without_checkpoint_or_payout_choice) ... ok
+test_zero_overlap_loses_without_advancing (test_stacker_engine.StackerRuleTests.test_zero_overlap_loses_without_advancing) ... ok
+test_bounded_input_does_not_starve_update_or_render (test_stacker_ui.StackerUITests.test_bounded_input_does_not_starve_update_or_render) ... ok
+test_cli_flags_nonterminal_and_warning (test_stacker_ui.StackerUITests.test_cli_flags_nonterminal_and_warning) ... ok
+test_end_states_ignore_placement_and_restart_is_available (test_stacker_ui.StackerUITests.test_end_states_ignore_placement_and_restart_is_available) ... ok
+test_lock_uses_displayed_position_once_per_input_batch (test_stacker_ui.StackerUITests.test_lock_uses_displayed_position_once_per_input_batch) ... ok
+test_palette_states_clipping_and_monochrome (test_stacker_ui.StackerUITests.test_palette_states_clipping_and_monochrome) ... ok
+test_pause_and_small_terminal_freeze_without_catchup (test_stacker_ui.StackerUITests.test_pause_and_small_terminal_freeze_without_catchup) ... ok
+test_resize_recovery_preserves_prior_pause (test_stacker_ui.StackerUITests.test_resize_recovery_preserves_prior_pause) ... ok
+test_small_terminal_keeps_mute_and_quit_available (test_stacker_ui.StackerUITests.test_small_terminal_keeps_mute_and_quit_available) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.109s
+
+OK
+Total: 20; skips: 0; required passed: 15/15

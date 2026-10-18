@@ -200,6 +200,46 @@ From this directory, run the normal suite with `python3 -m unittest discover -s 
 
 There is currently no persistent leaderboard, mouse interface, multiplayer mode, music, or theme selector. Do not introduce these as incidental parts of a visual cleanup. Keep the defining contrast: **calm paper, crisp keys, uninterrupted play.**
 
+## Stacker
+
+Stacker uses the shared 80 x 30 paper canvas, centered in larger terminals. Its
+7-column by 15-row board uses two character columns per block. Jade reverse-video
+`[]` marks the active row; carbon reverse-video `[]` marks settled rows. Height,
+remaining block count, visible sound status and persistent controls sit outside
+the board. Pause and end-state labels overlay the board without hiding controls.
+Monochrome uses attributes and position rather than color alone.
+
+Play starts immediately with three blocks. Space or Enter locks the displayed
+position once per input batch. Retain only overlap with the previous row, lose on
+zero overlap, and automatically start the next row after a successful lock.
+The first row needs no support. Width equals surviving overlap, without scheduled
+block loss. Each new row starts at alternating edges and reflects at boundaries.
+Motion starts at 240 ms per column, decreases by 12 ms per completed row and
+bottoms out at 72 ms. There is no randomness, hidden adjustment, checkpoint,
+payout or minor-win prompt. Completing row 15 wins. These are the reviewed local
+rules, not verified calibration of a physical cabinet.
+
+P pauses, R restarts, M mutes, Q/Ctrl-C exits. The UI targets 60 Hz with bounded
+input. Placement freezes that frame's motion so it cannot move the row past the
+last rendered position. Pause and undersizing freeze every game clock; recovery
+discards catch-up time and preserves pause. Stalls above 250 ms are discarded.
+Mute and quit remain available when small. Restart preserves mute and does not
+reload samples. Both `--no-color` and `--no-sound` work independently.
+
+The UI maps placement to `place`, loss to `over`, top completion to `clear`, and
+pause/resume/restart to `switch`. Automatic horizontal movement is silent.
+Shared `KeyboardAudio` coalesces cues and services completion events on every
+frame, including pause, resize and end states. It owns cleanup on normal exit,
+SIGINT and exceptions. Audio failure leaves play available and reports the
+warning after curses exits. Existing samples and credits are unchanged.
+
+Rule tests stay separate from presentation and sound tests. Native sound tests
+drive actual Stacker action dispatch and frame servicing, verify progress and
+sample levels after spaced plays and rapid overlapping bursts, and never record
+audio. Native evidence does not replace operator listening, style comparison or
+recognizable-gameplay judgment. The real PTY check exercises terminal behavior
+without state or clock injection. See the Stacker checks in README.md.
+
 ## Snake
 
 Snake keeps Tetris's centered 80 by 30 canvas and paper palette. Its 20 by 20

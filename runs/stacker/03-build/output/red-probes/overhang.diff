@@ -1,0 +1,4 @@
+--- tink_stacker/engine.py
++++ disposable mutation
+-surviving = tuple(x for x in occupied if not self.rows or x in self.rows[-1])
++surviving = occupied

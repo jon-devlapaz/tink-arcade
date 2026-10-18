@@ -1,0 +1,8 @@
+$ ["/Users/jondev/.pyenv/versions/3.13.12/bin/python3", "-B", "-m", "unittest", "-v", "test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang"]
+exit: 0
+test_lock_retains_only_overlap_and_discards_overhang (test_stacker_engine.StackerRuleTests.test_lock_retains_only_overlap_and_discards_overhang) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

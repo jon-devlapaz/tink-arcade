@@ -6,12 +6,12 @@ from arcade_menu.ui import run
 
 
 class PacmanIntegrationTests(unittest.TestCase):
-    def test_registered_once_at_the_end_and_ready_offline(self):
+    def test_registered_once_at_original_number_and_ready_offline(self):
         games = load_games()
         matches = [game for game in games if game.module == 'tink_pacman']
         self.assertEqual(len(matches), 1)
         game = matches[0]
-        self.assertEqual(game, games[-1])
+        self.assertEqual(game, games[11])
         self.assertEqual(game.title, 'Pac-Man')
         self.assertTrue(game.available)
         self.assertFalse(game.requires_env)

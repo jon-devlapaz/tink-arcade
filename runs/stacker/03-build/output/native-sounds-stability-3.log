@@ -1,0 +1,42 @@
+test_audio_closes_on_quit_sigint_and_exception (test_stacker_audio.StackerAudioTests.test_audio_closes_on_quit_sigint_and_exception) ... ok
+test_audio_tick_runs_each_frame_including_pause_resize_and_end_states (test_stacker_audio.StackerAudioTests.test_audio_tick_runs_each_frame_including_pause_resize_and_end_states) ... ok
+test_automatic_travel_and_frozen_gameplay_are_silent (test_stacker_audio.StackerAudioTests.test_automatic_travel_and_frozen_gameplay_are_silent) ... ok
+test_lock_loss_and_win_dispatch_shared_cues (test_stacker_audio.StackerAudioTests.test_lock_loss_and_win_dispatch_shared_cues) ... ok
+test_mute_cancels_pending_and_active_cues_and_unmute_confirms (test_stacker_audio.StackerAudioTests.test_mute_cancels_pending_and_active_cues_and_unmute_confirms) ... ok
+test_no_sound_never_creates_backend_and_m_cannot_enable_it (test_stacker_audio.StackerAudioTests.test_no_sound_never_creates_backend_and_m_cannot_enable_it) ... ok
+test_restart_preserves_mute_without_reloading_samples (test_stacker_audio.StackerAudioTests.test_restart_preserves_mute_without_reloading_samples) ... ok
+test_unavailable_audio_keeps_game_playable_and_reports_warning (test_stacker_audio.StackerAudioTests.test_unavailable_audio_keeps_game_playable_and_reports_warning) ... ok
+test_stacker_action_cues_advance_and_meter_on_rapid_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_rapid_repeats) ... Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+ok
+test_stacker_action_cues_advance_and_meter_on_spaced_repeats (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_action_cues_advance_and_meter_on_spaced_repeats) ... Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.1794s; peak=-9.26 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.2444s; peak=-10.03 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+Stacker sample time=0.1453s; peak=-7.54 dB
+ok
+test_stacker_playback_resumes_after_mute_and_closes_voices (test_stacker_native_audio.NativeStackerAudioTests.test_stacker_playback_resumes_after_mute_and_closes_voices) ... Stacker sample time=0.1794s; peak=-9.26 dB
+ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 15.787s
+
+OK
+Total: 11; skips: 0; required passed: 11/11

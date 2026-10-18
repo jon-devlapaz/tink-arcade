@@ -1,0 +1,163 @@
+Immediate play at 80x30: {"accumulator": 9.258300997316837e-05, "advanced": 9.258300997316837e-05, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Space locks first row: {"accumulator": 0.0, "advanced": 0.0, "direction": -1, "interval": 0.22799999999999998, "paused": false, "quit": false, "rows": [[0, 1, 2]], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 4}
+Enter locks next row: {"accumulator": 0.0, "advanced": 0.0, "direction": -1, "interval": 0.22799999999999998, "paused": false, "quit": false, "rows": [[0, 1, 2]], "small": false, "sound": "key sound off", "state": "lost", "width": 3, "x": 4}
+Restart: {"accumulator": 0.0, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Horizontal travel: {"accumulator": 0.007629833058454105, "advanced": 0.018603833043016493, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Pause: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Pause freezes every clock: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+No-sound cannot be overridden: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Shrink while paused: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Ignore frozen gameplay: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Undersized pause freezes clocks: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Recovery preserves pause: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Resume without catch-up: {"accumulator": 0.007629833058454105, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Shrink while playing: {"accumulator": 0.024516125083900997, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Undersized play freezes clocks: {"accumulator": 0.024516125083900997, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Recover playing: {"accumulator": 0.024516125083900997, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Travel resumes: {"accumulator": 0.0003827500436455189, "advanced": 0.016932333004660904, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 2}
+Q: exit 0, terminal modes restored, process group gone
+
+Sanitized terminal output:
+. socratink / paper stackerone row, then the next.+- PLAY / PAPER| . . . . . . .|HEIGHT 00/15| . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .||[][][] . . . .|+--------------+Aim for the top. Only overlap survives.Space / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit1[][][][][][] GAME OVER   . . .GAME OVER  No overlap. R to restart.0. . . . . . [][][]Aim for the top. Only overlap survives. .[][][]   PAUSED   PAUSED  P to resume. socratink / pone row, th+- PLAY
+| . . .HEIGHT 00/15| . . .
+| . . .BLOCKS 3| . . .
+| . . .
+| . . .| . . . . . . .|    [] settl| . . . . . . .|| . . . . . . .|    key soun| . . . . . . .||    PAUSED   .|| . . . . . . .|| . . . . . . .|  | . . . . . . .|| . . . . . . .|  | . . . . . . .|| . . . . . . .|| .[][][] . . .|
+
+
+
+
+  Paper Stacker
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Paper Stacker
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit100 x 35. Game frozen.
+
+
+
+ . socratink / paper stacker one row, then the next.
+
+ +- PLAY / PAPER| . . . . . . .|HEIGHT 00/15| . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .||    PAUSED   .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| .[][][] . . .|+--------------+PAUSED  P to resumeSpace / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit. . . . . . Aim for the top. Only overlap survives.. socoHEIGHT 00/15BLOCKS 3| . . . . . . .|    [] settl| . . . . . . .|| . . . . . . .|    key soun| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| .[][][] . . .|
+  Paper Stacker
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Paper Stacker
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit80 x 30 . socratink / paper stackerone row, then the next.
+
++- PLAY / PAPER | . . . . . . .| HEIGHT 00/15          | . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| .[][][] . . .|+--------------+Aim for the top. Only overlap survives.Space / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit .[][][]
+
+
+Immediate play at 80x30: {"accumulator": 0.00010575004853308201, "advanced": 0.00010575004853308201, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Space locks first row: {"accumulator": 0.0, "advanced": 0.0, "direction": -1, "interval": 0.22799999999999998, "paused": false, "quit": false, "rows": [[0, 1, 2]], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 4}
+Enter locks next row: {"accumulator": 0.0, "advanced": 0.0, "direction": -1, "interval": 0.22799999999999998, "paused": false, "quit": false, "rows": [[0, 1, 2]], "small": false, "sound": "key sound off", "state": "lost", "width": 3, "x": 4}
+Restart: {"accumulator": 0.0, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Horizontal travel: {"accumulator": 0.01518850004300476, "advanced": 0.020822791033424437, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Pause: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Pause freezes every clock: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+No-sound cannot be overridden: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Shrink while paused: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Ignore frozen gameplay: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Undersized pause freezes clocks: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Recovery preserves pause: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": true, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Resume without catch-up: {"accumulator": 0.01518850004300476, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Shrink while playing: {"accumulator": 0.03273862506262959, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Undersized play freezes clocks: {"accumulator": 0.03273862506262959, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Recover playing: {"accumulator": 0.03273862506262959, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 1}
+Travel resumes: {"accumulator": 0.013637458072043973, "advanced": 0.020774916047230363, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 2}
+Q: exit 0, terminal modes restored, process group gone
+
+Sanitized terminal output:
+. socratink / paper stackerone row, then the next.+- PLAY / PAPER| . . . . . . .|HEIGHT 00/15| . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .||[][][] . . . .|+--------------+Aim for the top. Only overlap survives.Space / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit1[][][][][][] GAME OVER   . . .GAME OVER  No overlap. R to restart.0. . . . . . [][][]Aim for the top. Only overlap survives. .[][][]   PAUSED   PAUSED  P to resume . socratink / p one row, th
+ +- PLAY | . . . HEIGHT 00/15          | . . . | . . . BLOCKS 3| . . . | . . . | . . .| . . . . . . .|    [] settl| . . . . . . .|| . . . . . . .|    key soun| . . . . . . .||    PAUSED   .|| . . . . . . .|| . . . . . . .|  | . . . . . . .|| . . . . . . .|  | . . . . . . .|| . . . . . . .|| .[][][] . . .|
+
+
+
+
+  Paper Stacker
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Paper Stacker
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit100 x 35. Game frozen.
+
+
+
+ . socratink / paper stacker one row, then the next.
+
+ +- PLAY / PAPER| . . . . . . .|HEIGHT 00/15| . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .||    PAUSED   .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| .[][][] . . .|+--------------+PAUSED  P to resumeSpace / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit. . . . . . Aim for the top. Only overlap survives.
+
+
+ . soc o
+
+
+ HEIGHT 00/15
+ BLOCKS 3| . . . . . . .|    [] settl| . . . . . . .|| . . . . . . .|    key soun| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| .[][][] . . .|
+  Paper Stacker
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Paper Stacker
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit80 x 30 . socratink / paper stackerone row, then the next.
+
++- PLAY / PAPER | . . . . . . .| HEIGHT 00/15          | . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| .[][][] . . .|+--------------+Aim for the top. Only overlap survives.Space / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit .[][][]
+
+
+Starts undersized: {"accumulator": 0.0, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Ignore initial frozen keys: {"accumulator": 0.0, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Initial undersize freezes clocks: {"accumulator": 0.0, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": true, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+Initial recovery: {"accumulator": 0.0, "advanced": 0.0, "direction": 1, "interval": 0.24, "paused": false, "quit": false, "rows": [], "small": false, "sound": "key sound off", "state": "playing", "width": 3, "x": 0}
+SIGINT: exit 0, terminal modes restored, process group gone
+
+Sanitized terminal output:
+
+  Paper Stacker
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit
+  Paper Stacker
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit80 x 30 . socratink / paper stackerone row, then the next.
+
++- PLAY / PAPER | . . . . . . .| HEIGHT 00/15          | . . . . . . .|    [] moving / jade| . . . . . . .|BLOCKS 3| . . . . . . .|    [] settled / ink| . . . . . . .|| . . . . . . .|    key sound off| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .|| . . . . . . .||[][][] . . . .|+--------------+Aim for the top. Only overlap survives.Space / Enter lock   P pause   R restartM mute   Q quit   Ctrl-C exit
+
