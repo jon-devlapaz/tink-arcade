@@ -1,0 +1,10 @@
+{
+  "item": "seed-1-expect",
+  "result": "passed",
+  "evidence": "Observed test_collectible_sparks and dark-arena palette test both report ok. The first uses only steering/time to reach a real spark and increases score while remaining playable; the second requires an 18-row reverse-ink field and distinct light, spark and ghost marks. Real PTY launched this renderer and moved the light. This attests mechanics, not visual taste or fun.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-1; runs/new-cabinet/04-test/output/terminal-transcript.txt",
+  "seed_definition": "a72f3569faf14933783b471898f9322f1667693984970040b5ede4c5b1cba18b",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558642347864000
+}

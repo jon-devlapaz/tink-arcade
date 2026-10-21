@@ -1,0 +1,177 @@
+Immediate play at 80x30: {"accumulator": 0.00011870800517499447, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Arrow [1, 0]: {"accumulator": 0.019203916075639427, "best": 0, "direction": [1, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Arrow advances light: {"accumulator": 0.015314666065387422, "best": 0, "direction": [1, 0], "ghosts": [], "paused": false, "player": [16, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 1}
+Arrow [0, 1]: {"accumulator": 0.04025033300276845, "best": 0, "direction": [0, 1], "ghosts": [], "paused": false, "player": [16, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 1}
+Arrow advances light: {"accumulator": 0.009630707977339614, "best": 0, "direction": [0, 1], "ghosts": [], "paused": false, "player": [16, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 2}
+Arrow [-1, 0]: {"accumulator": 0.034323207987472404, "best": 0, "direction": [-1, 0], "ghosts": [], "paused": false, "player": [16, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 2}
+Arrow advances light: {"accumulator": 0.008923874981701357, "best": 0, "direction": [-1, 0], "ghosts": [], "paused": false, "player": [15, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 3}
+Arrow [0, -1]: {"accumulator": 0.033712708088569326, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 3}
+Arrow advances light: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Pause: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Pause freezes all game clocks: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+No-sound stays disabled: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Shrink while paused: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Ignore undersized gameplay: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Undersized pause freezes clocks: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Recover paused at 100x35: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Resume without catch-up: {"accumulator": 0.005583625077269949, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Shrink while playing: {"accumulator": 0.0280707911821082, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Undersized play freezes clocks: {"accumulator": 0.0280707911821082, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Recover playing: {"accumulator": 0.0280707911821082, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Time resumes: {"accumulator": 0.015214166138321134, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 8], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 5}
+Restart: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Begin real timed path: {"accumulator": 0.022611958091147244, "best": 0, "direction": [1, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Real 15-second boundary adds first ghost: {"accumulator": 0.013511916040442051, "best": 0, "direction": [1, 0], "ghosts": [[15, 9]], "paused": false, "player": [29, 9], "quit": false, "round": 2, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Past path reaches stationary endpoint: {"accumulator": 0.0, "best": 0, "direction": [1, 0], "ghosts": [[29, 9]], "paused": false, "player": [29, 9], "quit": false, "round": 2, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "lost", "tick": 14}
+Death freezes rules with no second life: {"accumulator": 0.0, "best": 0, "direction": [1, 0], "ghosts": [[29, 9]], "paused": false, "player": [29, 9], "quit": false, "round": 2, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "lost", "tick": 14}
+Restart after real death: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Q: exit 0, modes restored, group gone
+
+Sanitized terminal output:
+. socratink / paper last timeyour only enemy is you.SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0NEXT ROUND 15.0s   key sound off+- PLAY / PAPER -+| || *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+<> you   * spark   xx past youEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.4.9  <>8M| |7<>  6
+| |PAUSED  P to resume. socratink / payour only enemySCORE 0000   BEST 0000   ROUNDNEXT ROUND 14.6s   key sound of+- PLAY / PAPER --|  |  | * | *   |  | *     *              <>
+ 
+      
+ * 
+  
+
+
+  Last Time
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Last Time
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit100 x 35. Game frozen.
+
+
+
+ . socratink / paper last time your only enemy is you.SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0 NEXT ROUND 14.6s   key sound off +- PLAY / PAPER -+| || *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+PAUSED  P to resumeEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.<> you   * spark   xx past you. socryour oSCORE 0000   BEST 000NEXT ROUND 14.6s   ke+- PLAY / PAPER -----|  |  |  | *         *              <>     
+ 
+ * 
+  
+
+
+  Last Time
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Last Time
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit80 x 30 . socratink / paper last timeyour only enemy is you. SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0 NEXT ROUND 14.6s   key sound off+- PLAY / PAPER -+ | | | *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+<> you   * spark   xx past youEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.5
+| |M5.0| |4.9  <>8  <>7  <>6  <>5  <>4  <>3  <>2  <>1  <>0  <>3.9  <>8  <>7  <>6  <>5432102.98765432101.98765432100.987654321009.98765432108.98765432107.98765432106.98765432105.98765432104.98765432103.98765432102.98765432101.98765432100.98765432102115xx4.9  xx8  xx7  xx6  xx5  xx4  xx3  xx2  xx1  xx0  xx3.9  xx8  xx7  xx6  GAME OVER  R to restart105.0<>  <> you   * spark   xx past you
+
+
+Immediate play at 80x30: {"accumulator": 0.00020095903892070055, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Arrow [1, 0]: {"accumulator": 0.02273475006222725, "best": 0, "direction": [1, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Arrow advances light: {"accumulator": 0.017713709012605244, "best": 0, "direction": [1, 0], "ghosts": [], "paused": false, "player": [16, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 1}
+Arrow [0, 1]: {"accumulator": 0.04242491696495562, "best": 0, "direction": [0, 1], "ghosts": [], "paused": false, "player": [16, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 1}
+Arrow advances light: {"accumulator": 0.008106875070370723, "best": 0, "direction": [0, 1], "ghosts": [], "paused": false, "player": [16, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 2}
+Arrow [-1, 0]: {"accumulator": 0.02622483398299663, "best": 0, "direction": [-1, 0], "ghosts": [], "paused": false, "player": [16, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 2}
+Arrow advances light: {"accumulator": 0.01931687495671211, "best": 0, "direction": [-1, 0], "ghosts": [], "paused": false, "player": [15, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 3}
+Arrow [0, -1]: {"accumulator": 0.044101959024555965, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 10], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 3}
+Arrow advances light: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Pause: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Pause freezes all game clocks: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+No-sound stays disabled: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Shrink while paused: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Ignore undersized gameplay: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Undersized pause freezes clocks: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Recover paused at 100x35: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": true, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Resume without catch-up: {"accumulator": 0.009539249958470442, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Shrink while playing: {"accumulator": 0.0337086249142885, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Undersized play freezes clocks: {"accumulator": 0.0337086249142885, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Recover playing: {"accumulator": 0.0337086249142885, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 4}
+Time resumes: {"accumulator": 0.002554374979808899, "best": 0, "direction": [0, -1], "ghosts": [], "paused": false, "player": [15, 8], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 5}
+Restart: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Q: exit 0, modes restored, group gone
+
+Sanitized terminal output:
+. socratink / paper last timeyour only enemy is you.SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0NEXT ROUND 15.0s   key sound off+- PLAY / PAPER -+| || *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+<> you   * spark   xx past youEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.4.9  <>8M | |7<>  6
+ | |PAUSED  P to resume . socratink / pa your only enemy SCORE 0000   BEST 0000   ROUND NEXT ROUND 14.6s   key sound of +- PLAY / PAPER -- |   |   | *  | *    |   | *     *              <>
+ 
+      
+ * 
+  
+
+
+  Last Time
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Last Time
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit100 x 35. Game frozen.
+
+
+
+ . socratink / paper last time your only enemy is you.SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0 NEXT ROUND 14.6s   key sound off +- PLAY / PAPER -+| || *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+PAUSED  P to resumeEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.<> you   * spark   xx past you
+
+
+ . socr your o SCORE 0000   BEST 000 NEXT ROUND 14.6s   ke +- PLAY / PAPER ----- |   |   |   | *         *              <>     
+ 
+ * 
+  
+
+
+  Last Time
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit
+  Last Time
+
+  Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+  key sound off
+  M mute  Q quit  Ctrl-C exit80 x 30 . socratink / paper last timeyour only enemy is you. SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0 NEXT ROUND 14.6s   key sound off+- PLAY / PAPER -+ | | | *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+<> you   * spark   xx past youEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.5
+ | |M5.0 | |
+
+
+Starts undersized: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Ignore initially frozen keys: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Initial undersize freezes time: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": true, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+Initial recovery: {"accumulator": 0.0, "best": 0, "direction": [0, 0], "ghosts": [], "paused": false, "player": [15, 9], "quit": false, "round": 1, "score": 0, "small": false, "sound": "key sound off", "sparks": [[2, 11], [4, 5], [6, 3], [14, 2], [15, 13], [19, 1]], "state": "playing", "tick": 0}
+SIGINT: exit 0, modes restored, group gone
+
+Sanitized terminal output:
+
+  Last Time
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit
+  Last Time
+
+Resize terminal to at least 80 x 30.
+  Current: 40 x 12. Game frozen.
+
+key sound off
+M mute  Q quit  Ctrl-C exit80 x 30 . socratink / paper last timeyour only enemy is you. SCORE 0000   BEST 0000   ROUND 1   GHOSTS 0 NEXT ROUND 15.0s   key sound off+- PLAY / PAPER -+ | | | *  || *  || *  || || *  || || || || <> || ||    *  || || *  || || || || |+-+<> you   * spark   xx past youEvery 15s ghosts loop. Overlapping starts shift you to safety.Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quitOne life. Touch a ghost and it ends. Walls only stop you.
+

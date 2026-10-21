@@ -44,7 +44,7 @@ class StackerCheckRunnerTests(unittest.TestCase):
 
     def test_stacker_is_appended_without_renumbering_existing_cabinets(self):
         titles = [entry['title'] for entry in json.loads(Path('arcade_menu/games.json').read_text())]
-        self.assertEqual(titles, [
+        self.assertEqual(titles[:13], [
             'Tetris', 'Tetris vs Jev', 'Breakout', 'Snake', 'Invaders', 'Pong',
             'Galaga', 'Crossing', 'Tron', 'Tron vs Jev', 'Wordle', 'Pac-Man',
             'Stacker',

@@ -1,0 +1,10 @@
+{
+  "item": "seed-3-expect",
+  "result": "passed",
+  "evidence": "Observed test_exact_replay report ok after comparing all 151 recorded first-round positions with the actual path and the following 50 ghost positions at their matching indices. The replay-origin mutation failed by assertion and restored green, showing the test rejects positional or timing divergence.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-3 and red-probes",
+  "seed_definition": "8d6d5c2cbe4de8e5d84ffb620b4ff969874aa3f2c7fedd310e3a446e94a9e9bd",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558642801943000
+}

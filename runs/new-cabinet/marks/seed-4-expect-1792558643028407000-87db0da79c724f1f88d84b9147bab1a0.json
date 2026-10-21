@@ -1,0 +1,10 @@
+{
+  "item": "seed-4-expect",
+  "result": "passed",
+  "evidence": "Observed each of three active ghost slots tested as the lethal contact, plus swap and stationary collisions, all report ok. Further steering/time cannot resume lost state. In the real PTY, the replay reached the stationary endpoint and GAME OVER froze all rules until explicit restart.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-4; runs/new-cabinet/04-test/output/terminal-transcript.txt",
+  "seed_definition": "6b67cb305e0a2852b27c2d0232950eaab563fe4ad977d2e3679ceb23ed875e11",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558643028407000
+}

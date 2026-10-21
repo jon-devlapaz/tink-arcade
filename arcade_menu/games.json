@@ -175,5 +175,18 @@
     ],
     "path": ".",
     "module": "tink_stacker"
+  },
+  {
+    "title": "Last Time",
+    "tagline": "Your only enemy is you.",
+    "about": "Collect sparks. Every 15 seconds your past paths return as ghosts. One life, no other enemies.",
+    "controls": [
+      "Arrows  steer",
+      "P  pause",
+      "R  restart",
+      "M  mute"
+    ],
+    "path": ".",
+    "module": "tink_last_time"
   }
 ]
