@@ -1,0 +1,23 @@
+{
+  "profile": "light",
+  "kind": "feature",
+  "schema": 1,
+  "run_id": "8de09fe4-9393-4810-aada-3f15a2743a25",
+  "seed_contract": {
+    "path": "runs/new-cabinet/seed-contract.md",
+    "sha256": "e73da9d6dbe46ed6b1179e6443293d2607b72f5aa232cf64d1051ad93693c611",
+    "source": "/Users/jondev/.local/share/tinkery/sessions/session-dI1YYi/seed-contract.md",
+    "definitions_sha256": "88ecf7c20779657c2bf3003325ae42420ff0dcb6f18515ed5742ebf2e46f1f6e",
+    "confirmation": {
+      "schema_version": 2,
+      "checks_sha256": "fa860e22575490602a0538e16c1c857a5f8744cf93609f5e4416a3434a2ae880",
+      "session_id": "session-dI1YYi",
+      "operator": "human",
+      "revision": "r1",
+      "source": "I confirm this seed for Last Time: arrow-key light movement, collectible sparks as the score, one life, exact synchronized replay of every completed 15-second path, stacking ghosts and fatal ghost contact. Start with no ghosts and prevent unavoidable transition deaths. No extra enemies or mechanics. Implementation details and runnable checks still belong to the builder, and fun, feel and visual taste remain for jondev. I answered only the pre-mortem; the other quoted probe is a drafting inference, not another operator answer. The invalid line citations are not verified evidence. This confirms the seed, not build approval.",
+      "confirmed_at": "2026-10-21T04:44:57.918165+00:00",
+      "seed_sha256": "e73da9d6dbe46ed6b1179e6443293d2607b72f5aa232cf64d1051ad93693c611",
+      "decisions_sha256": "8e0b3ae2033f65c1b5d681685a41404f7bbbad629098dc29d1ee6692af4db772"
+    }
+  }
+}

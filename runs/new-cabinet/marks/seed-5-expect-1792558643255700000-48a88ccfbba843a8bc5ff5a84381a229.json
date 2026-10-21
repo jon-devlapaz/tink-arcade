@@ -1,0 +1,10 @@
+{
+  "item": "seed-5-expect",
+  "result": "passed",
+  "evidence": "Observed stacking test report ok through four completed rounds with every prior path retained and four synchronized ghost origins in round five. The legal-input survival replay independently printed round=5 ghosts=4 sparks=82 after 600 ticks. Replacing history with only the latest path failed the stacking assertion.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-5 and replay",
+  "seed_definition": "31be8c1b28e1af2515267a666d2bcc389fb76a83833a441f7715b4a24045af8c",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558643255700000
+}

@@ -1,0 +1,10 @@
+{
+  "item": "seed-8-expect",
+  "result": "passed",
+  "evidence": "Observed actual arcade-menu PTY output PASS Last Time after all existing offline cabinets. The checker launched the registered module from the menu, found paper title and playfield, muted audio, quit the cabinet and returned to the menu. Registry/CLI test also requires appended cabinet 14, no credential requirement and package entry files.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-8",
+  "seed_definition": "835a8f3900bc68c25315ca8dadec8ebcf8fcab888f46d990dc1c35b45aaf832e",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558643935998000
+}

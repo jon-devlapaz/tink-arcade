@@ -1,0 +1,10 @@
+{
+  "item": "seed-6-expect",
+  "result": "passed",
+  "evidence": "Observed arrow-and-one-life test report ok for all four curses arrow codes and expected displacements. Each contact becomes lost and subsequent direction or pause input cannot restore play. Real PTY confirmed all four arrow escape sequences, ghost death, frozen loss and explicit R restart, with no second life.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-6; runs/new-cabinet/04-test/output/terminal-transcript.txt",
+  "seed_definition": "69a6d6239e64a9b318a77b51a53fe856587509ac86b3a13eb23a99f291afd1e8",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558643481818000
+}

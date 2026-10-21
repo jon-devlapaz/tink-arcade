@@ -1,0 +1,10 @@
+{
+  "item": "seed-7-expect",
+  "result": "passed",
+  "evidence": "Observed score-only test report ok: idle time gives zero, collecting two specified sparks gives scores one then two, leaving a spark behind does not add score, and fatal contact gives no bonus. A two-points-per-spark mutation failed the assertion and restored green.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-7 and red-probes",
+  "seed_definition": "0743576399186745e72af5bc38eb08876eb17634a368ad586c64bdd0b6c15e45",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558643707939000
+}

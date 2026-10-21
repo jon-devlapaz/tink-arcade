@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "items": [
+    {
+      "cwd": ".",
+      "expect": "The implemented cabinet provides a playable dark arena in which the light can collect sparks.",
+      "kind": "provisional",
+      "missing": "A Last Time implementation and behavior-specific assertion do not yet exist.",
+      "source": "confirmed goal",
+      "statement": "A small light can collect sparks in a dark arena.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_collectible_sparks test_last_time_ui.LastTimeUI.test_dark_arena_symbols_and_states_in_all_palette_modes", "cwd": ".", "evidence": "Prerequisites now exist at tink_last_time/engine.py and tink_last_time/ui.py; behavior assertions exist in tests/test_last_time_engine.py and tests/test_last_time_ui.py. Focused runner and real PTY output retained in 04-test/output/terminal-transcript.txt."},
+      "id": "seed-1",
+      "description": "A small light can collect sparks in a dark arena.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "The implemented round timer ends each round at 15 seconds.",
+      "kind": "provisional",
+      "missing": "A Last Time engine test and confirmed repository invocation do not yet exist.",
+      "source": "confirmed goal",
+      "statement": "Each round ends every 15 seconds.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_fifteen_second_round", "cwd": ".", "evidence": "Prerequisite exists at tests/test_last_time_engine.py; boundary test advances 14.999 then 15.000 seconds, requiring the first completed path only at 15.000."},
+      "id": "seed-2",
+      "description": "Each round ends every 15 seconds.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "A completed round's timed path replays exactly as a ghost.",
+      "kind": "provisional",
+      "missing": "A deterministic replay assertion and invocation do not yet exist.",
+      "source": "confirmed goal and pre-mortem decision",
+      "statement": "The previous round replays exactly as a ghost.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_exact_replay", "cwd": ".", "evidence": "Prerequisite deterministic recording and per-tick ghost comparison exist at tests/test_last_time_engine.py; exact recorded positions are compared with synchronized playback."},
+      "id": "seed-3",
+      "description": "The previous round replays exactly as a ghost.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "Contact with any active ghost ends the one-life game.",
+      "kind": "provisional",
+      "missing": "A ghost-collision regression assertion and invocation do not yet exist.",
+      "source": "confirmed goal",
+      "statement": "Touching any ghost ends the game.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_any_ghost_contact_is_fatal test_last_time_engine.LastTimeRules.test_swapping_cells_and_stationary_contacts_kill", "cwd": ".", "evidence": "Prerequisite collision assertions exist at tests/test_last_time_engine.py, including each active ghost, stationary and swap contacts and frozen death state."},
+      "id": "seed-4",
+      "description": "Touching any ghost ends the game.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "Past ghost paths remain active and accumulate across completed rounds.",
+      "kind": "provisional",
+      "missing": "A stacking regression assertion and invocation do not yet exist.",
+      "source": "confirmed goal",
+      "statement": "Ghosts stack across rounds.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_stacking_keeps_all_paths_through_round_five", "cwd": ".", "evidence": "Prerequisite stacking assertion exists at tests/test_last_time_engine.py, checking all prior origins and four immutable paths in round five."},
+      "id": "seed-5",
+      "description": "Ghosts stack across rounds.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "Arrow keys control the player and the game provides exactly one life.",
+      "kind": "provisional",
+      "missing": "Arrow-key and one-life assertions and a confirmed invocation do not yet exist.",
+      "source": "confirmed goal",
+      "statement": "The player uses arrow keys and has one life.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_ui.LastTimeUI.test_arrows_and_one_life", "cwd": ".", "evidence": "Prerequisite arrow-key and one-life assertions exist at tests/test_last_time_ui.py. Actual arrows and ghost death were also exercised in 04-test/output/terminal-transcript.txt."},
+      "id": "seed-6",
+      "description": "The player uses arrow keys and has one life.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "The score increases according to sparks collected and not another event.",
+      "kind": "provisional",
+      "missing": "A score-specific regression assertion and invocation do not yet exist.",
+      "source": "confirmed goal",
+      "statement": "The score counts sparks collected.",
+      "activation": {"cmd": "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_score_only_counts_sparks", "cwd": ".", "evidence": "Prerequisite score assertion exists at tests/test_last_time_engine.py, checking zero idle points, one point per spark and no fatal-contact bonus."},
+      "id": "seed-7",
+      "description": "The score counts sparks collected.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    },
+    {
+      "cwd": ".",
+      "expect": "The arcade menu contains and can launch the Last Time cabinet using the repository's cabinet registration shape.",
+      "kind": "provisional",
+      "missing": "The Last Time package and registry entry do not yet exist.",
+      "source": "README.md:8-15 and arcade_menu/games.json:1-151",
+      "statement": "The cabinet is registered like the other cabinets.",
+      "activation": {"cmd": "python3 -B scripts/check_arcade.py", "cwd": ".", "evidence": "Prerequisites tink_last_time/__main__.py and arcade_menu/games.json entry now exist; scripts/check_arcade.py drives the actual menu through every offline cabinet, including launch, mute and return."},
+      "id": "seed-8",
+      "description": "The cabinet is registered like the other cabinets.",
+      "origin": "operator-confirmed-seed",
+      "locked": true
+    }
+  ]
+}

@@ -27,6 +27,51 @@ and `KeyboardAudio` with the bundled sounds. A new game is a package with an
 Run every check locally with `python3 -B scripts/check_all.py`.
 Tetris vs Jev needs `TYPESAFE_API_KEY` and makes billed API calls.
 
+## Last Time
+
+```sh
+python3 -B -m tink_last_time        # or select cabinet 14 in ./play
+python3 -B -m tink_last_time --seed 7 --no-color --no-sound
+```
+
+Steer a light with the arrow keys and collect `*` sparks. Every 15 seconds,
+all your completed paths replay in sync as `()` ghosts. Touch any ghost and
+your one life ends. Score is sparks collected. There are no other enemies.
+The first round has no ghosts; by round five there are four.
+
+Arrows set automatic movement, one cell every 100 ms. Walls stop you without
+killing. Past paths loop at each round boundary while you keep your endpoint.
+If a restarting ghost overlaps you, the light shifts to the nearest free cell,
+preferring clearance from the next ghost step. This shift is recorded as the
+next path's origin, not replay drift or immunity. A completely ghost-occupied
+arena has no safe shift and ends the game.
+
+P pauses, R restarts, M mutes, Q or Ctrl-C exits. Restart repeats a supplied
+seed and preserves mute and session best. Scores are not saved. The fixed
+30 by 18 arena needs an 80 by 30 terminal; larger windows add margins. Pause
+and undersizing freeze all game clocks. Recovery preserves pause and discards
+catch-up time. Mute and quit remain available while small. Stalls above 250 ms
+are discarded. Player `<>`, sparks `*` and ghosts `()` differ without color.
+The arena is the shared paper grid, like the other cabinets. Existing
+keyboard cues mark sparks, death and pause/restart; travel is silent.
+
+```sh
+python3 -B scripts/check_last_time.py
+python3 -B scripts/replay_last_time.py
+python3 -B scripts/check_last_time_terminal.py
+python3 -B scripts/check_last_time_red_probes.py
+python3 -B scripts/check_all.py
+```
+
+The legal-input replay reaches round five with four ghosts and 82 sparks.
+A second replay leaves the light at its first endpoint and loses to that path.
+The real PTY check covers arrows, an actual 15-second transition and ghost
+death, pause, resize, restart, color/monochrome, Q/SIGINT and terminal cleanup.
+Mutation probes require assertion failures and restored green tests. These
+checks do not establish fun, pacing, visual taste or perceived audio quality.
+Those remain owed to jondev. Native-audio tests are opt-in and skip by default.
+The game is offline, standard-library-only, and makes no API calls.
+
 ## Paper Stacker
 
 ```sh
@@ -627,4 +672,5 @@ The secret-answer list remains curated in `tink_wordle/engine.py`.
 
 The installed workflow files in `_system`, `_shared`, `stages`, and the skillset
 pins come from [tink-sdlc](https://github.com/jon-devlapaz/tink-sdlc), scaffold
-1.19.0. Its [MIT notice](licenses/tink-sdlc-MIT.txt) applies to those files.
+1.35.0. The upgrade changes stage contracts, so older runs' approval receipts
+read as stale until re-reviewed. Its [MIT notice](licenses/tink-sdlc-MIT.txt) applies to those files.

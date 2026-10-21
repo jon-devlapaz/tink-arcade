@@ -1,0 +1,66 @@
+
+== games: unit and terminal tests
+...................................................................................................................................................................................ss................................................................................................................................................................................................................................................F............sss.......................................................................................................................................
+======================================================================
+FAIL: test_stacker_is_appended_without_renumbering_existing_cabinets (test_stacker_checks.StackerCheckRunnerTests.test_stacker_is_appended_without_renumbering_existing_cabinets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/jondev/dev/worktrees/tink-arcade/claude-new-cabinet/tests/test_stacker_checks.py", line 47, in test_stacker_is_appended_without_renumbering_existing_cabinets
+    self.assertEqual(titles, [
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+        'Tetris', 'Tetris vs Jev', 'Breakout', 'Snake', 'Invaders', 'Pong',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'Galaga', 'Crossing', 'Tron', 'Tron vs Jev', 'Wordle', 'Pac-Man',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'Stacker',
+        ^^^^^^^^^^
+    ])
+    ^^
+AssertionError: Lists differ: ['Tet[90 chars]n', 'Tron vs Jev', 'Wordle', 'Pac-Man', 'Stacker', 'Last Time'] != ['Tet[90 chars]n', 'Tron vs Jev', 'Wordle', 'Pac-Man', 'Stacker']
+
+First list contains 1 additional elements.
+First extra element 13:
+'Last Time'
+
+  ['Tetris',
+   'Tetris vs Jev',
+   'Breakout',
+   'Snake',
+   'Invaders',
+   'Pong',
+   'Galaga',
+   'Crossing',
+   'Tron',
+   'Tron vs Jev',
+   'Wordle',
+   'Pac-Man',
+-  'Stacker',
+?           ^
+
++  'Stacker']
+?           ^
+
+-  'Last Time']
+
+----------------------------------------------------------------------
+Ran 572 tests in 40.386s
+
+FAILED (failures=1, skipped=5)
+Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
+Legal replay: seed=7, steps=1528/36000, score=340, lives=3
+
+== menu: launch every game, check design and sound
+PASS Tetris
+PASS Breakout
+PASS Snake
+PASS Invaders
+PASS Pong
+PASS Galaga
+PASS Crossing
+PASS Tron
+PASS Wordle
+PASS Pac-Man
+PASS Stacker
+PASS Last Time
+
+FAILED: games: unit and terminal tests

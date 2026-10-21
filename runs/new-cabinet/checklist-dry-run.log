@@ -1,0 +1,183 @@
+
+# checklist item suite
+$ ["python3", "-B", "scripts/check_all.py"]
+
+== games: unit and terminal tests
+...................................................................................................................................................................................ss.............................................................................................................................................................................................................................................................sss.......................................................................................................................................
+----------------------------------------------------------------------
+Ran 572 tests in 40.330s
+
+OK (skipped=5)
+Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
+Legal replay: seed=7, steps=1528/36000, score=340, lives=3
+
+== menu: launch every game, check design and sound
+PASS Tetris
+PASS Breakout
+PASS Snake
+PASS Invaders
+PASS Pong
+PASS Galaga
+PASS Crossing
+PASS Tron
+PASS Wordle
+PASS Pac-Man
+PASS Stacker
+PASS Last Time
+
+All checks passed.
+
+exit 0
+
+# checklist item cabinet
+$ ["python3", "-B", "scripts/check_last_time.py"]
+test_any_ghost_contact_is_fatal (test_last_time_engine.LastTimeRules.test_any_ghost_contact_is_fatal) ... ok
+test_boundary_keeps_endpoint_unless_occupied (test_last_time_engine.LastTimeRules.test_boundary_keeps_endpoint_unless_occupied) ... ok
+test_collectible_sparks (test_last_time_engine.LastTimeRules.test_collectible_sparks) ... ok
+test_exact_replay (test_last_time_engine.LastTimeRules.test_exact_replay) ... ok
+test_fifteen_second_round (test_last_time_engine.LastTimeRules.test_fifteen_second_round) ... ok
+test_fully_occupied_origins_end_without_crashing (test_last_time_engine.LastTimeRules.test_fully_occupied_origins_end_without_crashing) ... ok
+test_score_only_counts_sparks (test_last_time_engine.LastTimeRules.test_score_only_counts_sparks) ... ok
+test_snapshot_is_detached_and_engine_has_no_io (test_last_time_engine.LastTimeRules.test_snapshot_is_detached_and_engine_has_no_io) ... ok
+test_stacking_keeps_all_paths_through_round_five (test_last_time_engine.LastTimeRules.test_stacking_keeps_all_paths_through_round_five) ... ok
+test_swapping_cells_and_stationary_contacts_kill (test_last_time_engine.LastTimeRules.test_swapping_cells_and_stationary_contacts_kill) ... ok
+test_time_partitioning_stalls_and_invalid_boundaries (test_last_time_engine.LastTimeRules.test_time_partitioning_stalls_and_invalid_boundaries) ... ok
+test_walls_stop_without_losing_and_restart_repeats_seed (test_last_time_engine.LastTimeRules.test_walls_stop_without_losing_and_restart_repeats_seed) ... ok
+test_arrows_and_one_life (test_last_time_ui.LastTimeUI.test_arrows_and_one_life) ... ok
+test_audio_lifecycle_cues_and_restart_preserves_best (test_last_time_ui.LastTimeUI.test_audio_lifecycle_cues_and_restart_preserves_best) ... ok
+test_bounded_input_and_stall_discard (test_last_time_ui.LastTimeUI.test_bounded_input_and_stall_discard) ... ok
+test_dark_arena_symbols_and_states_in_all_palette_modes (test_last_time_ui.LastTimeUI.test_dark_arena_symbols_and_states_in_all_palette_modes) ... ok
+test_pause_resize_and_recovery_freeze_all_clocks (test_last_time_ui.LastTimeUI.test_pause_resize_and_recovery_freeze_all_clocks) ... ok
+test_registry_and_cli (test_last_time_ui.LastTimeUI.test_registry_and_cli) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.104s
+
+OK
+
+exit 0
+
+# checklist item replay
+$ ["python3", "-B", "scripts/replay_last_time.py"]
+Legal survival: seed=7 ticks=600 round=5 ghosts=4 sparks=82
+Legal loss: seed=7 round=2 tick=14, no steering after the first arrow
+
+exit 0
+
+# checklist item terminal
+$ ["python3", "-B", "scripts/check_last_time_terminal.py"]
+PASS Last Time PTY: arrows, pause, resize/recovery, restart, no-sound, color/mono, Q/SIGINT and cleanup.
+Transcript: /Users/jondev/dev/worktrees/tink-arcade/claude-new-cabinet/runs/new-cabinet/04-test/output/terminal-transcript.txt
+
+exit 0
+
+# checklist item red-probes
+$ ["python3", "-B", "scripts/check_last_time_red_probes.py"]
+PASS red probe timer: assertion failure, restored green
+PASS red probe replay: assertion failure, restored green
+PASS red probe collision: assertion failure, restored green
+PASS red probe stacking: assertion failure, restored green
+PASS red probe score: assertion failure, restored green
+PASS red probe arrows: assertion failure, restored green
+PASS red probe registry: assertion failure, restored green
+PASS red probe dark-field: assertion failure, restored green
+PASS red probe transition: assertion failure, restored green
+PASS full green rerun after all probes
+
+exit 0
+
+# checklist item seed-1
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_collectible_sparks test_last_time_ui.LastTimeUI.test_dark_arena_symbols_and_states_in_all_palette_modes"]
+test_collectible_sparks (test_last_time_engine.LastTimeRules.test_collectible_sparks) ... ok
+test_dark_arena_symbols_and_states_in_all_palette_modes (test_last_time_ui.LastTimeUI.test_dark_arena_symbols_and_states_in_all_palette_modes) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.023s
+
+OK
+
+exit 0
+
+# checklist item seed-2
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_fifteen_second_round"]
+test_fifteen_second_round (test_last_time_engine.LastTimeRules.test_fifteen_second_round) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+OK
+
+exit 0
+
+# checklist item seed-3
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_exact_replay"]
+test_exact_replay (test_last_time_engine.LastTimeRules.test_exact_replay) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+exit 0
+
+# checklist item seed-4
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_any_ghost_contact_is_fatal test_last_time_engine.LastTimeRules.test_swapping_cells_and_stationary_contacts_kill"]
+test_any_ghost_contact_is_fatal (test_last_time_engine.LastTimeRules.test_any_ghost_contact_is_fatal) ... ok
+test_swapping_cells_and_stationary_contacts_kill (test_last_time_engine.LastTimeRules.test_swapping_cells_and_stationary_contacts_kill) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+
+exit 0
+
+# checklist item seed-5
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_stacking_keeps_all_paths_through_round_five"]
+test_stacking_keeps_all_paths_through_round_five (test_last_time_engine.LastTimeRules.test_stacking_keeps_all_paths_through_round_five) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+OK
+
+exit 0
+
+# checklist item seed-6
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_ui.LastTimeUI.test_arrows_and_one_life"]
+test_arrows_and_one_life (test_last_time_ui.LastTimeUI.test_arrows_and_one_life) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+exit 0
+
+# checklist item seed-7
+$ ["bash", "-c", "PYTHONPATH=tests python3 -B -m unittest -v test_last_time_engine.LastTimeRules.test_score_only_counts_sparks"]
+test_score_only_counts_sparks (test_last_time_engine.LastTimeRules.test_score_only_counts_sparks) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+exit 0
+
+# checklist item seed-8
+$ ["bash", "-c", "python3 -B scripts/check_arcade.py"]
+PASS Tetris
+PASS Breakout
+PASS Snake
+PASS Invaders
+PASS Pong
+PASS Galaga
+PASS Crossing
+PASS Tron
+PASS Wordle
+PASS Pac-Man
+PASS Stacker
+PASS Last Time
+
+exit 0

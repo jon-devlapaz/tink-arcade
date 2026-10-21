@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "items": [
+    {"id":"suite","description":"All repository and menu regressions pass","verify":"Full suite and actual menu launches","check":{"argv":["python3","-B","scripts/check_all.py"],"timeout_seconds":180}},
+    {"id":"cabinet","description":"Required Last Time engine and UI tests execute without skips","verify":"Focused runner requires named acceptance cases","check":{"argv":["python3","-B","scripts/check_last_time.py"],"timeout_seconds":30}},
+    {"id":"replay","description":"Legal timed inputs reach round five and collect sparks; idle run loses","verify":"Deterministic legal-input replay","check":{"argv":["python3","-B","scripts/replay_last_time.py"],"timeout_seconds":30}},
+    {"id":"terminal","description":"Real curses controls, resize, exit and terminal cleanup","verify":"POSIX PTY checker, color and monochrome","check":{"argv":["python3","-B","scripts/check_last_time_terminal.py"],"timeout_seconds":60}},
+    {"id":"red-probes","description":"Acceptance regressions fail when protections are reverted","verify":"Mutations in disposable copies require assertion-level failures and green rerun","check":{"argv":["python3","-B","scripts/check_last_time_red_probes.py"],"timeout_seconds":60}}
+  ]
+}

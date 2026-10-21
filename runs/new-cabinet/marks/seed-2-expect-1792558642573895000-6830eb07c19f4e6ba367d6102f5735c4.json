@@ -1,0 +1,10 @@
+{
+  "item": "seed-2-expect",
+  "result": "passed",
+  "evidence": "Observed test_fifteen_second_round report ok: no completed path at 14.999 seconds, first path at 15.000 seconds, exactly 150 ticks. PTY also observed the real 15-second boundary with one ghost and continued play.",
+  "reviewer": "Claude standing in for jondev",
+  "source": "runs/new-cabinet/checklist-dry-run.log seed-2; runs/new-cabinet/04-test/output/terminal-transcript.txt",
+  "seed_definition": "7ac2e657de5d3543238d620ff0892abd1158be39d451e075d139c3a1a22514d2",
+  "candidate": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2",
+  "time_ns": 1792558642573895000
+}
