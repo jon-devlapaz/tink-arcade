@@ -35,7 +35,7 @@ python3 -B -m tink_last_time --seed 7 --no-color --no-sound
 ```
 
 Steer a light with the arrow keys and collect `*` sparks. Every 15 seconds,
-all your completed paths replay in sync as `xx` ghosts. Touch any ghost and
+all your completed paths replay in sync as `()` ghosts. Touch any ghost and
 your one life ends. Score is sparks collected. There are no other enemies.
 The first round has no ghosts; by round five there are four.
 
@@ -51,8 +51,8 @@ seed and preserves mute and session best. Scores are not saved. The fixed
 30 by 18 arena needs an 80 by 30 terminal; larger windows add margins. Pause
 and undersizing freeze all game clocks. Recovery preserves pause and discards
 catch-up time. Mute and quit remain available while small. Stalls above 250 ms
-are discarded. Player `<>`, sparks `*` and ghosts `xx` differ without color.
-The dark field uses reverse ink inside the shared paper canvas. Existing
+are discarded. Player `<>`, sparks `*` and ghosts `()` differ without color.
+The arena is the shared paper grid, like the other cabinets. Existing
 keyboard cues mark sparks, death and pause/restart; travel is silent.
 
 ```sh

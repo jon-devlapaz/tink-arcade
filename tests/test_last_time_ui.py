@@ -85,7 +85,7 @@ class LastTimeUI(unittest.TestCase):
             self.frame(c, [key], rows=1, columns=1)
             self.assertTrue(c.quit)
 
-    def test_dark_arena_symbols_and_states_in_all_palette_modes(self):
+    def test_paper_grid_symbols_and_states_in_all_palette_modes(self):
         self.assertTrue(issubclass(Renderer, PaperRenderer))
         for rows, columns in ((30, 80), (35, 100)):
             for colors, pairs, no_color in ((256, 256, False), (8, 8, False), (8, 4, False), (0, 0, True)):
@@ -102,11 +102,13 @@ class LastTimeUI(unittest.TestCase):
                     renderer.draw(c)
                     calls = screen.addnstr.call_args_list
                     text = ' '.join(call.args[2] for call in calls)
-                    for expected in ('paper last time', 'PLAY / PAPER', 'SCORE', 'ROUND', 'GHOSTS', 'NEXT ROUND', '<>', '* ', 'xx', 'Arrows', 'Q / Ctrl-C', label):
+                    for expected in ('paper last time', 'PLAY / PAPER', 'SCORE', 'ROUND', 'GHOSTS', 'NEXT ROUND', '<>', ' *', '()', 'Arrows', 'Q / Ctrl-C', label):
                         self.assertIn(expected, text)
-                    field = [call for call in calls if call.args[2] == ' ' * 60]
+                    field = [call for call in calls if call.args[2] == ' .' * 30]
                     self.assertEqual(len(field), 18)
-                    self.assertTrue(all(call.args[4] & curses.A_REVERSE for call in field))
+                    # Paper ground with a grid, never a reverse-video dark field.
+                    self.assertFalse(any(call.args[4] & curses.A_REVERSE for call in field))
+                    self.assertFalse(any(call.args[2].strip() == '' and len(call.args[2]) == 60 for call in calls))
                 screen.reset_mock()
                 renderer.text(rows - 1, columns - 1, 'x')
                 screen.addnstr.assert_not_called()

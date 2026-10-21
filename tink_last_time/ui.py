@@ -1,4 +1,4 @@
-"""Paper canvas, dark arena and single-owner terminal loop."""
+"""Paper canvas, graphite grid arena and single-owner terminal loop."""
 import curses
 import json
 import os
@@ -94,17 +94,17 @@ class Renderer(PaperRenderer):
                   f'SCORE {game.score:04}   BEST {controller.best:04}   ROUND {game.round}   GHOSTS {len(game.paths)}', self.ink)
         self.text(oy + 4, ox + 9, f'NEXT ROUND {remaining:04.1f}s   {sound_status}', self.muted)
         self.box(top, left, HEIGHT + 2, WIDTH * 2 + 2, 'PLAY / PAPER')
-        dark = self.ink | curses.A_REVERSE
+        # The shared paper grid (DESIGN.md): graphite ' .' cells, ink sparks, pencil-ghost '()'.
         for y in range(HEIGHT):
-            self.text(top + 1 + y, left + 1, ' ' * (WIDTH * 2), dark)
+            self.text(top + 1 + y, left + 1, ' .' * WIDTH, self.muted)
         for x, y in game.sparks:
-            self.text(top + 1 + y, left + 1 + 2 * x, '* ', dark | curses.A_BOLD)
+            self.text(top + 1 + y, left + 1 + 2 * x, ' *', self.ink | curses.A_BOLD)
         for x, y in game.ghosts:
-            self.text(top + 1 + y, left + 1 + 2 * x, 'xx', dark | curses.A_DIM)
+            self.text(top + 1 + y, left + 1 + 2 * x, '()', self.muted | curses.A_DIM)
         x, y = game.player
         self.text(top + 1 + y, left + 1 + 2 * x, '<>', self.accent | curses.A_REVERSE | curses.A_BOLD)
         label = 'PAUSED  P to resume' if controller.paused else (
-            'GAME OVER  R to restart' if game.state == 'lost' else '<> you   * spark   xx past you')
+            'GAME OVER  R to restart' if game.state == 'lost' else '<> you   * spark   () past you')
         self.text(oy + 25, ox + 9, label, self.accent)
         self.text(oy + 26, ox + 9, 'Every 15s ghosts loop. Overlapping starts shift you to safety.', self.muted)
         self.text(oy + 27, ox + 9, 'Arrows steer   P pause   R restart   M mute   Q / Ctrl-C quit', self.ink)
