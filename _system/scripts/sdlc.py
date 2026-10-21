@@ -3,6 +3,7 @@
 import argparse
 import contextlib
 import errno
+import fnmatch
 import fcntl
 import hashlib
 import json
@@ -99,17 +100,30 @@ def locked(path, timeout=5.0, poll_interval=0.05):
 
 
 def require_run(path):
+    """The one supported run shape; anything else is refused with what it lacks."""
     if not path.is_dir() or not (path / 'run.json').is_file():
-        raise ValueError('Run is missing or legacy. Create a new run; legacy artifacts remain readable but are not approved evidence.')
+        raise ValueError('Run has no run.json; create runs with sdlc.py new.')
     meta = read_json(path / 'run.json')
-    if isinstance(meta, dict) and 'run_id' in meta:
-        value = meta['run_id']
-        try:
-            identity = uuid.UUID(value) if isinstance(value, str) else None
-        except ValueError:
-            identity = None
-        if identity is None or identity.version != 4 or str(identity) != value:
-            raise ValueError('Run run_id must be a canonical UUIDv4 string.')
+    if not isinstance(meta, dict):
+        raise ValueError('Run run.json must be an object.')
+    value = meta.get('run_id')
+    try:
+        identity = uuid.UUID(value) if isinstance(value, str) else None
+    except ValueError:
+        identity = None
+    if identity is None or identity.version != 4 or str(identity) != value:
+        raise ValueError('Run run_id must be a canonical UUIDv4 string; create runs with sdlc.py new.')
+    bound = meta.get('seed_contract')
+    if bound is not None:
+        if not isinstance(bound, dict):
+            raise ValueError('Seed binding must be an object or null.')
+        for key in ('path', 'sha256', 'source'):
+            if not isinstance(bound.get(key), str) or not bound[key].strip():
+                raise ValueError(f'Seed binding {key} must be a nonempty string.')
+        if not re.fullmatch(r'[0-9a-f]{64}', bound['sha256']):
+            raise ValueError('Seed binding sha256 must be a lowercase SHA-256 hex digest.')
+        if 'definitions_sha256' not in bound:
+            raise ValueError('Seed binding has no record intake; create a new run and bind the confirmed seed at stage 1.')
     return meta
 
 
@@ -163,7 +177,7 @@ def records_digest(records):
 
 
 def record_definitions(records):
-    """Seed Me owns validation and rendering; preserve each validated record verbatim."""
+    """Tinkery owns validation and rendering; preserve each validated record verbatim."""
     return {'schema': 1, 'items': [
         {**record, 'id': f'seed-{index}', 'description': record['statement'],
          'origin': 'operator-confirmed-seed', 'locked': True}
@@ -178,10 +192,10 @@ def relative_check_cwd(cwd):
 
 
 def seed_check_items(path):
-    """Validate the immutable intake snapshot, never re-parse historical seed Markdown."""
+    """Validate the immutable intake snapshot; seed Markdown is never parsed."""
     bound = require_run(path).get('seed_contract')
-    if not bound or 'definitions_sha256' not in bound:
-        return []  # Historical runs remain readable, not eligible for new seed approval.
+    if not bound:
+        return []
     target = path / 'seed-checks.json'
     if not target.is_file():
         raise ValueError('Locked seed checks are missing; rebind the confirmed seed at stage 1.')
@@ -220,8 +234,32 @@ def seed_check_items(path):
     return result
 
 
+def missing_cited_evidence(path):
+    """Relative paths cited as activation evidence that exist in neither the run nor the checkout (#76)."""
+    target = path / 'seed-checks.json'
+    if not seed_check_items(path):
+        return []
+    missing = []
+    for item in read_json(target)['items']:
+        for token in item.get('activation', {}).get('evidence', '').split():
+            token = token.lstrip('"\'`([').rstrip('"\'`)],;:.')
+            if ('/' not in token or '://' in token or token.startswith(('/', '~'))
+                    or not (token.endswith('/') or re.search(r'\.[A-Za-z]\w*$', token))):
+                continue
+            brace = re.search(r'\{([^{}]*,[^{}]*)\}', token)
+            for cited in ([token[:brace.start()] + part + token[brace.end():] for part in brace.group(1).split(',')]
+                          if brace else [token]):
+                kind = Path.is_dir if cited.endswith('/') else Path.exists
+                if not (kind(path / cited) or kind(ROOT / cited)) and cited not in missing:
+                    missing.append(cited)
+    return missing
+
+
+MISSING_CHECKLIST = 'checklist.json is missing; restore it from Git.'
+
+
 def load_checklist(path):
-    """None for legacy runs without checklist.json; otherwise the validated item list."""
+    """None when checklist.json was deleted (sdlc.py new always writes one); otherwise the validated items."""
     target = path / 'checklist.json'
     seed_items = seed_check_items(path)
     if not target.exists():
@@ -254,7 +292,7 @@ def marks(path, items):
         try:
             record = read_json(receipt)
             key = (record['time_ns'], receipt.name)
-            if record['item'] in ids and record['result'] in ('passed', 'failed') and isinstance(record['time_ns'], int):
+            if record['item'] in ids and record['result'] in ('passed', 'failed', 'unknown') and isinstance(record['time_ns'], int):
                 if record['item'] not in latest_marks or key > latest_marks[record['item']][0]:
                     latest_marks[record['item']] = (key, record)
         except (ValueError, KeyError, TypeError, OSError):
@@ -303,18 +341,9 @@ def stages(path):
     return [3] if require_run(path)['profile'] == 'light' else [1, 2, 3]
 
 
-def require_record_intake(path):
-    bound = require_run(path).get('seed_contract')
-    if bound and 'definitions_sha256' not in bound:
-        raise ValueError('Historical seed contract needs verified Seed Me record intake; complete explicit v2 re-intake '
-                         'at stage 1 before new approval or verification: display a fresh draft and obtain Seed Me v2 '
-                         'confirmation, then run: '
-                         f'python3 _system/scripts/sdlc.py stage {path.name} 1 '
-                         '--seed-contract <session>/seed-contract.md --seed-me-helper <trusted-seed-me>/scripts/session.py')
-
-
 def ready(path):
-    require_record_intake(path)
+    if load_checklist(path) is None:
+        raise ValueError(MISSING_CHECKLIST)
     for stage in stages(path):
         if gate(path, stage) != 'approved':
             raise ValueError(f'Stage {stage} needs a current approval receipt.')
@@ -331,14 +360,16 @@ def git(*args):
 
 
 def strip_generated_rules(data):
-    """Drop each well-formed tink:rules block (so a removed block equals an excluded one); unbalanced markers are left as-is."""
+    """Drop each well-formed tink:rules block and the blank line tink writes before it (#52), so a removed
+    block equals an excluded one; unbalanced markers are left as-is."""
     lines = data.decode('utf-8', errors='surrogateescape').splitlines(keepends=True)
     blocks, problems = rules_blocks(lines)
     if not blocks or any('duplicate' not in problem for problem in problems):
         return data
     out, cursor = [], 0
     for begin, end, _ in blocks:
-        out.append(''.join(lines[cursor:begin]).encode('utf-8', errors='surrogateescape'))
+        separator = begin > cursor and not lines[begin - 1].strip()
+        out.append(''.join(lines[cursor:begin - separator]).encode('utf-8', errors='surrogateescape'))
         cursor = end + 1
     out.append(''.join(lines[cursor:]).encode('utf-8', errors='surrogateescape'))
     return b''.join(out)
@@ -417,6 +448,22 @@ def checks_config():
     return config
 
 
+def unlisted_authors(config):
+    """Commits after `authors.since` whose author matches no `authors.allow` pattern (#78); earlier history is never judged."""
+    policy = config.get('authors')
+    if policy is None:
+        return []
+    if (not isinstance(policy, dict) or set(policy) != {'since', 'allow'} or not isinstance(policy['since'], str)
+            or not isinstance(policy['allow'], list) or not policy['allow']
+            or not all(isinstance(p, str) and p.strip() for p in policy['allow'])):
+        raise ValueError('verification.json authors needs a since commit and a nonempty allow list of "Name <email>" patterns.')
+    listed = run_git(ROOT, 'log', '--format=%h %an <%ae>', f"{policy['since']}..HEAD")
+    if listed.returncode:
+        raise ValueError(f"verification.json authors.since is not a commit before HEAD: {git_line(listed)}")
+    return [line for line in listed.stdout.splitlines()
+            if not any(fnmatch.fnmatchcase(line.split(' ', 1)[1], pattern) for pattern in policy['allow'])]
+
+
 def test_lock(path):
     lock = path / 'test-lock.json'
     if not lock.exists():
@@ -487,18 +534,19 @@ def decide(args):
                 if not source.is_file() or digest(source.read_bytes()) != bound['sha256']:
                     raise ValueError(f"The seed contract {bound['path']} changed or is missing since stage 1 was opened; "
                                      f'confirm it again, then run: sdlc.py stage {args.run} 1 --seed-contract {bound.get("source", bound["path"])}')
-        if args.decision == 'approved' and args.stage == 3 and load_checklist(path) == []:
+        items = load_checklist(path) if args.decision == 'approved' and args.stage == 3 else ()
+        if items is None:
+            raise ValueError(MISSING_CHECKLIST)
+        if items == []:
             raise ValueError(f'Define at least one checklist item before approval. Edit runs/{args.run}/checklist.json '
                              '(each item needs id, description, verify; optional check).')
         if args.decision == 'approved':
-            require_record_intake(path)
             seed_check_items(path)
             for stage in stages(path):
                 if stage < args.stage and gate(path, stage) != 'approved':
                     raise ValueError(f'Approve stage {stage} first.')
         write_json(path / 'decisions' / f'{args.stage}-{time.time_ns()}-{uuid.uuid4().hex}.json', {
             'inputs': inputs(path, args.stage), 'decision': args.decision,
-            **({'has_checklist': True} if args.stage == 3 and (path / 'checklist.json').exists() else {}),
             'reviewer': args.reviewer, 'source': args.source, 'reason': args.reason})
     print('Recorded local review receipt. Release approval must be independently authenticated by the forge.')
 
@@ -572,7 +620,14 @@ def verify(args):
         seed_results = {}
         try:
             ready(path)
+            missing = missing_cited_evidence(path)
+            if missing:
+                raise ValueError('Cited evidence is missing from this checkout: ' + ', '.join(missing))
             config = checks_config()
+            unlisted = unlisted_authors(config)
+            if unlisted:
+                raise ValueError('Commits by authors verification.json does not allow: ' + '; '.join(unlisted)
+                                 + ' (allowed: ' + ', '.join(config['authors']['allow']) + ')')
             before_files = snapshot_files()
             before = evidence_inputs(path)
             items = load_checklist(path)
@@ -639,7 +694,10 @@ def verify(args):
                     proof['seed_checks'] = seed_results
             write_json(receipt, {'result': 'passed', **before, **proof, 'log': digest(log_path.read_bytes())})
         except Exception as error:
-            write_json(receipt, {'result': 'failed', 'error': describe(error),
+            defined = {}
+            with contextlib.suppress(Exception):
+                defined = {'inputs': inputs(path, 3)}  # Lets status retire this error once definitions change (#75).
+            write_json(receipt, {'result': 'failed', 'error': describe(error), **defined,
                                  **({'seed_checks': seed_results} if seed_results else {})})
             raise
     if seed_results:
@@ -706,7 +764,7 @@ def mark(args):
     with locked(path / '.writer-lock'):
         items = load_checklist(path)
         if items is None:
-            raise ValueError('Run has no checklist.json (legacy run); nothing to mark.')
+            raise ValueError(MISSING_CHECKLIST)
         if args.item not in {item['id'] for item in items}:
             ids = ', '.join(item['id'] for item in items)
             raise ValueError(f'Unknown checklist item: {args.item} (items: {ids})')
@@ -720,12 +778,23 @@ def mark(args):
                              f'(its check runs during: python3 _system/scripts/sdlc.py verify {args.run})')
         if gate(path, 3) != 'approved':
             raise ValueError('Stage 3 needs a current approval receipt before items can be marked.')
+        if args.result == 'unknown' and not item.get('operator_attestation'):
+            raise ValueError('unknown is for an operator observation that does not address this expectation.')
+        shared = sorted(other for other, record in marks(path, items).items() if other != args.item
+                        and record.get('reviewer') and record['evidence'] == evidence)
+        if item.get('operator_attestation') and shared and not args.covers_all:
+            raise ValueError(f"The same evidence already attests {', '.join(shared)}; give evidence for this "
+                             f"expectation ({item['verify']}), mark it unknown, or pass --covers-all if the "
+                             'operator meant it to cover each of them.')
         now = time.time_ns()
         write_json(path / 'marks' / f'{args.item}-{now}-{uuid.uuid4().hex}.json', {
             'item': args.item, 'result': args.result, 'evidence': evidence,
             **({'reviewer': args.reviewer, 'source': args.source, 'seed_definition': item['seed_definition']}
                if item.get('operator_attestation') else {}),
+            **({'covers_all': True} if args.covers_all else {}),
             'candidate': snapshot()['tree'], 'time_ns': now})
+    if item.get('operator_attestation'):
+        print(f"Expectation: {item['verify']}")
     print(f'Recorded {args.result} receipt for {args.item}.')
 
 
@@ -735,8 +804,7 @@ def checklist_view(path, verified=False):
     except (ValueError, TypeError) as error:
         return {'state': 'invalid', 'items': [], 'error': str(error)}
     if items is None:
-        decision = latest(path, 3)
-        return {'state': 'missing' if decision and decision.get('has_checklist') else 'legacy', 'items': []}
+        return {'state': 'missing', 'items': []}
     try:
         tree = snapshot()['tree'] if items else None
     except (ValueError, OSError, subprocess.SubprocessError):
@@ -749,14 +817,14 @@ def checklist_view(path, verified=False):
         state = ('passed' if verified else 'pending') if automatic else (record['result'] if record else 'pending')
         result.append({**item, 'status': state, 'automatic': automatic,
                        'proof': 'automated' if automatic else 'attested',
-                       'mark': {key: record.get(key) for key in ('item', 'result', 'evidence', 'candidate', 'time_ns')} if record else None,
+                       'mark': {key: record.get(key) for key in ('item', 'result', 'evidence', 'candidate', 'time_ns', 'covers_all')} if record else None,
                        'needs_recheck': bool(not automatic and record and state == 'passed'
                                              and tree is not None and record.get('candidate') != tree)})
     return {'state': 'defined' if items else 'empty', 'items': result}
 
 
 def checklist_text(view):
-    messages = {'missing': 'MISSING (deleted after approval)', 'legacy': 'none (legacy run)',
+    messages = {'missing': 'MISSING (restore checklist.json from Git)',
                 'empty': 'no items defined', 'invalid': f"invalid ({view.get('error')})"}
     if view['state'] in messages:
         return 'Checklist: ' + messages[view['state']]
@@ -772,6 +840,8 @@ def checklist_text(view):
             lines.append(f"  - {item['id']}: {item['status']}{suffix}")
         elif item['needs_recheck']:
             lines.append(f"  - {item['id']}: attested before the latest changes; re-check it only if the change affects it")
+        elif item['mark'] and item['mark'].get('covers_all'):
+            lines.append(f"  - {item['id']}: passed; the operator's evidence covers several expectations")
     return '\n'.join(lines)
 
 
@@ -806,6 +876,17 @@ def writer_active(path):
         os.close(fd)
 
 
+def failed_reason(path, record):
+    """A failure's own error while its definitions are current; never an error from definitions since replaced."""
+    try:
+        replaced = 'inputs' in record and record['inputs'] != inputs(path, 3)
+    except (ValueError, OSError, KeyError, TypeError):
+        replaced = False
+    if replaced:
+        return 'The last verification failed against earlier definitions. Run verification again.'
+    return str(record.get('error', 'Verification failed. Inspect the log, then rerun it.'))
+
+
 def status_state(path):
     """One calculation for the human CLI and machine clients; never an approval."""
     meta = require_run(path)
@@ -813,11 +894,6 @@ def status_state(path):
         raise ValueError('Run profile must be light or full.')
     if not isinstance(meta.get('kind', 'feature'), str):
         raise ValueError('Run kind must be a string.')
-    intake_error = None
-    try:
-        require_record_intake(path)
-    except ValueError as error:
-        intake_error = str(error)
     gates, blocked = [], False
     for stage in stages(path):
         state = gate(path, stage)
@@ -825,7 +901,6 @@ def status_state(path):
             raise ValueError(f'Unknown gate state: {state}')
         gates.append({'stage': stage, 'status': state, 'blocked': blocked})
         blocked = blocked or state != 'approved'
-    blocked = blocked or bool(intake_error)
     record_path, _ = verification_files(path)
     record = read_json(record_path) if record_path.exists() else None
     if record is not None:
@@ -856,7 +931,7 @@ def status_state(path):
     else:
         state = {'passed': 'stale', 'failed': 'failed', 'running': 'interrupted'}[record['result']]
     checklist = checklist_view(path, verified)
-    errors = [intake_error] if intake_error else []
+    errors = []
     try:
         config = checks_config()
     except (ValueError, OSError, TypeError, AttributeError) as error:
@@ -878,12 +953,12 @@ def status_state(path):
     first_gate = next((g for g in gates if g['status'] != 'approved'), None)
     gate_reason = f"revise/review stage {first_gate['stage']}; record the human decision." if first_gate else ''
     if first_gate and first_gate['stage'] == 3:
-        if meta['profile'] == 'light' and (not (path / 'brief.md').is_file() or checklist['state'] in ('empty', 'missing', 'legacy', 'invalid')):
+        if meta['profile'] == 'light' and (not (path / 'brief.md').is_file() or checklist['state'] in ('empty', 'missing', 'invalid')):
             gate_reason = f'Define brief.md and checklist.json in runs/{path.name} before requesting human review.'
         elif any(item['automatic'] for item in checklist['items']):
             gate_reason = (f'Run python3 _system/scripts/sdlc.py dry-run {path.name} before definition review; '
                            'inspect each check output, then record the actual human decision.')
-    unavailable = 'A writer already owns this run.' if active else (intake_error or gate_reason)
+    unavailable = 'A writer already owns this run.' if active else gate_reason
     verify_reason = unavailable or (errors[0] if errors else '')
     manual = any(not item['automatic'] for item in checklist['items'])
     mark_reason = unavailable or ('' if manual else 'This run has no manual checklist items to attest.')
@@ -893,9 +968,11 @@ def status_state(path):
         'current': 'independent PR review and release checks.',
         'stale': 'The previous pass no longer matches this candidate or its evidence. Run verification again.',
         'interrupted': 'The previous verification did not finish. Inspect the log, then rerun it.',
-        'failed': str(record.get('error', 'Verification failed. Inspect the log, then rerun it.')) if record else '',
+        'failed': failed_reason(path, record) if record else '',
     }.get(state, 'implement the approved brief, then run verification.')
-    return {'slug': path.name, 'run_id': meta.get('run_id'),
+    bound = meta.get('seed_contract')
+    seed_contract = {key: bound[key] for key in ('path', 'sha256', 'source')} if bound is not None else None
+    return {'slug': path.name, 'run_id': meta['run_id'], 'seed_contract': seed_contract,
             'meta': {'profile': meta['profile'], 'kind': meta.get('kind', 'feature')},
             'gates': gates, 'verification_status': state, 'has_lock': active,
             'verification': {**{key: record.get(key) for key in ('result', 'candidate', 'log', 'error')}, 'passed': verified} if record else None,
@@ -909,7 +986,8 @@ def status_state(path):
 
 
 def status_text(view):
-    lines = []
+    bound = view['seed_contract']
+    lines = [f"Seed contract: {bound['path']} (sha256: {bound['sha256']}; source: {bound['source']})"] if bound else []
     for gate_info in view['gates']:
         stage, state, blocked = gate_info['stage'], gate_info['status'], gate_info['blocked']
         lines.append(f'Stage {stage}: {state}' + (' (blocked by upstream gate)' if blocked else ''))
@@ -966,8 +1044,8 @@ def run_view(slug):
         if not isinstance(record, dict) or record.get('decision') not in ('approved', 'changes-requested'):
             raise ValueError(f'Unrecognized decision receipt: {file.name}')
         for key in ('reviewer', 'source', 'reason'):
-            if record.get(key) is not None and not isinstance(record[key], str):
-                raise ValueError(f'Decision {key} must be a string or null: {file.name}')
+            if not isinstance(record.get(key), str):
+                raise ValueError(f'Decision {key} must be a string: {file.name}')
         decisions.append({'id': file.stem, 'stage': int(identity[1]), 'timestamp_ns': int(identity[2]),
                           **{key: record.get(key) for key in ('decision', 'reviewer', 'source', 'reason')}})
     view['decisions'] = decisions
@@ -1012,6 +1090,7 @@ def status(args):
         try:
             view = run_view(name)
             runs.append({'slug': name, 'run_id': view['run_id'], **view['meta'], 'verification_status': view['verification_status'],
+                         'seed_contract': view['seed_contract'],
                          'next_action': view['next_action'], 'has_lock': view['has_lock'],
                          'checklist_summary': {'total': len(view['checklist']),
                                                'passed': sum(i['status'] == 'passed' for i in view['checklist'])}})
@@ -1256,7 +1335,7 @@ def walk_w6(root):
     name = 'status-derivable'
     script = root / '_system/scripts/sdlc.py'
     runs_dir = root / 'runs'
-    slugs = sorted(p.name for p in runs_dir.iterdir() if p.is_dir() and not p.name.startswith('.') and (p / 'run.json').is_file()) if runs_dir.is_dir() else []
+    slugs = sorted(p.name for p in runs_dir.iterdir() if p.is_dir() and not p.name.startswith('.')) if runs_dir.is_dir() else []
     if not slugs:
         return walk_result('W6', name, 'pass', 'sdlc.py is present', 'no runs')
     bad = []
@@ -1397,44 +1476,91 @@ def require_tink_use(tink):
     raise ValueError(f'{version} has no `tink use` (it compiles the stage disciplines); upgrade tink, then re-run the same command')
 
 
-def stage_seed_contract(value, helper):
-    """Verify Seed Me's v2 handoff before writes; the supplied helper is trusted code.
-
-    Contract: seed-me PR #17, 9ef827f92c79f5d53afd255ac0fb4ae32b85dd4f.
-    """
-    resolved = Path(value).resolve()
-    if not resolved.is_file():
+def stage_seed_contract(value, tinkery):
+    """Use Tinkery's verifier before writes; the supplied executable is trusted code."""
+    try:
+        resolved = Path(value).resolve()
+        exists = resolved.is_file()
+    except (OSError, RuntimeError, ValueError):
+        raise ValueError('seed contract path is unavailable; supply an existing regular file.') from None
+    if not exists:
         raise ValueError(f'seed contract must be an existing regular file: {value}')
-    if not helper:
-        raise ValueError('--seed-contract requires --seed-me-helper PATH to Seed Me session.py (v2).')
+    if not tinkery:
+        raise ValueError('--seed-contract requires --tinkery PATH to a trusted Tinkery executable.')
     if resolved.name != 'seed-contract.md':
-        raise ValueError('Seed Me session input must be named seed-contract.md.')
-    helper = Path(helper).resolve()
-    if not helper.is_file():
-        raise ValueError(f'Seed Me helper not found: {helper}')
+        raise ValueError('Tinkery session input must be named seed-contract.md.')
+    try:
+        tinkery = Path(tinkery).resolve()
+        available = tinkery.is_file() and os.access(tinkery, os.X_OK)
+    except (OSError, RuntimeError, ValueError):
+        raise ValueError('Tinkery executable is unavailable; supply --tinkery PATH.') from None
+    if not available:
+        raise ValueError(f'Tinkery executable is unavailable: {tinkery}; supply --tinkery PATH.')
     directory = resolved.parent
 
-    def call(*arguments):
-        result = subprocess.run([sys.executable, str(helper), *arguments, str(directory)],
-                                capture_output=True, text=True, timeout=30)
-        if result.returncode:
-            raise ValueError(f'Seed Me helper refused intake: {result.stderr.strip()}')
-        return json.loads(result.stdout)
+    def invalid_constant(value):
+        raise ValueError(f'Invalid JSON constant: {value}')
 
-    before = call('status')
-    if before.get('handoff', {}).get('verified') is not True:
-        raise ValueError('Seed Me handoff is not verified: ' + before.get('handoff', {}).get('reason', 'missing v2 binding'))
-    confirmation = read_json(directory / 'seed-confirmation.json')
-    data = resolved.read_bytes()
-    records = call('seed', 'checks', 'show')
-    after = call('status')
-    if (before != after or confirmation != read_json(directory / 'seed-confirmation.json')
-            or data != resolved.read_bytes() or type(confirmation.get('schema_version')) is not int
+    def call(*arguments):
+        try:
+            result = subprocess.run([str(tinkery), 'seed', *arguments, str(directory)],
+                                    capture_output=True, text=True, timeout=30)
+        except (OSError, subprocess.SubprocessError, UnicodeError):
+            raise ValueError('Tinkery could not run the seed verifier; check --tinkery PATH and retry.') from None
+        if result.returncode:
+            reason = result.stderr.strip()
+            detail = f': {reason}; ' if reason else '; '
+            raise ValueError(f'Tinkery refused seed intake{detail}check the session in Tinkery and retry.')
+        try:
+            return json.loads(result.stdout, parse_constant=invalid_constant)
+        except (ValueError, RecursionError):
+            raise ValueError('Tinkery returned malformed seed output; check --tinkery PATH.') from None
+
+    def status():
+        value = call('status', '--json')
+        if (not isinstance(value, dict) or not isinstance(value.get('handoff'), dict)
+                or type(value['handoff'].get('verified')) is not bool
+                or (value['handoff']['verified'] and
+                    (not isinstance(value.get('seed'), dict)
+                     or not isinstance(value['seed'].get('sha256'), str)
+                     or not re.fullmatch(r'[0-9a-f]{64}', value['seed']['sha256'])))):
+            raise ValueError('Tinkery returned malformed seed status; check --tinkery PATH.')
+        return value
+
+    def read_confirmation():
+        try:
+            value = read_json(directory / 'seed-confirmation.json')
+        except (OSError, ValueError, RecursionError):
+            raise ValueError('Tinkery confirmation is missing or unreadable; confirm the seed and retry.') from None
+        if not isinstance(value, dict):
+            raise ValueError('Tinkery confirmation is malformed; confirm the seed and retry.')
+        return value
+
+    def read_seed():
+        try:
+            return resolved.read_bytes()
+        except OSError:
+            raise ValueError('Tinkery seed could not be read; confirm the seed and retry.') from None
+
+    before = status()
+    if before['handoff']['verified'] is not True:
+        raise ValueError('Tinkery handoff is not verified; confirm the current seed in Tinkery and retry.')
+    confirmation = read_confirmation()
+    data = read_seed()
+    seed_sha256 = digest(data)
+    records = call('checks')
+    if (not isinstance(records, list) or not records
+            or any(not isinstance(record, dict) or not isinstance(record.get('statement'), str)
+                   for record in records)):
+        raise ValueError('Tinkery returned malformed seed checks; check --tinkery PATH.')
+    after = status()
+    if (before != after or confirmation != read_confirmation()
+            or data != read_seed() or type(confirmation.get('schema_version')) is not int
             or confirmation['schema_version'] != 2
-            or confirmation.get('seed_sha256') != digest(data)
-            or before.get('seed', {}).get('sha256') != digest(data)
+            or confirmation.get('seed_sha256') != seed_sha256
+            or before['seed']['sha256'] != seed_sha256
             or confirmation.get('checks_sha256') != records_digest(records)):
-        raise ValueError('Seed Me v2 confirmation binding changed during intake; confirm and retry.')
+        raise ValueError('Tinkery v2 confirmation binding changed during intake; confirm and retry.')
     return resolved, data, record_definitions(records), confirmation
 
 
@@ -1587,10 +1713,10 @@ def stage(args):
             raise ValueError('stage 5 reviews a commit, and these candidate changes are uncommitted: ' + ', '.join(dirty[:5])
                              + (f' (+{len(dirty) - 5} more)' if len(dirty) > 5 else '')
                              + mode_note + '; commit the candidate changes (verify again only if the code changed since it passed)')
-    if args.seed_me_helper and not args.seed_contract:
-        raise ValueError('--seed-me-helper requires --seed-contract at stage 1.')
+    if args.tinkery and not args.seed_contract:
+        raise ValueError('--tinkery requires --seed-contract at stage 1.')
     seed_source, seed_bytes, seed_checks, confirmation = (
-        stage_seed_contract(args.seed_contract, args.seed_me_helper) if args.seed_contract else (None, None, None, None))
+        stage_seed_contract(args.seed_contract, args.tinkery) if args.seed_contract else (None, None, None, None))
     seed_contract = f'runs/{run}/seed-contract.md' if seed_source else None
     skillset = stage_skillset(n)
     tink = shutil.which('tink') if skillset else None
@@ -1604,10 +1730,19 @@ def stage(args):
     detached = n != 3
     if make_worktree:
         target = Path(os.path.abspath(args.worktree)) if args.worktree else (
-            ROOT.parent / (f'{ROOT.name}-review-{run}' if n == 5 else f'{ROOT.name}-{run}'))
+            Path.home() / 'dev/worktrees' / ROOT.name / (f'review-{run}' if n == 5 else run))
         first_existing = target.parent
         while not first_existing.exists():
             first_existing = first_existing.parent
+        if (target.exists() or target.is_symlink()) and n == 5 and not args.worktree:
+            # A repeat review: name both ways forward and choose neither; the old checkout may hold findings.
+            number = 2
+            while Path(f'{target}-{number}').exists() or Path(f'{target}-{number}').is_symlink():
+                number += 1
+            fresh = Path(f'{target}-{number}')
+            raise ValueError(f'review checkout already exists: {target}. Once its findings are on this branch, '
+                             f'remove it: git worktree remove {target}; or review in a fresh checkout: '
+                             f'python3 _system/scripts/sdlc.py stage {run} 5 --worktree {fresh}')
         if target.exists() or target.is_symlink():
             raise ValueError(f'worktree path already exists: {target} (remove it with: git worktree remove {target})')
         if not detached and run_git(ROOT, 'show-ref', '--verify', '--quiet', f'refs/heads/{run}').returncode == 0:
@@ -1713,6 +1848,8 @@ class ShortErrorParser(argparse.ArgumentParser):
 
 def main():
     parser = ShortErrorParser(description=__doc__)
+    if any(arg == '--seed-me-helper' or arg.startswith('--seed-me-helper=') for arg in sys.argv[1:]):
+        parser.error('--seed-me-helper was removed; use --tinkery PATH.')
     commands = parser.add_subparsers(dest='command', required=True)
     new = commands.add_parser('new')
     new.add_argument('run')
@@ -1736,10 +1873,12 @@ def main():
     marking = commands.add_parser('mark')
     marking.add_argument('run')
     marking.add_argument('item')
-    marking.add_argument('result', choices=['passed', 'failed'])
+    marking.add_argument('result', choices=['passed', 'failed', 'unknown'])
     marking.add_argument('--evidence', required=True)
     marking.add_argument('--reviewer', help='actual operator attesting a seed check')
     marking.add_argument('--source', help='reference to the operator observation')
+    marking.add_argument('--covers-all', action='store_true',
+                         help='the operator meant this evidence to attest every expectation it is already recorded for')
     baseline = commands.add_parser('lock-tests')
     baseline.add_argument('run')
     baseline.add_argument('paths', nargs='+')
@@ -1757,7 +1896,7 @@ def main():
     where.add_argument('--worktree', metavar='PATH')
     where.add_argument('--here', action='store_true')
     launch.add_argument('--seed-contract', metavar='PATH')
-    launch.add_argument('--seed-me-helper', metavar='PATH', help='trusted Seed Me session.py with v2 handoff verification')
+    launch.add_argument('--tinkery', metavar='PATH', help='trusted Tinkery executable for verified seed intake')
     launch.add_argument('--check', action='store_true', help='validate and print the plan; write nothing')
     lint = commands.add_parser('walk', help='structural walk lint (read-only)')
     lint.add_argument('--json', action='store_true')
