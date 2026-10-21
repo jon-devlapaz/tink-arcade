@@ -1,0 +1,47 @@
+{
+  "result": "passed",
+  "candidate": {
+    "head": "9bce1888342be020f977ef1327501bfaaedd90b9",
+    "tree": "c76727708578f14adbedfef9dfa4332f6dfd496a544200be9c2ca3b8f48314f2"
+  },
+  "inputs": "ca561bfd69dc42b9284b35db04cc2f82ce912b24bd53a6cb53bc84ad649d98b5",
+  "policy": "24ccb1f66746bf3f8ec0ff01966a3db1d622a351a5b8344c021dbc45571875be",
+  "test_lock": null,
+  "checklist": "fbae3bd0f985b10dbac7c2c1643244d7b938ffdaa6b7fc2d68f130faedb84bc3",
+  "manual_marks": {
+    "seed-1-expect": "0de3f86a2a4e6be23c4a81330dea3dc907d34913d49165fb77269f4a1c1a9c8d",
+    "seed-2-expect": "ed5058b946780cfb3a6632317bcbb6b93d5b64cc908e606a64cb4863b7d2fa05",
+    "seed-3-expect": "a3e6dafc1bbd1484eb38081f74bd8ca66dfa189bf9a24d1de66161c8b549ecbf",
+    "seed-4-expect": "be11d04a4a8b9edbcc16ec6d5e7d29130c789ad9a4294765c6b4a733e7468408",
+    "seed-5-expect": "e3cf45cb3f30ce94c71f7cbd925be5298247c0536bb28a2606809a19b183cf40",
+    "seed-6-expect": "15c4fd6ae1db32cb7cdd82a922686b507c1648286c8160b127d23631d0178ca3",
+    "seed-7-expect": "6e8f81b78cab412974b1e40fd740558e4e95a42e8683a6ff689a8809e281308b",
+    "seed-8-expect": "0e5f6853bfbf67601c5c912e004ec3d08c7f4a2d6b1c89e1bc94c66fd9f48247"
+  },
+  "checklist_items": {
+    "suite": "proven",
+    "cabinet": "proven",
+    "replay": "proven",
+    "terminal": "proven",
+    "red-probes": "proven"
+  },
+  "seed_checks": {
+    "seed-1": "proven",
+    "seed-1-expect": "attested",
+    "seed-2": "proven",
+    "seed-2-expect": "attested",
+    "seed-3": "proven",
+    "seed-3-expect": "attested",
+    "seed-4": "proven",
+    "seed-4-expect": "attested",
+    "seed-5": "proven",
+    "seed-5-expect": "attested",
+    "seed-6": "proven",
+    "seed-6-expect": "attested",
+    "seed-7": "proven",
+    "seed-7-expect": "attested",
+    "seed-8": "proven",
+    "seed-8-expect": "attested"
+  },
+  "log": "cba94b484947b9964e9c63b16e61fa59811e3dfabb1d3cc37a409c70164dc147"
+}
