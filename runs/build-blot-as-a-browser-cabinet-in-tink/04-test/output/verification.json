@@ -1,8 +1,8 @@
 {
   "result": "awaiting-attestation",
   "candidate": {
-    "head": "7770a542ed8d37197014d8bf8cf1c1dab4e85f4c",
-    "tree": "ea98a7a5ceea9b031aeafa2e4cd2314796d806e0d35522a083d269da6c484102"
+    "head": "5cb2a869610eaf626f2b89591de1a70e2dc5d35a",
+    "tree": "158dbfa743052b791fe607fedf53866b0ef47762320af255b3c829f9558146ab"
   },
   "inputs": "2a6d08497ae2fe4f33c0dba973ca4358a22d0b90fac634503b4b8a79fe5ae557",
   "policy": "24ccb1f66746bf3f8ec0ff01966a3db1d622a351a5b8344c021dbc45571875be",
@@ -21,5 +21,5 @@
     "seed-4": "proven",
     "seed-5": "pending"
   },
-  "log": "c8de32fe1403236fe499de7b8a734ed7a8ec6df8eaef56239b75787b062932ef"
+  "log": "53d9532cc586fdf1dd8fd7ac6105a38d727687ab6a6a05ebb27409221ae47115"
 }

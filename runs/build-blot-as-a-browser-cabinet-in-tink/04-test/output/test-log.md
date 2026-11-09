@@ -576,7 +576,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 574 tests in 36.104s
+Ran 574 tests in 36.422s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1159,7 +1159,7 @@ test_keyboard_states_have_distinct_rendering_without_color (test_wordle_ui.Wordl
 test_shortcuts_are_off_letter_keys (test_wordle_ui.WordleInputTests.test_shortcuts_are_off_letter_keys) ... ok
 
 ----------------------------------------------------------------------
-Ran 574 tests in 36.504s
+Ran 574 tests in 36.286s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1184,7 +1184,7 @@ cwd: .
 expect (operator confirms): A behavior-specific regression executes actual game logic and asserts steering, word contact, completion before drying, and continuous drying during elapsed active play.
 ..
 ----------------------------------------------------------------------
-Ran 2 tests in 0.840s
+Ran 2 tests in 0.803s
 
 OK
 
@@ -1194,7 +1194,7 @@ cwd: .
 expect (operator confirms): Actual game-state assertions demonstrate increased drop size and reduced movement speed after each newly touched word, including successive words.
 ..
 ----------------------------------------------------------------------
-Ran 2 tests in 0.771s
+Ran 2 tests in 0.749s
 
 OK
 
@@ -1206,7 +1206,7 @@ expect (operator confirms): All checks passed.
 == games: unit and terminal tests
 .....................................................................................................................................................................................ss.............................................................................................................................................................................................................................................................sss.......................................................................................................................................
 ----------------------------------------------------------------------
-Ran 574 tests in 37.798s
+Ran 574 tests in 36.729s
 
 OK (skipped=5)
 Legal full-clear replay: seed=20261004, steps=31475, boards=[(0, 16548, 360, 3), (1, 19078, 480, 3), (2, 31474, 760, 3)]
@@ -1234,6 +1234,6 @@ cwd: .
 expect (operator confirms): Machine assertions verify the actual game directory, static HTML/CSS/JS delivery, dependency-free and network-free operation, and root tinkery.preview with the recorded command template and URL using that directory.
 ..
 ----------------------------------------------------------------------
-Ran 2 tests in 0.847s
+Ran 2 tests in 0.824s
 
 OK
