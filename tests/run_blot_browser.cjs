@@ -5,6 +5,7 @@ const [chrome, profile] = process.argv.slice(2);
 const browser = spawn(chrome, ['--headless', '--disable-gpu', '--no-first-run',
   '--no-default-browser-check', '--disable-background-networking', '--disable-sync',
   '--disable-component-update', '--disable-extensions', '--metrics-recording-only',
+  '--use-mock-keychain', '--password-store=basic',
   '--allow-file-access-from-files', '--host-resolver-rules=MAP * ~NOTFOUND',
   '--remote-debugging-pipe', '--user-data-dir=' + profile],
   {stdio: ['ignore', 'ignore', 'pipe', 'pipe', 'pipe']});
