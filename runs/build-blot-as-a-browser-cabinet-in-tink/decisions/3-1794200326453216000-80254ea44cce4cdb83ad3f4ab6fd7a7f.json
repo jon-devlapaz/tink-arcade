@@ -1,0 +1,94 @@
+{
+  "inputs": "92ed6332eef9385dc71394aebfa76f471f4b2b15f100db8dfce7b8dc4881abe5",
+  "decision": "approved",
+  "basis": "confirmed-seed",
+  "reviewer": "confirmed-seed binding (automatic)",
+  "source": "runs/build-blot-as-a-browser-cabinet-in-tink/seed-contract.md",
+  "seed_binding": {
+    "path": "runs/build-blot-as-a-browser-cabinet-in-tink/seed-contract.md",
+    "sha256": "4594775f3a5b8f7785922ec9c7f7d43186d485acb93d473ee16650b8f6d4a16a",
+    "source": "/Users/jondev/dev/archive/blot-run/home/.local/share/tinkery/sessions/session-fnumWw/seed-contract.md",
+    "definitions_sha256": "d79f605378f959beb0f95b87687c1f43dc0c7fe1d8982930243c0c120a69494c",
+    "confirmation": {
+      "schema_version": 3,
+      "checks_sha256": "44ce2637e9d50577a4730fc584e26f66179873972f318e5804dc1a2c7416c4d5",
+      "session_id": "session-fnumWw",
+      "operator": "agent",
+      "revision": "r1",
+      "source": "confirm",
+      "confirmed_at": "2026-11-09T04:28:36.738319+00:00",
+      "seed_sha256": "4594775f3a5b8f7785922ec9c7f7d43186d485acb93d473ee16650b8f6d4a16a",
+      "decisions_sha256": "af573b1e4fab8e58c44d43386d71b572f2e2ea5cb2280103976100d4b9c0a9e0",
+      "actor": {
+        "action": "typed confirm at this terminal",
+        "by": "terminal",
+        "declaration": "declared: agent",
+        "identity": "declaration is not verified identity"
+      }
+    },
+    "definitions": [
+      {
+        "cmd": "python3 -B -m unittest discover -s tests -p test_blot_browser.py",
+        "cwd": ".",
+        "expect": "A behavior-specific regression executes actual game logic and asserts steering, word contact, completion before drying, and continuous drying during elapsed active play.",
+        "kind": "provisional",
+        "missing": "Add tests/test_blot_browser.py with a BlotBrowserTests class and an executable JavaScript/browser bridge. Because unittest discovery can succeed with no matching file, this command is not valid verification until that file and its assertions exist. Include assertions that contact marks words and that active elapsed time reaches drying failure.",
+        "source": "goal; blot-drying-rule; scripts/check_all.py:7\u201313; tests/test_wordle_engine.py:1\u201321",
+        "statement": "Let the player steer an ink drop to touch every word on the page before it dries.",
+        "id": "seed-1",
+        "description": "Let the player steer an ink drop to touch every word on the page before it dries.",
+        "origin": "agent-confirmed-seed",
+        "locked": true
+      },
+      {
+        "cwd": ".",
+        "expect": "Actual game-state assertions demonstrate increased drop size and reduced movement speed after each newly touched word, including successive words.",
+        "kind": "provisional",
+        "missing": "Add a growth-and-slowdown assertion to the behavior regression and establish its execution bridge. Use the preceding proposed test-file command rather than duplicating it. Targeted reversion of either size growth or speed reduction must make the corresponding comparison fail.",
+        "source": "goal; scripts/check_all.py:7\u201313; tests/test_wordle_engine.py:1\u201321",
+        "statement": "Make the ink drop bigger and slower with each word it touches.",
+        "cmd": "python3 -B -m unittest tests/test_blot_browser.py\n",
+        "id": "seed-2",
+        "description": "Make the ink drop bigger and slower with each word it touches.",
+        "origin": "agent-confirmed-seed",
+        "locked": true
+      },
+      {
+        "cmd": "python3 -B scripts/check_all.py",
+        "cwd": ".",
+        "expect": "All checks passed.",
+        "kind": "cmd",
+        "source": "probe-real-sample; scripts/check_all.py:7\u201326",
+        "statement": "The builder runs the full repository check.",
+        "id": "seed-3",
+        "description": "The builder runs the full repository check.",
+        "origin": "agent-confirmed-seed",
+        "locked": true
+      },
+      {
+        "cwd": ".",
+        "expect": "Machine assertions verify the actual game directory, static HTML/CSS/JS delivery, dependency-free and network-free operation, and root tinkery.preview with the recorded command template and URL using that directory.",
+        "kind": "provisional",
+        "missing": "The game directory and delivery assertions are not established. Add these assertions to discoverable tests; establish browser request observation for the no-network claim. Preserve ./play, arcade_menu and scripts/check_arcade.py launch behavior.",
+        "source": "probe-real-sample; blot-cabinet-entry; scripts/check_all.py:7\u201313",
+        "statement": "The static browser delivery and preview satisfy the recorded scope.",
+        "cmd": "python3 -B -m unittest tests/test_blot_browser.py\n",
+        "id": "seed-4",
+        "description": "The static browser delivery and preview satisfy the recorded scope.",
+        "origin": "agent-confirmed-seed",
+        "locked": true
+      },
+      {
+        "how_to_judge": "Play the actual browser game through Taste v, inspect readability with the Socratink palette, and assess whether steering, collection, growth, slowdown and drying make an enjoyable game. Establish the Taste v invocation before scheduling this judgment.",
+        "kind": "judge",
+        "source": "probe-real-sample; DESIGN.md:5\u201329",
+        "statement": "A person plays Blot in the browser through Taste v and judges whether it is readable and fun.",
+        "id": "seed-5",
+        "description": "A person plays Blot in the browser through Taste v and judges whether it is readable and fun.",
+        "origin": "agent-confirmed-seed",
+        "locked": true
+      }
+    ]
+  },
+  "reason": "matches confirmed seed (sha256: 4594775f3a5b8f7785922ec9c7f7d43186d485acb93d473ee16650b8f6d4a16a)"
+}
