@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Blot · paper arcade</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<script src="game.js" defer></script>
+<script src="ui.js" defer></script>
+</head>
+<body>
+<main>
+<header><span>SOCRATINK / PAPER ARCADE</span><span>01 / BLOT</span></header>
+<h1>Blot</h1>
+<p class="intro">A little ink. A whole page to touch.</p>
+<div class="readout"><span id="count">0 / 6 words</span><span id="time">40.0 s of wet ink</span></div>
+<div id="page" role="application" tabindex="0" aria-label="Blot playfield. Use arrow keys or WASD to steer. Touch every word before the ink dries.">
+<div id="drop" aria-hidden="true"></div>
+</div>
+<p id="status" role="status">Touch every word before your ink dries.</p>
+<div class="actions"><button id="pause">Pause</button><button id="restart">Fresh page</button></div>
+<footer>Arrow keys / WASD to steer · P to pause · R to restart<br>Or hold a spot on the page to move toward it. Each word makes you bigger and slower.</footer>
+</main>
+</body>
+</html>
