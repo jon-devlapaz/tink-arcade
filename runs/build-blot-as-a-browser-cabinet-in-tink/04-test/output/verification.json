@@ -1,0 +1,25 @@
+{
+  "result": "awaiting-attestation",
+  "candidate": {
+    "head": "5cb2a869610eaf626f2b89591de1a70e2dc5d35a",
+    "tree": "158dbfa743052b791fe607fedf53866b0ef47762320af255b3c829f9558146ab"
+  },
+  "inputs": "2a6d08497ae2fe4f33c0dba973ca4358a22d0b90fac634503b4b8a79fe5ae557",
+  "policy": "24ccb1f66746bf3f8ec0ff01966a3db1d622a351a5b8344c021dbc45571875be",
+  "test_lock": null,
+  "checklist": "57ba36d7351a32661148961de4e997372ceb4e8c53b5cb399645741dc886cbbd",
+  "manual_marks": {},
+  "pending_attestations": [
+    "seed-5"
+  ],
+  "error": "Checklist incomplete: seed-5 (mark them with: sdlc.py mark build-blot-as-a-browser-cabinet-in-tink <id> passed --evidence \"...\" --reviewer 'REVIEWER' --source 'SOURCE')",
+  "checklist_items": {},
+  "seed_checks": {
+    "seed-1": "proven",
+    "seed-2": "proven",
+    "seed-3": "proven",
+    "seed-4": "proven",
+    "seed-5": "pending"
+  },
+  "log": "53d9532cc586fdf1dd8fd7ac6105a38d727687ab6a6a05ebb27409221ae47115"
+}
