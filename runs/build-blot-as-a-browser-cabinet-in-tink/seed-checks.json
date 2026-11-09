@@ -9,6 +9,11 @@
       "missing": "Add tests/test_blot_browser.py with a BlotBrowserTests class and an executable JavaScript/browser bridge. Because unittest discovery can succeed with no matching file, this command is not valid verification until that file and its assertions exist. Include assertions that contact marks words and that active elapsed time reaches drying failure.",
       "source": "goal; blot-drying-rule; scripts/check_all.py:7\u201313; tests/test_wordle_engine.py:1\u201321",
       "statement": "Let the player steer an ink drop to touch every word on the page before it dries.",
+      "activation": {
+        "cmd": "python3 -B -m unittest discover -s tests -p test_blot_browser.py",
+        "cwd": ".",
+        "evidence": "tests/test_blot_browser.py defines BlotBrowserTests; tests/run_blot_browser.cjs executes the actual page in Chromium through its debugging pipe. tests/blot_browser.js asserts steering, contact, completion and active drying failure. Both discoverable tests passed locally."
+      },
       "id": "seed-1",
       "description": "Let the player steer an ink drop to touch every word on the page before it dries.",
       "origin": "agent-confirmed-seed",
@@ -22,6 +27,11 @@
       "source": "goal; scripts/check_all.py:7\u201313; tests/test_wordle_engine.py:1\u201321",
       "statement": "Make the ink drop bigger and slower with each word it touches.",
       "cmd": "python3 -B -m unittest tests/test_blot_browser.py\n",
+      "activation": {
+        "cmd": "python3 -B -m unittest tests/test_blot_browser.py\n",
+        "cwd": ".",
+        "evidence": "tests/blot_browser.js compares radius and speed after every word. scripts/check_blot_mutations.py ran and rejected individual growth and slowdown reversions at their corresponding comparisons. tests/__init__.py establishes the proposed direct unittest invocation."
+      },
       "id": "seed-2",
       "description": "Make the ink drop bigger and slower with each word it touches.",
       "origin": "agent-confirmed-seed",
@@ -47,6 +57,11 @@
       "source": "probe-real-sample; blot-cabinet-entry; scripts/check_all.py:7\u201313",
       "statement": "The static browser delivery and preview satisfy the recorded scope.",
       "cmd": "python3 -B -m unittest tests/test_blot_browser.py\n",
+      "activation": {
+        "cmd": "python3 -B -m unittest tests/test_blot_browser.py\n",
+        "cwd": ".",
+        "evidence": "blot/index.html, blot/style.css, blot/game.js and blot/ui.js provide the static game. tests/test_blot_browser.py asserts delivery and tinkery.preview. tests/run_blot_browser.cjs observes Chromium Network.requestWillBeSent events and rejects nonlocal requests; actual browser execution passed. Terminal launch files remain unchanged."
+      },
       "id": "seed-4",
       "description": "The static browser delivery and preview satisfy the recorded scope.",
       "origin": "agent-confirmed-seed",
